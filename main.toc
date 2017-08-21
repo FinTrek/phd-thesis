@@ -1,0 +1,23 @@
+\contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {part}{I\hspace {1em}``Applied''}{4}
+\contentsline {chapter}{\numberline {2}Approximating the Laplace transform of the sum of dependent lognormals}{5}
+\contentsline {section}{\numberline {2.1}Introduction}{2}
+\contentsline {section}{\numberline {2.2}Approximating the Laplace transform}{3}
+\contentsline {section}{\numberline {2.3}Asymptotic behaviour of the minimiser $\bm {x}^*$}{6}
+\contentsline {section}{\numberline {2.4}Asymptotic behaviour of $I(\theta )$}{11}
+\contentsline {section}{\numberline {2.5}Estimators of $\mathcal {L}(\theta )$ and $I(\theta )$}{12}
+\contentsline {section}{\numberline {2.6}Numerical Results}{14}
+\contentsline {section}{\numberline {2.7}Closing Remarks}{15}
+\contentsline {section}{\numberline {2.A}Remaining steps in the proof of Theorem\nobreakspace {}2.3.2\hbox {}}{15}
+\contentsline {part}{II\hspace {1em}``Probability''}{17}
+\contentsline {chapter}{\numberline {3}Tail asymptotics of light-tailed Weibull-like sums}{18}
+\contentsline {section}{\numberline {3.1}Introduction}{2}
+\contentsline {section}{\numberline {3.2}Heuristics}{3}
+\contentsline {section}{\numberline {3.3}Weibull-like sums}{5}
+\contentsline {section}{\numberline {3.4}Light-tailed sums}{9}
+\contentsline {section}{\numberline {3.5}Bounds}{10}
+\contentsline {section}{\numberline {3.6}M.g.f.'s and the exponential family}{11}
+\contentsline {section}{\numberline {3.7}Compound Poisson sums}{14}
+\contentsline {section}{\numberline {3.8}The exponential class of distributions}{15}
+\contentsline {section}{\numberline {3.9}Applications to Monte Carlo simulation}{16}
+\contentsline {section}{\numberline {3.A}Proof of Theorem\nobreakspace {}3.4.1\hbox {}}{20}

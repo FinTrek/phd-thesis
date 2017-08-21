@@ -1,0 +1,311 @@
+%!TEX root = main.tex
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsthm}
+\usepackage{appendix}
+\usepackage{array} % for \extrarowheight
+\usepackage{bm} % for \bm
+% \usepackage{commath} % for \dif
+\usepackage{float} % for [H]
+\usepackage{graphicx}
+\usepackage{latexsym} % for the big \Diamond
+% \usepackage{listings}
+\usepackage{relsize} % for \mathsmaller
+\usepackage{tikz} % for drawing circles and stuff
+% \usepackage{upgreek} % for pi
+\usepackage{url}
+
+% Probability symbols.
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Exp}{\mathbb{E}}
+\newcommand{\Cov}{\mathbb{C}\mathrm{ov}}
+\newcommand{\Var}{\mathbb{V}\mathrm{ar}}
+\newcommand{\Lap}{\mathcal{L}}
+
+% Distributions.
+\newcommand{\Norm}{\mathcal{N}}
+\newcommand{\LN}{\mathrm{LN}}
+\newcommand{\SLN}{\mathrm{SLN}}
+\newcommand{\NormCdf}{\mathrm{\Phi}}
+\newcommand{\iidDist}{\overset{\mathrm{i.i.d.}}{\sim}}
+
+% Sets of numbers.
+\newcommand{\NL}{\mathbb{N}}
+\newcommand{\RL}{\mathbb{R}}
+\newcommand{\CL}{\mathbb{C}}
+
+% Roman versions of things.
+\newcommand{\e}{\mathrm{e}}
+
+% All the bold symbols and letters.
+\newcommand{\bfA}{\bm{A}}
+\newcommand{\bfB}{\bm{B}}
+\newcommand{\bfC}{\bm{C}}
+\newcommand{\bfD}{\bm{D}}
+\newcommand{\bfE}{\bm{E}}
+\newcommand{\bfF}{\bm{F}}
+\newcommand{\bfG}{\bm{G}}
+\newcommand{\bfH}{\bm{H}}
+\newcommand{\bfI}{\bm{I}}
+\newcommand{\bfJ}{\bm{J}}
+\newcommand{\bfK}{\bm{K}}
+\newcommand{\bfL}{\bm{L}}
+\newcommand{\bfM}{\bm{M}}
+\newcommand{\bfN}{\bm{N}}
+\newcommand{\bfO}{\bm{O}}
+\newcommand{\bfP}{\bm{P}}
+\newcommand{\bfQ}{\bm{Q}}
+\newcommand{\bfR}{\bm{R}}
+\newcommand{\bfS}{\bm{S}}
+\newcommand{\bfT}{\bm{T}}
+\newcommand{\bfU}{\bm{U}}
+\newcommand{\bfV}{\bm{V}}
+\newcommand{\bfW}{\bm{W}}
+\newcommand{\bfX}{\bm{X}}
+\newcommand{\bfY}{\bm{Y}}
+\newcommand{\bfZ}{\bm{Z}}
+
+\newcommand{\bfa}{\bm{a}}
+\newcommand{\bfb}{\bm{b}}
+\newcommand{\bfc}{\bm{c}}
+\newcommand{\bfd}{\bm{d}}
+\newcommand{\bfe}{\bm{e}}
+\newcommand{\bff}{\bm{f}}
+\newcommand{\bfg}{\bm{g}}
+\newcommand{\bfh}{\bm{h}}
+\newcommand{\bfi}{\bm{i}}
+\newcommand{\bfj}{\bm{j}}
+\newcommand{\bfk}{\bm{k}}
+\newcommand{\bfl}{\bm{l}}
+\newcommand{\bfm}{\bm{m}}
+\newcommand{\bfn}{\bm{n}}
+\newcommand{\bfo}{\bm{o}}
+\newcommand{\bfp}{\bm{p}}
+\newcommand{\bfq}{\bm{q}}
+\newcommand{\bfr}{\bm{r}}
+\newcommand{\bfs}{\bm{s}}
+\newcommand{\bft}{\bm{t}}
+\newcommand{\bfu}{\bm{u}}
+\newcommand{\bfv}{\bm{v}}
+\newcommand{\bfw}{\bm{w}}
+\newcommand{\bfx}{\bm{x}}
+\newcommand{\bfy}{\bm{y}}
+\newcommand{\bfz}{\bm{z}}
+
+\newcommand{\bfalpha}{\bm{\alpha}}
+\newcommand{\bfbeta}{\bm{\beta}}
+\newcommand{\bfomega}{\bm{\omega}}
+\newcommand{\bfLambda}{\bm{\Lambda}}
+\newcommand{\bfmu}{\bm{\mu}}
+\newcommand{\bfsigma}{\bm{\sigma}}
+\newcommand{\bfSigma}{\bm{\Sigma}}
+
+\newcommand{\bfzero}{\bm{0}}
+\newcommand{\bfone}{\bm{1}}
+
+% Integral transforms (pjl: TODO finish this off)
+\newcommand{\Laplace}{\mathcal{L}}
+
+
+% Financial stuff.
+\newcommand{\VaR}{\mathrm{VaR}}
+
+% Shortcuts to fix annoying defaults in Latex.
+\renewcommand{\hat}[1]{\widehat{#1}}
+\renewcommand{\tilde}[1]{\widetilde{#1}}
+\renewcommand{\epsilon}{\varepsilon}
+% \renewcommand{\pi}{\uppi}
+
+% Special symbols.
+\newcommand{\defeq}{\overset{\mathrm{def}}{=}}
+\newcommand{\tr}{\top}
+\newcommand{\ih}{\mathrm{i}}
+\newcommand{\oh}{{\mathrm{o}}}
+\newcommand{\Oh}{{\mathcal{O}}}
+\renewcommand{\det}[1]{\lvert \mathrm{det}(#1) \rvert}
+\newcommand{\comp}{\mathsf{c}} % complement
+\newcommand{\Ind}{\mathbb I} % Indicator
+\renewcommand{\L}{\mathcal{L}} % e.g. L^2 loss.
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\diag}{\mathrm{diag}}
+
+% Norm and absolute value signs.
+\providecommand{\abs}[1]{\lvert #1\rvert } 
+\providecommand{\norm}[1]{\lVert #1\rVert }
+
+\newcommand{\dd}{\mathrm{d}}
+
+% Margins and text.
+\setlength{\textwidth}{16cm}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\evensidemargin}{0pt}
+\setlength{\parskip}{3mm}
+\setlength{\parindent}{0mm}
+
+% Stuff I used in paper one.
+\newcommand{\sqdet}[1]{\sqrt{\det{#1}}}
+\newcommand{\LambertW}{\mathcal{W}}
+\newcommand{\Fset}[1]{\mathcal{F}_{\!\mathsmaller{#1}}}
+
+\newcommand{\sbullet}{
+  \tikz[baseline=0] \fill (0,0.05) circle (0.035);
+}
+\newcommand{\ms}[1]{\mathsmaller{#1}}
+
+\newcommand{\ve}{\bm{\mathrm{e}}} % vector e
+\newcommand{\vlog}{\bm{\mathrm{log}}\,}		  % vector log
+
+
+% Load images from subdirectory.
+\graphicspath{{images/}}
+
+% Regarding code snippets.
+\usepackage{lmodern}% better font than default
+% \usepackage{tgcursor}% tt font with bold/italic styles
+% \lstset{
+% 	basicstyle={\ttfamily\footnotesize},
+% 	breaklines=true,
+% 	showspaces=false,
+% 	showstringspaces=false,
+% 	tabsize=2
+% }
+
+% Regarding theorem numbering.
+\theoremstyle{plain} % the default, bold header, italic body
+\newtheorem{theorem}[subsection]{Theorem}
+\newtheorem{lemma}[subsection]{Lemma}
+\newtheorem{proposition}[subsection]{Proposition}
+\newtheorem{corollary}[subsection]{Corollary}
+\newtheorem{remark}[subsection]{Remark}
+\newtheorem{example}[subsection]{Example}
+
+\newtheorem{pseudoalgorithm}[subsection]{Algorithm} % For the long detailed algorithm from the SLN LT paper.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preamble from SLN Laplace Transform paper
+
+% \usepackage[UKenglish]{babel}
+% \usepackage{bm}
+% \usepackage{url}
+% 
+% \renewcommand{\baselinestretch}{1}
+% 
+% \newcommand{\CL}{\mathbb{C}}
+% \newcommand{\RL}{\mathbb{R}}
+% \newcommand{\Laplace}{\mathcal{L}}
+% \newcommand{\ve}{\bm{\mathrm{e}}} % vector e
+% \newcommand{\oh}{{\mathrm{o}}}
+% \newcommand{\Oh}{{\mathrm{O}}}
+% \newcommand{\Exp}{\mathbb{E}}
+\newcommand{\dNormal}{\sim\mathsf{Normal}}
+\newcommand{\dLNormal}{\sim\mathsf{LogNormal}}
+\newcommand{\dSLNormal}{\sim\mathsf{SumLogNormal}}
+% \newcommand{\Prob}{\mathbb{P}}
+% \newcommand{\Ind}{\mathbb I}
+% \newcommand\bfsigma{\bm{\sigma}}
+% \newcommand\bfSigma{\bm{\Sigma}}
+% \newcommand\bfLambda{\bm{\Lambda}}
+% \newcommand\Fset[1]{\mathcal{F}_{#1}}
+% \newcommand\sbullet{\raisebox{.4pt}{$\scriptscriptstyle \bullet $}}
+% 
+% \newcommand{\bfA}{\bm{A}}
+% \newcommand{\bfC}{\bm{C}}
+% \newcommand{\bfD}{\bm{D}}
+% \newcommand{\bfF}{\bm{F}}
+% \newcommand{\bfH}{\bm{H}}
+% \newcommand{\bfI}{\bm{I}}
+% \newcommand{\bfM}{\bm{M}}
+% \newcommand{\bfX}{\bm{X}}
+% 
+% \newcommand{\bfa}{\bm{a}}
+% \newcommand{\bfb}{\bm{b}}
+% \newcommand{\bfc}{\bm{c}}
+% \newcommand{\bfe}{\bm{e}}
+% \newcommand{\bfq}{\bm{q}}
+% \newcommand{\bfr}{\bm{r}}
+% \newcommand{\bfu}{\bm{u}}
+% \newcommand{\bfw}{\bm{w}}
+% \newcommand{\bfx}{\bm{x}}
+% \newcommand{\bfy}{\bm{y}}
+% \newcommand{\bfz}{\bm{z}}
+% 
+% \newcommand\bfzero{\bm{0}}
+% \newcommand\bfone{\bm{1}}
+% \newcommand\bfbeta{\bm{\beta}}
+% \newcommand\bfmu{\bm{\mu}}
+% \newcommand{\LambertW}{\mathcal{W}}
+% \newcommand{\diag}{\mathop{\mathrm{diag}}\nolimits }
+% \renewcommand{\epsilon}{\varepsilon}
+% \newcommand{\comp}{\mathsf{c}}% sans-serif c for complement
+% \newcommand{\tr}{\top}
+% \newcommand{\defeq}{:=}
+% \newcommand{\iidDist}{\overset{\mathrm{i.i.d.}}{\sim}}
+% \newcommand{\vlog}{\mathop{\bm{\mathrm{log}}}\nolimits }% vector log
+% \newcommand{\qed}{\hfill $\square $}
+% \providecommand{\abs}[1]{\lvert #1\rvert }
+% \providecommand{\norm}[1]{\lVert #1\rVert }
+% 
+% {\theorembodyfont{\rmfamily} \newtheorem{alg}{\noindent Algorithm}[section]}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preamble from the Weibull sums paper
+
+
+\usepackage{amsmath,amssymb,amsthm,bm,mathtools,xspace,booktabs,url,tikz,color}
+
+\def\bqny#1{\begin{eqnarray*} #1 \end{eqnarray*}}
+\def\bqn#1{\begin{eqnarray} #1 \end{eqnarray}}
+\newcommand{\pk}[1]{\mathbb{P} \left( #1 \right) }
+\newcommand{\COM}[1]{}
+
+\newcommand{\indi}{\mathbb{I}}%{\bm{1}}
+\newcommand{\nat}{{\mathbb N}} % 0,1,2,...
+
+\newcommand{\Prob}{\mathbb{P}}
+
+
+\newcommand{\halmos}{{\mbox{\, \vspace{3mm}}} \hfill
+\mbox{$\Box$}}
+\newcommand{\halmoss}{{\mbox{\, \vspace{3mm}}} \hfill
+\mbox{$\Diamond$}}
+
+
+\newcommand{\Field}{\mathcal{F}}
+\newcommand{\pii}{\pi}
+\newcommand\convdistr{
+  \xrightarrow{\:\scriptscriptstyle\smash{\mathcal{D}}\:}
+}
+\newcommand{\wt}{\widetildei}
+\newcommand{\Fb}{\overline F}
+
+\newcommand{\cH}{{\mathcal H}}\newcommand{\cHb}{\overline{\mathcal H}}
+\newcommand{\ch}{{\mathcal h}}
+\newcommand{\cW}{{\mathcal W}}\newcommand{\cWb}{\overline{\mathcal W}}
+\newcommand{\cw}{{\mathcal w}}
+
+
+\newcommand\ginv{
+  \tikz[baseline=-0.4ex] \draw[<-] (0,0)--(0.4em,0);
+}
+
+
+%\renewcommand{\mathsf}{\mathrm} %% To fix this later (pjl) 
+\newcommand{\GMDA}{\mathsf{GMDA}}
+
+\renewcommand{\epsilon}{\varepsilon}

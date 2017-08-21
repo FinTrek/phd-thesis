@@ -1,0 +1,214 @@
+\begin{thebibliography}{10}
+
+\bibitem{abate1995numerical}
+Joseph Abate and Ward Whitt.
+\newblock Numerical inversion of {L}aplace transforms of probability
+  distributions.
+\newblock {\em ORSA Journal on computing}, 7(1):36--43, 1995.
+
+\bibitem{abate2006unified}
+Joseph Abate and Ward Whitt.
+\newblock A unified framework for numerically inverting {L}aplace transforms.
+\newblock {\em INFORMS Journal on Computing}, 18(4):408--421, 2006.
+
+\bibitem{abu1994outage}
+Adnan~A Abu-Dayya and Norman~C Beaulieu.
+\newblock Outage probabilities in the presence of correlated lognormal
+  interferers.
+\newblock {\em IEEE Transactions on Vehicular Technology}, 43(1):164--173,
+  1994.
+
+\bibitem{adler2017relative}
+Andr{\'e} Adler and Anthony~G Pakes.
+\newblock On relative stability and weighted laws of large numbers.
+\newblock {\em Extremes}, 20(1):1--31, 2017.
+
+\bibitem{aitchison1957lognormal}
+John Aitchison and James~AC Brown.
+\newblock {\em The Lognormal Distribution with Special Reference to its Uses in
+  Economics}.
+\newblock Cambridge University Press, 1957.
+
+\bibitem{asmussen2017conditional}
+S{\o}ren Asmussen.
+\newblock Conditional monte carlo for sums, with applications to insurance and
+  finance.
+\newblock {\em Annals of Actuarial Science}, 2017.
+\newblock Submitted, available from {\tt thiele.au.dk/publications}.
+
+\bibitem{asmussen2010ruin}
+S{\o}ren Asmussen and Hansj{\"o}rg Albrecher.
+\newblock {\em Ruin Probabilities}.
+\newblock World Scientific, 2 edition, 2010.
+\newblock Advanced series on statistical science \& applied probability; v. 14.
+
+\bibitem{asmussen2007stochastic}
+S{\o}ren Asmussen and Peter~W Glynn.
+\newblock {\em Stochastic {S}imulation: {A}lgorithms and {A}nalysis}, volume~57
+  of {\em Stochastic Modelling and Applied Probability series}.
+\newblock Springer, 2007.
+
+\bibitem{asmussen2014laplace}
+S{\o}ren Asmussen, Jens~Ledet Jensen, and Leonardo Rojas-Nandayapa.
+\newblock On the {L}aplace transform of the {L}ognormal distribution.
+\newblock {\em Methodology and Computing in Applied Probability}, 16:1--18,
+  2014.
+
+\bibitem{asmussen2015exponential}
+S{\o}ren Asmussen, Jens~Ledet Jensen, and Leonardo Rojas-Nandayapa.
+\newblock Exponential family techniques in the lognormal left tail.
+\newblock {\em Scandinavian Journal of Statistics}, 2015.
+\newblock Pending revision.
+
+\bibitem{asmussen2006improved}
+S{\o}ren Asmussen and Dirk~P Kroese.
+\newblock Improved algorithms for rare event simulation with heavy tails.
+\newblock {\em Advances in Applied Probability}, 38(2):545--558, 2006.
+
+\bibitem{asmussen2008asymptotics}
+S{\o}ren Asmussen and Leonardo Rojas-Nandayapa.
+\newblock Asymptotics of sums of lognormal random variables with {G}aussian
+  copula.
+\newblock {\em Statistics \& Probability Letters}, 78(16):2709--2714, 2008.
+
+\bibitem{avdis2007power}
+Efstathios Avdis and Ward Whitt.
+\newblock Power algorithms for inverting {L}aplace transforms.
+\newblock {\em INFORMS Journal on Computing}, 19(3):341--355, 2007.
+
+\bibitem{balkema1993densities}
+August~A Balkema, Claudia Kl{\"u}ppelberg, and Sidney~I Resnick.
+\newblock Densities with gaussian tails.
+\newblock {\em Proceedings of the London Mathematical Society}, 3(3):568--588,
+  1993.
+
+\bibitem{balkema2003domains}
+August~A Balkema, Claudia Kl{\"u}ppelberg, and Sidney~I Resnick.
+\newblock Domains of attraction for exponential families.
+\newblock {\em Stochastic processes and their applications}, 107(1):83--103,
+  2003.
+
+\bibitem{beaulieu1995estimating}
+Norman~C Beaulieu, Adnan~A Abu-Dayya, and Peter~J McLane.
+\newblock Estimating the distribution of a sum of independent lognormal random
+  variables.
+\newblock {\em IEEE Transactions on Communications}, 43(12):2869--2873, 1995.
+
+\bibitem{beaulieu2004highly}
+Norman~C Beaulieu and Faruq Rajwani.
+\newblock Highly accurate simple closed-form approximations to lognormal sum
+  distributions and densities.
+\newblock {\em IEEE Communications Letters}, 8(12):709--711, 2004.
+
+\bibitem{beaulieu2004optimal}
+Norman~C Beaulieu and Qiong Xie.
+\newblock An optimal lognormal approximation to lognormal sum distributions.
+\newblock {\em IEEE Transactions on Vehicular Technology}, 53(2):479--489,
+  2004.
+
+\bibitem{corless1996lambertw}
+Robert~M Corless, Gaston~H Gonnet, David~EG Hare, David~J Jeffrey, and Donald~E
+  Knuth.
+\newblock On the {L}ambert {W} function.
+\newblock {\em Advances in Computational Mathematics}, 5(1):329--359, 1996.
+
+\bibitem{crow1988lognormal}
+Edwin~L Crow and Kunio Shimizu.
+\newblock {\em Lognormal Distributions: Theory and Applications}.
+\newblock Dekker New York, 1988.
+
+\bibitem{duellmann2010regulatory}
+Klaus Duellmann.
+\newblock {\em Regulatory Capital}, volume~IV, pages 1525--1538.
+\newblock Wiley, 2010.
+
+\bibitem{dufresne2004log}
+Daniel Dufresne.
+\newblock The log-normal approximation in financial and other computations.
+\newblock {\em Advances in Applied Probability}, 36(3):747--773, 2004.
+
+\bibitem{dufresne2009sums}
+Daniel Dufresne.
+\newblock Sums of lognormals.
+\newblock Technical report, Centre for Actuarial Sciences, University of
+  Melbourne, 2009.
+
+\bibitem{embrechts2014academic}
+Paul Embrechts, Giovanni Puccetti, Ludger R{\"u}schendorf, Ruodu Wang, and
+  Antonela Beleraj.
+\newblock An academic response to {B}asel 3.5.
+\newblock {\em Risks}, 2(1):25--48, 2014.
+
+\bibitem{fenton1960sum}
+Lawrence Fenton.
+\newblock The sum of log-normal probability distributions in scatter
+  transmission systems.
+\newblock {\em IRE Transactions on Communications Systems}, 8(1):57--67, 1960.
+
+\bibitem{gao2009asymptotic}
+Xin Gao, Hong Xu, and Dong Ye.
+\newblock Asymptotic behavior of tail density for sum of correlated lognormal
+  variables.
+\newblock {\em International Journal of Mathematics and Mathematical Sciences},
+  2009.
+\newblock Volume 2009, Article ID 630857, 28 pages.
+
+\bibitem{glasserman2003monte}
+Paul Glasserman.
+\newblock {\em Monte Carlo Methods in Financial Engineering}, volume~53 of {\em
+  Stochastic Modelling and Applied Probability series}.
+\newblock Springer, 2003.
+
+\bibitem{tankov2015tail}
+Archil Gulisashvili and Peter Tankov.
+\newblock Tail behavior of sums and differences of log-normal random variables.
+\newblock {\em Bernoulli}, 2015.
+\newblock To appear, accessed online on 26th August 2015 at
+  \url{http://www.e-publications.org/ims/submission/BEJ/user/submissionFile/17119?confirm=ef609013}.
+
+\bibitem{johnson1994continuous}
+Norman~L Johnson, Samuel Kotz, and Narayanaswamy Balakrishnan.
+\newblock {\em Continuous Univariate Distributions}, volume~1.
+\newblock New York: Wiley, 2 edition, 1994.
+
+\bibitem{limpert2001log}
+Eckhard Limpert, Werner~A Stahel, and Markus Abbt.
+\newblock Log-normal distributions across the sciences: Keys and clues.
+\newblock {\em BioScience}, 51(5):341--352, 2001.
+
+\bibitem{mallet1985numerical}
+Arnaud Mallet.
+\newblock Numerical inversion of {L}aplace transform.
+\newblock 2000.
+\newblock Mathematica package, accessed online on 26th August 2015 at
+  \url{http://library. wolfram. com/infocenter/MathSource/2691}.
+
+\bibitem{markowitz1952portfolio}
+Harry Markowitz.
+\newblock Portfolio selection.
+\newblock {\em The {J}ournal of {F}inance}, 7(1):77--91, 1952.
+
+\bibitem{mcneil2015quantitative}
+Alexander~J McNeil, R{\"u}diger Frey, and Paul Embrechts.
+\newblock {\em Quantitative Risk Management: Concepts, Techniques and Tools}.
+\newblock Princeton University Press, 2nd edition, 2015.
+
+\bibitem{milevsky1998asian}
+Moshe~Arye Milevsky and Steven~E Posner.
+\newblock Asian options, the sum of lognormals, and the reciprocal gamma
+  distribution.
+\newblock {\em Journal of Financial and Quantitative Analysis},
+  33(03):409--422, 1998.
+
+\bibitem{schwartz1982distribution}
+Stuart~C Schwartz and Yu-Shuan Yeh.
+\newblock On the distribution function and moments of power sums with
+  log-normal components.
+\newblock {\em Bell System Technical Journal}, 61(7):1441--1462, 1982.
+
+\bibitem{stehfest1970algorithm}
+Harald Stehfest.
+\newblock Algorithm 368: Numerical inversion of {L}aplace transforms [d5].
+\newblock {\em Communications of the ACM}, 13(1):47--49, 1970.
+
+\end{thebibliography}
