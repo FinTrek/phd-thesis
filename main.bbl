@@ -1,5 +1,11 @@
 \begin{thebibliography}{10}
 
+\bibitem{AbChWh95}
+J.~Abate, G.L. Choudhury, and W.~Whitt.
+\newblock On the {L}aguerre method for numerically inverting {L}aplace
+  transforms.
+\newblock {\em INFORMS Journal on Computing}, 8(4):413--427, 1995.
+
 \bibitem{abate1995numerical}
 Joseph Abate and Ward Whitt.
 \newblock Numerical inversion of {L}aplace transforms of probability
@@ -23,11 +29,42 @@ Andr{\'e} Adler and Anthony~G Pakes.
 \newblock On relative stability and weighted laws of large numbers.
 \newblock {\em Extremes}, 20(1):1--31, 2017.
 
+\bibitem{adler1990introduction}
+Robert~J Adler.
+\newblock An introduction to continuity, extrema, and related topics for
+  general gaussian processes.
+\newblock {\em Lecture Notes-Monograph Series}, 12:i--155, 1990.
+
+\bibitem{adler2012efficient}
+Robert~J Adler, Jose~H Blanchet, Jingchen Liu, et~al.
+\newblock Efficient monte carlo for high excursions of {G}aussian random
+  fields.
+\newblock {\em The Annals of Applied Probability}, 22(3):1167--1214, 2012.
+
 \bibitem{aitchison1957lognormal}
 John Aitchison and James~AC Brown.
 \newblock {\em The Lognormal Distribution with Special Reference to its Uses in
   Economics}.
 \newblock Cambridge University Press, 1957.
+
+\bibitem{OnlineAccomp}
+Lars~N{\o}rvang Andersen, Patrick~J.\ Laub, and Leonardo Rojas-Nandayapa.
+\newblock {\em Online accompaniment for ``Rare-event simulation for extrema of
+  dependent random variables''}, 2016.
+\newblock Available at \url{https://github.com/Pat-Laub/RareMaxima}.
+
+\bibitem{anderson1962introduction}
+T.~W. Anderson.
+\newblock {\em An Introduction to Multivariate Statistical Analysis}.
+\newblock Wiley Series in Probability and Mathematical Statistics: Probability
+  and Mathematical Statistics. John Wiley \& Sons, Inc., New York, second
+  edition, 1984.
+
+\bibitem{MR1990662}
+T.~W. Anderson.
+\newblock {\em An introduction to multivariate statistical analysis}.
+\newblock Wiley Series in Probability and Statistics. Wiley-Interscience [John
+  Wiley \& Sons], Hoboken, NJ, third edition, 2003.
 
 \bibitem{asmussen2017conditional}
 S{\o}ren Asmussen.
@@ -39,26 +76,34 @@ S{\o}ren Asmussen.
 \bibitem{asmussen2010ruin}
 S{\o}ren Asmussen and Hansj{\"o}rg Albrecher.
 \newblock {\em Ruin Probabilities}.
-\newblock World Scientific, 2 edition, 2010.
+\newblock Advanced Series on Statistical Science \& Applied Probability, 14.
+  World Scientific, 2 edition, 2010.
 \newblock Advanced series on statistical science \& applied probability; v. 14.
 
 \bibitem{asmussen2007stochastic}
 S{\o}ren Asmussen and Peter~W Glynn.
-\newblock {\em Stochastic {S}imulation: {A}lgorithms and {A}nalysis}, volume~57
-  of {\em Stochastic Modelling and Applied Probability series}.
+\newblock {\em Stochastic Simulation: Algorithms and Analysis: Algorithms and
+  Analysis}, volume~57.
 \newblock Springer, 2007.
+
+\bibitem{Code}
+S{\o}ren Asmussen, Pierre-Olivier Goffard, and Patrick~J.\ Laub.
+\newblock {\em Online accompaniment for ``Orthonormal polynomial expansions and
+  lognormal sum densities''}, 2016.
+\newblock Available at
+  \url{https://github.com/Pat-Laub/SLNOrthogonalPolynomials}.
 
 \bibitem{asmussen2014laplace}
 S{\o}ren Asmussen, Jens~Ledet Jensen, and Leonardo Rojas-Nandayapa.
-\newblock On the {L}aplace transform of the {L}ognormal distribution.
+\newblock On the {L}aplace transform of the lognormal distribution.
 \newblock {\em Methodology and Computing in Applied Probability}, 16:1--18,
   2014.
 
 \bibitem{asmussen2015exponential}
 S{\o}ren Asmussen, Jens~Ledet Jensen, and Leonardo Rojas-Nandayapa.
 \newblock Exponential family techniques in the lognormal left tail.
-\newblock {\em Scandinavian Journal of Statistics}, 2015.
-\newblock Pending revision.
+\newblock {\em Scandinavian Journal of Statistics}, 2016.
+\newblock To appear, DOI 10.1111/sjos.12203.
 
 \bibitem{asmussen2006improved}
 S{\o}ren Asmussen and Dirk~P Kroese.
@@ -88,6 +133,11 @@ August~A Balkema, Claudia Kl{\"u}ppelberg, and Sidney~I Resnick.
 \newblock {\em Stochastic processes and their applications}, 107(1):83--103,
   2003.
 
+\bibitem{Barndorff1989asymptotic}
+Ole~E Barndorff-Nielsen and David~Roxbee Cox.
+\newblock {\em Asymptotic Techniques for use in Statistics}.
+\newblock Chapman \& Hall, 1989.
+
 \bibitem{beaulieu1995estimating}
 Norman~C Beaulieu, Adnan~A Abu-Dayya, and Peter~J McLane.
 \newblock Estimating the distribution of a sum of independent lognormal random
@@ -106,32 +156,127 @@ Norman~C Beaulieu and Qiong Xie.
 \newblock {\em IEEE Transactions on Vehicular Technology}, 53(2):479--489,
   2004.
 
+\bibitem{Berg1984}
+Christian Berg, Jens Peter~Reus Christensen, and Paul Ressel.
+\newblock {\em Harmonic Analysis on Semigroups}, volume 100 of {\em Graduate
+  Texts in Mathematics}.
+\newblock Springer--Verlag, 1984.
+
+\bibitem{berman1992sojourns}
+Simeon Berman.
+\newblock {\em Sojourns and Extremes of Stochastic Processes}.
+\newblock CRC Press, 1992.
+
+\bibitem{bingham1989regular}
+Nicholas~H Bingham, Charles~M Goldie, and Jef~L Teugels.
+\newblock {\em Regular Variation}, volume~27 of {\em Encyclopedia of
+  Mathematics and its Applications}.
+\newblock Cambridge university press, Cambridge, 1989.
+
+\bibitem{botev2017normal}
+Z.~I. Botev.
+\newblock The normal law under linear restrictions: Simulation and estimation
+  via minimax tilting.
+\newblock {\em Journal of the Royal Statistical Society, Series B}, 79:pp.\
+  1--24.
+
+\bibitem{breslaw1994random}
+JA~Breslaw.
+\newblock Random sampling from a truncated multivariate normal distribution.
+\newblock {\em Applied Mathematics Letters}, 7(1):1--6, 1994.
+
+\bibitem{bryc2012normal}
+Wlodzimierz Bryc.
+\newblock {\em The Normal Distribution: Characterizations with Applications},
+  volume 100.
+\newblock Springer Science \& Business Media, 2012.
+
+\bibitem{charpentier2009tails}
+Arthur Charpentier and Johan Segers.
+\newblock Tails of multivariate {A}rchimedean copulas.
+\newblock {\em Journal of Multivariate Analysis}, 100(7):1521--1537, 2009.
+
+\bibitem{Ch79}
+T.~S. Chihara.
+\newblock On generalized {S}tieljes-{W}igert and related orthogonal
+  polynomials.
+\newblock {\em Journal of Computational and Applied Mathematics},
+  5(4):291--297, 1979.
+
+\bibitem{Ch11}
+T.~S. Chihara.
+\newblock {\em An Introduction to Orthogonal Polynomials}.
+\newblock Courier Corporation, 2011.
+
+\bibitem{Ch03}
+J.~S. Christiansen.
+\newblock The moment problem associated with the {S}tieljes-{W}igert
+  polynomials.
+\newblock {\em Journal of Mathematical Analysis and Applications},
+  277(1):218--245, 2003.
+
+\bibitem{cline1986convolution}
+Daren~BH Cline.
+\newblock Convolution tails, product tails and domains of attraction.
+\newblock {\em Probability Theory and Related Fields}, 72(4):529--557, 1986.
+
+\bibitem{cont2010encyclopedia}
+Rama Cont.
+\newblock Encyclopedia of quantitative finance.
+\newblock 2010.
+
 \bibitem{corless1996lambertw}
 Robert~M Corless, Gaston~H Gonnet, David~EG Hare, David~J Jeffrey, and Donald~E
   Knuth.
 \newblock On the {L}ambert {W} function.
 \newblock {\em Advances in Computational Mathematics}, 5(1):329--359, 1996.
 
+\bibitem{Cr99}
+H.~Cramer.
+\newblock {\em Mathematical Methods of Statistics}, volume~9.
+\newblock Princeton University Press, 1999.
+
 \bibitem{crow1988lognormal}
 Edwin~L Crow and Kunio Shimizu.
 \newblock {\em Lognormal Distributions: Theory and Applications}.
 \newblock Dekker New York, 1988.
+
+\bibitem{de2007extreme}
+Laurens De~Haan and Ana Ferreira.
+\newblock {\em Extreme Value Theory: An Introduction}.
+\newblock Springer Science \& Business Media, 2007.
 
 \bibitem{duellmann2010regulatory}
 Klaus Duellmann.
 \newblock {\em Regulatory Capital}, volume~IV, pages 1525--1538.
 \newblock Wiley, 2010.
 
+\bibitem{dufresne2008}
+D.~Dufresne.
+\newblock Sums of lognormals.
+\newblock {\em Proceedings of the 43rd Actuarial Science Research Conference},
+  2008.
+
 \bibitem{dufresne2004log}
 Daniel Dufresne.
 \newblock The log-normal approximation in financial and other computations.
 \newblock {\em Advances in Applied Probability}, 36(3):747--773, 2004.
 
-\bibitem{dufresne2009sums}
-Daniel Dufresne.
-\newblock Sums of lognormals.
-\newblock Technical report, Centre for Actuarial Sciences, University of
-  Melbourne, 2009.
+\bibitem{eltoft2006multivariate}
+Torbj{\o}rn Eltoft, Taesu Kim, and Te-Won Lee.
+\newblock On the multivariate {L}aplace distribution.
+\newblock {\em IEEE Signal Processing Letters}, 13(5):300--303, 2006.
+
+\bibitem{embrechts2014aggregation}
+Paul Embrechts, Enkelejd Hashorva, and Thomas Mikosch.
+\newblock Aggregation of log-linear risks.
+\newblock {\em Journal of Applied Probability}, 51(A):203--212, 2014.
+
+\bibitem{embrechts2013modelling}
+Paul Embrechts, Claudia Kl{\"u}ppelberg, and Thomas Mikosch.
+\newblock {\em Modelling extremal events: for insurance and finance},
+  volume~33.
+\newblock Springer Science \& Business Media, 2013.
 
 \bibitem{embrechts2014academic}
 Paul Embrechts, Giovanni Puccetti, Ludger R{\"u}schendorf, Ruodu Wang, and
@@ -159,17 +304,136 @@ Paul Glasserman.
   Stochastic Modelling and Applied Probability series}.
 \newblock Springer, 2003.
 
+\bibitem{GoLoPo15b}
+Pierre-Olivier Goffard, St{\'e}phane Loisel, and Denys Pommeret.
+\newblock Polynomial approximations for bivariate aggregate claim amount
+  probability distributions.
+\newblock {\em Methodology and Computing in Applied Probability}, pages 1--24,
+  2015.
+
+\bibitem{GoLoPo15a}
+Pierre-Olivier Goffard, St{\'e}phane Loisel, and Denys Pommeret.
+\newblock A polynomial expansion to approximate the ultimate ruin probability
+  in the compound poisson ruin model.
+\newblock {\em Journal of Computational and Applied Mathematics}, 296:499--511,
+  2016.
+
+\bibitem{Gubner2006}
+John~A Gubner.
+\newblock {\em Probability and Random Processes for Electrical and Computer
+  Engineers}.
+\newblock Cambridge University Press, 2006.
+
 \bibitem{tankov2015tail}
 Archil Gulisashvili and Peter Tankov.
 \newblock Tail behavior of sums and differences of log-normal random variables.
-\newblock {\em Bernoulli}, 2015.
+\newblock {\em Bernoulli}, 22(1):444--493, 2015.
 \newblock To appear, accessed online on 26th August 2015 at
   \url{http://www.e-publications.org/ims/submission/BEJ/user/submissionFile/17119?confirm=ef609013}.
+
+\bibitem{hashorva2005asymptotics}
+Enkelejd Hashorva.
+\newblock Asymptotics and bounds for multivariate {G}aussian tails.
+\newblock {\em Journal of Theoretical Probability}, 18(1):79--97, 2005.
+
+\bibitem{hashorva2007asymptotic}
+Enkelejd Hashorva.
+\newblock Asymptotic properties of type {I} elliptical random vectors.
+\newblock {\em Extremes}, 10(4):175--206, 2007.
+
+\bibitem{hashorva2010residual}
+Enkelejd Hashorva.
+\newblock On the residual dependence index of elliptical distributions.
+\newblock {\em Statistics \& Probability Letters}, 80(13):1070--1078, 2010.
+
+\bibitem{hashorva2014asymptotics}
+Enkelejd Hashorva and Jinzhu Li.
+\newblock Asymptotics for a discrete-time risk model with the emphasis on
+  financial risk.
+\newblock {\em Probability in the Engineering and Informational Sciences},
+  28(4):573--588, 2014.
+
+\bibitem{hcine2015highly}
+Marwane~Ben Hcine and Ridha Bouallegue.
+\newblock Highly accurate log skew normal approximation to the sum of
+  correlated lognormals.
+\newblock {\em In the Proc. of NeTCoM 2014}, 2015.
+
+\bibitem{heffernan2000directory}
+Janet~E Heffernan.
+\newblock A directory of coefficients of tail dependence.
+\newblock {\em Extremes}, 3(3):279--290, 2000.
+
+\bibitem{Heyde63}
+C.C.\ Heyde.
+\newblock On a property of the lognormal distribution.
+\newblock {\em J.\ Roy.\ Statist.}, 5(Ser.\ B):392--393, 1963.
+
+\bibitem{huang2003rare}
+Zhi Huang and P~Shahabuddin.
+\newblock Rare-event, heavy-tailed simulations using hazard function
+  transformations, with applications to value-at-risk.
+\newblock In {\em Proceedings of the 2003 Winter Simulation Conference, 2003.},
+  2003.
+
+\bibitem{hult2002multivariate}
+Henrik Hult, Filip Lindskog, et~al.
+\newblock Multivariate extremes, aggregation and dependence in elliptical
+  distributions.
+\newblock {\em Advances in Applied Probability}, 34(3):587--608, 2002.
+
+\bibitem{jensen1995saddlepoint}
+Jens~Ledet Jensen.
+\newblock {\em Saddlepoint approximations}.
+\newblock Number~16. Oxford University Press, 1995.
+
+\bibitem{joe1997multivariate}
+Harry Joe.
+\newblock {\em Multivariate models and multivariate dependence concepts}.
+\newblock CRC Press, 1997.
 
 \bibitem{johnson1994continuous}
 Norman~L Johnson, Samuel Kotz, and Narayanaswamy Balakrishnan.
 \newblock {\em Continuous Univariate Distributions}, volume~1.
 \newblock New York: Wiley, 2 edition, 1994.
+
+\bibitem{kotz2001asymmetric}
+Samuel Kotz, Tomaz~J Kozubowski, and Krzysztof Podg{\'o}rski.
+\newblock Asymmetric multivariate {L}aplace distribution.
+\newblock In {\em The Laplace Distribution and Generalizations}, pages
+  239--272. Springer, 2001.
+
+\bibitem{La15}
+Patrick~J{.} Laub, S{\o}ren Asmussen, Jens~L{.} Jensen, and Leonardo
+  Rojas-Nandayapa.
+\newblock Approximating the {L}aplace transform of the sum of dependent
+  lognormals.
+\newblock {\em Advances in Applied Probability.}, 2016.
+\newblock In {F}estschrift for Nick Bingham. To appear.
+
+\bibitem{CodeLaplaceSLN}
+Patrick~J.\ Laub, S{\o}ren Asmussen, Jens~L.\ Jensen, and Leonardo
+  Rojas-Nandayapa.
+\newblock {\em Online accompaniment for ``Approximating the Laplace transform
+  of the sum of dependent lognormals’’}, 2016.
+\newblock Available at
+  \url{https://github.com/Pat-Laub/SLNLaplaceTransformApprox}.
+
+\bibitem{ledford1996statistics}
+Anthony~W Ledford and Jonathan~A Tawn.
+\newblock Statistics for near independence in multivariate extreme values.
+\newblock {\em Biometrika}, 83(1):169--187, 1996.
+
+\bibitem{ledford1997modelling}
+Anthony~W Ledford and Jonathan~A Tawn.
+\newblock Modelling dependence within joint tail regions.
+\newblock {\em Journal of the Royal Statistical Society: Series B (Statistical
+  Methodology)}, 59(2):475--499, 1997.
+
+\bibitem{ledford1998concomitant}
+Anthony~W Ledford, Jonathan~A Tawn, et~al.
+\newblock Concomitant tail behaviour for extremes.
+\newblock {\em Advances in Applied Probability}, 30(1):197--215, 1998.
 
 \bibitem{limpert2001log}
 Eckhard Limpert, Werner~A Stahel, and Markus Abbt.
@@ -188,6 +452,12 @@ Harry Markowitz.
 \newblock Portfolio selection.
 \newblock {\em The {J}ournal of {F}inance}, 7(1):77--91, 1952.
 
+\bibitem{Marlow1967}
+NA~Marlow.
+\newblock A normal limit theorem for power sums of independent random
+  variables.
+\newblock {\em Bell System Technical Journal}, 46(9):2081--2089, 1967.
+
 \bibitem{mcneil2015quantitative}
 Alexander~J McNeil, R{\"u}diger Frey, and Paul Embrechts.
 \newblock {\em Quantitative Risk Management: Concepts, Techniques and Tools}.
@@ -200,15 +470,101 @@ Moshe~Arye Milevsky and Steven~E Posner.
 \newblock {\em Journal of Financial and Quantitative Analysis},
   33(03):409--422, 1998.
 
+\bibitem{nelsen2007introduction}
+Roger~B Nelsen.
+\newblock {\em An Introduction to Copulas}.
+\newblock Springer Science \& Business Media, 2nd edition, 2007.
+
+\bibitem{nolde2014geometric}
+Natalia Nolde.
+\newblock Geometric interpretation of the residual dependence coefficient.
+\newblock {\em Journal of Multivariate Analysis}, 123:85--95, 2014.
+
+\bibitem{rausand2004system}
+Marvin Rausand and Arnljot H{\o}yland.
+\newblock {\em System Reliability Theory: Models, Statistical Methods, and
+  Applications}, volume 396.
+\newblock John Wiley \& Sons, 2004.
+
+\bibitem{resnick2002hidden}
+Sidney Resnick.
+\newblock Hidden regular variation, second order regular variation and
+  asymptotic independence.
+\newblock {\em Extremes}, 5(4):303--336, 2002.
+
+\bibitem{resnick2013extreme}
+Sidney~I Resnick.
+\newblock {\em Extreme values, regular variation and point processes}.
+\newblock Springer, 2013.
+
+\bibitem{robert1995simulation}
+Christian~P Robert.
+\newblock Simulation of truncated normal variables.
+\newblock {\em Statistics and computing}, 5(2):121--125, 1995.
+
+\bibitem{rootzen1987ratio}
+Holger Rootzen.
+\newblock A ratio limit theorem for the tails of weighted sums.
+\newblock {\em The Annals of Probability}, pages 728--747, 1987.
+
+\bibitem{rubinstein2011simulation}
+Reuven~Y Rubinstein and Dirk~P Kroese.
+\newblock {\em Simulation and the Monte Carlo method}, volume 707.
+\newblock John Wiley \& Sons, 2011.
+
+\bibitem{savage1962mills}
+I~Richard Savage.
+\newblock Mills’ ratio for multivariate normal distributions.
+\newblock {\em J. Res. Nat. Bur. Standards Sect. B}, 66:93--96, 1962.
+
 \bibitem{schwartz1982distribution}
 Stuart~C Schwartz and Yu-Shuan Yeh.
 \newblock On the distribution function and moments of power sums with
   log-normal components.
 \newblock {\em Bell System Technical Journal}, 61(7):1441--1462, 1982.
 
+\bibitem{sibuya1960bivariate}
+Masaaki Sibuya.
+\newblock Bivariate extreme statistics.
+\newblock {\em Annals of the Institute of Statistical Mathematics},
+  11(2):195--210, 1960.
+
 \bibitem{stehfest1970algorithm}
 Harald Stehfest.
 \newblock Algorithm 368: Numerical inversion of {L}aplace transforms [d5].
 \newblock {\em Communications of the ACM}, 13(1):47--49, 1970.
+
+\bibitem{St1894}
+T.~J. Stieljes.
+\newblock {\em Recherches sur les fractions continues}.
+\newblock Annales de la Facult\'e des sciences de Toulouse: Math\'ematiques,
+  1894.
+
+\bibitem{Sz39}
+G.~Szeg{\"o}.
+\newblock {\em Orthogonal Polynomials}, volume XXIII.
+\newblock American Mathematical Society Colloquium Publications, 1939.
+
+\bibitem{Na65}
+B.~Sz{\"o}kefalvi-Nagy.
+\newblock {\em Introduction to Real Functions and Orthogonal Expansions}.
+\newblock Akad{\'e}miai Kiad{\'o}, 1965.
+
+\bibitem{ThorinWikstad1977}
+Olof Thorin and Nils Wikstad.
+\newblock Calculation of ruin probabilities when the claim distribution is
+  lognormal.
+\newblock {\em Astin Bulletin}, 9(1-2):231--246, 1977.
+
+\bibitem{watanabe2008convolution}
+Toshiro Watanabe.
+\newblock Convolution equivalence and distributions of random sums.
+\newblock {\em Probability Theory and Related Fields}, 142(3):367--397, 2008.
+
+\bibitem{Wi23}
+S.~Wigert.
+\newblock Sur les polynomes orthogonaux et l'approximation des fonctions
+  continues.
+\newblock {\em Almqvist and Wiksell}, 1923.
 
 \end{thebibliography}

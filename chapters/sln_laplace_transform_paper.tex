@@ -1,3 +1,4 @@
+%!TEX root = ../main.tex
 \chapter{Approximating the Laplace transform of the sum of dependent lognormals}
 
 % \authorone[University of Queensland and Aarhus University]{Patrick J. Laub}
@@ -16,7 +17,10 @@
 %   Brisbane, Queensland 4072, Australia.
 %   Email address: \email{l.rojasnandayapa@uq.edu.au}}
 
-\begin{abstract}
+\begin{center}
+\textbf{Abstract}
+\end{center}
+\begin{quote}
 Let $(X_1, \dots, X_n)$ be multivariate normal, with mean vector $\bfmu$ and
 covariance matrix $\bfSigma$, and $S_n=\e^{X_1}+\cdots+\e^{X_n}$. The
 Laplace transform ${\cal L}(\theta)=\Exp\e^{-\theta S_n}\propto \int
@@ -30,7 +34,7 @@ $I(\theta)\to 1$ as $\theta\to\infty$.  A variety of numerical methods for
 evaluating $I(\theta)$ is discussed, including Monte Carlo with importance
 sampling and quasi-Monte Carlo. Numerical examples (including
 Laplace-transform inversion for the density of $S_n$) are also given.
-\end{abstract}
+\end{quote}
 
 % \keywords{Lognormal distribution; asymptotics; saddlepoint approximation;
 %   importance sampling; quasi-Monte Carlo; numerical Laplace-transform
@@ -41,7 +45,7 @@ Laplace-transform inversion for the density of $S_n$) are also given.
 The lognormal distribution arises in a wide variety of disciplines such as
 engineering, economics, insurance and finance, and is often employed in
 modelling across the sciences
-\cite{aitchison1957lognormal,crow1988lognormal,dufresne2009sums,
+\cite{aitchison1957lognormal,crow1988lognormal,dufresne2008,
   johnson1994continuous,limpert2001log}. It
 has a natural multivariate version, namely $(\e^{X_1}, \dots, \e^{X_n})
 \dLNormal(\bfmu, \bfSigma)$ when $(X_1, \dots, X_n) \dNormal(\bfmu,
@@ -54,7 +58,7 @@ Laplace transform $\Laplace(\theta)$ of $S_n$.
 
 Models using sums of dependent lognormals are widely applicable, though they
 are particularly important in telecommunications and finance
-\cite{dufresne2004log,dufresne2009sums}. Indeed, many of the approximations
+\cite{dufresne2004log,dufresne2008}. Indeed, many of the approximations
 for the Laplace transform of sums of independent lognormals originated from
 the wireless communications community \cite{beaulieu1995estimating}. This
 reflects the significance of the SLN distribution within many models, and also
@@ -804,9 +808,9 @@ applied.
 Relative errors are given for the main estimators of $\Laplace(\theta)$ in the
 table below. In all estimators the smoothing technique of using common random
 variables is employed, and all estimators are compared against numerical
-integration of the relevant integrals to 15 significant digits. See \cite{Code} for the software implementation used to create these results.
+integration of the relevant integrals to 15 significant digits. See \cite{CodeLaplaceSLN} for the software implementation used to create these results.
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering
 \caption{Relative error for various approximations of $\Laplace(\theta)$ for
   $\bfmu = \bfzero$, $\bfSigma = [1, 0.5; 0.5, 1]$. The number of Monte Carlo
@@ -847,7 +851,7 @@ $\widehat{f}_{\mathrm{Cond}}$, $\widetilde{f} \defeq
 $\widehat{f}_{\mathrm{Q}} \defeq
 \Laplace^{-1}(\widehat{\Laplace}_{\mathrm{Q}}(\cdot))$.
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering
 \caption{Relative errors for estimators of $f(x)$ for $\bfmu = \bfzero$ and
   $\bfSigma = [1, 0.5; 0.5, 1]$. The number of Monte Carlo repetitions for

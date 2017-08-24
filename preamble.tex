@@ -6,22 +6,54 @@
 \usepackage{appendix}
 \usepackage{array} % for \extrarowheight
 \usepackage{bm} % for \bm
-% \usepackage{commath} % for \dif
+\usepackage{commath} % for \dif
 \usepackage{float} % for [H]
 \usepackage{graphicx}
 \usepackage{latexsym} % for the big \Diamond
 % \usepackage{listings}
+\usepackage{natbib}
 \usepackage{relsize} % for \mathsmaller
 \usepackage{tikz} % for drawing circles and stuff
 % \usepackage{upgreek} % for pi
 \usepackage{url}
 
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{cancel}
+\usepackage{cases}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage{pst-all}
+
+% \usepackage{hyperref}% permet de cr\`{e}er des hyperliens dans le document PDF                 <<<<<<-------- causes a memory problem
+\usepackage{amsfonts}% utilise certaines polices de l'American mathematical society
+\usepackage{listings}% permet d'inclure des codes sources (programmes)
+
+\usepackage{graphicx}%pour inclure des graphiques/images
+% \usepackage[T1]{fontenc}% usage des caractËres accentu\`{e}s
+\usepackage{dsfont}% permet d'utiliser la fonction \mathbb avec des chiffres
+\usepackage{latexsym,stmaryrd}%permet l'utilisation de la police des symboles latex
+\usepackage{verbatim,enumerate}% verbatim : permet d'utiliser l'environnement verbatim
+\usepackage[perpage]{footmisc} %pour recommencer ‡ indicer les notes de bas de pages ‡ 1 ‡ chaque page
+\usepackage{tabularx}
+
+\usepackage{relsize}
+\usepackage{algorithm, algpseudocode,amsmath,amssymb,bm,mathtools,mathrsfs,multirow,tikz,url}
+\usepackage{upgreek} % for pi
+\usepackage{array}
+\usepackage{pifont} % to get ticks and crosses.
+\usepackage{framed} % to make boxes
+
+
 % Probability symbols.
-\renewcommand{\Pr}{\mathbb{P}}
-\newcommand{\Exp}{\mathbb{E}}
-\newcommand{\Cov}{\mathbb{C}\mathrm{ov}}
-\newcommand{\Var}{\mathbb{V}\mathrm{ar}}
 \newcommand{\Lap}{\mathcal{L}}
+
+\DeclareMathOperator{\Prob}{{\mathbb P}}
+\DeclareMathOperator{\Exp}{{\mathbb E}}
+\DeclareMathOperator{\Cov}{\mathbb{C}\mathrm{ov}}
+\DeclareMathOperator{\Var}{\mathbb{V}\mathrm{ar}}
+\DeclareMathOperator{\Q}{\mathbb Q}
+
 
 % Distributions.
 \newcommand{\Norm}{\mathcal{N}}
@@ -123,7 +155,7 @@
 \newcommand{\ih}{\mathrm{i}}
 \newcommand{\oh}{{\mathrm{o}}}
 \newcommand{\Oh}{{\mathcal{O}}}
-\renewcommand{\det}[1]{\lvert \mathrm{det}(#1) \rvert}
+% \renewcommand{\det}[1]{\lvert \mathrm{det}(#1) \rvert}
 \newcommand{\comp}{\mathsf{c}} % complement
 \newcommand{\Ind}{\mathbb I} % Indicator
 \renewcommand{\L}{\mathcal{L}} % e.g. L^2 loss.
@@ -146,7 +178,7 @@
 \setlength{\parindent}{0mm}
 
 % Stuff I used in paper one.
-\newcommand{\sqdet}[1]{\sqrt{\det{#1}}}
+% \newcommand{\sqdet}[1]{\sqrt{\det{#1}}}
 \newcommand{\LambertW}{\mathcal{W}}
 \newcommand{\Fset}[1]{\mathcal{F}_{\!\mathsmaller{#1}}}
 
@@ -187,6 +219,149 @@
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preamble from SLN Orthogonal PDF paper
+
+%% Pierre-Olivier's definitions.
+
+% \renewcommand\thesubfigure{} %pour changer la num\`{e}rotation des subfigures
+
+% \numberwithin{equation}{section}
+%\numberwithin{equarray}{section}
+%\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+%\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+% \fancyhead[LE,RO]{\bfseries\thepage}
+%\fancyhead[LO]{\bfseries\rightmark}
+%\fancyhead[RE]{\bfseries\leftmark} \addtolength{\headheight}{1.6pt}
+%\renewcommand{\headrulewidth}{0.5pt}
+
+%\fancyhead{}
+%\fancyfoot{}
+%\renewcommand{\headrulewidth}{0pt}
+%\renewcommand{\footrulewidth}{0pt}
+
+\fancypagestyle{empty}{%
+\fancyhf{} % clear all header and footer fields
+%\fancyhead[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.0pt}}
+
+\fancypagestyle{plain}{%
+\fancyhf{} % clear all header and footer fields
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.0pt}}
+
+\fancypagestyle{headings}{%
+\fancyhf{} % clear all header and footer fields
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.0pt}}
+
+\fancypagestyle{monstyle2}{%
+\fancyhf{} % clear all header and footer fields
+\fancyhead[LE,RO]{\thepage}
+%\fancyhead[LO,RE]{\leftmark}
+%\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.0pt}
+}
+
+\fancypagestyle{monstyle}{
+\fancyhf{} % clear all header and footer fields
+\fancyfoot[LE,RO]{\thepage}
+\fancyhead[LE,RO]{\textit{\leftmark}}
+%\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.0pt}}
+
+
+% \newtheorem{rem}{\sc Remark}[section]
+% \newtheorem{cor}{\sc Corollary}[section]
+%\newcommand{\R}{\mathbb{R}}
+%\newcommand{\N}{\mathbb{N}}
+%\newcommand{\xb}{\bar{x}}
+%\newcommand{\sbt}{\tiny{\textrm{$\bullet$}}}
+%\newcommand{\gx}{\mathbf{X}}
+%\newcommand{\un}{\mathds{1}}
+%\newcommand{\pt}{\mathbb{P}_{\theta}}
+
+
+% les deux lignes qui suivent servent ‡ supprimer la ligne "Chapitre" lors de la cr\`{e}ation d'un nouveau chapter
+%\usepackage{titlesec}
+%\titleformat{\chapter}[hang]{\bf\huge}{\thechapter}{2pc}{}
+
+%\bibliographystyle{elsarticle-harv}
+\def \si {\sigma}
+\def \la {\lambda}
+\def \al {\alpha}
+% \def\e*{\end{eqnarray*}}
+\def \di{\displaystyle}
+
+\def \E{\mathbb E}
+\def \N{\mathbb N}
+\def \NZ{\mathbb{N}_0}
+\def \I{\mathbb I}
+\def \w{\widehat}
+\def \P {\mathbb P}
+\def \V{\mathbb V}
+
+% \theoremstyle{plain}
+% \newtheorem{theo}{Theorem}
+% \newtheorem{lemm}{Lemma}
+% \newtheorem{prop}{Proposition}
+% \newtheorem{coro}{Corollary}
+% \newtheorem{ex}{Example}
+% \newtheorem{Rk}{Remark}
+
+
+%% Patrick's definitions.
+\newcommand{\nat}{{\mathbb N}}
+
+\renewcommand{\L}{\mathcal{L}} % e.g. L^2 loss.
+
+\newcommand\bfdelta{\bm{\delta}}
+\newcommand\bfgamma{\bm{\gamma}}
+\newcommand\bftheta{\bm{\theta}}
+
+% \renewcommand{\det}[1]{\mathrm{det}(#1)}
+% \newcommand{\sqdet}[1]{\sqrt{\det{#1}}}
+% \newcommand{\LambertW}{\mathcal{W}}
+
+\newcommand{\Corr}{\mathbb{C}\mathrm{orr}}
+
+\renewcommand{\epsilon}{\varepsilon}
+
+\renewcommand{\pi}{\uppi}
+
+\makeatletter
+\newcommand{\oset}[3][0ex]{
+  \mathrel{\mathop{#3}\limits^{
+    \vbox to#1{\kern-2\ex@
+    \hbox{$\scriptstyle#2$}\vss}}}}
+\makeatother
+
+\newcommand{\approxd}{\oset[.2ex]{{\scriptscriptstyle \mathscr D}}{\approx}}
+
+% Ticks and crosses.
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+% \times with less space on left/right (for tables).
+\newcommand{\stimes}{{\mkern-2mu\times\mkern-2mu}}
+
+\graphicspath{{images/}}
+
+% \newenvironment{abstract}
+%                  {\vspace{6pt}
+%                   \begin{center}
+%                   \begin{minipage}{315.83pt}
+%                   \small
+%                   \begin{center}
+%                   {\bf Abstract}
+%                   \end{center}
+%                   \noindent\ignorespaces
+%                  }
+%                  {\end{minipage}\end{center}}
 
 
 
@@ -216,7 +391,7 @@
 \newcommand{\dNormal}{\sim\mathsf{Normal}}
 \newcommand{\dLNormal}{\sim\mathsf{LogNormal}}
 \newcommand{\dSLNormal}{\sim\mathsf{SumLogNormal}}
-% \newcommand{\Prob}{\mathbb{P}}
+
 % \newcommand{\Ind}{\mathbb I}
 % \newcommand\bfsigma{\bm{\sigma}}
 % \newcommand\bfSigma{\bm{\Sigma}}
@@ -275,9 +450,8 @@
 \newcommand{\COM}[1]{}
 
 \newcommand{\indi}{\mathbb{I}}%{\bm{1}}
-\newcommand{\nat}{{\mathbb N}} % 0,1,2,...
 
-\newcommand{\Prob}{\mathbb{P}}
+
 
 
 \newcommand{\halmos}{{\mbox{\, \vspace{3mm}}} \hfill
@@ -309,3 +483,109 @@
 \newcommand{\GMDA}{\mathsf{GMDA}}
 
 \renewcommand{\epsilon}{\varepsilon}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preamble from Maxima paper
+
+
+% \smartqed 
+
+% \usepackage{latexsym}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+%\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{bm}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{float}
+% \usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+% \usepackage{natbib}
+\usepackage{enumerate}
+% \usepackage{mathdots}
+\usepackage{mathrsfs}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{url}
+\usepackage{wasysym}
+
+\newcommand{\alphaMax}{\overline{\alpha}}
+\newcommand{\Ftail}{\mkern 1mu\overline{\mkern-1mu{F}\mkern+1.25mu}}
+
+% \newcommand{\medcup}[1]{\bigcup\limits_{#1}}%
+% \newcommand{\medcap}[1]{\bigcap\limits_{#1}}%
+
+% \newcommand{\independent}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
+\newcommand{\independent}{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+\newcommand{\LW}{{\mathrm{LambertW}}}
+\newcommand{\RV}{\mathrm{RV}_\alpha}
+\newcommand{\takis}{\usefont{OMS}{ztmcm}{m}{n}}
+\newcommand{\nicecal}[1]{\mbox{\takis #1}}
+
+\newcommand{\TailProb}{\widetilde\Prob}
+% \newcommand{\Ftail}{\overline F}
+\newcommand{\Probx}{\Prob^{(x)}}
+
+\renewcommand{\ast}{\top}
+
+% \newcommand{\Ind}{\mathds{1}}
+\newcommand{\Nat}{{\mathbb N}}
+\newcommand{\Integers}{{\mathbb Z}}
+
+% \newcommand{\dd}{\mathop{}\mathopen{}\mathrm{d}}
+
+\newcommand{\refs}[1]{{\rm (\ref{#1})}}
+\newcommand{\convprob}{\stackrel{{\Prob}}{\rightarrow}}
+\newcommand{\convas}{\stackrel{{\rm a.s.}}{\rightarrow}}
+\newcommand{\eqdistr}{\stackrel{{\scriptstyle \mathcal{D}}}{=}}
+\newcommand{\com}[1]{#1}
+
+\newcommand{\LaplaceDist}{\mathcal{L}}
+\newcommand{\NormDist}{\mathcal{N}}
+\newcommand{\ExpDist}{\mathcal{E}}
+\newcommand{\EllDist}{\mathcal{ELL}}
+\newcommand{\IGDist}{\mathcal{IG}}
+\newcommand{\for}[1]{\,,\qquad \text{for } #1}
+\newcommand{\iid}{\overset{\mathrm{i.i.d.}}{\sim}}
+
+\newtheorem{Theorem}{Theorem}
+\newtheorem{Lemma}{Lemma}
+\newtheorem{Example}{Example}
+\newtheorem{Proposition}{Proposition}
+\newtheorem{Corollary}{Corollary}
+% \theoremstyle{definition}
+\newtheorem{Definition}{Definition}
+%\theoremstyle{remark}
+\newtheorem{Remark}{Remark}
+\newtheorem{Cond}{Condition}
+\newtheorem{Property}{Property}
+\newtheorem{Note}{Note}
+
+\newcommand{\thrm}[1] {Theorem~\ref{#1}}
+\newcommand{\cor}[1] {Corollary~\ref{#1}}
+\newcommand{\prop}[1] {Proposition~\ref{#1}}
+
+% Fix := so that the colon is vert. centered.
+% \mathtoolsset{centercolon} <<<<<<<<<<<<<<<<<<<<<<<---------------- this fucks with the =: construction.
+
+\renewcommand{\hat}{\widehat}
+\renewcommand{\phi}{\varphi}
+
+% \@ifundefined{showcaptionsetup}{}{%
+% \PassOptionsToPackage{caption=false}{subfig}}
+
+\usepackage{float,subfig}
+
+%LNA: nice colors in tables
+ \usepackage{colortbl}
+ \definecolor{Gray}{gray}{0.9}
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+
+\newcommand{\BigBinom}[2]{\Bigl({{#1}\atop#2}\Bigr)}

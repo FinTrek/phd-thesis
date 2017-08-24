@@ -1,3 +1,4 @@
+%!TEX root = ../main.tex
 \chapter{Tail asymptotics of light-tailed Weibull-like sums}
 
 %                   %date of submission
@@ -34,10 +35,13 @@
 
 % \keywords{Gumbel MDA; Laplace transform; Rare event simulation; Sums of of random variables; Weibull distribution}                                     %key words and phrases
 
-\begin{abstract}
+\begin{center}
+\textbf{Abstract}
+\end{center}
+\begin{quote}
 We consider sums of $n$ i.i.d.\ random variables with tails close to $\exp\{-x^\beta\}$ for some $\beta>1$. Asymptotics  developed
 by Rootz\'en (1987) and Balkema, Kl\"uppelberg \& Resnick (1993) are discussed from the point of view of tails rather of densities, using a somewhat different angle,  and supplemented with bounds, results on a random number $N$ of terms, and simulation algorithms.
-\end{abstract}
+\end{quote}
 
 
 \section{Introduction}\label{S:Intr}
@@ -46,13 +50,13 @@ by Rootz\'en (1987) and Balkema, Kl\"uppelberg \& Resnick (1993) are discussed f
 Let $X,X_1,\ldots,X_n$ be i.i.d.\ with common distribution $F$. A recurrent theme in applied probability is then
 to determine the order of magnitude of the tail $\Prob(S_n>x)$ of their sum $S_n=X_1+\cdots+X_n$.
 
-The results vary according to the heaviness  of the tail $\Fb=1-F$ of $F$. In the heavy-tailed case, defined as the $X$ for which $\Exp\e^{sX}=\infty$ for all $s>0$, there is the subexponential class in which the results take a clean form (see e.g.\ \cite{EKM} or \cite{asmussen2010ruin}). In fact, by the
+The results vary according to the heaviness  of the tail $\Fb=1-F$ of $F$. In the heavy-tailed case, defined as the $X$ for which $\Exp\e^{sX}=\infty$ for all $s>0$, there is the subexponential class in which the results take a clean form (see e.g.\ \cite{embrechts2013modelling} or \cite{asmussen2010ruin}). In fact, by the
 very definition of subexponentiality, we have $\Prob(S_n>x)$ $\sim$ $n\Fb(x)$ as $x\to\infty$ where $\Fb(x)=\Prob(X>x)$. The main examples are regularly varying $\Fb(x)$, lognormal $X$, and Weibull tails $\Fb(x)=\e^{-cx^\beta}$ where $0<\beta<1$.
 
 In the light-tailed case, defined as the $X$ for which $\Exp\e^{sX}<\infty$ for some $s>0$, the most standard asymptotic regime is not $x\to\infty$ but rather
 $x=x_n$ going to $\infty$ at rate $n$. For example, let $x_n=nz$ for some $z$, where typically $z>\Exp X$ in order to make the problem a rare-event one.
 Under some regularity conditions, the sharp asymptotics are then given by the saddlepoint approximation $\Prob(S_n>x)$ $\sim$
-$c(z)\e^{-nI(z)}/n^{1/2}$ for suitable $c(z)$ and $I(z)$, cf.\ \cite{JLJ}. This is a large deviations result, describing how likely
+$c(z)\e^{-nI(z)}/n^{1/2}$ for suitable $c(z)$ and $I(z)$, cf.\ \cite{jensen1995saddlepoint}. This is a large deviations result, describing how likely
 it is for $S_n$ to be far from the value $n\Exp X$ predicted by the LLN. However, in many applications the focus is rather on a small
 or moderate $n$, i.e.\ the study of  $\Prob(S_n>x)$ as $x\to\infty$ with $n$ fixed.
 
@@ -61,13 +65,13 @@ the inverse Gaussian distribution,  and the normal distribution. The tail of $F$
 later in Section~\ref{C1C2}).
 The most standard class of distributions with a lighter tail is formed by the Weibull distributions where
 $\Fb(x)=\e^{-cx^\beta}$ for some $\beta>1$. For $\beta=2$, this is close to the normal distribution, where (by its well-known Mill's ratio) $\Fb(x)\sim \e^{-x^2/2}/(\sqrt{2\pii}x)$ when $F = \Phi$ is the standard normal law. The earliest study of  tail properties of $S_n$ may be that
-of \cite{Rootzen} which was later followed up by the mathematically deeper and somewhat general study of Balkema, Kl\"uppelberg, \& Resnick \cite{balkema1993densities}, henceforth referred to as BKR. The setting of both papers is densities.
+of \cite{rootzen1987ratio} which was later followed up by the mathematically deeper and somewhat general study of Balkema, Kl\"uppelberg, \& Resnick \cite{balkema1993densities}, henceforth referred to as BKR. The setting of both papers is densities.
 
 Despite filling an obvious place in the theory of  tails of sums, it has been our impression that this theory is less known
 than it should be. This was confirmed by a Google Scholar search which gave only 27 citations of BKR,
 most of which were even rather peripheral.
 One reason may be that the title \emph{Densities with Gaussian tails} of BKR is easily misinterpreted,
-another the heavy analytic flavour of the paper. Also note that the focus of~\cite{Rootzen} is somewhat different and
+another the heavy analytic flavour of the paper. Also note that the focus of~\cite{rootzen1987ratio} is somewhat different and
 the set of results we are interested in here appears as a by-product at the end of that paper.
 
 The purpose of the present paper is twofold: to present a survey from a somewhat different angle than BKR, in the 
@@ -110,7 +114,7 @@ where $\Lambda(x)=-\log\Fb(x)$.
 Here one can take $e(x)=\Exp[X - x \mid X > x]$, the so-called \emph{mean excess function}; if $F$ admits a density $f(x)$,   an alternative asymptotically equivalent choice is the \emph{inverse hazard rate} $e(x) = 1/\lambda(x)$ where $\lambda(x)=\Lambda'(x)=f(x)/\Fb(x)$.
 
 In fact, \eqref{17.12a} is a necessary and sufficient condition for $F$
-to be in $\GMDA(e)$, the maximum domain of attraction of the Gumbel distribution \cite{EKM}. Even if this condition may look
+to be in $\GMDA(e)$, the maximum domain of attraction of the Gumbel distribution \cite{embrechts2013modelling}. Even if this condition may look
 special at first sight, it covers the vast majority of well-behaved light-tailed distributions, with
 some exceptions such as certain discrete distributions like the geometric or Poisson.
 
@@ -336,7 +340,7 @@ k(n) &= d_1(n) d_2(n) \theta_1(n)^{\alpha_1(n)} \theta_2(n)^{\alpha_2(n)} \kappa
 
 \end{proof}
 
-Note that \eqref{SA4.2d} is already in Rootz\'en~\cite{Rootzen} (see his equations 
+Note that \eqref{SA4.2d} is already in Rootz\'en~\cite{rootzen1987ratio} (see his equations 
 (6.1)--(6.2)). We point out later that the assumptions on the density can be relaxed
 to $\Fb(x)\sim kx^{\alpha}\e^{-c x^\beta}$ where $k=d/c\beta$.
 
@@ -606,7 +610,7 @@ $\Prob(S_N>x)$ are important in many applications, for example actuarial science
 	} B_0(\ell)  \label{jlj_first}  \,,
 \end{align}
 where $\theta$ is the solution to $\mu \widehat{F}'[\theta] = x$, and $\widehat{F_{S_N}}[\theta] = \exp \{ \mu (\widehat{F}[\theta] - 1 ) \}$, 
-$B_0(l) = l \e^{l^2/2}(1 - \Phi(l)) \to (2\pi)^{-1/2}$, $\sigma_c^2(\theta)= \mu F''[\theta]$, and $\ell = \theta \sigma_c(\theta)$. See (7.1.10) in~\cite{JLJ},
+$B_0(l) = l \e^{l^2/2}(1 - \Phi(l)) \to (2\pi)^{-1/2}$, $\sigma_c^2(\theta)= \mu F''[\theta]$, and $\ell = \theta \sigma_c(\theta)$. See (7.1.10) in~\cite{jensen1995saddlepoint},
 where also further
 refinements and variants are given. The issue with implementing \eqref{jlj_first} is that we do not usually have access to $\widehat{F}[\theta]$; note, Mathematica can derive $\widehat{F}[\theta]$ when $\beta =\ $1.5, 2, or 3.
 
@@ -674,7 +678,7 @@ For $F\in \GMDA(e)$ in the previous sections we have discussed the case that $e(
 	% 	$$ \lim_{x\to \infty} \frac{	\overline  F( x+ e(x) s)}{	\overline  F(x)} = \e^{-s}, \quad \forall s\in \mathbb{R}, $$
 	% 	with $e(x)= 1/\gamma$ and thus $F$ belongs to the Gumbel max-domain of attraction with scaling function $e(\cdot)$, i.e.  in our notation $F \in \GMDA(e)$.
 	% }
-	Note in passing that any distribution $F \in \GMDA(e)$ with upper endpoint infinity satisfies (see e.g. \cite[Prop.\,1.4]{Res})
+	Note in passing that any distribution $F \in \GMDA(e)$ with upper endpoint infinity satisfies (see e.g. \cite[Prop.\,1.4]{resnick2013extreme})
 	\bqn{\label{polin}
 		\overline  F(x) \sim  	\overline  H(x)= C \exp\Bigl(- \int_0^x \frac{1}{u(t)} \dd t\Bigr), \quad x\to \infty}%
 	for some $C>0$, where $u$ is absolutely continuous with respect to Lebesgue measure, with density $u'$ satisfying  $\lim_{x\to \infty} u'(x)=0$.  Such $H$ is commonly referred to as a von Mises distribution.
@@ -683,10 +687,10 @@ For $F\in \GMDA(e)$ in the previous sections we have discussed the case that $e(
 	% 		In view of \eqref{polin} for $F\in \GMDA(e)$ with an infinite upper endpoint there exists $H \in \GMDA(u)$ such that $	\overline  F(x) \sim 	\overline  H(x)$ and $e(x) \sim u(x)$ as $x\to \infty$. Moreover, $H$ possesses a differentiable density $h$.
 	% 	\end{remark}
 	% }
-	It is well-known (\cite{Cline}, \cite{Wata}) that the class of distributions  $\mathcal{L}(\gamma)$ is closed under convolution.  In the particular case that the $X_i$ have tails
+	It is well-known (\cite{cline1986convolution}, \cite{watanabe2008convolution}) that the class of distributions  $\mathcal{L}(\gamma)$ is closed under convolution.  In the particular case that the $X_i$ have tails
 	\bqn{ \overline F_i(x) = \ell_i(x)  x^{\gamma_i-1} \e^{-k x^\beta}, \quad 1 \le i\le n,}%
 	where $\ell_i$'s are  positive slowly varying functions and $\beta=1, \gamma_i>0, i\le n,k>0$ we have in view of
-	Theorem 2.1 in \cite{EHJL} (see also Theorem 6.4 ii) in \cite{adler2017relative})
+	Theorem 2.1 in \cite{hashorva2014asymptotics} (see also Theorem 6.4 ii) in \cite{adler2017relative})
 	\bqn{ \label{jin}
 		\pk{S_n> x} \sim  \frac{k^{n-1}}{\Gamma(\gamma_0)}
 		x^{\gamma_0-1}\prod_{i=1}^n \ell_i(x) \e^{-k x^\beta }.
@@ -968,7 +972,7 @@ $$ \lim_{x\to \infty}\frac{\gamma_i(x+ e_i(x)y )}{\gamma_i(x)}=
 uniformly on bounded $y$-intervals. Hence  $F_i \in \GMDA(e_i)$. In view of Proposition 3.2 in BKR we can find smooth $\gamma_i^*$'s such that $\overline{H}_i(x)= \gamma_i^*(x)\e^{- \psi_i(x)}/\lambda_i(x)$ is asymptotically equivalent to $\overline{F}_i(x)$ as $x\to \infty$. Since also $H_i\in \GMDA(e_i)$ and $\lim_{x\to \infty} \lambda_i(x)= \infty$, then for any $c>0$ we have
 $$ \lim_{x\to \infty} \frac{\overline{H_i}(x+ c)}{\overline H_i(x)}=
 0, \quad i=1,2.$$
-Consequently, Corollary 1 in \cite{EHM} yields $\overline{H_1*H_2}(x) \sim
+Consequently, Corollary 1 in \cite{embrechts2014aggregation} yields $\overline{H_1*H_2}(x) \sim
 \overline{F_1*F_2}(x)$ and thus the claim follows from ii).\\ 	
 By the above, we can find the asymptotics of $\overline{F_1*F_2}(x)$ assuming that $F_i$'s possess a density, so alternatively we have
 \begin{align}\overline{F_1*F_2}(x)\ &=\ \int_{-\infty}^\infty \gamma_1(z)\e^{-\psi_1(x)}\cdot\frac{\gamma_2(x-z)}

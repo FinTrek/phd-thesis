@@ -1,0 +1,24 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Relative error for various approximations of $\mathcal {L}(\theta )$ for $\bm {\mu }= \bm {0}$, $\bm {\Sigma }= [1, 0.5; 0.5, 1]$. The number of Monte Carlo replications $R$ used is $10^6$. Note: $*$ indicates that the CMC estimator simply gave an estimate of 0.\relax }}{40}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Relative errors for estimators of $f(x)$ for $\bm {\mu }= \bm {0}$ and $\bm {\Sigma }= [1, 0.5; 0.5, 1]$. The number of Monte Carlo repetitions for each $x$ is $R=10^4$ for $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle f$}\mathaccent "0362{f}_{\mathrm {Cond}}$, $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle f$}\mathaccent "0362{f}_{\mathrm {IS}} $ and $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle f$}\mathaccent "0362{f}_{\mathrm {Q}} $.\relax }}{41}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {8.1}{\ignorespaces Residual tail dependence index $\eta $ and $L(x)$ for various copulas. This is a subset of Table\nobreakspace {}1 of {\cite {heffernan2000directory}} (their row numbers are preserved).\relax }}{83}
+\contentsline {subtable}{\numberline {(a)}{\ignorespaces {Copulas with BRE.}}}{83}
+\contentsline {subtable}{\numberline {(b)}{\ignorespaces {Copulas without BRE.}}}{83}
+\contentsline {table}{\numberline {8.2}{\ignorespaces Examples of Archimedean copula families. Names (if they are named) and generator functions are listed, as are the ranges for which $\theta $ is valid and the subset of $\theta $ which ensures that $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \alpha $}\mathaccent "0362{\alpha }_1$ has BRE. A $\Theta $ in the final column means that all valid $\theta $ ensure BRE. The families listed appear in Table 4.1 of {\cite {nelsen2007introduction}} and Table 1 of {\cite {charpentier2009tails}}.\relax }}{85}
+\contentsline {table}{\numberline {8.3}{\ignorespaces Estimates of $\Prob (M>\gamma )$ where $M=\qopname \relax m{max}_i X_i$ and $\bm {X}\sim \mathcal {N}_4(\bm {0}_4, \bm {\Sigma })$, $\rho = 0.75$.\relax }}{91}
+\contentsline {table}{\numberline {8.4}{\ignorespaces Absolute relative errors of the estimates in Table\nobreakspace {}8.3\hbox {}.\relax }}{91}
+\contentsline {table}{\numberline {8.5}{\ignorespaces Standard deviations of the estimates in Table\nobreakspace {}8.3\hbox {}.\relax }}{92}
+\contentsline {table}{\numberline {8.6}{\ignorespaces Estimates of $\Prob (M>\gamma )$ where $M=\qopname \relax m{max}_i X_i$ and $\bm {X}\sim \mathcal {L}$, $d=4$.\relax }}{92}
+\contentsline {table}{\numberline {8.7}{\ignorespaces Absolute relative errors of the estimates in Table\nobreakspace {}8.6\hbox {}.\relax }}{93}
+\contentsline {table}{\numberline {8.8}{\ignorespaces Standard deviations of the estimates in Table\nobreakspace {}8.6\hbox {}.\relax }}{93}
+\contentsline {table}{\numberline {8.9}{\ignorespaces Ratios of absolute relative errors for pairs of estimators. Each row corresponds to a separate distribution for $\bm {X}$, each being $\mathcal {N}_d$ distributed with standard normal marginals and constant correlation $\rho $.\relax }}{95}
+\contentsline {subtable}{\numberline {(a)}{\ignorespaces {$\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \alpha $}\mathaccent "0362{\alpha }_1$ to $\overline {\alpha }$}}}{95}
+\contentsline {subtable}{\numberline {(b)}{\ignorespaces {$\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \alpha $}\mathaccent "0362{\alpha }_2$ to $\overline {\alpha }{-}q$}}}{95}
+\addvspace {10\p@ }
