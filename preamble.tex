@@ -11,6 +11,7 @@
 \usepackage{graphicx}
 \usepackage{latexsym} % for the big \Diamond
 % \usepackage{listings}
+\usepackage{mathrsfs} % for mathsf 
 \usepackage{natbib}
 \usepackage{relsize} % for \mathsmaller
 \usepackage{tikz} % for drawing circles and stuff
@@ -46,8 +47,6 @@
 
 
 % Probability symbols.
-\newcommand{\Lap}{\mathcal{L}}
-
 \DeclareMathOperator{\Prob}{{\mathbb P}}
 \DeclareMathOperator{\Exp}{{\mathbb E}}
 \DeclareMathOperator{\Cov}{\mathbb{C}\mathrm{ov}}
@@ -211,12 +210,86 @@
 \newtheorem{lemma}[subsection]{Lemma}
 \newtheorem{proposition}[subsection]{Proposition}
 \newtheorem{corollary}[subsection]{Corollary}
-\newtheorem{remark}[subsection]{Remark}
 \newtheorem{example}[subsection]{Example}
 
 \newtheorem{pseudoalgorithm}[subsection]{Algorithm} % For the long detailed algorithm from the SLN LT paper.
 
+\newtheorem{definition}[subsection]{Definition}
+\newtheorem{test}[subsection]{Test}
 
+\theoremstyle{definition}
+\newtheorem{remark}[subsection]{Remark}
+\newtheorem{assumption}[subsection]{Assumption}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preamble from Pushout paper
+
+% \usepackage{amssymb}
+% \usepackage{amsthm}
+% \usepackage{amsmath}
+% \usepackage{graphicx}
+% \usepackage{url}
+% \usepackage{mathrsfs}      % new calligraphic fonts
+% \usepackage{newtxtext,newtxmath} 
+
+
+% \usepackage{subfigure}
+% \usepackage{latexsym,amsmath}
+% \usepackage{euscript}
+% \usepackage{amsfonts}
+% \usepackage{moreverb}
+% \usepackage{xcolor}
+% \usepackage[latin1]{inputenc}
+% \usepackage[OT2,T1]{fontenc}
+% \usepackage{algorithm}
+% \usepackage[noend]{algorithmic}
+% \usepackage{epstopdf}
+% \usepackage{siunitx}
+% \usepackage{amsfonts}
+% \usepackage{parskip}
+% \newtheorem{proposition}{Proposition}
+% \newtheorem{theorem}{Theorem}
+% \newtheorem{lemma}{Lemma}
+% \newtheorem{corollary}{Corollary}
+
+
+\newcommand{\todo}{$\clubsuit$ \, TODO: \, }
+\newcommand{\TN}{\mathsf{TN}}
+% \DeclareMathOperator*{\argmin}{argmin}
+\newcommand{\simapprox}{\stackrel{\mathrm{approx}}{\sim}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\renewcommand{\v}[1]{\boldsymbol{#1}}
+\newcommand{\m}[1]{\mathrm{#1}}
+\renewcommand{\c}[1]{\mathcal{#1}}
+\newcommand{\idef}{\stackrel{\mathrm{def}}{=}}
+
+% % Probability symbols.
+% \DeclareMathOperator{\Prob}{\mathbb{P}}
+% \DeclareMathOperator{\Exp}{\mathbb{E}}
+% \DeclareMathOperator{\Cov}{\mathbb{C}\mathrm{ov}}
+% \DeclareMathOperator{\Var}{\mathbb{V}\mathrm{ar}}
+
+% Sets of numbers.
+% \newcommand{\NL}{\mathbb{N}}
+% \newcommand{\RL}{\mathbb{R}}
+% \newcommand{\CL}{\mathbb{C}}
+
+
+% Distributions.
+% \newcommand{\Norm}{\mathcal{N}}
+% \newcommand{\LN}{\mathrm{LN}}
+% \newcommand{\SLN}{\mathrm{SLN}}
+% \newcommand{\NormCdf}{\mathrm{\Phi}}
+% \newcommand{\iidDist}{\overset{\mathrm{iid}}{\sim}}
+
+% Roman versions of things.
+% \newcommand{\e}{\mathrm{e}}
+% \newcommand{\dd}{\mathop{}\mathopen{}\mathrm{d}}
+% \newcommand{\diag}{\mathrm{diag}}
+\newcommand{\sign}{\mathrm{sign}}
+\newcommand{\rd}{{\rm d}}
+
+\newcommand{\ind}[1]{\mathbb{I}_{\{#1 \}}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preamble from SLN Orthogonal PDF paper
@@ -365,7 +438,39 @@
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preamble for the SLP Orthogonal paper
 
+
+\newcommand{\Lap}{\mathscr{L}}
+\newcommand{\G}{\mathcal{G}} 
+
+\renewcommand{\baselinestretch}{1}
+
+\newcommand{\C}{\mathbb{C}} 
+\newcommand{\R}{\mathbb{R}} 
+% \newcommand{\N}{\mathbb{N}_0} 
+\newcommand{\Npos}{\mathbb{N}_+} 
+\newcommand{\Z}{\mathbb{Z}} 
+\newcommand{\Lp}{L} 
+\newcommand{\PGF}{\mathcal{G}} 
+\newcommand{\LT}[1]{\mathcal{L}\{#1\}} 
+\newcommand{\LTsub}[1]{\mathcal{L}_{#1}} 
+
+\newcommand{\ddd}{\mathrm{d}} 
+
+\usepackage{xspace}
+\newcommand{\iid}{i.i.d.\xspace}
+\newcommand{\rv}{r.v.\xspace}
+\newcommand{\rvs}{r.v.s\xspace}
+\newcommand{\pdf}{p.d.f.\xspace}
+\newcommand{\pgf}{p.g.f.\xspace}
+\newcommand{\pmf}{p.m.f.\xspace}
+\newcommand{\cdf}{c.d.f.\xspace}
+\newcommand{\svf}{s.f.\xspace}
+\newcommand{\cf}{cf.\xspace}
+\newcommand{\fft}{f.f.t.\xspace}
+
+\newcommand{\ie}{i.e.\xspace}
 
 
 
@@ -553,20 +658,7 @@
 \newcommand{\EllDist}{\mathcal{ELL}}
 \newcommand{\IGDist}{\mathcal{IG}}
 \newcommand{\for}[1]{\,,\qquad \text{for } #1}
-\newcommand{\iid}{\overset{\mathrm{i.i.d.}}{\sim}}
 
-\newtheorem{Theorem}{Theorem}
-\newtheorem{Lemma}{Lemma}
-\newtheorem{Example}{Example}
-\newtheorem{Proposition}{Proposition}
-\newtheorem{Corollary}{Corollary}
-% \theoremstyle{definition}
-\newtheorem{Definition}{Definition}
-%\theoremstyle{remark}
-\newtheorem{Remark}{Remark}
-\newtheorem{Cond}{Condition}
-\newtheorem{Property}{Property}
-\newtheorem{Note}{Note}
 
 \newcommand{\thrm}[1] {Theorem~\ref{#1}}
 \newcommand{\cor}[1] {Corollary~\ref{#1}}

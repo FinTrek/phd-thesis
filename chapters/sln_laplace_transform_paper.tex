@@ -1,45 +1,6 @@
 %!TEX root = ../main.tex
 \chapter{Approximating the Laplace transform of the sum of dependent lognormals}
 
-% \authorone[University of Queensland and Aarhus University]{Patrick J. Laub}
-% \authortwo[Aarhus University]{S\O ren Asmussen}
-% \authorthree[Aarhus University]{Jens L. Jensen}
-% \authorfour[University of Queensland]{Leonardo Rojas-Nandayapa}
-% 
-% \addressone{Department of Mathematics, The University of Queensland,
-%   Brisbane, Queensland 4072, Australia.
-%   Email address: p.laub@[uq.edu.au\textbar math.au.dk]}
-% \addresstwo{Department of Mathematics, Aarhus University, Ny Munkegade,
-%   DK-8000 Aarhus C, Denmark. Email address: \email{asmus@imf.au.dk}}
-% \addressthree{Department of Mathematics, Aarhus University, Ny Munkegade,
-%   DK-8000 Aarhus C, Denmark. Email address: \email{jlj@math.au.dk}}
-% \addressfour{Department of Mathematics, The University of Queensland,
-%   Brisbane, Queensland 4072, Australia.
-%   Email address: \email{l.rojasnandayapa@uq.edu.au}}
-
-\begin{center}
-\textbf{Abstract}
-\end{center}
-\begin{quote}
-Let $(X_1, \dots, X_n)$ be multivariate normal, with mean vector $\bfmu$ and
-covariance matrix $\bfSigma$, and $S_n=\e^{X_1}+\cdots+\e^{X_n}$. The
-Laplace transform ${\cal L}(\theta)=\Exp\e^{-\theta S_n}\propto \int
-\exp\{-h_\theta(\bfx)\} \dd \bfx$ is represented as $\widetilde {\cal
-  L}(\theta)I(\theta)$, where $\widetilde {\cal L}(\theta)$ is given in closed
-form and $I(\theta)$ is the error factor ($\approx 1$). We obtain $\widetilde
-{\cal L}(\theta)$ by replacing $h_\theta(\bfx)$ with a second-order Taylor
-expansion around its minimiser $\bfx^*$. An algorithm for calculating the
-asymptotic expansion of $\bfx^*$ is presented, and it is shown that
-$I(\theta)\to 1$ as $\theta\to\infty$.  A variety of numerical methods for
-evaluating $I(\theta)$ is discussed, including Monte Carlo with importance
-sampling and quasi-Monte Carlo. Numerical examples (including
-Laplace-transform inversion for the density of $S_n$) are also given.
-\end{quote}
-
-% \keywords{Lognormal distribution; asymptotics; saddlepoint approximation;
-%   importance sampling; quasi-Monte Carlo; numerical Laplace-transform
-%   inversion; Lambert W function.}
-
 \section{Introduction}\label{S:Intro}
 
 The lognormal distribution arises in a wide variety of disciplines such as
@@ -487,7 +448,7 @@ terms of $\bfx_{+}$, consider $\theta \ve^{\bfmu_{-} + \bfx_{-}^*} +
 \bfD_{{-},{+}} \bfx_{+} + \bfD_{{-},{-}} \bfx_{-} = \bfzero$. As $\theta
 \ve^{\bfmu_{-} + \bfx_{-}^*} = \oh(1)$, we see that $\bfx_{-} =
 -\bfD_{{-},{-}}^{-1} \bfD_{{-},{+}} \bfx_{+} + \oh(1)= \bfC \bfx_{+} +
-\oh(1)$.\qed
+\oh(1)$.
 \end{proof}
 
 In some cases above, we have been able to write the constant $c_i$ as an
@@ -538,7 +499,7 @@ that
 $ \overline{\bfD} \bfb_{*} = \overline{\bfD} \bfone = \overline{\bfa} =
 \ve^{\bfc_{*}} > \bfzero $;
 thus $\overline{\bfD}$ has all row sums positive and
-$\bfc_{*} = \vlog(\overline{\bfD}\bfb_{*}) = \vlog\,\overline{\bfa}$.\qed
+$\bfc_{*} = \vlog(\overline{\bfD}\bfb_{*}) = \vlog\,\overline{\bfa}$.
 \end{proof}
 
 There are some simple forms of $\bfSigma$ which fall into the case where all
@@ -730,7 +691,7 @@ convexity implies that the exponent is bounded by $-g_2\norm{\bfz}$ for $\norm{\
 %
 which is an integrable function. Thus the conditions for dominated convergence
 are satisfied and we can safely switch the limit and integral to obtain
-$I(\theta) \to 1$.\qed
+$I(\theta) \to 1$.
 \end{proof}
 
 \section{Estimators of $\Laplace(\theta)$ and $I(\theta)$}\label{S:Laplace}

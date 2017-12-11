@@ -4,57 +4,102 @@
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
-What are we trying to achieve in this field?
-\begin{itemize}
-	\item Typically it is a compromise between: i) creating a realistic model, ii) highly accurate numerical results, iii) simplicity, iv) mathematical elegance, v) generating a ``story'' / conceptual understanding [\& maybe vi) originality]
-	\begin{itemize}
-		\item Laplace transform paper: i) no, ii) no, iii) yes, iv) moderately, v) no.
-		\item Orthogonal polynomial SLN paper: i) no, ii) no, iii) yes, iv) yes, v) somewhat [Dufrense points out the Hermite approximation resembles how one fixes the SLN $\approx$ LN model)
-		\item Rare maxima: i) no or N/A, ii) a little, iii) yes, iv) yes, v) yes.
-		\item Weibull sums: i) no, ii) no, iii) yes, iv) yes, v) yes
-		\item Insurance applications: i) somewhat, ii) somewhat, iii) yes, iv) yes, v) no.
-	\end{itemize}
-	\item We rarely ever go and talk to financiers, insurers, etc. to see what exactly they need.
-\end{itemize}
+\begin{quote}
+``In theory there is no difference between theory and practice. In practice there is.'' Yogi Berra
+\end{quote}
 
-Relevant tradeoffs:
-\begin{itemize}
-	\item No point getting highly accurate numerical results for an unrealistic model, e.g. rare-event estimation.
-	\item There is value in having a simple \& elegant result, which generates a story, for unrealistic models, e.g. the Black--Scholes formula is not used by financiers to actually price options, but it is a useful semi-justified benchmark/guideline (originally gave investors confidence leading to a boom in options trading), also it generates interesting stories like implied volatility \& the volatility smile.
-	\item A supremely complicated model or algorithm will probably not be used outside of academia (unless millions of dollars are on the line). Complexity breeds distrust --- intuiting problems with the model (``debugging'' the model) is difficult. Also, for most complicated algorithms, there exist very simple alternatives which are just slower (e.g. crude Monte Carlo) or which have bias (the SLN $\approx$ LN approx). One justification for complicated algorithms is they increase coding-time just once (making the library) but reduce run-time for tasks which will be run many times; but Donald Knuth's advice on ``premature optimization'' would stress that there really needs to be a demand for the optimized algorithm; also, a complicated library usually has a long list of tuning parameters which typically need to be fiddled with in a semi-educated way to achieve success (like CE, or neural networks, or even parallel computing); one good counter-example is KDE code which automatically picks sensible bandwidths (the algorithm just having this one [main] parameter is also nice).
-\end{itemize}
+\section{Motivations}
 
-Background:
+\section{Foundational background}
+
 \begin{itemize}
-	\item Probability background: Distributions. $\SLN$. Dependence. Copulas. Tail properties of copulas.
+	\item Probability background: Distributions. $\SLN$.
 	\item Asymptotic analysis. Saddlepoint approximations.
-	\item Orthogonal polynomial expansions.
 	\item Monte Carlo techniques: common random numbers, quasi-Monte Carlo.
 	\item Numerical integration techniques: MCI, Gauss--Hermite quadrature.
-	\item Rare-event simulation: efficiency of estimators, importance sampling, zero-variance estimator.
-	\item Laplace transform inversion techniques.
-	\item Finance background?: Black--Scholes model, option pricing, Value-at-Risk, risk measures.
 \end{itemize}
 
-So three papers:
-\begin{enumerate}
-	\item Laplace transform for $\SLN$.
-		\begin{itemize}
-			\item Right-tail asymptotics (Leo).
-			\item Left-tail asymptotics (Gao, then Tankov).
-			\item Laplace transform and derivative approximation.
-			\item $I(\theta)$.
-			\item Estimation: quasi-Monte Carlo, and Gauss--Hermite quadrature.
-		\end{itemize}
-	\item Orthogonal polynomial approximations to $\SLN$ density.
-		\begin{itemize}
-			\item Gamma reference distribution.
-			\item Normal reference distribution.
-			\item Lognormal reference distribution.
-		\end{itemize}
-	\item Maxima of dependent r.v.s.
-		\begin{itemize}
-			\item
-		\end{itemize}
-\end{enumerate}
 
+\section{Contributions}
+
+\emph{Pushout paper}
+
+We introduce a novel unbiased estimator for the density of a sum of random variables. Our estimator possesses several advantages over the conditional Monte Carlo approach. Specifically, it  applies to the case of dependent random variables, 
+allows for transformations of random variables, is computationally faster to run, and is simpler to implement. We provide several numerical examples that illustrate these advantages. 
+
+\emph{SLN orthogonal paper}
+
+Approximations for an unknown density $g$ in terms of a reference density $f_\nu$
+and its associated orthonormal polynomials are discussed. The main application is
+the approximation of the density $f$ of a sum $S$ of lognormals which may have different
+variances or be dependent. In this setting, $g$ may be $f$ itself or a transformed
+density, in particular that of $\log S$ or an exponentially tilted density.  Choices
+of reference densities $f_\nu$ that are considered include normal, gamma and lognormal densities.
+For the lognormal case, the orthonormal polynomials are found in closed form
+and it is shown that they are not dense in $\L^2(f_\nu)$, a result that is closely related
+to the lognormal distribution not being determined by its moments. This therefore warns against the most
+obvious choice of taking $f_\nu$ as lognormal. Numerical examples are presented
+and comparisons are made to an established approach, the Fenton--Wilkinson method, and a recent approach, the
+log skew normal approximation. Also, the extensions to density estimation for statistical data sets and non-Gaussian copulas
+are outlined.
+
+\emph{SLP orthogonal paper}
+
+Two numerical methods are proposed to evaluate numerically the survival function of a compound distribution and the stop-loss premium associated to a non-proportional global reinsurance treaty. The first method relies on a representation of the probability density function in terms of Laguerre polynomial and the gamma density, the second is a numerical inversion of the Laplace transform. Numerical comparison are conducted at the end of the paper.
+
+\emph{SLN Laplace transform paper}
+
+Let $(X_1, \dots, X_n)$ be multivariate normal, with mean vector $\bfmu$ and
+covariance matrix $\bfSigma$, and $S_n=\e^{X_1}+\cdots+\e^{X_n}$. The
+Laplace transform ${\cal L}(\theta)=\Exp\e^{-\theta S_n}\propto \int
+\exp\{-h_\theta(\bfx)\} \dd \bfx$ is represented as $\widetilde {\cal
+  L}(\theta)I(\theta)$, where $\widetilde {\cal L}(\theta)$ is given in closed
+form and $I(\theta)$ is the error factor ($\approx 1$). We obtain $\widetilde
+{\cal L}(\theta)$ by replacing $h_\theta(\bfx)$ with a second-order Taylor
+expansion around its minimiser $\bfx^*$. An algorithm for calculating the
+asymptotic expansion of $\bfx^*$ is presented, and it is shown that
+$I(\theta)\to 1$ as $\theta\to\infty$.  A variety of numerical methods for
+evaluating $I(\theta)$ is discussed, including Monte Carlo with importance
+sampling and quasi-Monte Carlo. Numerical examples (including
+Laplace-transform inversion for the density of $S_n$) are also given.
+
+\emph{Weibull sums paper}
+
+We consider sums of $n$ i.i.d.\ random variables with tails close to $\exp\{-x^\beta\}$ for some $\beta>1$. Asymptotics  developed
+by Rootz\'en (1987) and Balkema, Kl\"uppelberg \& Resnick (1993) are discussed from the point of view of tails rather of densities, using a somewhat different angle,  and supplemented with bounds, results on a random number $N$ of terms, and simulation algorithms.
+
+\emph{Maxima paper} 
+
+We consider the general problem of estimating probabilities which arise as
+a union of dependent events. We propose a flexible series of
+estimators for such probabilities, and describe variance reduction schemes applied
+to the proposed estimators. We derive efficiency results of the estimators in  rare-event settings, in particular those associated with extremes. Finally, we examine the performance of our estimators in a numerical example.
+
+
+
+
+
+
+
+
+
+
+% What are we trying to achieve in this field?
+% \begin{itemize}
+% 	\item Typically it is a compromise between: i) creating a realistic model, ii) highly accurate numerical results, iii) simplicity, iv) mathematical elegance, v) generating a ``story'' / conceptual understanding [\& maybe vi) originality]
+% 	\begin{itemize}
+% 		\item Laplace transform paper: i) no, ii) no, iii) yes, iv) moderately, v) no.
+% 		\item Orthogonal polynomial SLN paper: i) no, ii) no, iii) yes, iv) yes, v) somewhat [Dufrense points out the Hermite approximation resembles how one fixes the SLN $\approx$ LN model)
+% 		\item Rare maxima: i) no or N/A, ii) a little, iii) yes, iv) yes, v) yes.
+% 		\item Weibull sums: i) no, ii) no, iii) yes, iv) yes, v) yes
+% 		\item Insurance applications: i) somewhat, ii) somewhat, iii) yes, iv) yes, v) no.
+% 	\end{itemize}
+% 	\item We rarely ever go and talk to financiers, insurers, etc. to see what exactly they need.
+% \end{itemize}
+
+% Relevant tradeoffs:
+% \begin{itemize}
+% 	\item No point getting highly accurate numerical results for an unrealistic model, e.g. rare-event estimation.
+% 	\item There is value in having a simple \& elegant result, which generates a story, for unrealistic models, e.g. the Black--Scholes formula is not used by financiers to actually price options, but it is a useful semi-justified benchmark/guideline (originally gave investors confidence leading to a boom in options trading), also it generates interesting stories like implied volatility \& the volatility smile.
+% 	\item A supremely complicated model or algorithm will probably not be used outside of academia (unless millions of dollars are on the line). Complexity breeds distrust --- intuiting problems with the model (``debugging'' the model) is difficult. Also, for most complicated algorithms, there exist very simple alternatives which are just slower (e.g. crude Monte Carlo) or which have bias (the SLN $\approx$ LN approx). One justification for complicated algorithms is they increase coding-time just once (making the library) but reduce run-time for tasks which will be run many times; but Donald Knuth's advice on ``premature optimization'' would stress that there really needs to be a demand for the optimized algorithm; also, a complicated library usually has a long list of tuning parameters which typically need to be fiddled with in a semi-educated way to achieve success (like CE, or neural networks, or even parallel computing); one good counter-example is KDE code which automatically picks sensible bandwidths (the algorithm just having this one [main] parameter is also nice).
+% \end{itemize}

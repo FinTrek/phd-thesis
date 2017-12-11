@@ -1,32 +1,7 @@
 %!TEX root = ../main.tex
 \chapter{Efficient simulation for dependent rare events with applications to extremes}
 
-% \author{Lars N{\o}rvang Andersen \and Patrick J.\ Laub \and Leonardo Rojas-Nandayapa}
-% \institute{Lars N{\o}rvang Andersen \at
-%           Aarhus University \\
-%           \email{larsa@math.au.dk} %LNA changed email adress
-%        \and
-%        Patrick J.\ Laub \at
-%        University of Queensland and Aarhus University \\
-%        \email{p.laub@[uq.edu.au$|$math.au.dk]}
-%        \and
-%        Leonardo Rojas-Nandayapa \at
-%        University of Liverpool \\
-%            \email{leorojas@liverpool.ac.uk}
-% }
-
-\begin{center}
-\textbf{Abstract}
-\end{center}
-\begin{quote}
-We consider the general problem of estimating probabilities which arise as
-a union of dependent events. We propose a flexible series of
-estimators for such probabilities, and describe variance reduction schemes applied
-to the proposed estimators. We derive efficiency results of the estimators in  rare-event settings, in particular those associated with extremes. Finally, we examine the performance of our estimators in a numerical example.
-\end{quote}
-
-% \keywords{rare-event probabilities \and bounded relative error \and extremal values \and copulas}
-
+\framebox{(pjl) Add in the closed form soln for ind. $X_i$'s}
 
 \section{Introduction}
 
@@ -120,12 +95,12 @@ Truncating the summation leads to bias, and indeed by the Bonferroni inequalitie
 \end{align}
 This higher-order intractability motivates our estimators which use the IEF rewritten in terms of $E = \sum_i \Ind\{ A_i \}$.
 
-\begin{Proposition} \label{prop:means_of_binomial}
+\begin{proposition} \label{prop:means_of_binomial}
 For $i = 1,\dots, d$,
 \begin{equation} \label{summands} 
   \sum_{|I|=i} \Ind\left\{\cap_{i\in I}A_i\right\} = \BigBinom{E}{i} \Ind\{E \ge i\}  \,.
 \end{equation}
-\end{Proposition}
+\end{proposition}
 \begin{proof}
 \begin{align*}
 \sum_{|I|=i} \Ind\{ \cap_{i\in I}A_i \} =
@@ -259,14 +234,14 @@ Thus, after simplifying, the estimator $\hat{\alpha}_2$ under $\Q^{[2]}$ is
   \alphaMax -  \frac{2q}{R} \sum_{r=1}^R \frac{1}{E_r^{[2]}} .% \,, \quad \omega_r \iid \Q^{[2]} \, ,
 \end{align}
 
-% \begin{Remark} Under $\Q^{[2]}$,  $\hat{\alpha}_1 \equiv \hat{\alpha}_2$. \hfill $\Diamond$ \end{Remark}
+% \begin{remark} Under $\Q^{[2]}$,  $\hat{\alpha}_1 \equiv \hat{\alpha}_2$. \hfill $\Diamond$ \end{remark}
 % NOTE: The above remark seems wrong.. Possibly Q^{[2]} is not a valid IS distribution for \hat{\alpha}_1..?
 
-\begin{Remark}
+\begin{remark}
 As the $\Q^{[2]}$-mean of $\frac2{E}$ is less than 1, this fraction can be seen as a correction term for the two-term truncation of \eqref{incl_excl}. We know from \eqref{bonf_even} that $\alpha \ge \alphaMax - q$. 
 
 \hfill $\Diamond$
-\end{Remark}
+\end{remark}
 
 Both of these IS algorithms have some extra requirements for their use. The first-order estimators require 
 that we can simulate from $\Prob(\,\cdot \mid A_i)$ and can calculate the $\Prob(A_i)$.
@@ -295,7 +270,7 @@ If we assume it is possible to sample from the $\Prob(\,\cdot \mid A_i)$ conditi
 Here, the $Y_{i,r}$ and $\Ind\{\cdot\}_{i,r}$ are sampled independently and conditional on $A_i$.
 The following proposition gives the partition of the event $\{E \ge i\}$:
 
-\begin{Proposition}\label{Prop.Partition}
+\begin{proposition}\label{Prop.Partition}
  Consider a finite collection of events $\{A_1,\dots,A_d\}$ and for each subset 
  $I\subset\{1,2,\dots,d\}$ define~\footnote{Using the convention that $\cap_\emptyset=\Omega$.}
    \begin{equation*}
@@ -307,7 +282,7 @@ The following proposition gives the partition of the event $\{E \ge i\}$:
   \{E\ge m\}=\bigcup_{|I|=m} B_I = \bigcup_{|I|=m} B_I C_I.
  \end{equation}
  Moreover, the collection of sets $\{B_IC_I:|I|=m\}$ is disjoint.
-\end{Proposition}
+\end{proposition}
 
 \begin{proof}
  
@@ -447,12 +422,12 @@ defined as
 \begin{equation}
  \hat{\beta}_n^{[0]}:=\sum_{|I|=n} \frac1{\lceil R / \binom{d}{n} \rceil} \sum_{r=1}^{\lceil R / \binom{d}{n} \rceil}  Y_{Ir}\Ind\{B_IC_I\}% \,, \quad \omega_{\cdot\cdot} \iid \Prob(\cdot)\,.
 \end{equation}
-\begin{Proposition}\label{prop:VarRedCMC}
+\begin{proposition}\label{prop:VarRedCMC}
  \begin{equation*}
   \Var(\hat{\beta}_n) \le \max_{|I|=n}\Prob(B_I) 
    \Var(\hat{\beta}_n^{[0]}) \,.
  \end{equation*}
-\end{Proposition}
+\end{proposition}
 \begin{proof}
 Let $W_I:=Y\Ind\{C_I\}$.  By independence of the $W_I$
 we can write the variance of $\hat{\beta}_n$ as
@@ -483,7 +458,7 @@ Thus we have proven that
 
 We now ask if and when $\hat{\alpha}_1$ and $\hat{\beta}_n$ are efficient in the rare-event sense. We must first define efficiency, as there are several common benchmarks for the efficiency of a rare-event estimator.
 
-\begin{Definition} \label{efficiency_criteria} An estimator $\hat{p}_{\gamma}$ of some rare probability $p_{\gamma}$ which satisfies $\forall \epsilon>0$ \\
+\begin{definition} \label{efficiency_criteria} An estimator $\hat{p}_{\gamma}$ of some rare probability $p_{\gamma}$ which satisfies $\forall \epsilon>0$ \\
 \begin{subequations} \label{criteria}
  \begin{tabularx}{\hsize}{XXX}
      \begin{equation}
@@ -500,11 +475,11 @@ We now ask if and when $\hat{\alpha}_1$ and $\hat{\beta}_n$ are efficient in the
    \end{tabularx}
 \end{subequations}
 has \emph{logarithmic efficiency} (LE) \eqref{a}, \emph{bounded relative error} (BRE) \eqref{b}, or \emph{vanishing relative error} (VRE) \eqref{c} respectively.
-\end{Definition}
+\end{definition}
 
 The levels of efficiency in Definition~\ref{efficiency_criteria} are given in increasing order of strength, that is, VRE $\Rightarrow$ BRE $\Rightarrow$ LE. As VRE is often too difficult a goal, we focus on BRE and LE. The following proposition gives an alternative form of the conditions in \eqref{criteria} for the specific case of our estimator $\hat{\alpha}_1$.
 
-\begin{Proposition} \label{prop:efficiency}
+\begin{proposition} \label{prop:efficiency}
 	The estimator $\hat{\alpha}_1$ has LE iff it holds that $\forall \epsilon > 0$
 	\begin{equation}\label{our_LE_criteria}
 	  \limsup_{\gamma\to\infty}
@@ -515,7 +490,7 @@ The levels of efficiency in Definition~\ref{efficiency_criteria} are given in in
 	  \limsup_{\gamma\to\infty}
 		\dfrac{\max_{i < j} \, \Prob(A_i(\gamma), A_j(\gamma))}{\max_k \, \Prob(A_k(\gamma))^2} < \infty \,.
 	\end{equation}
-\end{Proposition}
+\end{proposition}
 \begin{proof} 
 	We prove the LE claim \eqref{our_LE_criteria}. Proof of the BRE claim follows the same arguments. \\
 	($\Rightarrow$) We can see that
@@ -545,18 +520,18 @@ The levels of efficiency in Definition~\ref{efficiency_criteria} are given in in
 	which implies \eqref{a}. \qed
 \end{proof}
 
-\begin{Example}
+\begin{example}
    If the $A_i$ events are independent then the estimator $\hat{\alpha}_1$ has BRE.
-\end{Example}
+\end{example}
 
 For the efficiency of our $\hat{\beta}_n$ estimators, 
 the following proposition provides a very simple yet non-trivial condition for BRE.
-\begin{Proposition}
+\begin{proposition}
  The estimator $\hat{\beta}_n(\gamma)$ has BRE if
  \begin{equation*}
   \limsup_{\gamma\to\infty}\frac{\max_{|I|=n}\Prob(B_I)}{\beta_n(\gamma)}<\infty.
  \end{equation*}
-\end{Proposition}
+\end{proposition}
 \begin{proof}
 By Proposition~\ref{prop:VarRedCMC} and the hypothesis we have
 \begin{align*}
@@ -568,9 +543,9 @@ Since $\hat{\beta}_n^{[0]}$ is an estimator in crude form
 then $\Var( \hat{\beta}_n^{[0]}(\gamma) )=\Oh(\beta_n(\gamma))$ as $\gamma \to \infty$, so the proof
 is complete. \qed
 \end{proof}
-\begin{Corollary}
+\begin{corollary}
  The estimator $\widehat{(\beta_1 \ddagger \alpha)}$ from \eqref{beta_on_alpha_1} has BRE.
-\end{Corollary}
+\end{corollary}
 
 \subsection{Efficiency for identical marginals and dependence} \label{scn:ident_margs}
 
@@ -584,7 +559,7 @@ In this subsection, we assume the $X_i$ have identical marginal distributions. T
 
 The most basic measurement of tail dependence between a pair $(X_i, X_j)$ with common marginal distribution $F$ and copula $C_{ij}$ (cf.\ \cite{joe1997multivariate,nelsen2007introduction}) is
 \[
-	\lambda_{ij} = \lim_{\upsilon\to1} \Prob(X_i > \upsilon \mid X_j > \upsilon) = \lim_{\upsilon \to 1} \frac{1 - C_{ij}(\upsilon,\upsilon)}{1-\upsilon}
+	\lambda_{ij} = \lim_{\upsilon\to1} \Prob(X_i > \upsilon \mid X_j > \upsilon) = \lim_{\upsilon \to 1} \frac{1 - 2 \upsilon + C_{ij}(\upsilon,\upsilon)}{1-\upsilon}
 \]
 where $\lambda_{ij} \in [0,1]$ is called the \emph{(upper) tail dependence parameter (or coefficient)} \cite{joe1997multivariate,mcneil2015quantitative}. We say the $(X_i,X_j)$ pair exhibit \emph{asymptotic independence} (AI) when $\lambda_{ij} = 0$, or \emph{asymptotic dependence} (AD) when $\lambda_{ij} > 0$. The canonical examples given for each case are the (non-degenerate) bivariate normal distribution for AI, and the bivariate Student $t$ distribution for AD \cite{sibuya1960bivariate}. 
 
@@ -608,11 +583,11 @@ The index is called the \emph{residual tail index} \cite{de2007extreme,nolde2014
 
 Returning to our original problem of estimating $\alpha(\gamma)$, let us label the residual tail index for every $(X_i,X_j)$ pair of $\bfX$ as $\eta_{ij}$. Also, let $\eta=\max_{ij}\eta_{ij}$ and $L$ be the associated slowly varying function. The following proposition outlines how these values relate to efficiency of $\hat{\alpha}_1$:
 
-\begin{Proposition}
+\begin{proposition}
 If \eqref{ledford_form} is satisfied for the maximal pair of $\bfX$, that is,
 \[ \max_{i < j} \Prob(X_i > \gamma, X_j > \gamma) \sim L(\gamma) \gamma^{-1/\eta} \qquad \text{ as } \gamma \to \infty \,, \]
 then the estimator $\hat{\alpha}_1$ has: i) BRE if $\eta<1/2$ or if $\eta=1/2$ and $L(\gamma) \not\to \infty$ as $\gamma \to \infty$, ii) LE if $\eta=1/2$.  
-\end{Proposition}
+\end{proposition}
 
 \begin{proof}
 Label the components of $\bfX$ such that
@@ -696,15 +671,15 @@ Some of the most frequently used copulas are in the family of \emph{Archimedean 
 The function $\psi$, called the \emph{generator} of the copula, defines a copula if its functional inverse is the Laplace transform of a non-negative random variable.
 For Archimedean copulas we can restate the BRE condition \eqref{our_BRE_criteria} in terms of the generator $\psi$.
 
-\begin{Theorem}[Thm.\ 3.4 of \cite{charpentier2009tails}] \label{arch_cop_effic}
+\begin{theorem}[Thm.\ 3.4 of \cite{charpentier2009tails}] \label{arch_cop_effic}
 Let $(U_1, \dots, U_n) \sim C$ where $C$ is an Archimedean copula with generator $\psi$. If $\psi^{\leftarrow}$ is twice continuously differentiable and its second derivative is bounded at 0 then $\forall \, i \not= j$
 \[ \lim_{u \to 0} \frac{\Prob(U_i \geq 1 - u x_1, U_j \geq 1 - u x_2)}{u^2} < \infty  \]
 for any $0 < x_1,\, x_2 < \infty$.
-\end{Theorem}
+\end{theorem}
 
-\begin{Corollary} \label{cor:arch_effic}
+\begin{corollary} \label{cor:arch_effic}
 Consider using $\hat{\alpha}_1$ for a distribution with common marginal distributions and a copula $C$. If $C$ satisfies the conditions of \thrm{arch_cop_effic} then $\hat{\alpha}_1$ has BRE.
-\end{Corollary}
+\end{corollary}
 
 Charpentier and Segers \cite{charpentier2009tails} have helpfully created a directory of Archimedean copulas from which we can see if the BRE conditions from Corollary~\ref{cor:arch_effic} are satisfied. Using this information, we provide a summary of the efficiency status of many Archimedean copulas in Table~\ref{effic_arch_cops}.
 
@@ -807,7 +782,7 @@ Also, define $\upsilon_i(\gamma) := (\gamma - \mu_i)/\sigma_i$ and $a_{ij} := \s
 We now apply the asymptotic properties outlined in the
 Appendix to assess the efficiency of $\hat{\alpha}_1$ for type I elliptical distributions. 
 
-\begin{Theorem} \label{thm:ellip_efficiency}
+\begin{theorem} \label{thm:ellip_efficiency}
 Consider $\bfX \sim \EllDist(\bfmu, \bfSigma, F)$ where $F \in$ MDA(Gumbel), and let
  \[ \kappa := \max_{i<j} \kappa_{ij} \,, \quad \mu := \max_{i<j \,:\, \kappa = \kappa_{ij}} \mu_{ij} \,, \quad \text{and} \quad  \upsilon(\gamma):= (\gamma-\mu)/\kappa + \oh(1) \,. \]
  If $\kappa>\sigma_1$,\footnote{This implies that the Savage condition (see Appendix) is fulfilled at least for one pair.} then $\hat{\alpha}_1$ has LE if
@@ -817,7 +792,7 @@ Consider $\bfX \sim \EllDist(\bfmu, \bfSigma, F)$ where $F \in$ MDA(Gumbel), and
    {w(\upsilon_1(\gamma))\Ftail(\upsilon_1(\gamma))^{2-\epsilon}}<\infty \,.
  \end{equation}
  Moreover, if \eqref{eq:type_1_effic} holds for $\epsilon=0$ then $\hat{\alpha}_1$ has BRE.
-\end{Theorem}
+\end{theorem}
 
 \begin{proof}
  It follows from \eqref{berman} and Theorem~\ref{thm:type_1_asymptotics} in the Appendix. 
@@ -825,15 +800,15 @@ Consider $\bfX \sim \EllDist(\bfmu, \bfSigma, F)$ where $F \in$ MDA(Gumbel), and
 \end{proof}
 
 % Note(pat): That didn't seem necessary.
-% \begin{Remark}
+% \begin{remark}
 % In Theorem~\ref{thm:ellip_efficiency}, the computation of $\kappa$ as the maximum of all pairs $\kappa_{ij}$ is necessary due to the fact that for normal/elliptical distributions,
 % one can construct a covariance matrix $\bfSigma$ such that
 % $\argmax_i \Prob(X_i>\gamma) = 1$ and
 % $\argmax_{i < j} \Prob(X_i > \gamma, X_j > \gamma) = (2,3)$
 % for $\gamma \to \infty$. \hfill $\Diamond$
-% \end{Remark}
+% \end{remark}
 
-\begin{Example}[Kotz Type III]
+\begin{example}[Kotz Type III]
  One family of type I elliptical distributions, is the \emph{Kotz Type III} distributions, defined by
  \[
   \Ftail(\gamma)=(K+\oh(1))\gamma^N\exp(-ru^\delta),\quad w(\gamma)=r\delta \gamma^{\delta-1}\,, \quad \text{for } \gamma>0,
@@ -857,17 +832,17 @@ Consider $\bfX \sim \EllDist(\bfmu, \bfSigma, F)$ where $F \in$ MDA(Gumbel), and
   \item $\sigma_1^\delta=2\kappa^\delta$, $\delta>1$ and $\mu_1>\mu$.
  \end{itemize}
  The estimator $\hat{\alpha}_1$ has LE if $\sigma_1^\delta=2\kappa^\delta$, and is inefficient when $\sigma_1^\delta<2\kappa^\delta$.
-\end{Example}
+\end{example}
 
-\begin{Example}[Normal distributions] \label{ex:normal}
+\begin{example}[Normal distributions] \label{ex:normal}
 The normal distribution is a Kotz III type distribution with $\delta=2$.
 Hence, $\hat{\alpha}_1$ has BRE if $\sigma_1^2>2\kappa^2$, or $\sigma_1^2=2\kappa^2$ and $\mu_1>\mu$.
 The estimator $\hat{\alpha}_1$ has LE if $\sigma_1^2=2\kappa^2$, and is inefficient when $\sigma_1^2<2\kappa^2$.
-\end{Example}
+\end{example}
 
 Frequently, a set of random variables represents as a stochastic process $\{X_n\}_{n\ge0}\,$. The value of $\Prob(M > \gamma)$, with $M := \max_{1 \le n \le d} X_n$, in such cases usually valuable. The simplest case to take is when all $X_n$ have identical marginals such as in stationary processes; one such example is the autoregressive (AR) process.
 
-\begin{Example}[AR(1) processes]
+\begin{example}[AR(1) processes]
 Say $X_t = \varphi X_{t-1} + \epsilon_t$, where $|\varphi| < 1$ and $\epsilon_t$ are i.i.d.\ $\NormDist_1(0, \sigma_{\epsilon}^2)$, and we start the process in stationarity. We have that each $X_i$ has the same marginal distribution, $X_i \sim \NormDist_1(0, \sigma_{\epsilon}^2/(1-\varphi^2))$, and
 \[
 	\max_{i < j} \, \Prob(X_i > \gamma, X_j > \gamma) = \begin{cases}
@@ -886,7 +861,7 @@ When $\varphi = 0$ the $X_i$ are independent and $\hat{\alpha}_1$ is trivially e
 	&= 0
 \end{align*}
 as $\sigma_{\epsilon}^2 < \sigma_{\epsilon}^2 (1-\varphi^4) / (1-\varphi^2)) < \sigma_{\epsilon}^2/(1-\varphi^2)$. Therefore, we have BRE of $\hat{\alpha}_1$ for all stationary AR(1) processes.
-\end{Example}
+\end{example}
 
 \section{Numerical experiments} \label{scn:numerical_results}
 
@@ -1177,8 +1152,8 @@ to a more general setting which could make useful for a larger variety of estima
 
 In this paper we did not discuss stratification strategies for $\hat{\beta}_i$ that could result in further reductions in variance. Nor did we investigate which permutations of the $A_i$ minimise the variance of $\hat{\beta}_i$. Further investigation into the use of $\hat{\beta}_i$ to estimate tail probabilities of order statistics would be of value.
 
-\section*{Acknowledgements}
- LRN is supported by ARC grant DE130100819.
+% \section*{Acknowledgements}
+%  LRN is supported by ARC grant DE130100819.
 
 \begin{subappendices}
 \section{Elliptical distribution asymptotics} \label{scn:elliptical_asymptotics}
@@ -1219,7 +1194,7 @@ where $\upsilon_i(\gamma) = (\gamma - \mu_i)/\sigma_i$. The bivariate case, i.e.
  otherwise for $\rho_{ij} < a_{ij}$
  \[ \mu_{ij}:= \frac{\mu_i-a_{ij}\rho_{ij}(\mu_1+\mu_2)+a^2\mu_j}{\alpha_{ij}(1-\rho^2_{ij})} \quad \text{ and } \quad \kappa_{ij}:= \frac{\sigma_i^2\sigma_j^2(1-\rho^2_{ij})}{ {\sigma_i^2-2\rho_{ij}\sigma_i\sigma_j + \sigma_{j}^2}}. \]
 
-\begin{Theorem} \label{thm:type_1_asymptotics}
+\begin{theorem} \label{thm:type_1_asymptotics}
  Let $(X_i, X_j)$ be a pair from a type I elliptical random vector $\bfX \sim E(\bfmu, \bfSigma, F)$ 
  and consider $\gamma \nearrow x_F$.
 Then with $\upsilon_{ij}(\gamma)=(\gamma-\mu_{ij})/\kappa_{ij}+c_{ij}(\gamma)$ for some $c_{ij}(\gamma) \in \oh(1)$,
@@ -1239,7 +1214,7 @@ Furthermore, if either $\mu_i\ge\mu_j$ or $\lim_{\gamma\to x_F}w(\gamma)/\gamma<
    &= \Ftail(\upsilon_{ij}(\gamma)) \Big( 2\pi \upsilon_{ij}(\gamma) w(\upsilon_{ij}(\gamma)) \Big)^{-1/2}(C_\rho + \oh(1)),
    		 & \text{ if } \rho_{ij} = a_{ij}.
  \end{align*}
-\end{Theorem}
+\end{theorem}
 
 \begin{proof}
 

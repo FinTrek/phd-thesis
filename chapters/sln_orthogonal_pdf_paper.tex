@@ -1,31 +1,6 @@
 %!TEX root = ../main.tex
 \chapter{Orthonormal polynomial expansions and lognormal sum densities}
 
-\begin{center}
-\textbf{Abstract}
-\end{center}
-\begin{quote}
-Approximations for an unknown density $g$ in terms of a reference density $f_\nu$
-and its associated orthonormal polynomials are discussed. The main application is
-the approximation of the density $f$ of a sum $S$ of lognormals which may have different
-variances or be dependent. In this setting, $g$ may be $f$ itself or a transformed
-density, in particular that of $\log S$ or an exponentially tilted density.  Choices
-of reference densities $f_\nu$ that are considered include normal, gamma and lognormal densities.
-For the lognormal case, the orthonormal polynomials are found in closed form
-and it is shown that they are not dense in $\L^2(f_\nu)$, a result that is closely related
-to the lognormal distribution not being determined by its moments. This therefore warns against the most
-obvious choice of taking $f_\nu$ as lognormal. Numerical examples are presented
-and comparisons are made to an established approach, the Fenton--Wilkinson method, and a recent approach, the
-log skew normal approximation. Also, the extensions to density estimation for statistical data sets and non-Gaussian copulas
-are outlined.
-\end{quote}
-
-% \textit{Keywords:} Lognormal distribution, sums of lognormally distributed random variable, orthogonal polynomial,
-% density estimation, Stieltjes moment problem, numerical approximation of functions, exponential tilting,
-% conditional Monte Carlo, Archimedean copula, Gram--Charlier expansion, Hermite polynomial,
-% Laguerre polynomial
-
-
 \section{Introduction}\label{S:SLN_Ortho_PDF_Intr}
 
 The lognormal distribution arises in a wide variety of disciplines such
@@ -177,7 +152,7 @@ The expansion formed by a standard normal baseline distribution and Hermite poly
 %The classical example of this technique (though not usually put in this framework)
 %is the Edgeworth expansion, also associated with the names of Charlier and Gram.
 %Consider $Y_1$, \dots $Y_n$ i.i.d.\ r.v.s where $\Exp[Y_i]=\mu$ and $\Var[Y_i]=\omega^2$.
-%The Edgeworth expansion covers $X=(S-n\mu)/(\sqrt{n}\,\omega)$ with $\Norm(0,1)$ as the reference measure $\nu$.
+%The Edgeworth expansion covers $X=(S-n\mu)/(\sqrt{n}\,\omega)$ with $\mathsf{Normal}(0,1)$ as the reference measure $\nu$.
 %
 %The Edgeworth example illustrates well several aspects of the theory. In the scenario of Remark~\ref{Rem:27.10a} with $m=2$, condition~\eqref{DefinedMGFCondition} is trivially satisfied,
 %but condition~\eqref{L2Condition1} requires more attention. It actually fails unless
@@ -192,7 +167,7 @@ The expansion formed by a standard normal baseline distribution and Hermite poly
 \subsection{Gamma reference distribution}\label{SS:GammaNu}
 If $X$ has support $(0,\infty)$, it is natural to look for a $\nu$ with the same property.
 An obvious candidate is the
-gamma distribution, denoted Gamma$(r,m)$ where $r$ is the shape parameter
+gamma distribution, denoted $\mathsf{Gamma}(r,m)$ where $r$ is the shape parameter
 and $m$ the scale parameter.
 The p.d.f.\ is
 \begin{equation} \label{GammaPDF}
@@ -229,7 +204,7 @@ f(x)\ &=\ \Oh\big(x^\beta\big)\quad\text{as }x\to 0\quad\text{with }\beta>r/2-1\
 %\end{remark}
 
 \subsection{Lognormal reference distribution}\label{SS:LogNNu}
-The lognormal distribution $\LN(\mu, \sigma^2)$ is the distribution of $\e^Y$ where $Y \sim \Norm(\mu, \sigma^2)$. It has support on $\RL_+$. The polynomials orthogonal to the $\LN(\mu, \sigma^2)$ are given in the following proposition, to be proved in the Appendix:
+The lognormal distribution $\LN(\mu, \sigma^2)$ is the distribution of $\e^Y$ where $Y \sim \mathsf{Normal}(\mu, \sigma^2)$. It has support on $\RL_+$. The polynomials orthogonal to the $\LN(\mu, \sigma^2)$ are given in the following proposition, to be proved in the Appendix:
 
 \begin{theorem}\label{LogNormalOrthogonalPolynomialProposition}
 The polynomials orthonormal with respect to the lognormal distribution are given by
@@ -293,7 +268,7 @@ Orthogonal polynomial approximations generally become more accurate as the order
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{convergence.pdf}
-\caption{Examples of orthogonal polynomial approximations using a $\Norm(1.13,0.23^2)$ reference converging to the target $f$ with increasing $K$.}
+\caption{Examples of orthogonal polynomial approximations using a $\mathsf{Normal}(1.13,0.23^2)$ reference converging to the target $f$ with increasing $K$.}
 \label{fig:converg}
 \end{figure}
 
@@ -352,7 +327,7 @@ where the constants are as in Lemma~\ref{le:SLNTails}.
 
 \subsection{Lognormal sums via a normal reference distribution} \label{SS:LNNormalNu}
 
-Consider transforming $S$ to $Z=\ln(S)$ and expanding this density with orthogonal polynomials using a normal distribution as reference. That is, our approximation to $f$ using a $\Norm(\mu, \sigma^2)$ reference is
+Consider transforming $S$ to $Z=\ln(S)$ and expanding this density with orthogonal polynomials using a normal distribution as reference. That is, our approximation to $f$ using a $\mathsf{Normal}(\mu, \sigma^2)$ reference is
 \[ \widehat{f}_{\Norm}(x) = \frac{1}{x} \widehat{f}_{Z}\left(\ln x \right) \quad\text{where}\quad \widehat{f}_{Z}(z) = \phi_{\mu,\sigma^2}(z) \sum_{i=1}^K a_i \, Q_i(z) \,, \]
 with  the normal p.d.f.\ $\phi_{\mu,\sigma^2}=f_\nu$. The following result tells us when the integrability condition $f_{Z}/f_\nu \in\mathcal{L}^{2}(\nu)$ is satisfied.
 It follows immediately by combining \eqref{SA7.11a} and Corollary~\ref{co:LogSLNTails}
@@ -434,7 +409,7 @@ for $k = 0, \dots, K$. We can use the same $S_1$, \dots, $S_R$ for all $\widehat
 
 \subsection{Lognormal sums via a gamma reference distribution} \label{SS:LNGammaNu}
 
-When $\nu$ is Gamma$(r,m)$, it makes little sense to expand $f$ in terms of $\{Q_{k}\}_{k\in\NZ}$ and $f_\nu$ as the integrability condition \eqref{SA7.11b} fails, $f/f_\nu \not\in\L^{2}(\nu)$. The workaround consists in using orthogonal polynomials to expand the \emph{exponentially tilted} distribution, denoted $\SLN_\theta(\bfmu, \bfSigma)$. This distribution's p.d.f.\ is
+When $\nu$ is $\mathsf{Gamma}(r,m)$, it makes little sense to expand $f$ in terms of $\{Q_{k}\}_{k\in\NZ}$ and $f_\nu$ as the integrability condition \eqref{SA7.11b} fails, $f/f_\nu \not\in\L^{2}(\nu)$. The workaround consists in using orthogonal polynomials to expand the \emph{exponentially tilted} distribution, denoted $\SLN_\theta(\bfmu, \bfSigma)$. This distribution's p.d.f.\ is
 \begin{equation}\label{ExponentiallyTiltedPDF}
 f_\theta(x) = \frac{\e^{-\theta x}f(x)}{\Laplace(\theta)} \,,\quad \theta \ge 0,
 \end{equation}
@@ -446,11 +421,11 @@ $\hfill \Diamond$
 Using \eqref{SA7.11b}, we immediately obtain the following result which
 sheds light on how to tune the parameters of the reference gamma distribution so the integrability condition $f_\theta / f_\nu \in\L^2(\nu)$ is satisfied.
 \begin{proposition}\label{pr:IntegrabiltyConditionWRTGammaDistribution}
-Consider the r.v.\ $S_\theta$ with the exponentially-tilted $\mathcal{SLN}_\theta(\boldsymbol{\mu},\bfSigma)$ distribution. Let $\nu$ be the probability measure associated with the Gamma$(r,m)$ distribution. We have $f_\theta/f_\nu \in\L^2(\nu)$ if
+Consider the r.v.\ $S_\theta$ with the exponentially-tilted $\mathcal{SLN}_\theta(\boldsymbol{\mu},\bfSigma)$ distribution. Let $\nu$ be the probability measure associated with the $\mathsf{Gamma}(r,m)$ distribution. We have $f_\theta/f_\nu \in\L^2(\nu)$ if
 $m>1/2\theta$.
 \end{proposition}
 
-Hereafter we assume that the parameters $r$ and $m$ of $f_\nu \sim \mathrm{Gamma}(r,m)$ are chosen to satisfy Proposition~\ref{pr:IntegrabiltyConditionWRTGammaDistribution}'s conditions.
+Hereafter we assume that the parameters $r$ and $m$ of $f_\nu \sim \mathsf{Gamma}(r,m)$ are chosen to satisfy Proposition~\ref{pr:IntegrabiltyConditionWRTGammaDistribution}'s conditions.
 
 %\subsubsection{Computing the coefficients of the expansion $\{a_{k}\}_{k\in\NZ}$} \label{sss:ComputationCoefficientGammaLaguerreExpansion}
 Our approximation---based upon rearranging \eqref{ExponentiallyTiltedPDF}---is of the form
@@ -537,7 +512,7 @@ with figures in colour is in the online supplement \cite{Code}.
                          & $\widehat{f}_{\mathrm{FW}}$  & $\widehat{f}_{\mathrm{Sk}}$ & $\widehat{f}_{\mathrm{Cond}}$ & $\widehat{f}_{\Norm}$  & $\widehat{f}_{\,\Gamma}$ \\ \hline
 \multicolumn{1}{|c|}{$\L^2$} & $8.01 \stimes 10^{-2}$ & $4.00 \stimes 10^{-2}$ & $1.56 \stimes 10^{-3}$ & $1.94 \stimes 10^{-3}$ & $2.28 \stimes 10^{-3}$ \\  \hline
 \end{tabular}
-\caption*{Test 1: $\bfmu = (0, 0)$, $\diag(\bfSigma) = (0.5, 1)$, $\rho = -0.2$. Reference distributions used are $\Norm(0.88,0.71^2)$ and Gamma($2.43,0.51$) with $K =$ 32, 16 resp.}
+\caption*{Test 1: $\bfmu = (0, 0)$, $\diag(\bfSigma) = (0.5, 1)$, $\rho = -0.2$. Reference distributions used are $\mathsf{Normal}(0.88,0.71^2)$ and $\mathsf{Gamma}(2.43,0.51)$ with $K =$ 32, 16 resp.}
 \end{figure}
 
 % \begin{table}[H]
@@ -558,7 +533,7 @@ with figures in colour is in the online supplement \cite{Code}.
                          & $\widehat{f}_{\mathrm{FW}}$  & $\widehat{f}_{\mathrm{Sk}}$ & $\widehat{f}_{\mathrm{Cond}}$ & $\widehat{f}_{\Norm}$  & $\widehat{f}_{\,\Gamma}$ \\ \hline
 \multicolumn{1}{|c|}{$\L^2$} & $1.02 \stimes 10^{-2}$ & $3.49 \stimes 10^{-3}$ & $1.78 \stimes 10^{-3}$ & $7.86 \stimes 10^{-4}$ & $7.24 \stimes 10^{-4}$ \\ \hline
 \end{tabular}
-\caption*{Test 2: $\bfmu = (-0.5, 0.5)$, $\diag(\bfSigma)= (1,1)$, $\rho = 0.5$. Reference distributions used are $\Norm(0.91,0.90^2)$ and Gamma($2.35,0.51$) with $K =$ 32, 16 resp.}
+\caption*{Test 2: $\bfmu = (-0.5, 0.5)$, $\diag(\bfSigma)= (1,1)$, $\rho = 0.5$. Reference distributions used are $\mathsf{Normal}(0.91,0.90^2)$ and $\mathsf{Gamma}(2.35,0.51)$ with $K =$ 32, 16 resp.}
 \end{figure}
 
 % \begin{table}[H]
@@ -578,7 +553,7 @@ with figures in colour is in the online supplement \cite{Code}.
                          & $\widehat{f}_{\mathrm{FW}}$  & $\widehat{f}_{\mathrm{Sk}}$ & $\widehat{f}_{\mathrm{Cond}}$ & $\widehat{f}_{\Norm}$  & $\widehat{f}_{\,\Gamma}$ \\ \hline
 \multicolumn{1}{|c|}{$\L^2$} & $9.48 \stimes 10^{-3}$ & $3.71 \stimes 10^{-3}$ & $1.60 \stimes 10^{-3}$ & $1.18 \stimes 10^{-3}$ & $3.53 \stimes 10^{-4}$ \\ \hline
 \end{tabular}
-\caption*{Test 3: $n=3$, $\mu_i = 0$, $\Sigma_{ii} = 1$, $\rho = 0.25$. Reference distributions used are $\Norm(1.32,0.74^2)$ and Gamma($3,0.57$) with $K =$ 7, 25 resp.}
+\caption*{Test 3: $n=3$, $\mu_i = 0$, $\Sigma_{ii} = 1$, $\rho = 0.25$. Reference distributions used are $\mathsf{Normal}(1.32,0.74^2)$ and $\mathsf{Gamma}(3,0.57)$ with $K =$ 7, 25 resp.}
 \end{figure}
 
 % \begin{table}[H]
@@ -598,7 +573,7 @@ with figures in colour is in the online supplement \cite{Code}.
                          & $\widehat{f}_{\mathrm{FW}}$  & $\widehat{f}_{\mathrm{Sk}}$ & $\widehat{f}_{\mathrm{Cond}}$ & $\widehat{f}_{\Norm}$  & $\widehat{f}_{\,\Gamma}$ \\ \hline
 \multicolumn{1}{|c|}{$\L^2$} & $1.82 \stimes 10^{-2}$ & $6.60 \stimes 10^{-3}$ & $1.90 \stimes 10^{-3}$ & $1.80 \stimes 10^{-3}$ & $1.77 \stimes 10^{-4}$ \\ \hline
 \end{tabular}
-\caption*{Test 4: $n=4$, $\mu_i = 0$, $\Sigma_{ii}=1$, $\rho = 0.1$. Reference distributions used are $\Norm(1.32,0.74^2)$ and Gamma($3.37,0.51$) with $K =$ 18, 18 resp.}
+\caption*{Test 4: $n=4$, $\mu_i = 0$, $\Sigma_{ii}=1$, $\rho = 0.1$. Reference distributions used are $\mathsf{Normal}(1.32,0.74^2)$ and $\mathsf{Gamma}(3.37,0.51)$ with $K =$ 18, 18 resp.}
 \end{figure}
 
 % \begin{table}[H]
@@ -614,13 +589,13 @@ The following test case shows the density approximations for a large $n$.
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{d5.pdf}
-\caption*{Test 5: Sum of 10 i.i.d.\ $\LN(0,0.1)$ r.v.s. Reference distributions used are $\Norm(2.35,0.23^2)$ and Gamma($12.61,0.25$) with $K =$ 18, 35 resp.}
+\caption*{Test 5: Sum of 10 i.i.d.\ $\LN(0,0.1)$ r.v.s. Reference distributions used are $\mathsf{Normal}(2.35,0.23^2)$ and $\mathsf{Gamma}(12.61,0.25)$ with $K =$ 18, 35 resp.}
 \end{figure}
 
 % \begin{figure}[H]
 % \centering
 % \includegraphics[width=\textwidth]{d6.pdf}
-% \caption*{Test 6: Sum of 20 i.i.d.\ $\LN(-2,1)$ r.v.s. Reference distributions used are $\Norm(1.46,0.71^2)$ and Gamma($8.78,0.25$) with $K =$ 40, 10 resp.}
+% \caption*{Test 6: Sum of 20 i.i.d.\ $\LN(-2,1)$ r.v.s. Reference distributions used are $\mathsf{Normal}(1.46,0.71^2)$ and Gamma($8.78,0.25$) with $K =$ 40, 10 resp.}
 % \end{figure}
 
 Finally, we fit $\widehat{f}_{\Norm}$ and $\widehat{f}_{\,\Gamma}$ to simulated data ($10^5$ replications) for the sum of lognormals with a non-Gaussian dependence structure. Specifically, we take the sum of $n = 3$ standard lognormal r.v.s with a \emph{Clayton copula}, defined by its distribution function
@@ -632,7 +607,7 @@ The Kendall's tau correlation of the $C^{\text{Cl}}_\theta$ copula is $\tau = \t
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{copula.pdf}
-\caption*{Test 6: Sum of 3 $\LN(0,1)$ r.v.s with $C^{\text{Cl}}_{10}(\cdot)$ copula (i.e., $\tau = \frac56$). Reference distributions used are $\Norm(1.46,0.71^2)$ and Gamma($8.78,0.25$) with $K = 40$. The $\L^2$ errors of $\widehat{f}_{\Norm}$ and $\widehat{f}_{\,\Gamma}$ are $2.45 \times 10^{-3}$ and $2.04 \times 10^{-3}$ respectively.}
+\caption*{Test 6: Sum of 3 $\LN(0,1)$ r.v.s with $C^{\text{Cl}}_{10}(\cdot)$ copula (i.e., $\tau = \frac56$). Reference distributions used are $\mathsf{Normal}(1.46,0.71^2)$ and $\mathsf{Gamma}(8.78,0.25)$ with $K = 40$. The $\L^2$ errors of $\widehat{f}_{\Norm}$ and $\widehat{f}_{\,\Gamma}$ are $2.45 \times 10^{-3}$ and $2.04 \times 10^{-3}$ respectively.}
 \end{figure}
 
 
@@ -660,8 +635,8 @@ In view of the current interest in financial applications of non-Gaussian depend
 seems a promising line for future research.
 
 %!TEX root = ../main.tex
-\subsection*{Acknowledgements}
-{\small We are grateful to Jakob Schach M\o ller for helpful discussions on orthonormal expansions.}
+% \subsection*{Acknowledgements}
+% {\small We are grateful to Jakob Schach M\o ller for helpful discussions on orthonormal expansions.}
 
 \begin{subappendices}
 \section*{Appendix A: Proof of Proposition \ref{LogNormalOrthogonalPolynomialProposition}}
@@ -742,7 +717,7 @@ The moments of the exponentially-tilted distribution $\SLN_\theta(\bfmu, \bfSigm
 \begin{align*}
 	I_i(\theta) &= \sqrt{|\bfSigma \bfH|} \, v(\bfzero)^{-1} \, \Exp[v(\bfSigma^{\frac12} Z)]
 \end{align*}
-for $Z \sim \Norm(\bfzero, \bfI)$, and
+for $Z \sim \mathsf{Normal}(\bfzero, \bfI)$, and
 \[ v(\bfz) = \exp\{ i \ln(\bfone^\tr \ve^{\bfmu + \bfx^* + \bfz}) - \theta \bfone^\tr \ve^{\bfmu + \bfx^* + \bfz} - (\bfx^*)^\tr \bfSigma^{-1} \bfz \} \,. \]
 \end{proposition}
 \begin{proof}

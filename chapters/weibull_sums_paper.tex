@@ -1,51 +1,7 @@
 %!TEX root = ../main.tex
 \chapter{Tail asymptotics of light-tailed Weibull-like sums}
 
-%                   %date of submission
-% %
-% \FirstAuthor{\mbox{S{\O}ren} Asmussen}%                                  %first author names and surname. Please enclose names with {} or \mbox
-% \FirstAuthorCity{Aarhus}%                              %town being represented by first author
-% \FirstAuthorAffiliation{Aarhus University}%                       %first author affiliation
-% \FirstAuthorAddress{Department of Mathematics, Aarhus University,
-% 					Ny Munkegade, DK-8000 Aarhus C, Denmark}%                           %first author address
-% \FirstAuthorEmail{asmus@imf.au.dk}                              %first author email
-% \FirstAuthorThanks{}                             %information about support grants etc.
-% 
-% \SecondAuthor{\mbox{Enkelejd} Hashorva} %                               %information about second author
-% \SecondAuthorCity{Lausanne} %
-% \SecondAuthorAffiliation{University of Lausanne}%
-% \SecondAuthorAddress{Department of Actuarial Science, University of Lausanne, UNIL-Dorigny, 1015 Lausanne, Switzerland}%
-% \SecondAuthorEmail{Enkelejd.Hashorva@unil.ch}%
-% \SecondAuthorThanks{}%
-% 
-% \ThirdAuthor{\\ \mbox{Patrick J.} Laub}%                                 %information about third author
-% \ThirdAuthorCity{Brisbane}%
-% \ThirdAuthorAffiliation{University of Queensland \& Aarhus University}%
-% \ThirdAuthorAddress{Department of Mathematics, The University of Queensland, Brisbane, Queensland 4072, Australia}%
-% \ThirdAuthorEmail{p.laub@uq.edu.au}
-% \ThirdAuthorThanks{}%
-% 
-% \FourthAuthor{\mbox{Thomas} Taimre}%                                %information about fourth author
-% \FourthAuthorCity{Brisbane}%
-% \FourthAuthorAffiliation{University of Queensland}%
-% \FourthAuthorAddress{Department of Mathematics, The University of Queensland, Brisbane, Queensland 4072, Australia}%
-% \FourthAuthorEmail{t.taimre@uq.edu.au}%
-% \FourthAuthorThanks{}%
-
-
-% \keywords{Gumbel MDA; Laplace transform; Rare event simulation; Sums of of random variables; Weibull distribution}                                     %key words and phrases
-
-\begin{center}
-\textbf{Abstract}
-\end{center}
-\begin{quote}
-We consider sums of $n$ i.i.d.\ random variables with tails close to $\exp\{-x^\beta\}$ for some $\beta>1$. Asymptotics  developed
-by Rootz\'en (1987) and Balkema, Kl\"uppelberg \& Resnick (1993) are discussed from the point of view of tails rather of densities, using a somewhat different angle,  and supplemented with bounds, results on a random number $N$ of terms, and simulation algorithms.
-\end{quote}
-
-
 \section{Introduction}\label{S:Intr}
-% \setcounter{equation}{0}
 
 Let $X,X_1,\ldots,X_n$ be i.i.d.\ with common distribution $F$. A recurrent theme in applied probability is then
 to determine the order of magnitude of the tail $\Prob(S_n>x)$ of their sum $S_n=X_1+\cdots+X_n$.
@@ -464,8 +420,9 @@ it holds trivially that $x^{-1} \, \log(U(x)) \sim x^{-1} \, \log(P(x))$ as $x\t
 
 It is straightforward to extend Prop.~\ref{Prop:24.1a} to the following slightly more general form.
 \begin{proposition}\label{Prop:24.1b} Let $\{X_i\}_{i=1}^n$ be independent random variables with
-density $\beta k^{\gamma_i/\beta} x^{\gamma_i-1}\e^{-kx^\beta}
-/\Gamma(\gamma_i/\beta)$, $x>0$, where $k>0$, $\beta\geq 1$, and $\gamma_i>0$, for $i=1,\dots,n$. Then with $\gamma_0=\sum_{i=1}^n \gamma_i$, it holds that
+density 
+\[ f_{X_i}(x) = \frac{ \beta k^{\gamma_i/\beta} x^{\gamma_i-1}\e^{-kx^\beta} } { \Gamma(\gamma_i/\beta) } \quad \text{for }x>0 \]
+where $k>0$, $\beta\geq 1$, and $\gamma_i>0$, for $i=1,\dots,n$. Then with $\gamma_0=\sum_{i=1}^n \gamma_i$, it holds that
 \[ \frac{\Gamma(\gamma_0/\beta,kx^\beta)}{\Gamma(\gamma_0/\beta)}
 \ \le\ \Prob(X_1 + \cdots + X_n > x)\ \le \
 \frac{\Gamma(\gamma_0/\beta,kx^\beta/n^{\beta-1})}{\Gamma(
