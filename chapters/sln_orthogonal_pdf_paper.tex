@@ -125,7 +125,7 @@ Due to the Parseval relationship $\sum_{k=0}^\infty a_k^2=\|f/f_\nu\|^2$, the co
 The accuracy of the approximation \eqref{orthog_approx}, for a given order of truncation $K$, depends upon how swiftly the coefficients decay; note that the $\L^{2}(\nu)$ loss of the approximation of $f/f_\nu$ is $\sum_{K+1}^{\infty}a_k^2$.
 %The computation of the coefficients of the expansion is widely addressed in this work.
 Note also that the orthogonal polynomials can be specified recursively
-(see Thm.~3.2.1 of \cite{Sz39}) which allows a reduction of the computing time required for the coefficients' evaluation
+(see Thm.~3.2.1 of \cite{Szegoe1939}) which allows a reduction of the computing time required for the coefficients' evaluation
 and makes it feasible to consider rather large $K$.
 %The choice of the reference probability measure (and hence the corresponding orthogonal polynomials) has a great impact on the performance of the polynomial approximations and is discussed next.
 
@@ -135,7 +135,7 @@ A common choice as a reference distribution is the normal $\mathcal{N}(\mu,\sigm
 \begin{equation}\label{eq:NormalDistributionOrthogonalPolynomial}
 Q_{k}(x)=\frac{1}{k!2^{k/2}}H_{k}\left(\frac{x-\mu}{\sigma\sqrt{2}}\right),
 \end{equation}
-where $\left\{H_{k}\right\}_{k\in\NZ}$ are the (physicists') Hermite polynomials, defined in \cite{Sz39} for instance.
+where $\left\{H_{k}\right\}_{k\in\NZ}$ are the (physicists') Hermite polynomials, defined in \cite{Szegoe1939} for instance.
 If $f$ is continuous, a sufficient (and close to necessary) condition for $f/f_\nu\in\L^2(\nu)$ is
 \begin{equation}\label{SA7.11a}
 f(x)\ =\ \Oh\big(\e^{-ax^2}\big)\quad\text{as }x\to\pm\infty\quad\text{with } a>\big(4\sigma^2\big)^{-1}\,.
@@ -180,7 +180,7 @@ Q_{n}(x)=(-1)^{n}\left[\frac{\Gamma(n+r)}{\Gamma(n+1)\Gamma(r)}\right]^{-1/2}L_{
 %\begin{equation} \label{eq:GeneralizedLaguerrePolynomialExpression}
 %L^{r-1}_{n}(x)=\sum_{i=0}^{n}\binom{n+r-1}{n-i}\frac{(-x)^{i}}{i!},\hspace{0.2cm}n\in\mathbb{N},
 %\end{equation}
-where $\{L^{r-1}_{n}\}_{n\in\NZ}$ denote the \emph{generalised Laguerre polynomials}, see \cite{Sz39}; in Mathematica these are accessible via the \texttt{LaguerreL} function.
+where $\{L^{r-1}_{n}\}_{n\in\NZ}$ denote the \emph{generalised Laguerre polynomials}, see \cite{Szegoe1939}; in Mathematica these are accessible via the \texttt{LaguerreL} function.
 %Note, the binomial coefficients above are to be interpreted as the relevant gamma functions for $r \not\in \N$.
 %The polynomials defined in \eqref{OrthogonalPolynomialGammaDistribution} satisfy the recurrence relationship
 %\begin{eqnarray} \label{OrthogonalPolynomialGammaDistributionRecurreceRelationship}
@@ -200,7 +200,7 @@ f(x)\ &=\ \Oh\big(x^\beta\big)\quad\text{as }x\to 0\quad\text{with }\beta>r/2-1\
 % for some $\beta>r/2-1$.
 
 %\begin{remark}
-%The use of gamma distribution and Laguerre polynomials links our approach to a well established technique called the Laguerre method. The expansion is an orthogonal projection onto the basis of Laguerre functions constructed by multiplying Laguerre polynomials and the square root of the exponential distribution with parameter $1$. The method is described in \cite{AbChWh95}, note also that the damping procedure employed when integrability problems arise is quiet similar to considering the exponentially tilted distribution instead of the real one. $\hfill \Diamond$
+%The use of gamma distribution and Laguerre polynomials links our approach to a well established technique called the Laguerre method. The expansion is an orthogonal projection onto the basis of Laguerre functions constructed by multiplying Laguerre polynomials and the square root of the exponential distribution with parameter $1$. The method is described in \cite{Abate1995}, note also that the damping procedure employed when integrability problems arise is quiet similar to considering the exponentially tilted distribution instead of the real one. $\hfill \Diamond$
 %\end{remark}
 
 \subsection{Lognormal reference distribution}\label{SS:LogNNu}
@@ -415,7 +415,7 @@ f_\theta(x) = \frac{\e^{-\theta x}f(x)}{\Laplace(\theta)} \,,\quad \theta \ge 0,
 \end{equation}
 where $\Laplace(\theta)=\Exp[\e^{-\theta S}]$ is the Laplace transform of $S$. Asmussen et al.\ \cite{asmussen2015exponential} investigated the use of $f_\theta(x)$ in approximating the left tail of $S$, and developed asymptotic forms and Monte Carlo estimators of this density.
 \begin{remark}
-The use of gamma distribution and Laguerre polynomials links our approach to a well established technique called the \emph{Laguerre method}. The expansion is an orthogonal projection onto the basis of Laguerre functions constructed by multiplying Laguerre polynomials and the square root of the exponential distribution with parameter $1$. The method is described in \cite{AbChWh95}. Note also that the damping procedure employed when integrability problems arise is quite similar to considering the exponentially tilted distribution instead of the real one. The use of the gamma distribution as reference is applied to actuarial science in \cite{GoLoPo15a,GoLoPo15b}.
+The use of gamma distribution and Laguerre polynomials links our approach to a well established technique called the \emph{Laguerre method}. The expansion is an orthogonal projection onto the basis of Laguerre functions constructed by multiplying Laguerre polynomials and the square root of the exponential distribution with parameter $1$. The method is described in \cite{Abate1995}. Note also that the damping procedure employed when integrability problems arise is quite similar to considering the exponentially tilted distribution instead of the real one. The use of the gamma distribution as reference is applied to actuarial science in \cite{GoLoPo16,GoLoPo15}.
 $\hfill \Diamond$
 \end{remark}
 Using \eqref{SA7.11b}, we immediately obtain the following result which
@@ -489,7 +489,7 @@ $ \widehat{\Exp f_\theta} = \widehat{\Laplace}_1(\theta) / \widehat{\Laplace}_0(
 can be approximated using the Gauss--Hermite quadrature of \eqref{eq:gauss-hermite-quad}; for this we use $H = 64$, 32, 16 for $n=2$, 3, 4 respectively (and CMC for $n > 4$).
 
 With these regimes, parameter selection for the reference distributions is automatic, and the only choice the user must make is in selecting $K$. In these tests we examined various $K$ from 1 to 40, and show the best approximations found.
-The source code for these tests is available online at \cite{Code}, and we invite readers to experiment with the effect of modifying $K$, $\theta$ and the parameters of the reference distributions.
+The source code for these tests is available online at \cite{OrthogoCode}, and we invite readers to experiment with the effect of modifying $K$, $\theta$ and the parameters of the reference distributions.
 
 % TODO (PJL): Mention the $\Laplace^{-1}$ of \cite{La15} approach, but don't actually compute estimates for it. \\
 
@@ -498,7 +498,7 @@ The source code for these tests is available online at \cite{Code}, and we invit
 \subsection{Results}
 
 For each test case with $n \le 4$ we plot the $\widehat{f}(x)$ and $f(x)$ together and then $\widehat{f}(x)-f(x)$ over $x \in (0, 2\Exp[S])$. A table then shows the $\L^2$ errors over $(0, \Exp[S])$. A version of the paper
-with figures in colour is in the online supplement \cite{Code}.
+with figures in colour is in the online supplement \cite{OrthogoCode}.
 \setlength\extrarowheight{3pt}
 
 \begin{figure}[H]
@@ -627,7 +627,7 @@ which is unsurprising given it is an extension introducing one more parameter.
 The estimators, $\widehat{f}_{\Norm}$ and $\widehat{f}_{\,\Gamma}$, based on orthogonal polynomial approximation techniques, are very flexible. They also display at least as good and sometimes better p.d.f.\ estimates over the interval $(0, \Exp[S])$ and their periodic error indicates that they would supply even more accurate c.d.f.\ estimates. One should note, however, that their
 performance relies on the tuning of parameters and that somewhat
 greater effort is involved in their computation (though this is mitigated through the availability
-of the software in \cite{Code}).
+of the software in \cite{OrthogoCode}).
 
 An interesting feature of $\widehat{f}_{\Norm}$ and $\widehat{f}_{\,\Gamma}$ is that
 the Clayton copula example indicates some robustness to the dependence structure used.
@@ -653,7 +653,7 @@ s_{n-1}&s_{n}&\cdots&s_{2n-1}\\
 \end{array}
 \right|,\hspace{0.1cm}n\geq1,
 \end{equation}
-where $\{s_{n}\}_{n\in\NZ}$ denotes the moment sequence of the lognormal distribution and  $D_{n,n}=\left|\left\{s_{k,l}\right\}_{0\leq k,l \leq n}\right|$ is a Hankel determinant. Formula \eqref{eq:OrthogonalPolynomialGeneralExpression} is obtained through orthogonalization of the sequence of linearly independent functions $1,x,x^{2},\ldots$, see \cite[pp.\ 26--27]{Sz39}. The moments of the lognormal distribution are given by $s_{n}=p^{n}q^{n^{2}}$, where $p=\e^{\mu}$ and $q=\e^{\frac{\sigma^{2}}{2}}$. Consider
+where $\{s_{n}\}_{n\in\NZ}$ denotes the moment sequence of the lognormal distribution and  $D_{n,n}=\left|\left\{s_{k,l}\right\}_{0\leq k,l \leq n}\right|$ is a Hankel determinant. Formula \eqref{eq:OrthogonalPolynomialGeneralExpression} is obtained through orthogonalization of the sequence of linearly independent functions $1,x,x^{2},\ldots$, see \cite[pp.\ 26--27]{Szegoe1939}. The moments of the lognormal distribution are given by $s_{n}=p^{n}q^{n^{2}}$, where $p=\e^{\mu}$ and $q=\e^{\frac{\sigma^{2}}{2}}$. Consider
 \begin{equation}\label{eq:Dn1}
 D_{n,n}=\displaystyle
 \left| \begin{array}{cccc}

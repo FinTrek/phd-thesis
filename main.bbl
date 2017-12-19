@@ -1,16 +1,16 @@
 \begin{thebibliography}{100}
 
-\bibitem{AbChWh95}
-J.~Abate, G.L. Choudhury, and W.~Whitt.
+\bibitem{Abate1995}
+Joseph Abate, G.L. Choudhury, and Ward Whitt.
 \newblock On the {L}aguerre method for numerically inverting {L}aplace
   transforms.
 \newblock {\em INFORMS Journal on Computing}, 8(4):413--427, 1995.
 
-\bibitem{AbWh92}
+\bibitem{Abate1992}
 Joseph Abate and Ward Whitt.
 \newblock The {F}ourier-series method for inverting transforms of probability
   distributions.
-\newblock {\em Queueing Systems}, 10(1):5--87, 1992.
+\newblock {\em Queueing Systems}, 10(1):5--87, Jan 1992.
 
 \bibitem{abate2006unified}
 Joseph Abate and Ward Whitt.
@@ -36,7 +36,7 @@ Robert~J Adler.
 \newblock {\em Lecture Notes-Monograph Series}, 12:i--155, 1990.
 
 \bibitem{adler2012efficient}
-Robert~J Adler, Jose~H Blanchet, Jingchen Liu, et~al.
+Robert~J Adler, Jose Blanchet, Jingchen Liu, et~al.
 \newblock Efficient monte carlo for high excursions of {G}aussian random
   fields.
 \newblock {\em The Annals of Applied Probability}, 22(3):1167--1214, 2012.
@@ -48,7 +48,7 @@ John Aitchison and James~AC Brown.
 \newblock Cambridge University Press, 1957.
 
 \bibitem{OnlineAccomp}
-Lars~N{\o}rvang Andersen, Patrick~J.\ Laub, and Leonardo Rojas-Nandayapa.
+Lars~N{\o}rvang Andersen, Patrick~J. Laub, and Leonardo Rojas-Nandayapa.
 \newblock {\em Online accompaniment for ``Rare-event simulation for extrema of
   dependent random variables''}, 2016.
 \newblock Available at \url{https://github.com/Pat-Laub/RareMaxima}.
@@ -66,49 +66,44 @@ T.~W. Anderson.
 \newblock Wiley Series in Probability and Statistics. Wiley-Interscience [John
   Wiley \& Sons], Hoboken, NJ, third edition, 2003.
 
-\bibitem{AsAl10}
-S.~Asmussen and H.~Albrecher.
-\newblock {\em Ruin Probabilities}, volume~14 of {\em Advanced Series on
-  Statistical Science and Applied Probability}.
-\newblock World Scientific, 2010.
-
-\bibitem{AsGoLa16}
-S.~Asmussen, P.-O. Goffard, and P.~J. Laub.
-\newblock Orthonormal polynomial expansion and lognormal sum densities.
-\newblock {\em arXiv preprint arXiv:1601.01763}, 2016.
-
 \bibitem{asmussen2017conditional}
 S{\o}ren Asmussen.
-\newblock Conditional monte carlo for sums, with applications to insurance and
-  finance.
+\newblock Conditional {M}onte {C}arlo for sums, with applications to insurance
+  and finance.
 \newblock {\em Annals of Actuarial Science}, 2017.
 \newblock Submitted, available from {\tt thiele.au.dk/publications}.
 
 \bibitem{asmussen2010ruin}
 S{\o}ren Asmussen and Hansj{\"o}rg Albrecher.
-\newblock {\em Ruin Probabilities}.
-\newblock Advanced Series on Statistical Science \& Applied Probability, 14.
-  World Scientific, 2 edition, 2010.
+\newblock {\em Ruin probabilities}, volume~14 of {\em Advanced Series on
+  Statistical Science and Applied Probability}.
+\newblock World Scientific Publishing Co Pte Ltd, River Edge, NJ, 2 edition,
+  2010.
 \newblock Advanced series on statistical science \& applied probability; v. 14.
 
 \bibitem{asmussen2011efficient}
-S{\o}ren Asmussen, Jos{\'e} Blanchet, Sandeep Juneja, and Leonardo
-  Rojas-Nandayapa.
+S{\o}ren Asmussen, Jose Blanchet, Sandeep Juneja, and Leonardo Rojas-Nandayapa.
 \newblock Efficient simulation of tail probabilities of sums of correlated
   lognormals.
 \newblock {\em Annals of Operations Research}, 189(1):5--23, 2011.
 
 \bibitem{asmussen2007stochastic}
 S{\o}ren Asmussen and Peter~W Glynn.
-\newblock {\em Stochastic Simulation: Algorithms and Analysis}, volume~57.
+\newblock {\em Stochastic Simulation: Algorithms and Analysis}, volume~57 of
+  {\em Stochastic Modelling and Applied Probability series}.
 \newblock Springer, 2007.
 
-\bibitem{Code}
-S{\o}ren Asmussen, Pierre-Olivier Goffard, and Patrick~J.\ Laub.
+\bibitem{OrthogoCode}
+S{\o}ren Asmussen, Pierre-Olivier Goffard, and Patrick~J. Laub.
 \newblock {\em Online accompaniment for ``Orthonormal polynomial expansions and
   lognormal sum densities''}, 2016.
 \newblock Available at
   \url{https://github.com/Pat-Laub/SLNOrthogonalPolynomials}.
+
+\bibitem{asmussen2016orthonormal}
+S{\o}ren Asmussen, Pierre-Olivier Goffard, and Patrick~J. Laub.
+\newblock Orthonormal polynomial expansion and lognormal sum densities.
+\newblock {\em arXiv preprint arXiv:1601.01763}, 2016.
 
 \bibitem{asmussen2014laplace}
 S{\o}ren Asmussen, Jens~Ledet Jensen, and Leonardo Rojas-Nandayapa.
@@ -122,6 +117,11 @@ S{\o}ren Asmussen, Jens~Ledet Jensen, and Leonardo Rojas-Nandayapa.
 \newblock {\em Scandinavian Journal of Statistics}, 2016.
 \newblock To appear, DOI 10.1111/sjos.12203.
 
+\bibitem{Asmussen2006}
+S{\o}ren Asmussen and Dirk~P. Kroese.
+\newblock Improved algorithms for rare event simulation with heavy tails.
+\newblock {\em Adv. in Appl. Probab.}, 38(2):545--558, June 2006.
+
 \bibitem{asmussen2006improved}
 S{\o}ren Asmussen and Dirk~P Kroese.
 \newblock Improved algorithms for rare event simulation with heavy tails.
@@ -132,11 +132,6 @@ S{\o}ren Asmussen and Leonardo Rojas-Nandayapa.
 \newblock Asymptotics of sums of lognormal random variables with {G}aussian
   copula.
 \newblock {\em Statistics \& Probability Letters}, 78(16):2709--2714, 2008.
-
-\bibitem{Asmussen2006}
-SÃ¸ren Asmussen and Dirk~P. Kroese.
-\newblock Improved algorithms for rare event simulation with heavy tails.
-\newblock {\em Adv. in Appl. Probab.}, 38(2):545--558, June 2006.
 
 \bibitem{avdis2007power}
 Efstathios Avdis and Ward Whitt.
@@ -190,13 +185,13 @@ Simeon Berman.
 \newblock CRC Press, 1992.
 
 \bibitem{bingham1989regular}
-Nicholas~H Bingham, Charles~M Goldie, and Jef~L Teugels.
+Nicholas~H Bingham, Charles~M Goldie, and Jozef~L. Teugels.
 \newblock {\em Regular Variation}, volume~27 of {\em Encyclopedia of
   Mathematics and its Applications}.
 \newblock Cambridge university press, Cambridge, 1989.
 
 \bibitem{botev2017normal}
-Z.~I. Botev.
+Zdravko~I. Botev.
 \newblock The normal law under linear restrictions: Simulation and estimation
   via minimax tilting.
 \newblock {\em Journal of the Royal Statistical Society, Series B}, 79:pp.\
@@ -300,16 +295,16 @@ Klaus Duellmann.
 \newblock {\em Regulatory Capital}, volume~IV, pages 1525--1538.
 \newblock Wiley, 2010.
 
-\bibitem{dufresne2008}
-D.~Dufresne.
-\newblock Sums of lognormals.
-\newblock {\em Proceedings of the 43rd Actuarial Science Research Conference},
-  2008.
-
 \bibitem{dufresne2004log}
 Daniel Dufresne.
 \newblock The log-normal approximation in financial and other computations.
 \newblock {\em Advances in Applied Probability}, 36(3):747--773, 2004.
+
+\bibitem{dufresne2008}
+Daniel Dufresne.
+\newblock Sums of lognormals.
+\newblock {\em Proceedings of the 43rd Actuarial Science Research Conference},
+  2008.
 
 \bibitem{DuGaMo09}
 Daniel Dufresne, Jose Garrido, and Manuel Morales.
@@ -328,7 +323,7 @@ Torbj{\o}rn Eltoft, Taesu Kim, and Te-Won Lee.
 \newblock {\em IEEE Signal Processing Letters}, 13(5):300--303, 2006.
 
 \bibitem{EmFr09}
-P.~Embrechts and M.~Frei.
+Paul Embrechts and M.~Frei.
 \newblock {P}anjer recursion versus {F}{F}{T} for compound distribution.
 \newblock {\em Mathematical Methods of Operations Research}, 69:497--508, July
   2009.
@@ -381,12 +376,12 @@ Paul Glasserman.
   Stochastic Modelling and Applied Probability series}.
 \newblock Springer, 2003.
 
-\bibitem{GoLoPo15b}
-Pierre-Olivier Goffard, St{\'e}phane Loisel, and Denys Pommeret.
-\newblock Polynomial approximations for bivariate aggregate claim amount
-  probability distributions.
-\newblock {\em Methodology and Computing in Applied Probability}, pages 1--24,
-  2015.
+\bibitem{StoplossCode}
+Pierre-Olivier Goffard and Patrick~J. Laub.
+\newblock {\em Online accompaniment for ``Two numerical methods to evaluate
+  stop-loss premiums''}, 2017.
+\newblock Available at
+  \url{https://github.com/Pat-Laub/ActuarialOrthogonalPolynomials}.
 
 \bibitem{GoLoPo15}
 Pierre-Olivier Goffard, St{\'e}phane Loisel, and Denys Pommeret.
@@ -395,24 +390,12 @@ Pierre-Olivier Goffard, St{\'e}phane Loisel, and Denys Pommeret.
 \newblock {\em Methodology and Computing in Applied Probability}, pages 1--24,
   2015.
 
-\bibitem{GoLoPo15a}
-Pierre-Olivier Goffard, St{\'e}phane Loisel, and Denys Pommeret.
-\newblock A polynomial expansion to approximate the ultimate ruin probability
-  in the compound poisson ruin model.
-\newblock {\em Journal of Computational and Applied Mathematics}, 296:499--511,
-  2016.
-
 \bibitem{GoLoPo16}
 Pierre-Olivier Goffard, St{\'e}phane Loisel, and Denys Pommeret.
 \newblock A polynomial expansion to approximate the ultimate ruin probability
   in the compound {P}oisson ruin model.
 \newblock {\em Journal of Computational and Applied Mathematics}, 296:499 --
   511, 2016.
-
-\bibitem{WiWo07}
-PhD Gordon E. Willmot~FSA, FCIA and Jae-Kyung~Woo PhD.
-\newblock On the class of erlang mixtures with risk theoretic applications.
-\newblock {\em North American Actuarial Journal}, 11(2):99--115, 2007.
 
 \bibitem{Gubner2006}
 John~A Gubner.
@@ -428,7 +411,7 @@ Archil Gulisashvili and Peter Tankov.
   \url{http://www.e-publications.org/ims/submission/BEJ/user/submissionFile/17119?confirm=ef609013}.
 
 \bibitem{GzNITa13}
-H.~Gzyl, P.L. Novi-Inverardi, and A.~Tagliani.
+Henryk Gzyl, P.L. Novi-Inverardi, and Aldo Tagliani.
 \newblock Determination of the probability of ultimate ruin probability by
   maximum entropy applied to fractional moments.
 \newblock {\em Insurance: Mathematics and Economics}, 53(2):457--463, 2013.
@@ -540,7 +523,7 @@ Dirk~P. Kroese, Thomas Taimre, Zdravko~I. Botev, and Reuven~Y. Rubinstein.
 \newblock Wiley-Interscience, 2007.
 
 \bibitem{La15}
-Patrick~J{.} Laub, S{\o}ren Asmussen, Jens~L{.} Jensen, and Leonardo
+Patrick~J. Laub, S{\o}ren Asmussen, Jens~Ledet Jensen, and Leonardo
   Rojas-Nandayapa.
 \newblock Approximating the {L}aplace transform of the sum of dependent
   lognormals.
@@ -548,7 +531,7 @@ Patrick~J{.} Laub, S{\o}ren Asmussen, Jens~L{.} Jensen, and Leonardo
 \newblock In {F}estschrift for Nick Bingham. To appear.
 
 \bibitem{CodeLaplaceSLN}
-Patrick~J.\ Laub, S{\o}ren Asmussen, Jens~L.\ Jensen, and Leonardo
+Patrick~J. Laub, S{\o}ren Asmussen, Jens~Ledet Jensen, and Leonardo
   Rojas-Nandayapa.
 \newblock {\em Online accompaniment for ``Approximating the Laplace transform
   of the sum of dependent lognormals''}, 2016.
@@ -571,10 +554,23 @@ Anthony~W Ledford, Jonathan~A Tawn, et~al.
 \newblock Concomitant tail behaviour for extremes.
 \newblock {\em Advances in Applied Probability}, 30(1):197--215, 1998.
 
+\bibitem{LeLi10}
+Simon C.~K. Lee and X.~Sheldon Lin.
+\newblock Modeling and evaluating insurance losses via mixtures of {E}rlang
+  distributions.
+\newblock {\em North American Actuarial Journal}, 14(1):107--130, 2010.
+
 \bibitem{LePi11}
 C.~Lef\`evre and P.~Picard.
 \newblock A new look at the homogeneous risk model.
 \newblock {\em Insurance: Mathematics and Economics}, 49(3):512--519, 2011.
+
+\bibitem{LeTrZu17}
+C.~Lef\`evre, J.~Trufin, and P.~Zuyderhoff.
+\newblock Some comparison results for finite-time ruin probabilities in the
+  classical risk model.
+\newblock {\em Insurance: Mathematics and Economics}, 77(Supplement
+  C):143--149, 2017.
 
 \bibitem{limpert2001log}
 Eckhard Limpert, Werner~A Stahel, and Markus Abbt.
@@ -611,13 +607,14 @@ Moshe~Arye Milevsky and Steven~E Posner.
 \newblock {\em Journal of Financial and Quantitative Analysis},
   33(03):409--422, 1998.
 
-\bibitem{MnSa13}
-R.~M. Mnatsakanov and K.~Sarkisian.
-\newblock A note on recovering the distribution from exponential moments.
-\newblock {\em Applied Mathematics and Computation}, 219:8730--8737, 2013.
+\bibitem{Mnatsakanov2013}
+Robert~M. Mnatsakanov and Khachatur Sarkisian.
+\newblock A note on recovering the distributions from exponential moments.
+\newblock {\em Applied Mathematics and Computation}, 219(16):8730 -- 8737,
+  2013.
 
-\bibitem{MnSaHa15}
-R.~M. Mnatsakanov, K.~Sarkisian, and A.~Hakobyan.
+\bibitem{Mnatsakanov2015}
+Robert~M. Mnatsakanov, Khachatur Sarkisian, and A.~Hakobyan.
 \newblock Approximation of the ruin probability using the scaled {L}aplace
   transform inversion.
 \newblock {\em Applied Mathematics and Computation}, 268:717--727, 2015.
@@ -637,11 +634,6 @@ Saralees Nadarajah, Jeffrey Chu, and Xiao Jiang.
 Roger~B Nelsen.
 \newblock {\em An Introduction to Copulas}.
 \newblock Springer Science \& Business Media, 2nd edition, 2006.
-
-\bibitem{nelsen2007introduction}
-Roger~B Nelsen.
-\newblock {\em An Introduction to Copulas}.
-\newblock Springer Science \& Business Media, 2nd edition, 2007.
 
 \bibitem{Ni96}
 Ryuei Nishii.
@@ -665,7 +657,7 @@ D.E Papush, G.~S. Patrik, and F.~Podgaits.
 \newblock {\em CAS Forum (Winter)}, pages 175--186, 2001.
 
 \bibitem{Pr05}
-S.~B. Provost.
+Serge~B. Provost.
 \newblock Moment-based density approximants.
 \newblock {\em Mathematica Journal}, 9(4):727--756, 2005.
 
@@ -676,7 +668,7 @@ Marvin Rausand and Arnljot H{\o}yland.
 \newblock John Wiley \& Sons, 2004.
 
 \bibitem{resnick2002hidden}
-Sidney Resnick.
+Sidney~I Resnick.
 \newblock Hidden regular variation, second order regular variation and
   asymptotic independence.
 \newblock {\em Extremes}, 5(4):303--336, 2002.
@@ -691,6 +683,11 @@ Christian~P Robert.
 \newblock Simulation of truncated normal variables.
 \newblock {\em Statistics and computing}, 5(2):121--125, 1995.
 
+\bibitem{RoScScTe08}
+Tomasz Rolski, Hanspeter Schmidli, Volker Schmidt, and Jozef~L. Teugels.
+\newblock {\em Risk Processes for finance and insurance}, pages 147--204.
+\newblock John Wiley \& Sons, Inc., 2008.
+
 \bibitem{rootzen1987ratio}
 Holger Rootzen.
 \newblock A ratio limit theorem for the tails of weighted sums.
@@ -702,20 +699,27 @@ Jeffrey~S. Rosenthal.
 \newblock World Scientific Publishing Co Inc, 2006.
 
 \bibitem{RubinsteinReuven1992Saod}
-Reuven Rubinstein.
+Reuven~Y. Rubinstein.
 \newblock Sensitivity analysis of discrete event systems by the ``push out''
   method.
 \newblock {\em Annals of Operations Research}, 39(1):229--250, December 1992.
 
 \bibitem{rubinstein2011simulation}
-Reuven~Y Rubinstein and Dirk~P Kroese.
+Reuven~Y. Rubinstein and Dirk~P. Kroese.
 \newblock {\em Simulation and the Monte Carlo method}, volume 707.
 \newblock John Wiley \& Sons, 2011.
 
-\bibitem{ruschendorf2013mathematical}
+\bibitem{Rueschendorf2013}
 Ludger R{\"u}schendorf.
 \newblock {\em Mathematical risk analysis}.
 \newblock Springer, 2013.
+
+\bibitem{PushoutCode}
+R.~Salomone, Patrick~J. Laub, and Zdravko~I. Botev.
+\newblock {\em Source code and supplementary material for ``{M}onte {C}arlo
+  Estimation of the Density of the Sum of Dependent Random Variables''}, 2018.
+\newblock Available at
+  \url{https://github.com/Pat-Laub/PushoutDensityEstimation}.
 
 \bibitem{savage1962mills}
 I~Richard Savage.
@@ -734,12 +738,6 @@ Masaaki Sibuya.
 \newblock {\em Annals of the Institute of Statistical Mathematics},
   11(2):195--210, 1960.
 
-\bibitem{LeLi10}
-MSc Simon C. K. Lee~ASA and ASA X.~Sheldon Lin~PhD.
-\newblock Modeling and evaluating insurance losses via mixtures of erlang
-  distributions.
-\newblock {\em North American Actuarial Journal}, 14(1):107--130, 2010.
-
 \bibitem{stehfest1970algorithm}
 Harald Stehfest.
 \newblock Algorithm 368: Numerical inversion of {L}aplace transforms [d5].
@@ -751,7 +749,7 @@ T.~J. Stieljes.
 \newblock Annales de la Facult\'e des sciences de Toulouse: Math\'ematiques,
   1894.
 
-\bibitem{Sz39}
+\bibitem{Szegoe1939}
 G.~Szeg{\"o}.
 \newblock {\em Orthogonal Polynomials}, volume XXIII.
 \newblock American Mathematical Society Colloquium Publications, 1939.
@@ -780,8 +778,13 @@ S.~Wigert.
 
 \bibitem{WiLi11}
 Gordon~E. Willmot and X.~Sheldon Lin.
-\newblock Risk modelling with the mixed erlang distribution.
+\newblock Risk modelling with the mixed {E}rlang distribution.
 \newblock {\em Applied Stochastic Models in Business and Industry},
   27(1):2--16, 2011.
+
+\bibitem{WiWo07}
+Gordon~E. Willmot and Jae-Kyung Woo.
+\newblock On the class of erlang mixtures with risk theoretic applications.
+\newblock {\em North American Actuarial Journal}, 11(2):99--115, 2007.
 
 \end{thebibliography}

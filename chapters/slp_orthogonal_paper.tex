@@ -191,13 +191,13 @@ From a practical point of view, a reinsurance treaty over the whole portfolio is
 
 Unfortunately, one is seriously constrained when calculating these quantities analytically, as there are only a few cases where either the \pdf or the \svf is available in a simple tractable form. To estimate the VaR or slp we must find fast and accurate approximations for these functions.
 
-We discuss the use of an approximation of the \pdf in terms of the gamma density and its orthonormal polynomials. This method has been studied in the recent works of Goffard et al. \cite{GoLoPo15} and Jin et al. \cite{JiPrRe16}. We emphasize here the computational aspect of this numerical method and detail some practical improvements. An exponential change of measure can be used to recover the \pdf of $S_N$ when the claim sizes are governed by a heavy-tailed distribution. This refinement has been successfully applied in the work of Asmussen et al. \cite{AsGoLa16} to recover the density of the sum of lognormally distributed random variables.
+We discuss the use of an approximation of the \pdf in terms of the gamma density and its orthonormal polynomials. This method has been studied in the recent works of Goffard et al. \cite{GoLoPo15} and Jin et al. \cite{JiPrRe16}. We emphasize here the computational aspect of this numerical method and detail some practical improvements. An exponential change of measure can be used to recover the \pdf of $S_N$ when the claim sizes are governed by a heavy-tailed distribution. This refinement has been successfully applied in the work of Asmussen et al. \cite{asmussen2016orthonormal} to recover the density of the sum of lognormally distributed random variables.
 
-This method is compared to a numerical inversion of the Laplace transform which is known to be efficient to recover the survival function of a compound distribution. The critical step in Laplace inversion is to select which numerical integration technique to apply. We implement a method inspired by the work of Abate and Whitt \cite{AbWh92} which is very similar to the method of Rolski et al. \cite[Chapter 5, Section 5]{RoScScTe99}. An approximation of the slp is then proposed relying on the connection with the survival function of the equilibrium distribution of $S_N$. Note that Dufresne et al. \cite{DuGaMo09} successfully applied a Laplace inversion based technique to the evaluation of slp.
+This method is compared to a numerical inversion of the Laplace transform which is known to be efficient to recover the survival function of a compound distribution. The critical step in Laplace inversion is to select which numerical integration technique to apply. We implement a method inspired by the work of Abate and Whitt \cite{Abate1992} which is very similar to the method of Rolski et al. \cite[Chapter 5, Section 5]{RoScScTe08}. An approximation of the slp is then proposed relying on the connection with the survival function of the equilibrium distribution of $S_N$. Note that Dufresne et al. \cite{DuGaMo09} successfully applied a Laplace inversion based technique to the evaluation of slp.
 
 To close, we want to emphasize the fact that the numerical methods also apply in a risk theory framework. The infinite-time ruin probability in the compound Poisson ruin model is equal to the survival function of a compound geometric distribution. The polynomial approximation and the Laplace inversion methods have been employed, and compared to solve this particular problem in the work of Goffard et al. \cite{GoLoPo16}. We add a more original application by noting that the finite-time non-ruin probability with no initial reserves, again under the classical risk model assumptions, may be rewritten as the slp associated with a compound Poisson distribution where the priority is expressed in terms of the premium rate and the time horizon.
 
-The rest of the paper is organized as follows. Section \ref{sec:Preliminaries} introduces compound distributions, and details their role in risk theory. Section \ref{sec:PolynomialApproximation} presents the approximation method based on orthogonal polynomials. Section \ref{sec:NumericalInversionLaplaceTransform} presents the approximation through the numerical inversion of the Laplace transform. Section \ref{sec:NumericalIllustrations} is devoted to numerical illustrations where the performances of the two methods are compared; the \textsc{Mathematica} code used in this section is available online \cite{Code}.
+The rest of the paper is organized as follows. Section \ref{sec:Preliminaries} introduces compound distributions, and details their role in risk theory. Section \ref{sec:PolynomialApproximation} presents the approximation method based on orthogonal polynomials. Section \ref{sec:NumericalInversionLaplaceTransform} presents the approximation through the numerical inversion of the Laplace transform. Section \ref{sec:NumericalIllustrations} is devoted to numerical illustrations where the performances of the two methods are compared; the \textsc{Mathematica} code used in this section is available online \cite{StoplossCode}.
 
 %!TEX root = Main.tex
 \section{Compound distributions and risk theory}\label{sec:Preliminaries}
@@ -237,7 +237,7 @@ This density is intractable because of the infinite series. Furthermore, the sum
 \begin{equation*}\label{eq:TransformsForCompoundDistribution}
 \LTsub{S_N}(t) = \PGF_N[ \LTsub{U}(t) ] \,,
 \end{equation*}
-where $\PGF_N(t) \defeq \E (t^N)$ is the \emph{probability generating function} of $N$. The simple expression of the Laplace transform has made possible the use of numerical methods involving the moments or transform inversion to recover the distribution of $S_N$. The distribution is typically recovered using Panjer's algorithm or a Fast Fourier Transform algorithm based on the inversion of the discrete Fourier transform; these two methods are compared in the work of Embrechts and Frei \cite{EmFr09}. Our orthogonal polynomial method involves the standard integer moment sequence for $S_N$, in contrast to more exotic types of moments used by some recent methods. Gzyl and Tagliani \cite{GzTa12} uses the fractional moments within a max-entropic based method, while Mnatsakanov and Sarkisian \cite{MnSa13} performs an inversion of the scaled Laplace transform via the exponential moments. In addition to proposing an approximation for the survival function of $S_N$, we provide an efficient way to compute the usual slp \eqref{eq:DefUsualStopLossPremium} for reinsurance applications.
+where $\PGF_N(t) \defeq \E (t^N)$ is the \emph{probability generating function} of $N$. The simple expression of the Laplace transform has made possible the use of numerical methods involving the moments or transform inversion to recover the distribution of $S_N$. The distribution is typically recovered using Panjer's algorithm or a Fast Fourier Transform algorithm based on the inversion of the discrete Fourier transform; these two methods are compared in the work of Embrechts and Frei \cite{EmFr09}. Our orthogonal polynomial method involves the standard integer moment sequence for $S_N$, in contrast to more exotic types of moments used by some recent methods. Gzyl and Tagliani \cite{GzTa12} uses the fractional moments within a max-entropic based method, while Mnatsakanov and Sarkisian \cite{Mnatsakanov2013} performs an inversion of the scaled Laplace transform via the exponential moments. In addition to proposing an approximation for the survival function of $S_N$, we provide an efficient way to compute the usual slp \eqref{eq:DefUsualStopLossPremium} for reinsurance applications.
 %and the limited slp
 %\begin{equation}\label{eq:UsualStopLossPremium}
 %\widetilde{\Pi}_{c,d}(S_N)=\E\left\{\min[(S_N-c)_{+},d]\right\}.
@@ -269,7 +269,7 @@ specifically,
 \psi(u)=\P\Big( \sup_{t \geq 0}\,S(t) \geq u \Big).
 \end{equation*}
 
-For a general background on risk theory and the evaluation of ruin probabilities, we refer the reader to the monograph of Asmussen and Albrecher \cite{AsAl10}.
+For a general background on risk theory and the evaluation of ruin probabilities, we refer the reader to the monograph of Asmussen and Albrecher \cite{asmussen2010ruin}.
 
 The first connection between compound distributions and ruin probabilities is the following.
 If the net benefit condition is satisfied, \ie if the premium rate exceeds the average cost of aggregated claims per unit of time, then the infinite-time ruin probability is given by the survival function of a geometric compound distribution. More precisely,
@@ -277,7 +277,7 @@ If the net benefit condition is satisfied, \ie if the premium rate exceeds the a
 \psi(u) = \P\left(S_N \defeq \sum_{k=1}^{N}U^\ast_{k}>u\right)
 = (1 - \rho) \sum_{n=1}^\infty \rho^n \overline{F}_{U^\ast}^{\ast n}(u),
 \end{equation*}
-with $N \sim \mathsf{Geom}_0(\rho)$, $\rho = \lambda\E(U)/c<1$, and with \iid $U^\ast_{k}$ with \pdf $f_{U^\ast}(x)= \overline{F}_U(x) / \E(U)$. This result is known as the Pollaczeck--Khinchine formula, see for instance Asmussen and Albrecher \cite[Chapter IV, (2.2)]{AsAl10}. Thus it is possible to evaluate the infinite-time ruin probability via Panjer's algorithm. If we are able to determine the Laplace transform of $V$ then we can also apply the polynomial method of Goffard et al. \cite{GoLoPo15}, the fractional moment based method of Gzyl et al. \cite{GzNITa13}, and the exponential moments based method of Mnatsakanov et al. \cite{MnSaHa15}.
+with $N \sim \mathsf{Geom}_0(\rho)$, $\rho = \lambda\E(U)/c<1$, and with \iid $U^\ast_{k}$ with \pdf $f_{U^\ast}(x)= \overline{F}_U(x) / \E(U)$. This result is known as the Pollaczeck--Khinchine formula, see for instance Asmussen and Albrecher \cite[Chapter IV, (2.2)]{asmussen2010ruin}. Thus it is possible to evaluate the infinite-time ruin probability via Panjer's algorithm. If we are able to determine the Laplace transform of $V$ then we can also apply the polynomial method of Goffard et al. \cite{GoLoPo15}, the fractional moment based method of Gzyl et al. \cite{GzNITa13}, and the exponential moments based method of Mnatsakanov et al. \cite{Mnatsakanov2015}.
 
 The second connection links the finite-time ruin probability with no initial reserves to the slp associated with a compound distribution.
 If $N(t) \sim \mathsf{Poisson}(\lambda t)$ (\ie claims arrive as a homogeneous Poisson process) then the finite-time ruin probability is given by
@@ -341,7 +341,7 @@ This family of distributions is convenient as the associated orthogonal polynomi
 
 \subsection{Approximating densities of positive random variables} \label{ssec:PolynomialApproxPositive}
 
-To approximate the \pdf for positive $X$, a natural candidate for the reference density is the gamma density. It has been proven to be efficient in practice, see the work of Goffard et al. \cite{GoLoPo15,GoLoPo16}, and Jin et al. \cite{JiPrRe16}. The work of Papush et al. \cite{PaPaPo01} showed that among the gamma, normal and lognormal distribution, the gamma distribution seems to be better suited to model certain aggregate losses. The lognormal distribution is a problematic choice. Even though the orthogonal polynomials are available in a closed form see Asmussen et al. \cite{AsGoLa16}, they do not provide a complete orthogonal system of the $\Lp^2$ space. The case of the inverse Gaussian as basis received a treatment in the work of Nishii \cite{Ni96}, where it is shown that the only way to get a complete system of polynomials is by using the Gram--Schmidt orthogonalization procedure. Differentiating the density (as it is done in the case of NEF-QVF) does not lead to an orthogonal polynomial system, and starting from the Laguerre polynomials leads to a system of orthogonal functions which is not complete. A solution might be to exploit the bi-orthogonality property pointed out in the work of Hassairi and Zarai \cite{HaZa04}. To close this review of reference densities, we mention the work of Nadarajah et al. \cite{NaChJi16} where Weibull and exponentiated exponential distributions are considered as reference density.
+To approximate the \pdf for positive $X$, a natural candidate for the reference density is the gamma density. It has been proven to be efficient in practice, see the work of Goffard et al. \cite{GoLoPo15,GoLoPo16}, and Jin et al. \cite{JiPrRe16}. The work of Papush et al. \cite{PaPaPo01} showed that among the gamma, normal and lognormal distribution, the gamma distribution seems to be better suited to model certain aggregate losses. The lognormal distribution is a problematic choice. Even though the orthogonal polynomials are available in a closed form see Asmussen et al. \cite{asmussen2016orthonormal}, they do not provide a complete orthogonal system of the $\Lp^2$ space. The case of the inverse Gaussian as basis received a treatment in the work of Nishii \cite{Ni96}, where it is shown that the only way to get a complete system of polynomials is by using the Gram--Schmidt orthogonalization procedure. Differentiating the density (as it is done in the case of NEF-QVF) does not lead to an orthogonal polynomial system, and starting from the Laguerre polynomials leads to a system of orthogonal functions which is not complete. A solution might be to exploit the bi-orthogonality property pointed out in the work of Hassairi and Zarai \cite{HaZa04}. To close this review of reference densities, we mention the work of Nadarajah et al. \cite{NaChJi16} where Weibull and exponentiated exponential distributions are considered as reference density.
 
 The $\mathsf{Gamma}(r,m)$ distribution, where $r$ is the shape parameter and $m$ is the scale parameter, has a \pdf
 \begin{equation*}\label{eq:PDFGamma}
@@ -360,7 +360,7 @@ L_{n}^{r-1}(x)
 =\sum_{i=0}^{n} \binom{n + r - 1}{n - i} \frac{(-x)^i}{i!}
 =\sum_{i=0}^{n} \frac{\Gamma(n+r)}{\Gamma(n-i+1)\Gamma(r+i)}\frac{(-x)^i}{i!}, \text{ }n\geq 0,
 \end{equation*}
-\cf the classical book by Szeg{\"o} \cite{Sz39}. %The following lemma is a consequence of a rearrangement in the polynomial representation \eqref{eq:PolynomialRepresentation}.
+\cf the classical book by Szeg{\"o} \cite{Szegoe1939}. %The following lemma is a consequence of a rearrangement in the polynomial representation \eqref{eq:PolynomialRepresentation}.
 
 \begin{lemma}\label{Lemma:PseudoMixtureOfGammas}
 If $\nu$ is $\mathsf{Gamma}(r,m)$, the polynomial expansion \eqref{eq:PolynomialRepresentation}  may be rewritten as
@@ -527,7 +527,7 @@ Calculating the $q_i$'s and $p_i$'s, topic covered in Section~\ref{sssec:Computi
 = \LT{ f_{X}(x) }(t+\theta).
 \end{align*}
 The method described above is the same (up to some constants) as approximating the exponentially tilted distribution.
-This idea has been used in Asmussen et al. \cite{AsGoLa16}.
+This idea has been used in Asmussen et al. \cite{asmussen2016orthonormal}.
 It is easily seen that taking $m >\theta^{-1}/2$ implies that $(\e^{-\theta x} f_{X}(x))/f_{\nu}(x)\in\Lp^2(\nu)$.
 
 \subsection{Approximating densities of positive compound distributions}
@@ -655,7 +655,7 @@ q_k&=\frac{1}{c_k}\frac{1}{k!}\frac{\dd^{k}}{\dd z^{k}}\mathcal{Q}(z)\Big\rvert_
 
 
 \section{Laplace transform inversion approximations}\label{sec:NumericalInversionLaplaceTransform}
-We present in this section a method inspired from the work of Abate and Whitt \cite{AbWh92} to recover the survival function of a compound distribution from the knowledge of its Laplace transform. The methodology is further applied to the computation of slp's by taking advantage of the connection between the slp of $S_N$ and the survival function of the equilibrium distribution of $S_N$. We begin by stating some useful transform relations, then discuss the general Laplace inversion framework that we will use, and will apply the method to the compound distribution problem.
+We present in this section a method inspired from the work of Abate and Whitt \cite{Abate1992} to recover the survival function of a compound distribution from the knowledge of its Laplace transform. The methodology is further applied to the computation of slp's by taking advantage of the connection between the slp of $S_N$ and the survival function of the equilibrium distribution of $S_N$. We begin by stating some useful transform relations, then discuss the general Laplace inversion framework that we will use, and will apply the method to the compound distribution problem.
 
 \subsection{Numerical Laplace inversion}
 
@@ -666,7 +666,7 @@ To define the Bromwich integral, first select a $\gamma > 0$ (we discuss this ch
 f(x)=\frac{2\e^{\gamma x}}{\pi}\int_{0}^{\infty}\cos(xs)\Re\left[\LT{f}(\gamma + is)\right]\dd s.
 \]
 
-We apply a basic numerical integration system to this integral by first \emph{discretizing} the integral and then \emph{truncating} the resulting infinite sum. In both steps, we follow the steps of Abate and Whitt \cite{AbWh92}.
+We apply a basic numerical integration system to this integral by first \emph{discretizing} the integral and then \emph{truncating} the resulting infinite sum. In both steps, we follow the steps of Abate and Whitt \cite{Abate1992}.
 
 \subsubsection{Discretization} \label{Sub:Discretization}
 
@@ -686,7 +686,7 @@ since  $\Re\left[\LT{f}(\gamma)\right] = \LT{f}(\gamma)$. We simplify this by ch
 f_{\text{disc}}(x) = \frac{\e^{a/2}}{2x}\LT{f} \left(\frac{a}{2 x}\right) + \frac{\e^{a/2}}{x} \sum_{k=1}^\infty (-1)^{k} \Re\left[\LT{f}\left(\frac{a+ i \cdot 2\pi k}{2 x}\right)\right] \,.
 \end{equation}
 
-From Theorem 5.5.1 of \cite{RoScScTe99} we have that the \emph{discretization error} (also called \emph{sampling error}) is simply
+From Theorem 5.5.1 of \cite{RoScScTe08} we have that the \emph{discretization error} (also called \emph{sampling error}) is simply
 \begin{equation} \label{DiscretizationError}
     f_{\text{disc}}(x) - f(x) = \sum_{k=1}^\infty \e^{-a k} f\big( (2k+1) x \big) \,.
 \end{equation}
@@ -761,7 +761,7 @@ For each test case we compare the orthogonal polynomial approximation, the Lapla
 % In most cases, the true value of the quantity being estimated is unknown so we must estimate the absolute and relative errors. Thus, we plot the absolute error and relative error of the estimators with respect to the median of their estimates.
 
 The parameters for the polynomial approximations has been discussed in Section \ref{ssec:ChoosingmAndr}, the calibration is depending on the assumptions over the claim frequency and claim sizes distribution.
-The parameters for the Laplace inversion technique are set to $M_1=11$, $M_2=15$ and $a=18.5$ following the example of Rolski et al. \cite[Chapter 5, Section 5]{RoScScTe99}; note, this choice of $a$ implies that the discretization error is less than $10^{-8}$, as derived from \eqref{BoundedDiscretizationError}.
+The parameters for the Laplace inversion technique are set to $M_1=11$, $M_2=15$ and $a=18.5$ following the example of Rolski et al. \cite[Chapter 5, Section 5]{RoScScTe08}; note, this choice of $a$ implies that the discretization error is less than $10^{-8}$, as derived from \eqref{BoundedDiscretizationError}.
 
 % Each choice of $(f_N,f_U)$ in the tests below has been chosen so $\E[S_N]=\E[N]\E[U]=1$. This does not lose any generality; say the $(f_N,f_U)$ pair of interest has mean $\E[S_N]=\mu\not=1$, then we can approximate the $(f_N,f_V)$ pair which is the normalized version 
 % \[ S_N^* = \frac{S_N}{\mu} = \sum_{i=1}^N \frac{U_i}{\mu} = \sum_{i=1}^N V_i \]
@@ -773,7 +773,7 @@ In each plot, the first subplot shows the estimates each estimator produces, and
 &:= \widehat{f}_i(x)- \text{Median}\big\{ \widehat{f}_1(x),\dots,\widehat{f}_I(x) \big\} \\
 &\approx \widehat{f}_i(x)-f(x) =: \text{AbsoluteError}( \widehat{f}_i, x ) \,.
 \end{align*}
-When the different estimators cross each other, the median obtains an unrealistically jagged character. We therefore use as reference a slightly smoothed version of the median, achieved in Mathematica using \texttt{GaussianFilter[Medians, 2]}. As noted earlier, all of the code used is available online \cite{Code}.
+When the different estimators cross each other, the median obtains an unrealistically jagged character. We therefore use as reference a slightly smoothed version of the median, achieved in Mathematica using \texttt{GaussianFilter[Medians, 2]}. As noted earlier, all of the code used is available online \cite{StoplossCode}.
 
 
 \subsection{Survival function and stop-loss premium computations}
@@ -894,7 +894,7 @@ The survival function for $U$, given $x \ge 0$, is
 % \end{test}
 
 
-% The finite-time ruin probability is known under a closed form, the expression is given in Albrecher and Asmussen \cite[Chapter 5, Proposition 1.3]{AsAl10}.
+% The finite-time ruin probability is known under a closed form, the expression is given in Albrecher and Asmussen \cite[Chapter 5, Proposition 1.3]{asmussen2010ruin}.
 In this paper we have used common random numbers for all crude Monte Carlo estimators to smooth their estimates. However in the case of ruin probabilities, the distribution from which we are simulating $\mathrm{Poisson}(\lambda t)$ is changing for each point, so the technique cannot be applied in the traditional way. Thus the crude Monte Carlo estimates in following plots are not as smooth as above. 
 
 \begin{test}
@@ -935,7 +935,7 @@ Both of the methods are easy to implement and beat a simple truncation or a crud
 % Pierre-Olivier Goffard was partially funded by a Center of Actuarial Excellence educational grant given to the University of California, Santa Barbara, by the Society of Actuaries. Patrick J.\ Laub was supported by an Australian Government Research Training Program Scholarship and an Australian Research Council Centre of Excellence for Mathematical \& Statistical Frontiers Scholarship.
 %Hereafter a list of examples of combinations of $N$ and $U$ treated in the literature
 %\begin{itemize}
-%\item In Mnatsakanov and Sarkisian \cite{MnSa13}
+%\item In Mnatsakanov and Sarkisian \cite{Mnatsakanov2013}
 %\begin{itemize}
 %\item $N\sim\text{Pois}(\lambda)$, $\lambda=2,3$ and $U\sim\mathsf{Exp}(5)$ (parametrized by the mean)
 %\[
@@ -1130,7 +1130,7 @@ Both of the methods are easy to implement and beat a simple truncation or a crud
 
 % Unfortunately, one is seriously constrained when calculating these quantities analytically, as there are only a few cases where either the \pdf or the \svf is available in a simple tractable form. To estimate the VaR or stop-loss premium we must find fast and accurate approximations for these functions.
 
-% We discuss the use of an approximation of the \pdf in terms of the gamma density and its orthonormal polynomials. This method has been studied in the recent works of Goffard et al. \cite{GoLoPo15} and Jin et al. \cite{JiPrRe16}. We emphasize here the computational aspect of this numerical method and detail some practical improvements. An exponential change of measure can be used to recover the \pdf of $S_N$ when the claim sizes are governed by a heavy-tailed distribution. This refinement has been successfully applied in the work of Asmussen et al. \cite{AsGoLa16} to recover the density of the sum of lognormally distributed random variables.
+% We discuss the use of an approximation of the \pdf in terms of the gamma density and its orthonormal polynomials. This method has been studied in the recent works of Goffard et al. \cite{GoLoPo15} and Jin et al. \cite{JiPrRe16}. We emphasize here the computational aspect of this numerical method and detail some practical improvements. An exponential change of measure can be used to recover the \pdf of $S_N$ when the claim sizes are governed by a heavy-tailed distribution. This refinement has been successfully applied in the work of Asmussen et al. \cite{asmussen2016orthonormal} to recover the density of the sum of lognormally distributed random variables.
 
 % This method is compared to a numerical inversion of the Laplace transform which is known to be efficient to recover the survival function of a compound distribution. The critical step in Laplace inversion is to select which numerical integration technique to apply. We implement a method inspired from the work of Abate and Whitt \cite{Abate1992}, very close to what is proposed in Rolski et al. \cite[Chapter 5, Section 5]{RoScScTe08}. An approximation of the stop-loss premium is then proposed relying on the connection with the survival function of the equilibrium distribution of $S_N$. Note that Dufresne et al. \cite{DuGaMo09} successfully applied a Laplace inversion based technique to the evaluation of stop-loss premium.
 
@@ -1170,7 +1170,7 @@ Both of the methods are easy to implement and beat a simple truncation or a crud
 
 % This density is intractable because of the infinite series. Furthermore, the summands are defined by repeated convolution of $f_{U}$ with itself which is not always straightforward to evaluate. Apart from Panjer's algorithm, the method presented in this work relies on the knowledge of the Laplace transform of $S_N$, which simply involves the Laplace transform of $U$ and the probability generating function of $N$.
 
-% The simple expression of the Laplace transform has made possible the use of numerical methods involving the moments or transform inversion to recover the distribution of $S_N$. The historical competitor of Panjer's algorithm is a Fast Fourier Transform (\fft) algorithm based on the inversion of the discrete Fourier transform. The two methods are compared in the work of Embrechts and Frei \cite{EmFr09}. The polynomial method involves the standard integer moment sequence for $S_N$, in contrast to more exotic types of moments used by some recent methods. Gzyl and Tagliani \cite{GzTa12} uses the fractional moments within a max-entropic based method, while Mnatsakanov and Sarkisian \cite{MnSa13} performs an inversion of the scaled Laplace transform via the exponential moments. In addition to proposing an approximation for the survival function of $S_N$, we provide an efficient way to compute the usual stop-loss premium
+% The simple expression of the Laplace transform has made possible the use of numerical methods involving the moments or transform inversion to recover the distribution of $S_N$. The historical competitor of Panjer's algorithm is a Fast Fourier Transform (\fft) algorithm based on the inversion of the discrete Fourier transform. The two methods are compared in the work of Embrechts and Frei \cite{EmFr09}. The polynomial method involves the standard integer moment sequence for $S_N$, in contrast to more exotic types of moments used by some recent methods. Gzyl and Tagliani \cite{GzTa12} uses the fractional moments within a max-entropic based method, while Mnatsakanov and Sarkisian \cite{Mnatsakanov2013} performs an inversion of the scaled Laplace transform via the exponential moments. In addition to proposing an approximation for the survival function of $S_N$, we provide an efficient way to compute the usual stop-loss premium
 % \begin{equation}\label{eq:UsualStopLossPremium}
 % \Pi_a(S_N)=\E\left[(S_N-a)_{+}\right],
 % \end{equation}
@@ -1200,7 +1200,7 @@ Both of the methods are easy to implement and beat a simple truncation or a crud
 % \psi(u)=\P\Big( \sup_{t \geq 0}\,S(t) \geq u \Big).
 % \end{equation}
 
-% For a general background on risk theory and the evaluation of ruin probabilities, we refer the reader to the monograph of Asmussen and Albrecher \cite{AsAl10}.
+% For a general background on risk theory and the evaluation of ruin probabilities, we refer the reader to the monograph of Asmussen and Albrecher \cite{asmussen2010ruin}.
 
 % The first connection between compound distributions and ruin probabilities is the following.
 % If the net benefit condition is satisfied, \ie if the premium rate exceeds the average cost of aggregated claims per unit of time, then the infinite-time ruin probability is given by the survival function of a geometric compound distribution. More precisely,
@@ -1208,10 +1208,10 @@ Both of the methods are easy to implement and beat a simple truncation or a crud
 % \psi(u) = \P\left(S_N \defeq \sum_{k=1}^{N}V_{k}>u\right)
 % = (1 - \rho) \sum_{n=1}^\infty \rho^n \overline{F}_V^{\ast n}(u),
 % \end{equation}
-% with $N \sim \mathsf{Geom}_0(\rho)$, $\rho = \lambda\E(U)/c$, and with \iid $V_{k}$ with \pdf $f_{V}(x)= \overline{F}_U(x) / \E(U)$. This result is known as the Pollaczeck--Khinchine formula, see for instance Asmussen and Albrecher \cite[Chapter IV, (2.2)]{AsAl10}. Thus it is possible to evaluate the infinite-time ruin probability via Panjer's algorithm. If we are able to determine the Laplace transform of $V$ then we can also apply the polynomial method of Goffard et al. \cite{GoLoPo15}, the fractional moment based method of Gzyl et al. \cite{GzNITa13}, and the exponential moments based method of Mnatsakanov et al. \cite{MnSaHa15}.
+% with $N \sim \mathsf{Geom}_0(\rho)$, $\rho = \lambda\E(U)/c$, and with \iid $V_{k}$ with \pdf $f_{V}(x)= \overline{F}_U(x) / \E(U)$. This result is known as the Pollaczeck--Khinchine formula, see for instance Asmussen and Albrecher \cite[Chapter IV, (2.2)]{asmussen2010ruin}. Thus it is possible to evaluate the infinite-time ruin probability via Panjer's algorithm. If we are able to determine the Laplace transform of $V$ then we can also apply the polynomial method of Goffard et al. \cite{GoLoPo15}, the fractional moment based method of Gzyl et al. \cite{GzNITa13}, and the exponential moments based method of Mnatsakanov et al. \cite{Mnatsakanov2015}.
 
 % The second connection links the finite-time ruin probability with no initial reserves to the stop-loss premium associated with a compound distribution. 
-% For now, consider $N(t) \sim \mathsf{Poisson}(\lambda t)$ (\ie the claims arrive as a homogeneous Poisson process), and so Cram\'{e}r's formula (given for $c=1$ in \cite[Chapter V Theorem 2.1]{AsAl10}, and for $c>0$ in \cite[Theorem 2]{michna2010ruin}) tells us that
+% For now, consider $N(t) \sim \mathsf{Poisson}(\lambda t)$ (\ie the claims arrive as a homogeneous Poisson process), and so Cram\'{e}r's formula (given for $c=1$ in \cite[Chapter V Theorem 2.1]{asmussen2010ruin}, and for $c>0$ in \cite[Theorem 2]{michna2010ruin}) tells us that
 % \begin{align} \label{CramersFormula}
 % \psi(0, T)
 % &= 1 - \frac{1}{cT} \int_0^{cT} \P \Big( \sum_{i=1}^{N(T)} U_i \le x \Big) \dd x \,.
@@ -1265,7 +1265,7 @@ Both of the methods are easy to implement and beat a simple truncation or a crud
 
 % \subsection{Approximating densities of positive random variables} \label{ssec:PolynomialApproxPositive}
 
-% To approximate the \pdf for positive $X$, a natural candidate for the reference density is the gamma density. It has been proven to be efficient in practice, see the work of Goffard et al. \cite{GoLoPo15,GoLoPo16}, and Jin et al. \cite{JiPrRe16}. The work of Papush et al. \cite{PaPaPo01} showed that among the gamma, normal and lognormal distribution, the gamma distribution seems to be better suited to model certain aggregate losses. The lognormal distribution is a problematic choice. Even though the orthogonal polynomials are available in a closed form see Asmussen et al. \cite{AsGoLa16}, they do not provide a complete orthogonal system of the $\Lp^2$ space. The case of the inverse Gaussian as basis received a treatment in the work of Nishii \cite{Ni96}, where it is shown that the only way to get a complete system of polynomials is by using the Gram--Schmidt orthogonalization procedure. Differentiating the density (as it is done in the case of NEF-QVF) does not lead to an orthogonal polynomial system, and starting from the Laguerre polynomials leads to a system of orthogonal functions which is not complete. A solution might be to exploit the bi-orthogonality property pointed out in the work of Hassairi and Zarai \cite{HaZa04}. To close this review of reference densities, we mention the work of Nadarajah et al. \cite{NaChJi16} where Weibull and exponentiated exponential distributions are considered as reference density.
+% To approximate the \pdf for positive $X$, a natural candidate for the reference density is the gamma density. It has been proven to be efficient in practice, see the work of Goffard et al. \cite{GoLoPo15,GoLoPo16}, and Jin et al. \cite{JiPrRe16}. The work of Papush et al. \cite{PaPaPo01} showed that among the gamma, normal and lognormal distribution, the gamma distribution seems to be better suited to model certain aggregate losses. The lognormal distribution is a problematic choice. Even though the orthogonal polynomials are available in a closed form see Asmussen et al. \cite{asmussen2016orthonormal}, they do not provide a complete orthogonal system of the $\Lp^2$ space. The case of the inverse Gaussian as basis received a treatment in the work of Nishii \cite{Ni96}, where it is shown that the only way to get a complete system of polynomials is by using the Gram--Schmidt orthogonalization procedure. Differentiating the density (as it is done in the case of NEF-QVF) does not lead to an orthogonal polynomial system, and starting from the Laguerre polynomials leads to a system of orthogonal functions which is not complete. A solution might be to exploit the bi-orthogonality property pointed out in the work of Hassairi and Zarai \cite{HaZa04}. To close this review of reference densities, we mention the work of Nadarajah et al. \cite{NaChJi16} where Weibull and exponentiated exponential distributions are considered as reference density.
 
 % The $\mathsf{Gamma}(r,m)$ distribution, where $r$ is the shape parameter and $m$ is the scale parameter, has a \pdf
 % \begin{equation}\label{eq:PDFGamma}
@@ -1284,7 +1284,7 @@ Both of the methods are easy to implement and beat a simple truncation or a crud
 % =\sum_{i=0}^{n} \binom{n + r - 1}{n - i} \frac{(-x)^i}{i!}
 % =\sum_{i=0}^{n} \frac{\Gamma(n+r)}{\Gamma(n-i+1)\Gamma(r+i)}\frac{(-x)^i}{i!}, \text{ }n\geq 0,
 % \end{equation}
-% cf. the classical book by Szeg{\"o} \cite{Sz39}. 
+% cf. the classical book by Szeg{\"o} \cite{Szegoe1939}. 
 
 % \begin{Lemma}\label{Lemma:PseudoMixtureOfGammas}
 % If $\nu$ is $\mathsf{Gamma}(r,m)$, the polynomial expansion \eqref{eq:PolynomialRepresentation}  may be rewritten as
@@ -1384,7 +1384,7 @@ Both of the methods are easy to implement and beat a simple truncation or a crud
 % \end{align*}
 
 % The method described above is the same (up to some constants) as approximating the exponentially tilted distribution.
-% This idea has been used in Asmussen et al. \cite{AsGoLa16}. 
+% This idea has been used in Asmussen et al. \cite{asmussen2016orthonormal}. 
 % It is easily seen that taking $1/\theta >  m >1/2\theta$ implies that $(\e^{-\theta x} f_{S_N}^+(x))/f_{\nu}(x)\in\Lp^2(\nu)$.
 
 % \begin{color}{brown}
@@ -1770,7 +1770,7 @@ Both of the methods are easy to implement and beat a simple truncation or a crud
 % $\lambda=2$, $U\sim\mathsf{Exp}(4)$ and $c=7.2$.
 % \end{Test}
 
-% The finite-time ruin probability is known under a closed form, the expression is given in Albrecher and Asmussen \cite[Chapter 5, Proposition 1.3]{AsAl10}.
+% The finite-time ruin probability is known under a closed form, the expression is given in Albrecher and Asmussen \cite[Chapter 5, Proposition 1.3]{asmussen2010ruin}.
 % \begin{Test}
 % $\lambda=2$ and $U\sim\mathsf{Gamma}(2,2)$ and $c=7.2$.
 % \end{Test}

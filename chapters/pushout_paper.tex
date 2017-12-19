@@ -3,7 +3,7 @@
 
 \section{Introduction}
 
-Sums of random variables are fundamental to modeling stochastic phenomena. In finance, risk managers need to predict the distribution of a portfolio's future value which is the sum of multiple assets; similarly, the distribution of the sum of an individual asset's returns over time is needed for valuation of some exotic (e.g.\ Asian) options \cite{mcneil2015quantitative,ruschendorf2013mathematical}. In insurance, the probability of ruin (i.e.\ bankruptcy) is determined by the distribution of aggregate losses (sums of individual claims of random size) \cite{klugman2012loss,asmussen2010ruin}. Lastly, wireless system engineers model total interference in a wireless communications network as the sum of all interfering signals (often lognormally distributed) \cite{fischione2007approximation}. 
+Sums of random variables are fundamental to modeling stochastic phenomena. In finance, risk managers need to predict the distribution of a portfolio's future value which is the sum of multiple assets; similarly, the distribution of the sum of an individual asset's returns over time is needed for valuation of some exotic (e.g.\ Asian) options \cite{mcneil2015quantitative,Rueschendorf2013}. In insurance, the probability of ruin (i.e.\ bankruptcy) is determined by the distribution of aggregate losses (sums of individual claims of random size) \cite{klugman2012loss,asmussen2010ruin}. Lastly, wireless system engineers model total interference in a wireless communications network as the sum of all interfering signals (often lognormally distributed) \cite{fischione2007approximation}. 
 
 In this article, we consider estimating the probability density function (pdf) of sums of random variables (rvs). A major motivation for obtaining accurate pdf estimates of a rv is to produce confidence intervals for quantiles. For example, the US Nuclear Regulatory Commission specifies regulations in terms of the ``95/95'' rule, i.e.\ the upper 95\% confidence interval for a 95\% quantile.  The most common approach  \cite{asmussen2017conditional}  is to first  estimate the cumulative distribution function (cdf) via
 \[ \widehat{F}_X(x) = \frac1R \sum_{r=1}^R \ind{ X^{[r]} \le x} \quad \text{for } X^{[1]}, \dots, X^{[R]} \iidDist F_X \,, \]
@@ -22,7 +22,7 @@ The purpose of this work is to  present a novel Monte Carlo estimator of the pdf
 we show that the estimator often enjoys smaller variance than its competitors.
 Second,  the estimator only requires  evaluation of   the joint pdf up 
 to an (typically unknown) normalizing constant, a situation similar to the application of Markov chain Monte Carlo. As a result of this, the estimator is useful in estimating posterior marginal densities in Bayesian inference (Section~\ref{ssec:Marginals}).  Finally, when the rvs have a copula dependence, the proposed estimator is simpler to implement than its Conditional Monte Carlo counterpart (Section~\ref{ssec:CondMC}). 
-Note that the source code used in this paper is available online \cite{Code}.
+Note that the source code used in this paper is available online \cite{PushoutCode}.
 
 
 
@@ -265,7 +265,7 @@ due to the presence of non-negligible bias in the KDE estimator (see \cite{botev
 
 \subsection{Discussion} \label{sec:Discussion}
 In our experiments, the proposed push-out estimator is usually as accurate, or more accurate, than the Conditional MC and AK estimators. However, when computing time is taken into account, then our push-out estimator truly excels.  For example, in the test with the Clayton copula on Figure~\ref{Test:Clayton}, our proposed estimator took 3.03 minutes to compute, whereas the extended Conditional MC estimator took 9.16 minutes, and the Asmussen--Kroese estimator took 9.81 minutes
-(for source code see \cite{Code}). One reason for this lower computing cost is that evaluation of the gradient of the joint log-pdf, $\nabla \log f_{\v{X}}$, is often much faster than evaluation of the conditional pdfs $f_{X_i | \v{X}_{-i}}$.  
+(for source code see \cite{PushoutCode}). One reason for this lower computing cost is that evaluation of the gradient of the joint log-pdf, $\nabla \log f_{\v{X}}$, is often much faster than evaluation of the conditional pdfs $f_{X_i | \v{X}_{-i}}$.  
 
 A practical difficulty with the extended Conditional MC estimator \eqref{ExtCondMC} is the simulation of the auxiliary variable $Z$.
 For example, simulation is difficult and time-consuming for the $\mathsf{GumbelHougaard}(\theta)$ copula with generator $\psi(u) = [-\log( u )]^\theta$, because in that case  $Z \sim \mathsf{Stable}(1, \theta^{-1}, 1, 0, \cos(\frac{\pi}{2 \theta})^\theta)$ is a complicated L\'evy $\alpha$-stable distribution. (On the other hand, simulation is simple for the $\mathsf{Clayton}(\theta)$ copula with generator $\psi(u) = \theta (u^{-1/\theta} - 1)$, because  $Z \sim \mathsf{Gamma}(\theta, 1/\theta)$.) It is also worth noting that many Archimedean copulas, e.g. Frank copula, do not have a Marshall--Olkin representation.
