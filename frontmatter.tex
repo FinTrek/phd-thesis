@@ -5,9 +5,9 @@
 
 % { \large \bfseries \{Dependence and VaR\}: \{Subtitle\} }\\
 { \large \bfseries Computational methods for sums of random variables }\\
-Patrick J.\ Laub \\
+Patrick John Laub \\
 BE(Software, Hons.\ I)/BSc(Mathematics), BSc(Mathematics, Hons.\ I) \\[7cm]
-{\em A thesis submitted for the degree of Doctor of Philosophy in 2017 at\\
+{\em A thesis submitted for the degree of Doctor of Philosophy in 2018 at\\
 The University of Queensland, School of Mathematics and Physics in \\
 association with
 Aarhus University, Department of Mathematical Sciences} \\
@@ -18,15 +18,55 @@ Aarhus University, Department of Mathematical Sciences} \\
 \pagenumbering{roman}
 
 \begin{abstract}
-  Start this section on a new page.
+  % The abstract should outline the main approach and findings of the thesis and
+  % must be between 300 and 800 words.
 
-  The abstract should outline the main approach and findings of the thesis and
-  must be between 300 and 800 words.
+A typical problem in the field of rare-event estimation is to find the probability $\Prob(S > \gamma)$ where $S := X_1 + \dots + X_d$ for a fixed $d \in \NL$ and where the $\gamma \in \RL$ is large or increasing. In applications we often wish to understand the behaviour of a combination of random factors. Hence the random variable $S$ is ubiquitous in real-world modeling problems.
+It can model, for example, aggregate risk or portfolio value for holding $d$ risky assets \cite{mcneil2015quantitative,Rueschendorf2013}, the aggregate losses for $d$ insurance policy claims \cite{asmussen2010ruin,klugman2012loss}, and the combined signal interference from $d$ wireless transmission sources \cite{fischione2007approximation}.
+Probabilities of this form are used to understand how a system would behave under extreme scenarios such as a market crash, a power surge, or a natural disaster. One is typically interested in, not just the quantity $\Prob(S > \gamma)$, but the behaviour of the summands when the extreme event $\{ S > \gamma \}$ occurs.
+
+This probability is available in a closed form for only a few basic cases, when the density of $S$ (which is a $d$-fold convolution) has a known form; see~\cite{nadarajah2008review}.
+For example, when the summands are independent and identically distributed (iid), then it is sometimes simple to calculate (for exponential, gamma, normal, binomial, geometric, or negative binomial summands)
+and sometimes intractable (for lognormal, Weibull, Laplace, or Beta).
+However, requiring the assumption of independence (let alone iid-ness) of the summands is a stifling restriction when modeling real-world events; a notorious example would be the partial blame of the 2008--09 global financial crisis on mathematicians' inappropriate use of a simplistic dependence model (the Gaussian copula)~\cite{salmon2009recipe}.
+
+This thesis outlines methods for approximating quantities related to sums of random variables. Two chapters consider the use of \emph{orthogonal polynomial expansions} in approximating probability density functions; one focuses on sums of correlated lognormal random variables, and the other on random sums which are used in insurance.
+We also introduce
+%a Monte Carlo estimator for the density of a sum distribution which uses the \emph{push-out method}, and
+an \emph{importance sampling estimator} for the survival function of a sum distribution which uses knowledge of the asymptotic form of the sum.
+We also give the results of an \emph{asymptotic analysis}
+%of the survival function of sums with Weibull-like summands, and
+of the Laplace transform for the sum of lognormal random variables.
+A related problem, of estimating the probability of the maximum of a random vector exceeding a large threshold, is also considered.
 \end{abstract}
 
 \newpage
+
+\begin{center}
+{\large \bfseries Beregningsmetoder for summer af stokastiske variable}
+
+\medskip
+{\em Abstrakt\/}.
+\end{center}
+
+Et typisk problem i forbindelse med estimation af sj{\ae}ldne h{\ae}ndelser er at finde sandsynligheden $\Prob (S> \gamma)$ hvor $S: = X_1 + \dots + X_d$ for et fast $d \in \NL$, og hvor $\gamma \in \RL$ er stor eller voksende. I anvendelser er man ofte interesseret i at forst\aa\ opf{\o}rslen af en kombination af stokastiske faktorer. Derfor er den stokastiske variabel $S$ naturligt forekommende i praktiske modelleringsproblemer.
+Den kan f.eks. bruges som til modellering af en samlet risiko, af en portef{\o}ljev{\ae}rdi ved en beholdning af $d$ risikofyldte aktiver \cite {mcneil2015quantitative, Rueschendorf2013}, af det samlede tab for $d$ forsikringsforpligtelser \cite {asmussen2010ruin, klugman2012loss} og af den kombinerede signalinterferens fra $d$ trådl{\o}se transmissionskilder \cite {fischione2007approximation}.
+Sandsynligheder af denne form bruges til at forst\aa , hvordan et system vil opf{\o}re sig under ekstreme forhold som f.eks. et b\o rskrak, et str\o msvigt eller en naturkatastrofe. Typisk er man ikke kun interesseret i st\o rrelsen $\Prob (S> \gamma) $, men ogs\aa\ i opf{\o}rslen af summanderne n\aa r den ekstreme h\ae ndelse $\{S> \gamma \}$ indtr\ae ffer.
+
+Kun i ganske f\aa\ tilf\ae lde er denne sandsynlighed tilg\ae ngelig i lukket form, n\aa r t{\ae}theden af $S$ (som svarer til $d$ foldinger) har en kendt form; se~\cite {nadarajah2008review}.
+For eksempel n\aa r summanderne er uafh{\ae}ngige og identisk fordelte (iid), er t\ae theden nogle gange nem at beregne (hvis summandernes fordeling er eksponentiel, gamma, normal, binomial, geometrisk eller negativ binomial), og andre gange er det ikke muligt (hvis summandernes fordeling er lognormal, Weibull, Laplace eller Beta).
+Dog er antagelsen om uafh{\ae}ngighed (og i s\ae rdeleshed om iid) mellem summanderne en seri\o s begr{\ae}nsning ved modellering af virkelige h{\ae}ndelser; et notorisk eksempel er den delvise skyld i den globale finanskrise i 2008--2009, som matematikerne b{\ae}rer, grundet upassende brug af en simpel afh{\ae}ngighedsmodel (den gaussiske copula)~\cite {salmon2009recipe}.
+
+Denne afhandling beskriver metoder til approksimation af st\o rrelser relateret til summer af stokastiske variable. To kapitler omhandler anvendelsen af \emph {ortogonale polynomielle udviklinger} til approksimation af t\ae thedsfunktioner; det ene fokuserer p\aa\ summer af korrelerede lognormale stokastiske variable og det andet p\aa\ stokastiske summer, der anvendes i forsikring.
+Vi introducerer ogs\aa\ en \emph{importance sampling-estimator} for overlevelsesfunktionen af en sumfordeling, som bygger p\aa\ viden om den asymptotiske form af summen.
+Endvidere giver vi resultaterne af en \emph {asymptotisk analyse}
+af Laplace-transformen af summen af lognormale stokastiske variable. Endeligt behandler vi et relateret problem, som vedr\o rer estimation af sandsynligheden for, at maksimum af en stokastisk vektor overskrider et givet stort niveau.
+% \end{abstract}
+
+
+\newpage
 {\bf \underline{Declaration by author}} \\
-(All candidates to reproduce this section in their thesis verbatim)
+% (All candidates to reproduce this section in their thesis verbatim)
 
 This thesis is composed of my original work, and contains no material
 previously published or written by another person except where due reference
@@ -35,168 +75,310 @@ jointly-authored works that I have included in my thesis.
 
 I have clearly stated the contribution of others to my thesis as a whole,
 including statistical assistance, survey design, data analysis, significant
-technical procedures, professional editorial advice, and any other original
+technical procedures, professional editorial advice, financial support and any other original
 research work used or reported in my thesis. The content of my thesis is the
-result of work I have carried out since the commencement of my research higher
-degree candidature and does not include a substantial part of work that has
-been submitted to qualify for the award of any other degree or diploma in any
-university or other tertiary institution. I have clearly stated which parts of
-my thesis, if any, have been submitted to qualify for another award.
+result of work I have carried out since the commencement of my higher
+degree by research candidature and does not include a substantial part of work
+that has been submitted to qualify for the award of any other degree or diploma
+in any university or other tertiary institution. I have clearly stated which parts
+of my thesis, if any, have been submitted to qualify for another award.
 
 I acknowledge that an electronic copy of my thesis must be lodged with the
-University Library and, subject to the General Award Rules of The University of
-Queensland, immediately made available for research and study in accordance
-with the Copyright Act 1968.
+University Library and, subject to the policy and procedures of The University
+of Queensland, the thesis be made available for research and study in accordance
+with the Copyright Act 1968 unless a period of embargo has been approved by the
+Dean of the Graduate School.
 
-I acknowledge that copyright of all material contained in my thesis resides
-with the copyright holder(s) of that material. Where appropriate I have
-obtained copyright permission from the copyright holder to reproduce material
-in this thesis.
+I acknowledge that copyright of all material contained in my thesis resides with
+the copyright holder(s) of that material. Where appropriate I have obtained
+copyright permission from the copyright holder to reproduce material in this
+thesis and have sought permission from co-authors for any jointly authored works
+included in the thesis.
+
 
 \newpage
-{\bf \underline{Publications during candidature}}
-
-Start this section on a new page.
-
-List your publications arising from your candidature using the standard
-citation format for your discipline. Divide your publications into sections as
-appropriate in your discipline e.g. peer-reviewed papers, book chapters,
-conference abstracts. If you have no publications from your candidature then
-state ``No publications''.
-
-Publications that are detailed in the section below (Publications included in
-this thesis) should also be listed in this section.
-
-
 {\bf \underline{Publications included in this thesis}}
 
-If you choose to incorporate your publications into your thesis as per UQ
-policy (PPL 4.60.07 Alternative Thesis Format Options) use this section to
-detail the publication, where it appears in the thesis and your contribution to
-the authorship if you are not a sole author. Describe the contributions of all
-authors to the publication as per the requirements in the UQ Authorship Policy
-(PPL 4.20.04 Authorship).
+Lars N{\o}rvang Andersen, Patrick J.\ Laub, Leonardo Rojas-Nandayapa (2016), \emph{Efficient simulation for dependent rare events with applications to extremes}, Methodology and Computing in Applied Probability
 
-For example;\\
-Publication citation – incorporated as Chapter 3.
+S{\o}ren Asmussen, Pierre-Olivier Goffard, Patrick J.\ Laub (2015), \emph{Orthonormal polynomial expansions and lognormal sum densities}, Risk and Stochastics: Ragnar Norberg at 70 (Mathematical Finance Economics), World Scientific
 
-\begin{tabular}{|l|l|}
-  \hline
-  Contributor & Statement of contribution \\ \hline
-  Author XXXX (Candidate) & Designed experiments (60\%) \\
-                          & Wrote the paper (70\%) \\
-\hline
-  Author YYYY & Designed experiments (40\%) \\
-                          & Wrote and edited paper (30\%) \\
-\hline
-  Author ZZZZ & Statistical analysis of data in tables 2 and 3 \\
-\hline
-\end{tabular}
-
-If you have no publications included in this thesis then state ``No
-publications included''.
+Patrick J.\ Laub, S{\o}ren Asmussen, Jens Ledet Jensen, Leonardo Rojas-Nandayapa (2015), \emph{Approximating the Laplace transform of the sum of dependent lognormals}, Advances in Applied Probability.
 
 \newpage
+{\bf \underline{Submitted manuscripts included in this thesis}}
+
+Pierre-Olivier Goffard, Patrick J.\ Laub (2017), \emph{Two numerical methods to evaluate stop-loss premiums}, Scandinavian Actuarial Journal (submitted)
+
+Thomas Taimre, Patrick J.\ Laub (2018), \emph{Rare tail approximation using asymptotics and polar coordinates}, Advances in Applied Probability (submitted)
+
+{\bf \underline{Other publications during candidature}}
+
+{\small \bf \underline{Peer-reviewed papers}}
+
+Lars N{\o}rvang Andersen, Patrick J.\ Laub, Leonardo Rojas-Nandayapa (2016), \emph{Efficient simulation for dependent rare events with applications to extremes}, Methodology and Computing in Applied Probability
+
+S{\o}ren Asmussen, Enkelejd Hashorva, Patrick J.\ Laub, Thomas Taimre (2017), \emph{Tail asymptotics of light-tailed Weibull-like sums}, Probability and Mathematical Statistics
+
+Patrick J.\ Laub, S{\o}ren Asmussen, Jens Ledet Jensen, Leonardo Rojas-Nandayapa (2015), \emph{Approximating the Laplace transform of the sum of dependent lognormals}, Advances in Applied Probability.
+
+{\small \bf \underline{Book chapters}}
+
+S{\o}ren Asmussen, Pierre-Olivier Goffard, Patrick J.\ Laub (2015), \emph{Orthonormal polynomial expansions and lognormal sum densities}, Risk and Stochastics: Ragnar Norberg at 70 (Mathematical Finance Economics), World Scientific
 
 {\bf \underline{Contributions by others to the thesis}}
 
-List the significant and substantial inputs made by others to the research,
-work and writing represented and/or reported in the thesis. These could include
-significant contributions to: the conception and design of the project;
-non-routine technical work; analysis and interpretation of research data;
-drafting significant parts of the work or critically revising it so as to
-contribute to the interpretation. If no one contributed significantly then
-state ``No contributions by others.''
+The chapters in this thesis (except for the first chapter) represent published or submitted work done with co-authors. For these chapters, each co-author contributed to the conception, planning, mathematics, and writing. See the page preceding each chapter, labelled ``Authorship Statement'', for further details.
 
+\newpage
 {\bf \underline{Statement of parts of the thesis submitted to qualify for
 the award of} \\
-  \underline{another degree}}
+\underline{another degree}}
 
-If part of the thesis work was used for another award, you must list the
-relevant parts of the thesis, the degree name, year and institution, and the
-outcome of the submission of material. If no parts of the thesis have been
-submitted in this way then state ``None''.
+No works submitted towards another degree have been included in this thesis.
 
-For example:
+{\bf \underline{Research Involving Human or Animal Subjects}}
 
-Chapters two and three submitted for MPhil, The University of Queensland, 2006,
-thesis withdrawn from assessment and project converted to PhD. \\
-Chapter Five, page 88 paragraph 2 to page 89 paragraph 4 submitted for BSc
-Honours, Queensland University of Technology, 2005, degree awarded 19 December
-2005.
+No animal or human subjects were involved in this research.
+
+
+
+
+
+% \begin{tabular}{|l|l|}
+%   \hline
+%   Contributor & Statement of contribution \\ \hline
+%   Author XXXX (Candidate) & Designed experiments (60\%) \\
+%                           & Wrote the paper (70\%) \\
+% \hline
+%   Author YYYY & Designed experiments (40\%) \\
+%                           & Wrote and edited paper (30\%) \\
+% \hline
+%   Author ZZZZ & Statistical analysis of data in tables 2 and 3 \\
+% \hline
+% \end{tabular}
+
+% If you have no publications included in this thesis then state ``No
+% publications included''.
+
+% \newpage
+
+% {\bf \underline{Contributions by others to the thesis}}
+
+% For jointly authored papers which are included in this thesis as chapters the relative contribution of each author is given on the page preceding the chapter. Apart from those contributions, there are no contributions by others.
+
+% For each paper, the authors contributed equally to the development of mathematical theorems, propositions, et cetera. Similarly, we were equally involved in writing the text. For the proofreading and editing I typically contributed the most (particularly for the papers where I was the only native English speaking author). Also, I completed all of the numerical work except for significant contributions from Lars N{\o}rvang Andersen and Pierre-Olivier Goffard in the works we collaborated on.
+
+% List the significant and substantial inputs made by others to the research,
+% work and writing represented and/or reported in the thesis. These could include
+% significant contributions to: the conception and design of the project;
+% non-routine technical work; analysis and interpretation of research data;
+% drafting significant parts of the work or critically revising it so as to
+% contribute to the interpretation. If no one contributed significantly then
+% state ``No contributions by others.''
+
 
 \newpage
 
 {\bf \underline{Acknowledgements}}
 
-Start this section on a new page.
+\vspace{-1em}
+\begin{center}
+\emph{``A man must love a thing very much if he practices it without any hope of fame or money, but even practices it without any hope of doing it well.''}
+\end{center}
+\vspace{-1.6em}
+\hfill G.\ K.\ Chesterton~~~~~~~~
 
-Free text section for you to record your acknowledgment and gratitude for the
-more general academic input and support; financial support from grants and
-scholarships; and the non-academic support you have received during the course
-of your candidature.
+I have been incredibly lucky to have been supported by many institutions, academics, mentors, friends, and family members, without whom this thesis would not exist. %Here, I am delighted to be able to record my thanks to some of these people.
 
-PJL was supported by an Australian Government Research Training Program Scholarship and an Australian Research Council Centre of Excellence for Mathematical \& Statistical Frontiers Scholarship.
+Firstly, I must sincerely thank my supervisors in Aarhus and Brisbane, S{\o}ren Asmussen and Phil Pollett. S{\o}ren welcomed me into Denmark, gave me a path in applied probability, and calmly guided me along the way. It is due to his meetings, emails, lectures, and books that I have learned so much these past years, and met so many friendly mathematicians all across Europe. Having joined the hiking trip in Greenland which he organised, and seen his pre-departure presentation, inspires me to go and make the most of each day.%\footnote{In this presentation he described many previous hiking adventures, including one in which a companion did not return. While this certainly heightened the \emph{carpe diem} sensation, it was decidedly unhelpful for allaying last-minute jitters!}
 
-... We are grateful to Jakob Schach M\o ller for helpful discussions on orthonormal expansions...
+Phil Pollett is the reason why I became passionate about probability in the first place. It was only by chance that I enrolled in his probability course STAT3004 in 2012. His well prepared and entertaining lectures (replete with a \emph{schadenfreude}-inducing tyranny aimed at the unpunctual students) inspired me to pursue mathematics research instead of a standard engineering career. As my honours supervisor Phil was unfailingly positive and helpful, always emphasising that the enjoyment of the journey was of paramount importance. He gave me the confidence to begin my PhD. I can say, with probability one, that two better supervisors than S{\o}ren and Phil cannot be found!
 
+Thomas Taimre has taught me an incredible amount during his lectures and chats in his office or over Merlo coffee. He dissected draft after draft of my honours thesis, explaining to me a menagerie of minuscule typography, \TeX, and grammar rules. I'm very grateful for the help of Leonardo Rojas-Nandayapa, who recommended me to S{\o}ren, undertook a vast amount of negotiation and paperwork to setup this joint PhD, and supervised the first half of my PhD.
+
+I must sincerely thank my collaborators: Jens Ledet Jensen, Pierre-Olivier Goffard, Lars N{\o}rvang Andersen, Enkelejd Hashorva, Robert Salomone, Zdravko I.\ Botev, Jevgenijs Ivanovs, and Hailiang Yang. I hope to work with you again soon!
+
+Being part of the research group ACEMS has been a wonderful experience. They supported me in a variety of ways, including a stipend, conference travel funding, and attendance at the yearly retreat. In particular, Peter Taylor has been a great mentor for me, and I'm thankful that he hosted me in Melbourne in 2017.
+
+I benefited from many great teachers over the years. Joel Fenwick's memorable and meticulous course on programming taught me so much that I felt like a totally different person after completing it. And before this, I am grateful for my Mackay teachers Janelle Agius, Brendan Gunning, Pauline Hendry, and Glen Smith.
+
+The Australian and Danish governments have been essential in their financial support of my research. I am very thankful to the graduate schools in both universities for allowing this joint degree.
+
+My time in these maths departments has been enriched by the friends I've made there. In Australia, this included Alice, Azam, Leslie, Liam, Marielle, and Rob, and in Denmark, Claudio, Julie, Mikkel, Pierre-Olivier, Thorbj{\o}rn, Victor, and It{\^o}.\footnote{Note, I am not referring to the esteemed mathematician Kiyoshi It{\^o} --- whose work has brought me many a headache --- but to Victor \& Line's cute dog, who would visit the office and is named after him.} I can't thank you enough for the coffee and \emph{kage} (and the occasional \emph{{\o}l}) breaks which were needed to preserve one's sanity. Also, it was an unlikely pleasure to meet housemates in Nordre Ringgade and Hoogley Street who are such great people.
+
+I'm blessed to have met my partner Vivian, who has been such a tremendous source of joy and energy and peace. We are certainly taking the road less traveled by --- let it keep going, as winding as unpredictable as ever! My closest friends, Autumn, Blake, Bryce, Evan, Nina, Tiffany, Tzara, and Will, have helped me in infinitely many ways over the years. Thank-you. Also, I thank my capitalist friends Elliot and Rory for their company.
+
+Finally, and most importantly, I have to thank my family. To Mum and Dad, I'm thankful for everything. From day one (and as Mum would hasten to add, from much earlier than that!) you have worked hard to support every one of my endeavours. You taught me patience, humility, and the value of education. Thanks Chris, Flick, Nanna, and Sam for your long-distance company, care, advice, and Skype calls.
+
+\hfill {\bf Patrick J.\ Laub}
+
+\vspace{-0.8em}
+\hfill Brisbane, 2018
 
 \newpage
+{\bf \underline{Financial support}}
 
-{\bf \underline{Keywords}}
+This research was supported by an Australian Government Research Training Program Scholarship.
+A top-up scholarship and travel funds were also provided by the Australian Research Council Centre of Excellence for
+Mathematical \& Statistical Frontiers (ACEMS), under grant number CE140100049. Further support from Aarhus University was provided by a grant to S{\o}ren Asmussen.
 
-Maximum 10 words; user lower case throughout, separating words/phrases with
-commas.
+{\bf \underline{Keywords}}: monte carlo, sums, maxima, dependence, rare events, lognormal distribution, stop-loss premium, orthogonal expansions, asymptotic analysis
 
-For example: word, word word, word, word, word word
 
 {\bf \underline{Australian and New Zealand Standard Research Classifications
 (ANZSRC)}}
 
-Provide data that links your thesis to the disciplines and discipline clusters
-in the Federal Government’s Excellence in Research for Australia (ERA)
-initiative.
+ANZSRC code: 010404 Probability Theory, 60\% \\
+ANZSRC code: 010201 Approximation Theory and Asymptotic Methods, 30\% \\
+ANZSRC code: 010205 Financial Mathematics, 10\%
 
-Please allocate the thesis a maximum of 3 Australian and New Zealand Standard
-Research Classifications (ANZSRC) codes at the 6 digit level and include the
-descriptor and a percent weighting for each code. Total percent must add to
-100.
-\url{http://www.abs.gov.au/Ausstats/abs@.nsf/Latestproducts/6BB427AB9696C225CA2574180004463E?opendocument}
-
-Example: \\
-ANZSRC code: 060101, Analytical Biochemistry, 60\% \\
-ANZSRC code: 060104, Cell Metabolism, 20\% \\
-ANZSRC code: 060199, Biochemistry and Cell Biology not elsewhere classified, 20\%
 
 {\bf \underline{Fields of Research Classification}}
 
-Allows for categorisation of the thesis according to the field of research.
-
-Please allocate the thesis a maximum of 3 Fields of Research (FoR) Codes at the
-4 digit level and include the descriptor and a percent weighting for each code.
-Total percent must add to 100.
-
-\url{http://www.abs.gov.au/Ausstats/abs@.nsf/Latestproducts/6BB427AB9696C225CA2574180004463E?opendocument}
-
-Example: \\
-FoR code: 0601, Biochemistry and Cell Biology, 80\% \\
-FoR code: 0699, Other Biological Sciences, 20\%
+FoR code: 0104, Statistics, 60\% \\
+FoR code: 0102, Applied Mathematics, 40\%
 
 \tableofcontents
 
-% \listoffigures
-%% Comment the line below to remove List of Figures from the Table of Contents
-% \addcontentsline{toc}{chapter}{List of Figures}
-
-% \listoftables
-
-%% Comment the line below to remove List of Tables from the Table of Contents
-% \addcontentsline{toc}{chapter}{List of Tables}
-
 \newpage
 
-{\bf \underline{List of Abbreviations used in the thesis}}
+{\bf \underline{Abbreviations and Notation}}
 
-%% Comment the line below to remove List of Abbreviations from the Table of Contents
-\addcontentsline{toc}{chapter}{List of Abbreviations}
-TODO: Add list of notation here.
+\addcontentsline{toc}{chapter}{Abbreviations and Notation}
+
+
+\emph{Abbreviations}:
+
+\begin{tabular}{ll}
+a.s. & almost surely \\
+cdf & Cumulative distribution function $F(x)$ \\
+CMC & Crude Monte Carlo \\
+iid & Independent and identically distributed  \\
+MCMC & Markov Chain Monte Carlo \\
+% mgf & Moment generating function \\
+pdf & Probability density function  $f(x)$ \\
+pgf & Probability generating function \\
+pmf & Probability mass function $f(n)$ \\
+resp. & respectively \\
+% rv  & Random variable \\
+% sf  & Survival function $\Ftail(x) = 1 - F(x)$ \\
+% slp & Stop-loss premium $\Pi_{a}(S_N)=\Exp[(S_N-a)_{+}]$ \\
+VaR & Value-at-Risk \\
+w.l.o.g.\ & without loss of generality \\
+w.r.t.\ & with respect to
+\end{tabular}
+
+
+\emph{Collections of numbers}:
+
+\begin{tabular}{ll}
+$\CL$ & Complex numbers, $\{ a + \ih b : a,b \in \RL \}$ \\
+$\NL$ & Natural numbers, $\{1, 2, \dots\}$ \\
+$\NZ$ & Natural numbers including zero, $\{0, 1, 2, \dots\}$ \\
+$\RL$ & Real numbers \\
+$\RL_+$ & Positive real numbers, $x > 0$ \\
+$\overline{\RL}$ & Extended reals, $\RL \cup \{-\infty, \infty\}$ \\
+$\ZL$ & Integers, $\{ \dots, -2, -1, 0, 1, 2, \dots \}$
+\end{tabular}
+
+\emph{Fonts}:
+
+\begin{tabular}{ll}
+Lowercase letters & Constants, e.g.\ $a = 5$, $\lambda = 1$ \\
+Uppercase Roman letters & Random variables, e.g.\ $X \sim \NormDist(\mu, \sigma^2)$ \\
+Boldface lowercase letters & Vectors, e.g.\ $\bfx = (x_1, x_2, x_3)$, $\bfy = (1, 0, 1)$ \\
+Boldface uppercase letters${}^*$ & Random vectors, e.g.\ $\bfX = (X_1, X_2, X_3)$ \\
+                           & Matrices, e.g.\ $\bfA$, $\bfH$, $\bfSigma$ \\
+Sans serif font & Distributions, e.g.\ $\GammaDist(r,m)$, $\PoissonDist(\lambda)$ \\
+Small caps & Software packages, e.g.\ \textsc{Mathematica}, \textsc{Matlab} \\
+Teletype font & Functions in software packages, e.g.\ the $\texttt{HermiteH}$ function \\
+\end{tabular}
+
+*\,I have let random vectors take letters near the end of the Roman alphabet, leaving the Greek letters and the remaining Roman letters to denote matrices.
+
+
+\emph{Other notation}:
+
+\begin{tabular}{ll}
+$\Re(z)$, $\Im(z)$ & Real and imaginary parts of a number, i.e., $z = \Re(z) + \ih \Im(z)$ \\
+$\Prob(A)$ & Probability of event $A$ \\
+$\Exp[X]$ & Expectation of random variable $X$ \\
+$\Var[X]$ & Variance of random variable $X$ \\
+$\ind{A}$ & Indicator function for event $A$ \\
+$\convas$ & Convergence almost surely \\
+$\convdistr$ &  Convergence in distribution \\
+$\eqdistr$ & Equal in distribution \\
+$\sim$ & Distributed as, e.g.\ $X \sim \NormDist(0,1)$, $Y \sim f_Y$ \\
+$\iidDist$ & Independently and identically distributed as \\
+$\indDist$ & Independently distributed as \\
+$\approxdistr$ & Approximately distributed as \\
+$\NormCdf$ & Standard normal cdf \\
+$\defeq$ & Left-hand side defined as right-hand side \\
+$\defeqr$ & Right-hand side defined as left-hand side \\
+$\bfSigma^{\tr}$ & Transpose of matrix $\bfSigma$
+\end{tabular}
+
+\emph{Parametrisations of probability distributions:}
+
+% \begin{itemize}
+\underline{Uniform distribution}: denoted $\UnifDist(a,b)$ where $a,b\in\RL$ and $a < b$, has pdf
+\[ f(x) = \frac{1}{b-a} \,, \quad  a < x < b \,. \]
+
+\underline{Exponential distribution}: denoted $\ExpDist(\lambda)$ where $\lambda > 0$, has pdf
+\[ f(x) = \lambda \e^{-\lambda x} \,, \quad x > 0 \,. \]
+
+\underline{Gamma distribution}: denoted $\GammaDist(r,m)$ where $r > 0$ and $m > 0$, has pdf
+\[ f(x) = \frac{x^{r-1}\e^{-\frac{x}{m}}}{\Gamma(r)m^{r}} \,, \quad x \in \RL_+\,,\]
+where $\Gamma$ is the gamma function.
+
+\underline{Erlang distribution}: denoted $\ErlangDist(n, m) = \GammaDist(n, 1/m)$ where $n \in \NL$ and $m > 0$.
+
+\underline{Normal distribution}: denoted $\NormDist(\mu, \sigma^2)$ where $\mu \in \RL$ and $\sigma^2 > 0$, has pdf
+\[ f(x) = \frac{1}{\sqrt{2 \pi} \sigma} \e^{-\frac{(x-\mu)^2}{2 \sigma^2}} \,, \quad x \in \RL \,. \]
+
+\underline{Lognormal distribution}: denoted $\LNDist(\mu, \sigma^2)$ where $\mu \in \RL$ and $\sigma^2 > 0$, has pdf
+\[ f(x) = \frac{1}{\sqrt{2 \pi} \sigma x} \e^{-\frac{(\log(x)-\mu)^2}{2 \sigma^2}} \,, \quad x \in \RL_+ \,.  \]
+
+\underline{Multivariate normal distribution}: denoted $\NormDist(\bfmu, \bfSigma)$ where $\bfmu \in \RL^d$ and $\bfSigma \in \RL^{d,d}$ is positive semi-definite, has pdf
+\[
+  f(\bfx) = \frac{1}{\sqrt{(2\pi)^d \det(\bfSigma)}} \exp\Bigl\{ {-}\frac12 (\bfx - \bfmu)^\tr \bfSigma^{-1} (\bfx - \bfmu) \Bigr\} \dd \bfx \,, \quad \bfx \in \RL^d \,.
+\]
+
+\underline{Multivariate lognormal distribution}: denoted $\LNDist(\bfmu, \bfSigma)$ where $\bfmu \in \RL^d$ and $\bfSigma~\in~\RL^{d,d}$ is positive semi-definite, has pdf
+\[ f(\bfx) = \frac{1}{\sqrt{(2\pi)^d \det(\bfSigma)} \prod_{i=1}^d x_i} \exp\Bigl\{ {-}\frac12 ( \vlog(\bfx) - \bfmu )^\tr \bfSigma^{-1} (\vlog(\bfx) - \bfmu) \Bigr\} \dd \bfx \,, \quad \bfx \in \RL_+^d \,. \]
+
+\underline{Dirichlet distribution}: denoted $\mathrm{Dirichlet}(\bfalpha)$ where $\bfalpha=(\alpha_1,\dots,\alpha_d) \in \RL_+^d$, has pdf
+\[
+f(\bftheta) = \frac{\Gamma\left(\sum_{i=1}^d \alpha_i\right)}{\prod_{i=1}^d \Gamma\left(\alpha_i \right)} \prod_{i=1}^d \theta_i^{\alpha_i-1} \,,\qquad \bftheta \in \mathbb{R}_+^d \text{ and } \bftheta^\top\bfone = 1  \,.
+\]
+
+\underline{Sum of lognormals distribution}: denoted $\SLNDist(\bfmu, \bfSigma)$ where $\bfmu \in \RL^d$ and $\bfSigma \in \RL^{d,d}$ is positive semi-definite. This is the distribution of $S = X_1 + \dots + X_d$ where $\bfX~\sim~\LNDist(\bfmu, \bfSigma)$. It does not have a closed-form density.
+
+\underline{Weibull distribution}: denoted $\WeibullDist(\beta, k)$ where $\beta > 0$ and $k > 0$, has pdf
+\[ f(x) = \beta (x/k)^{\beta-1} \e^{-(x/k)^\beta} \,, \quad x > 0 \,. \]
+This is light-tailed if $\beta \ge 1$ and heavy-tailed if $\beta \in (0, 1)$. We sometimes write $\WeibullDist(\beta)$ to denote $\WeibullDist(\beta, 1)$.
+
+\underline{Pareto distribution}: denoted $\ParetoDist(a, b, \theta)$ where $a,b>0$ and $\theta \in \RL$, has survival function
+\[ \Ftail(x) = \bigl( 1 + \frac{x-\theta}{a} \bigr)^{-b} \,, \quad x > \theta \,. \]
+
+\underline{Inverse Gaussian distribution}: denoted $\IGDist(\mu,\lambda)$ where $\mu, \lambda > 0$, has pdf
+\[ f(x) \propto x^{-3/2} \e^{-\lambda(x-\mu)^2/(2\mu^2x)}  \,. \]
+
+\underline{Laplace distribution}: denoted $\LaplaceDist()$, cf.\ \cite{eltoft2006multivariate,kotz2001asymmetric}, has pdf
+\[
+f(\bfx) = 2 (2 \pi)^{-d/2}  K_{(d/2) -1} \bigl( \sqrt{2 \bfx^\tr \bfx} \bigr) \,
+ \bigl(\sqrt{\tfrac{1}{2} \bfx^\tr \bfx}\bigr)^{1-(d/2)} \,, \quad \bfx \in \RL^d \,,
+\]
+where $K_n$ denotes the modified Bessel function of the second kind of order $n$.
+
+\underline{Poisson distribution}: denoted $\PoissonDist(\lambda)$ where $\lambda \in \RL_+$, has pmf
+\[ f(k) = \frac{e^{-\lambda}\lambda^{k}}{k!} \,, \quad k \in \NZ \,. \]
+
+\underline{Binomial distribution}: denoted $\BinomialDist(n,p)$ where $n \in \NL$, $p \in (0,1)$, and $p+q=1$, has pmf
+ \[ f(k) = \binom{n}{k} p^k q^{n-k} \,, \quad k = 0,1,\dots, n\,. \]
+
+\underline{Pascal distribution}: denoted $\PascalDist(\alpha,p)$ where $\alpha \in \NL$ and $p \in (0,1)$, has pmf
+\[ f(k) = \binom{\alpha+k-1}{k} p^\alpha q^k \,, \quad k \in \NZ \,. \]
+If we relax $\alpha \in \NL$ to $\alpha > 0$ this is the \emph{negative binomial distribution}.
+

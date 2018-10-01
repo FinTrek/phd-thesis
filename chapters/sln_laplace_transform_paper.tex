@@ -1,5 +1,32 @@
 %!TEX root = ../main.tex
-\chapter{Approximating the Laplace transform of the sum of dependent lognormals}
+\newpage
+
+
+\vspace*{\fill}
+
+{\large \bf Chapter~\ref{chp:Laplace} Authorship Statement}
+
+\vspace{1em}
+
+{\bf Citation:} Patrick J.\ Laub, S{\o}ren Asmussen, Jens Ledet Jensen, Leonardo Rojas-Nandayapa (2015), \emph{Approximating the Laplace transform of the sum of dependent lognormals}, Advances in Applied Probability
+
+\vspace{1em}
+
+The authors of this paper equally contributed to the following tasks:
+\begin{enumerate}
+\item conception and design of the project;
+\item mathematical arguments, and interpretation of the results;
+\item writing the publication.
+\end{enumerate}
+
+In addition to this, I completed the majority of the computational work and of the editing (e.g.\ checking grammar and typographical details).
+
+\vspace{3em}
+
+\vspace*{\fill}
+
+
+\chapter{Approximating the Laplace transform of the sum of dependent lognormals} \label{chp:Laplace}
 
 \section{Introduction}\label{S:Intro}
 
@@ -9,11 +36,11 @@ modelling across the sciences
 \cite{aitchison1957lognormal,crow1988lognormal,dufresne2008,
   johnson1994continuous,limpert2001log}. It
 has a natural multivariate version, namely $(\e^{X_1}, \dots, \e^{X_n})
-\dLNormal(\bfmu, \bfSigma)$ when $(X_1, \dots, X_n) \dNormal(\bfmu,
-\bfSigma)$. In this paper, we consider sums of lognormal random variables,
+\sim \LNDist(\bfmu, \bfSigma)$ when $(X_1, \dots, X_n) \sim \NormDist(\bfmu,
+\bfSigma)$. We consider sums of lognormal random variables,
 $S_n \defeq \e^{X_1} + \cdots + \e^{X_n}$, where the summands exhibit
 dependence ($\bfSigma$ is non-diagonal), using the notation that $S_n
-\dSLNormal(\bfmu, \bfSigma)$. Such sums have many challenging properties. In
+\sim \SLNDist(\bfmu, \bfSigma)$. Such sums have many challenging properties. In
 particular, there are no closed-form expressions for the density $f(x)$ or
 Laplace transform $\Laplace(\theta)$ of $S_n$.
 
@@ -34,7 +61,7 @@ value-at-risk or expected shortfall.  Estimation of this kind has long been a
 legal requirement for many large banks, due to the Basel series of regulations
 (particularly, Basel II and Basel III), so in this context approximating
 $\Laplace(\theta)$ is useful as a vehicle for computing the density $f(x)$ or
-the c.d.f. These issues are carefully explained in
+the cumulative distribution function (cdf). These issues are carefully explained in
 \cite{duellmann2010regulatory}, \cite{embrechts2014academic}, and the new
 Chapter 1 in the recently revised volume of McNeil et
 al.\ \cite{mcneil2015quantitative}. Comprehensive surveys of applications and
@@ -44,7 +71,7 @@ numerical methods for the LN and SLN distributions are in
 There exist many approximations to the density of the SLN distribution. Many
 approximations work from the premise \cite{beaulieu2004highly} that a sum
 $S_n$ of lognormals can be accurately approximated by a single lognormal
-$L\sim \mathrm{LN}(\mu_L, \sigma_L^2)$. We refer to this approach as the
+$L\sim \LNDist(\mu_L, \sigma_L^2)$. We refer to this approach as the
 \emph{SLN $\approx$ LN approximation}. Some well-known SLN $\approx$ LN
 approximations are the Fenton--Wilkinson \cite{fenton1960sum} and
 Schwartz--Yeh \cite{schwartz1982distribution} approaches. These were
@@ -81,11 +108,11 @@ $\Laplace(\theta)=\widetilde{\Laplace}(\theta)I(\theta)$, where
 $\widetilde{\Laplace}(\theta)$ has an explicit form and an efficient Monte
 Carlo estimator is given for $I(\theta)$.
 
-This paper generalises the approach of
+This chapter generalises the approach of
 \cite{asmussen2014laplace,asmussen2015exponential} to arbitrary $n$ and
 dependence.  The defining integral for the Laplace transform of $S_n$ is
 \begin{equation} \label{laplace_def}
-	\Laplace(\theta) = \frac{1}{\sqrt{(2\pi)^n \det(\bfSigma)}} \int_{\RL^n} \exp\Big\{ {-}\theta \sum_{i=1}^n \e^{\mu_i} \e^{x_i} -\frac12 \bfx^\tr \bfD \bfx \Big\} \dd \bfx
+	\Laplace(\theta) = \frac{1}{\sqrt{(2\pi)^n \det(\bfSigma)}} \int_{\RL^n} \exp\Bigl\{ {-}\theta \sum_{i=1}^n \e^{\mu_i} \e^{x_i} -\frac12 \bfx^\tr \bfD \bfx \Bigr\} \dd \bfx
 \end{equation}
 where $\bfD \defeq \bfSigma^{-1}$ (assuming $\bfSigma$ to be positive definite
 so $\bfD$ is well defined).  Write the integrand as
@@ -122,13 +149,13 @@ vectors are written in boldface, such as $\ve^{\bfx} \defeq (\e^{x_1}, \dots,
 x_n)^\tr$. If a vector is to be raised element-wise to a common power, then the
 power will be boldface, as in $\bfx^{\bm{k}} \defeq (x_1^k, \dots ,
 x_n^k)^\tr$.  The notation $\bfx \circ \bfy$ denotes element-wise
-multiplication of vectors. The function $\diag(\cdot)$ converts vectors to
-matrices and vice versa, like the \textsc{Matlab} function.
+multiplication of vectors. The $\diag(\argdot)$ function converts vectors to
+matrices and vice versa, like the \textsc{Matlab} function. \remQED
 \end{remark}
 
 \begin{proposition}\label{P:htheta}
 The second-order Taylor expansion of $h_\theta(\bfx)$ about its unique minimiser $\bfx^*$ is
-\[ - \Big(\bfone - \frac12 \bfx^* \Big)^\tr \bfD \bfx^*
+\[ - \Bigl(\bfone - \frac12 \bfx^* \Bigr)^\tr \bfD \bfx^*
  + \frac12 (\bfx - \bfx^*)^\tr (\bfLambda + \bfD) (\bfx - \bfx^*) \]
 where $\bfLambda \defeq \theta  \diag(\ve^{\bfmu + \bfx^*})$.
 \end{proposition}
@@ -159,7 +186,7 @@ Therefore the expansion becomes
 	h_\theta(\bfx) &\approx -\bfone^\tr \bfD \bfx^*
  + \frac12 (\bfx^*)^\tr \bfD \bfx^*
  + \frac12 (\bfx - \bfx^*)^\tr (\bfLambda + \bfD) (\bfx - \bfx^*) \\
-	&= - \Big(\bfone - \frac12 \bfx^* \Big)^\tr \bfD \bfx^*
+	&= - \Bigl(\bfone - \frac12 \bfx^* \Bigr)^\tr \bfD \bfx^*
  + \frac12 (\bfx - \bfx^*)^\tr (\bfLambda + \bfD) (\bfx - \bfx^*).
 \end{align*}
 \qed
@@ -171,7 +198,7 @@ factor $\exp\{-h_\theta(\bfx^*)\}$ times the integral over a normal density
 \[
 	\Laplace(\theta) \approx \widetilde{\Laplace}(\theta)
  \defeq \frac{1}{\sqrt{\det(\bfSigma \bfH)}}
-  \exp\left\{ \Big(\bfone - \frac12 \bfx^* \Big)^\tr \bfD \bfx^* \right\}.
+  \exp\left\{ \Bigl(\bfone - \frac12 \bfx^* \Bigr)^\tr \bfD \bfx^* \right\}.
 \]
 
 We need a suitable error or correction term in order to assess the accuracy of
@@ -184,16 +211,13 @@ by applying \eqref{grad_zero_subs}, multiplying by $\exp\{\bfone^\tr \bfD
 \begin{align*}
 	\Laplace(\theta)
 	&= \frac{1}{\sqrt{(2\pi)^n\det(\bfSigma \bfH)}}
- \int_{\RL^n} \exp\Big\{ {-}\theta (\ve^{\bfmu + \bfx^*})^\tr
- \ve^{\bfH^{-\frac12} \bfy} \\
-	&\qquad - \frac12 (\bfx^* + \bfH^{-\frac12} \bfy)^\tr \bfD (\bfx^* + \bfH^{-\frac12} \bfy) \Big\}\dd \bfy \\
-	&= \widetilde{L}(\theta) I(\theta)
+ \int_{\RL^n} \exp\Bigl\{ {-}\theta (\ve^{\bfmu + \bfx^*})^\tr \ve^{\bfH^{-\frac12} \bfy} \\ &\qquad - \frac12 (\bfx^* + \bfH^{-\frac12} \bfy)^\tr \bfD (\bfx^* + \bfH^{-\frac12} \bfy) \Bigr\}\dd \bfy \\
+	&= \widetilde{\Laplace}(\theta) I(\theta)
 \end{align*}
 where
 \begin{equation} \label{I_in_propos}
 	I(\theta) \defeq \int_{\RL^n} \frac{1}{\sqrt{(2\pi)^n}}
- \exp\Big\{ (\bfx^*)^\tr \bfD \Big( \ve^{\bfH^{-\frac12} \bfy} - \bfone - \bfH^{-\frac12} \bfy \Big)
-  - \frac12 \bfy^\tr (\bfSigma \bfH)^{-1} \bfy \Big\} \dd \bfy.
+ \exp\Bigl\{ (\bfx^*)^\tr \bfD \Bigl( \ve^{\bfH^{-\frac12} \bfy} - \bfone - \bfH^{-\frac12} \bfy \Bigr) - \frac12 \bfy^\tr (\bfSigma \bfH)^{-1} \bfy \Bigr\} \dd \bfy.
 \end{equation}
 This equation can be rewritten in
 ways more convenient for Monte Carlo estimation.
@@ -201,8 +225,8 @@ ways more convenient for Monte Carlo estimation.
 \begin{proposition} \label{value_of_I}
 We have that
 \begin{equation} \label{I_as_norm_exps}
-	I(\theta) = \Exp\bigl[ g(\bfH^{-\frac12} Z) \bigr]
- = \sqrt{\det(\bfSigma \bfH)} \, \Exp\bigl[ v(\bfSigma^{\frac12} Z) \bigr]
+	I(\theta) = \Exp\bigl[ g(\bfH^{-\frac12} \bfZ) \bigr]
+ = \sqrt{\det(\bfSigma \bfH)} \, \Exp\bigl[ v(\bfSigma^{\frac12} \bfZ) \bigr]
 \end{equation}
 where
 \begin{align*}
@@ -211,24 +235,23 @@ where
   v(\bfu) &\defeq \exp\bigl\{ (\bfx^*)^\tr \bfD (\ve^{\bfu} - \bfone - \bfu)
   \bigr\},
 \end{align*}
-and $Z \dNormal(\bfzero, \bfI)$.
+and $\bfZ \sim \NormDist(\bfzero, \bfeye)$.
 \end{proposition}
 
 \begin{proof}
 To show that $I(\theta)$ can be written as the first expectation in
 \eqref{I_as_norm_exps}, use $\bfH = \bfLambda + \bfD$, then add and subtract a term, to get
 %
-\[ (\bfSigma \bfH)^{-1} = [\bfSigma (\bfD + \bfLambda)]^{-1} = (\bfI + \bfSigma \bfLambda)^{-1} \bfI  \pm (\bfI + \bfSigma \bfLambda)^{-1} (\bfSigma \bfLambda)  = \bfI - \bfH^{-1} \bfLambda  \]
+\[ (\bfSigma \bfH)^{-1} = [\bfSigma (\bfD + \bfLambda)]^{-1} = (\bfeye + \bfSigma \bfLambda)^{-1} \bfeye  \pm (\bfeye + \bfSigma \bfLambda)^{-1} (\bfSigma \bfLambda)  = \bfeye - \bfH^{-1} \bfLambda  \]
 %
-and substitute this into the $-\frac12 \bfy^\tr (\bfSigma \bfH)^{-1} \bfy$ term in \eqref{I_in_propos}. 
+and substitute this into the $-\frac12 \bfy^\tr (\bfSigma \bfH)^{-1} \bfy$ term in \eqref{I_in_propos}.
 
 To prove $I(\theta)$ equals the second expectation of \eqref{I_as_norm_exps},
 change variables in \eqref{I_in_propos} so that $\bfy = (\bfSigma \bfH)^{1/2} \bfz$, giving
 \begin{equation} \label{std_norm_form}
 	I(\theta) = \sqrt{\det(\bfSigma \bfH)}
  \int_{\RL^n} \frac{1}{\sqrt{(2\pi)^n}}
- \exp\Big\{ (\bfx^*)^\tr \bfD \big( \ve^{\bfSigma^{\frac12}\bfz}
- - \bfone - \bfSigma^{\frac12}\bfz \big) - \frac12 \bfz^\tr \bfI \bfz \Big\}\dd \bfz.
+ \exp\Bigl\{ (\bfx^*)^\tr \bfD \bigl( \ve^{\bfSigma^{\frac12}\bfz} - \bfone - \bfSigma^{\frac12}\bfz \bigr) - \frac12 \bfz^\tr \bfeye \bfz \Bigr\}\dd \bfz.
 \end{equation}
 \qed
 \end{proof}
@@ -238,11 +261,10 @@ change variables in \eqref{I_in_propos} so that $\bfy = (\bfSigma \bfH)^{1/2} \b
 %
 \[
 	I(\theta) = \sqrt{ 1 + \theta \sigma^2 \e^{x^*}} \int_{\RL}
-        \frac{1}{\sqrt{2\pi}} \exp\Big\{ \frac{x^*}{\sigma^2} (
-        \e^{\sigma z} - 1 - \sigma z ) - \frac12 z^2 \Big\} \dd z.
+        \frac{1}{\sqrt{2\pi}} \exp\Bigl\{ \frac{x^*}{\sigma^2} (\e^{\sigma z} - 1 - \sigma z ) - \frac12 z^2 \Bigr\} \dd z.
 \]
 %
-This can be simplified using the \emph{Lambert W} function, denoted $\LambertW(\cdot)$,
+This can be simplified using the \emph{Lambert W} function, denoted $\LambertW$,
 which is defined \cite{corless1996lambertw} as the solution to the equation $\LambertW(z)
 \e^{\LambertW(z)} = z$. With this we have $x^* =
 -\LambertW(\theta \sigma^2)$. Also, we can manipulate
@@ -251,18 +273,40 @@ $\sqrt{ 1 + \theta \sigma^2 \e^{x^*}}
 so $I(\theta)$ becomes
 \[
 	I(\theta) = \sqrt{ 1 + \LambertW(\theta \sigma^2)}
- \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}}
- \exp\Big\{ {-}\frac{\LambertW(\theta \sigma^2)}{\sigma^2}
- ( \e^{\sigma z} - 1 - \sigma z ) - \frac12 z^2 \Big\} \dd z,
+ \int_{\RL} \frac{1}{\sqrt{2\pi}}
+ \exp\Bigl\{ {-}\frac{\LambertW(\theta \sigma^2)}{\sigma^2} ( \e^{\sigma z} - 1 - \sigma z ) - \frac12 z^2 \Bigr\} \dd z,
 \]
 which coincides with the original result of \cite{asmussen2014laplace}
-equation (2.3).
+equation (2.3). \remQED
+\end{remark}
+
+
+\begin{remark}
+% \textbf{TODO: This was originally commented out, so check it's all correct and the notation is fine.}
+
+The simplistic representation above hides a more subtle understanding. The following is based off Senaratne and Tellambura \cite{senaratne2009numerical} who considered numerically evaluating $\Laplace(\theta)$ for $n=1$. Consider $\theta \in \CL_+$, and note that $\exp\{ h_\theta(\argdot) \}$ is analytic everywhere (that is, it satisfies the Cauchy--Riemann conditions). Then consider contour integrals of the form
+\[ \int_{\mathcal{C}} \exp\{ h_\theta(\bfz) \} \dd \bfz \,, \]
+where $\mathcal{C}$ is some contour. Cauchy's integral theorem implies that $\mathcal{C}$ can be deformed continuously through the domain of analyticity (here, $\CL_+$) in any way while keeping the endpoints constant without affecting the result.
+
+A preferable contour for numerical evaluation is one which clusters most of the integrand's mass together, the \emph{steepest descent contour} $\mathcal{C}^*$, which also passes through the point which maximises the integrand, the \emph{saddlepoint} $\bfz^*$. Analyticity implies orthogonality of $u(\bfz) \defeq \Re(h_\theta(\bfz))$ and $v(\bfz) \defeq \Im(h_\theta(\bfz))$,
+so the steepest descent contour is equivalent to a contour where $v$ is constant. That is,
+\begin{equation} \label{contour}
+	\bfz^* = \argmax_{\bfz \in \CL} \, \exp\{ h_\theta(\bfz) \} \,, \text{ and } \mathcal{C}^* = \{ \bfz = \bfx+\ih \bfy \,|\, v(\bfz) = v(\bfz^*) \} \,.
+\end{equation}
+Say that $\bfy(\bfx)$ is the solution for $\bfy$ given an $\bfx$ from \eqref{contour}, and for $\bfz = \bfx + \ih \bfy$ then $\dd \bfz = \dd \bfx + \ih \dd \bfy = (1 + \ih \frac{\dd \bfy}{\dd \bfx}) \dd \bfx$. Then, in theory, we could evaluate
+\[ \Laplace(\theta) = \int_{\mathcal{C}^*} \exp\{ h_\theta(\bfz) \} \dd \bfz = \int_{\RL^n} \exp\{ u(\bfx + \ih \bfy(\bfx)) + \ih v(\bfx + \ih \bfy(\bfx)) \} \bigl(1 + \ih \frac{\dd \bfy}{\dd \bfx} \bigr) \dd \bfx \]
+which by the definition of $\mathcal{C}^*$ simplifies to
+\begin{equation} \label{complex}
+	\Laplace(\theta) = \exp\{\ih v(\bfz^*)\} \int_{\RL^n} \exp\{u(\bfx + \ih \bfy(\bfx))\} \bigl(1 + \ih \frac{\dd \bfy}{\dd \bfx} \bigr) \dd \bfx \,.
+\end{equation}
+For $\theta \in \RL$ then $\mathcal{C}^*$ simply returns to $\RL^n$ and $\bfz^* \to \bfx^*$ above.
+For $\Im(\theta) \not= 0$ then \eqref{complex} can no longer be simplified by transformation into a Gaussian integral, and $\bfz^*$ is no longer unique. Therefore, we continue to restrict our attention to the $\theta \in \RL$ case. \remQED
 \end{remark}
 
 \section{Asymptotic behaviour of the minimiser $\bfx^*$} \label{sec:x_star_asymp_}
 
 We first introduce some notation. For a matrix $\bfX$, we write
-$\bfX_{i,\sbullet}$ and $\bfX_{\sbullet,i}$ for the $i$th row and
+$\bfX_{i,\sbullet}$ and $\bfX_{\sbullet,i}$ for the $i$-th row and
 column. Denote the row sums of $\bfD$ as $\bfa = (a_1,\dots,a_n)^\tr$, that
 is, $a_i=\bfD_{i,\sbullet} \bfone$. For sets of indices $\Omega_1$ and
 $\Omega_2$, then $\bfX_{\Omega_1,\Omega_2}$ denotes the submatrix of $\bfX$
@@ -453,7 +497,7 @@ terms of $\bfx_{+}$, consider $\theta \ve^{\bfmu_{-} + \bfx_{-}^*} +
 
 In some cases above, we have been able to write the constant $c_i$ as an
 expression involving $\bfD$ and $\bfmu$. For example, in Proposition
-\ref{all_pos_prop} we have $c_i = \log a_i$, and in Theorem \ref{Th:24.8a}
+\ref{all_pos_prop} we have $c_i = \log a_i$, and in \thrm{Th:24.8a}
 \eqref{consts} gives the value of $c_i$ for $i \in \Fset{-}$. We can show a
 similar result in the general case for all $i \in \Fset{*}(1)$, that is, for
 all $i$ where $x_i^* = -\log \theta + \log_2 \theta - \mu_i + c_i + \oh(1)$.
@@ -540,13 +584,13 @@ and
             -1 & 1 & 0\, \\
             -2 & 2 & 0\, \\
             -4 & 4 & 0\,
-        \end{matrix}\right|
+        \end{matrix} ~\right|~
         \begin{matrix}10.69\\21.39\\42.77\end{matrix}\right)\negmedspace ,\quad
     \bfD (\bfbeta \mid \bfc-\bfmu) = \left(\left.\begin{matrix}
             -2 & * & *\, \\
             0 & 0 & 0\, \\
             0 & 0 & 0\,
-    \end{matrix}\right|
+    \end{matrix} ~\right|~
     \begin{matrix}*\\0\\0\end{matrix}\right)
 \]
 (where unimportant values of $\bfD (\bfbeta \mid \bfc-\bfmu)$ are replaced by
@@ -576,20 +620,20 @@ where $c_{3} = 0.9 -0.1 \log 2.2 + 1.1 \log 0.79$, and
             -1 & 1 & 0\\
             -1 & 0 & 1\\
             -1 & -0.1 & 1.1
-        \end{matrix}\right|
+        \end{matrix} ~\right|~
         \begin{matrix}-0.2\\-2.2\\-2.4\end{matrix}\right)\negthickspace ,\quad
     \bfD (\bfbeta \mid \bfc-\bfmu) = \left(\left.\begin{matrix}
             -2.2 & * & *\,\\
             0 & -0.79 & *\,\\
             0 & 0 & 0\,
-    \end{matrix}\right|
+    \end{matrix} ~\right|~
     \begin{matrix}*\\ *\\0\end{matrix}\right)\negthickspace.
 \]
 \qed
 \end{example}
 
 \begin{remark}\label{Rem:25.8b} \rm The importance of the sign of the row sums of
-  $\bfD$, as illustrated by Proposition~\ref{all_pos_prop}, perplexed us for
+  $\bfD$, as illustrated by \prop{all_pos_prop}, perplexed us for
   quite some time. However Gulisashvili and Tankov \cite{tankov2015tail}
   describe an interesting link between the row sums and the \emph{minimum
     variance portfolio}. They show that the leading asymptotic term of
@@ -613,7 +657,7 @@ the row sums change. The exact point where an asset's optimal weight becomes 0
 occurs when $a_i = 0$, and this phase change produces a unique and convoluted
 asymptotic form. As $\Laplace(\theta)$ as $\theta \to \infty$ is related to
 $\Prob(S_n < x)$ as $x \downarrow 0$, the behaviour of $\bfx^*$ is
-explained.
+explained. \remQED
 \end{remark}
 
 For applications we will need to find $\bfx^*$ for a large number of $\theta$
@@ -627,8 +671,8 @@ equation as
 For each row $i$, all $x_i^*$ are now on the left-hand side. Using properties
 of the Lambert W function we see that
 %
-\[ x_i^* = -\LambertW\left( \frac{\theta \e^{\mu_i}}{D_{i,i}}
- \exp\left\{ - \frac{\bfA_{i,\sbullet} \bfx^*}{D_{i,i}} \right\} \right) -
+\[ x_i^* = -\LambertW \Bigl[ \frac{\theta \e^{\mu_i}}{D_{i,i}}
+ \exp\Bigl( - \frac{\bfA_{i,\sbullet} \bfx^*}{D_{i,i}} \Bigr) \Bigr] -
  \frac{\bfA_{i,\sbullet} \bfx^*}{D_{i,i}} . \] One can use this to perform a
  component-wise fixed-point iteration as an alternative to the Newton--Raphson
  scheme.
@@ -637,15 +681,13 @@ of the Lambert W function we see that
 
 In order to discuss $I(\theta)$ as $\theta \to \infty$ we will consider it in
 a form different from Section~\ref{S:ApprL}. Define $ \bfsigma \defeq
-\diag(\bfH)^{-1/2} \in (0,\infty)^n$ and $\bfM \defeq
+\diag(\bfH)^{-1/2} \in (0,\infty)^n$ and $\bfB \defeq
 \diag(\bfsigma) \bfH \diag(\bfsigma) \in \RL^{n \times
   n}$.  In \eqref{I_in_propos}, substitute $\bfH^{-1/2} \bfy = \bfsigma \circ \bfz$, so
 \begin{equation} \label{new_I}
 	I(\theta) = \int_{\RL^n}
- \frac{\exp\{{-}\frac12 \bfz^\tr \bfM \bfz\}}{\sqrt{(2\pi)^n\det(\bfM^{-1})}}
-	\exp\Big\{{-}\theta (\ve^{\bfmu + \bfx^*})^\tr
-  \Big( \ve^{\bfsigma \circ \bfz} - \bfone - \bfsigma \circ \bfz
-  - \frac12(\bfsigma \circ \bfz)^{\bm{2}} \Big)\Big\}\dd \bfz .
+ \frac{\exp( {-}\frac12 \bfz^\tr \bfB \bfz)}{\sqrt{(2\pi)^n\det(\bfB^{-1})}}
+	\exp\bigl\{{-}\theta (\ve^{\bfmu + \bfx^*})^\tr \bigl[ \ve^{\bfsigma \circ \bfz} - \bfone - \bfsigma \circ \bfz - \frac12(\bfsigma \circ \bfz)^{\bm{2}} \bigr] \bigr\}\dd \bfz .
 \end{equation}
 
 The limit of this integrand is the density of a multivariate normal
@@ -661,15 +703,14 @@ $\e^{\sigma_i z_i} - 1 - \sigma_i z_i - \frac12 \sigma_i^2 z_i^2 =
 \Oh(\sigma_i^3)$, and since $\theta \e^{\mu_i + x_i^*} \sigma_i^3 = \oh(1)$
 by \eqref{oh_one} we have
 \begin{equation} \label{second_exp_to_zero}
-	\theta (\ve^{\bfmu + \bfx^*})^\tr  \Big( \ve^{\bfsigma \circ \bfz} - \bfone
-   - \bfsigma \circ \bfz - \frac12(\bfsigma \circ \bfz)^{\bm{2}} \Big) = \oh(1) .
+	\theta (\ve^{\bfmu + \bfx^*})^\tr  \bigl[ \ve^{\bfsigma \circ \bfz} - \bfone - \bfsigma \circ \bfz - \frac12(\bfsigma \circ \bfz)^{\bm{2}} \bigr] = \oh(1) .
 \end{equation}
 
-Finally, we consider $\bfM$ as $\theta \to \infty$. Say that $n_{+} \defeq
+Finally, we consider $\bfB$ as $\theta \to \infty$. Say that $n_{+} \defeq
 \abs{\Fset{+}}$ and assume that these are the first $n_{+}$ indices. We can then
-write that $\bfM \to \bfM^* \defeq \diag(\bfI_{n_{+}}, \bfF)$ where this
+write that $\bfB \to \bfB^* \defeq \diag(\bfeye_{n_{+}}, \bfF)$ where this
 $\bfF$ is the bottom-right submatrix of size $(n-n_{+}) \times (n-n_{+})$ of
-the inverted correlation matrix implied by $\bfSigma$. The $\bfM$ matrices are
+the inverted correlation matrix implied by $\bfSigma$. The $\bfB$ matrices are
 positive definite for all $\theta\in(0,\infty]$; thus the limiting form of the
   integrand in \eqref{new_I} is a non-degenerate multivariate normal density.
 
@@ -681,13 +722,12 @@ We use the dominated convergence theorem. By \eqref{second_exp_to_zero} and
 the paragraph which follows that equation, the exponent of the integrand is
 bounded by a constant $g_1$ for $\norm{\bfz} < 1$, say, and the exponent is
 below $-g_2 \norm{\bfz}$ otherwise ($g_2 > 0$), for $\theta > \theta_0$, say. The
-latter comes from the positive definiteness of $\bfM^*$, the convergence of
-$\bfM$ to $\bfM^*$ and the convergence of \eqref{second_exp_to_zero}. Next,
+latter comes from the positive definiteness of $\bfB^*$, the convergence of
+$\bfB$ to $\bfB^*$ and the convergence of \eqref{second_exp_to_zero}. Next,
 convexity implies that the exponent is bounded by $-g_2\norm{\bfz}$ for $\norm{\bfz}
 > 1$. In total we have the bound
 %
-\[ \exp \big\{ g_1 \Ind_{\{\norm{\bfz} \leq 1\}} - g_2 \norm{\bfz} \Ind_{\{\norm{\bfz}
-  > 1\}} \big\} , \]
+\[ \exp( g_1 \ind{\norm{\bfz} \leq 1} - g_2 \norm{\bfz} \ind{\norm{\bfz} > 1} ) \,, \]
 %
 which is an integrable function. Thus the conditions for dominated convergence
 are satisfied and we can safely switch the limit and integral to obtain
@@ -696,16 +736,16 @@ $I(\theta) \to 1$.
 
 \section{Estimators of $\Laplace(\theta)$ and $I(\theta)$}\label{S:Laplace}
 
-The simplest approach is to numerically integrate the original expression in
+The simplest approach is to use quadrature to integrate the original expression in
 \eqref{laplace_def}. This approach is used as a baseline against which the
 following estimators are compared (the approach can, however,  be slow or
 impossible for large $n$). The next na{\"i}ve approach is to estimate the
 expectation $\Exp[\e^{-\theta S_n}]$ by crude Monte Carlo (CMC). This would
-involve simulating random vectors $X_1, \dots, X_R \iidDist \mathrm{LN}(\bfmu,
-\bfSigma)$, with $X_r = (X_{r,1}, \dots, X_{r,n})$, and computing
+involve simulating random vectors $\bfX_1, \dots, \bfX_R \iidDist \LNDist(\bfmu,
+\bfSigma)$, with $\bfX_r = (X_{r,1}, \dots, X_{r,n})$, and computing
 %
 \[ \widehat{\Laplace}_{\mathrm{CMC}}(\theta) \defeq \frac{1}{R} \sum_{r=1}^R
-  \exp\Big\{-\theta \sum_{i=1}^n X_{r,i}\Big\}. \]
+  \exp\Bigl\{-\theta \sum_{i=1}^n X_{r,i}\Bigr\}. \]
 %
 However this estimator is not efficient for large $\theta$, and rare-event
 simulation techniques are required.
@@ -714,30 +754,30 @@ Given the decomposition of $\Laplace(\theta) = \widetilde{\Laplace}(\theta)
 I(\theta)$, some more accurate estimators can be assessed. Simply using
 $\widetilde{\Laplace}(\theta)$ gives a biased estimator (which is fast and
 deterministic) for the transform, however the bias is decreased by estimating
-$I(\theta)$ with Monte Carlo integration. Proposition~\ref{value_of_I} gives
+$I(\theta)$ with Monte Carlo integration. \prop{value_of_I} gives
 two probabilistic representations of $I(\theta)$. We expect the CMC estimator
-of the first---$\Exp[g(\bfH^{-1/2}Z)
+of the first---$\Exp[g(\bfH^{-1/2}\bfZ)
 ]$---to exhibit infinite variance as $\theta \to \infty$ as this has been
 proven for $n=1$ in \cite{asmussen2014laplace}. Therefore this estimator does
 not seem promising. The second estimator---$\sqrt{\det(\bfSigma
-  \bfH)} \, \Exp[ v(\bfSigma^{1/2} Z) ]$---can be viewed as the first
+  \bfH)} \, \Exp[ v(\bfSigma^{1/2} \bfZ) ]$---can be viewed as the first
 estimator after importance sampling has been applied, so we focus upon
-this. Taking $Z_1, \dots, Z_R \iidDist \mathrm{N}(\bfzero, \bfSigma)$,
+this. Taking $\bfZ_1, \dots, \bfZ_R \iidDist \NormDist(\bfzero, \bfSigma)$,
 %
 \[ \widehat{\Laplace}_{\mathrm{IS}}(\theta) \defeq \frac{1}{R}
-  \exp\left\{ \Big(\bfone - \frac12 \bfx^* \Big)^\tr \bfD \bfx^* \right\}
-  \sum_{r=1}^R \exp\left\{ (\bfx^*)^\tr \bfD (\ve^{Z_r} - \bfone - Z_r)
+  \exp\left\{ \Bigl(\bfone - \frac12 \bfx^* \Bigr)^\tr \bfD \bfx^* \right\}
+  \sum_{r=1}^R \exp\left\{ (\bfx^*)^\tr \bfD (\ve^{\bfZ_r} - \bfone - \bfZ_r)
   \right\}. \]
 
 Many variance-reduction techniques can be applied to increase the efficiency
 of these estimators. The effect of including control variates into
 $\widehat{\Laplace}_{\mathrm{IS}}(\theta)$ was considered, using the control
-variate $(\bfx^*)^\tr \bfD Z_r^{\bm{2}}$ (note the element-wise square). The
+variate $(\bfx^*)^\tr \bfD \bfZ_r^{\bm{2}}$ (note the element-wise square). The
 variance reduction achieved was small considering the large overhead of
 computing the variates (and their expectations) so these results have been
 omitted. Lastly, we considered an estimator based on the Gumbel
-distribution. Say that $G = (G_1, \dots, G_n)$ is a vector of i.i.d.\ standard
-Gumbel random variables, that is, $\Prob(G_r < x) = \exp\{ -\e^{-x} \}$ for
+distribution. Say that $\bfY = (Y_1, \dots, Y_n)$ is a vector of iid standard
+Gumbel random variables, that is, $\Prob(Y_r < x) = \exp\{ -\e^{-x} \}$ for
 $x \in \RL$. Then $\Laplace(\theta)$ can be rewritten as an integral over the
 density of a vector of standard Gumbel random variables. This estimator was
 quite accurate, though it had higher relative error and variance than the
@@ -751,13 +791,11 @@ these techniques see \cite{glasserman2003monte} or
 \cite{asmussen2007stochastic}. Both individually achieved significant variance
 reduction, and together provided the best estimator. Specifically,
 %
-\[ \widehat{\Laplace}_{\mathrm{Q}}(\theta) \defeq \frac{1}{R} \exp\Big\{
-\Big(\bfone - \frac12 \bfx^* \Big)^\tr \bfD \bfx^* \Big\}  \sum_{r=1}^R
-\exp\left\{ (\bfx^*)^\tr \bfD (\ve^{\bfq_r} - \bfone - \bfq_r) \right\}, \]
+\[ \widehat{\Laplace}_{\mathrm{Q}}(\theta) \defeq \frac{1}{R} \exp\Bigl\{ \Bigl(\bfone - \frac12 \bfx^* \Bigr)^\tr \bfD \bfx^* \Bigr\}  \sum_{r=1}^R \exp\left\{ (\bfx^*)^\tr \bfD (\ve^{\bfq_r} - \bfone - \bfq_r) \right\}, \]
 %
-where $\bfq_r \defeq \bfSigma^{1/2} \mathrm{\bf\Phi}^{-1}(\bfu_r)$, using
-$\mathrm{\bf\Phi}^{-1}(\cdot)$ as the (element-wise) standard normal inverse
-c.d.f., and where $\{\bfu_1, \bfu_2, \dots\}$ is the $n$-dimensional Sobol
+where $\bfq_r \defeq \bfSigma^{1/2} \mathrm{\bfPhi}^{-1}(\bfu_r)$, using
+$\mathrm{\bfPhi}^{-1}$ as the (element-wise) standard normal inverse
+cdf, and where $\{\bfu_1, \bfu_2, \dots\}$ is the $n$-dimensional Sobol
 sequence started at the same point for every $\theta$. Therefore,
 $\widehat{\Laplace}_{\mathrm{Q}}(\theta)$ is deterministic (for a fixed $R$
 and $\theta$), and using this scheme is therefore a kind of numerical
@@ -792,10 +830,10 @@ $\widetilde{\Laplace}$\raisebox{1pt}{\vphantom{$\widetilde{\Laplace}$}}&
 \end{tabular}
 \end{table}
 
-Also, the p.d.f.\ of $S_n$ can be estimated by numerical inversion of the
+Also, the pdf of $S_n$ can be estimated by numerical inversion of the
 Laplace transform. As the approximations of $\Laplace(\theta)$ above are
 valid only for $\theta \in (0, \infty)$, not $\theta \in \CL_{+}$, this
-restricts the options for Laplace-transform inversion algorithms. The
+restricts the options for Laplace transform inversion algorithms. The
 Gaver--Stehfest algorithm \cite{stehfest1970algorithm} and so-called power
 algorithms \cite{avdis2007power} can be used. We report on the results of
 using the Gaver--Stehfest algorithm as implemented by Mallet
@@ -807,10 +845,10 @@ conditional Monte Carlo method (as in Example 4.3 on page 146 of
 \cite{asmussen2007stochastic}), and kernel density estimation. The following
 estimators are reported: the conditional Monte Carlo estimator
 $\widehat{f}_{\mathrm{Cond}}$, $\widetilde{f} \defeq
-\Laplace^{-1}(\widetilde{\Laplace}(\cdot))$, $\widehat{f}_{\mathrm{IS}} \defeq
-\Laplace^{-1}(\widehat{\Laplace}_{\mathrm{IS}}(\cdot))$ and
+\Laplace^{-1} \circ \widetilde{\Laplace}$, $\widehat{f}_{\mathrm{IS}} \defeq
+\Laplace^{-1} \circ \widehat{\Laplace}_{\mathrm{IS}}$ and
 $\widehat{f}_{\mathrm{Q}} \defeq
-\Laplace^{-1}(\widehat{\Laplace}_{\mathrm{Q}}(\cdot))$.
+\Laplace^{-1} \circ \widehat{\Laplace}_{\mathrm{Q}}$.
 
 \begin{table}[ht]
 \centering
@@ -844,6 +882,7 @@ becoming unstable (and very slow) when trying to increase the desired
 precision. Also, the inversion results became markedly poorer when $f(x)$
 exhibited high kurtosis (i.e., when $\det(\bfSigma)$ became small).
 
+
 \section{Closing Remarks}\label{S:Remarks}
 
 The estimators above give an accurate, relatively simple, and computationally
@@ -856,7 +895,7 @@ gives an accurate starting value for the iterations.
 
 \begin{subappendices}
 
-\section{Remaining steps in the proof of Theorem~\ref{Th:24.8a}}
+\section{Remaining steps in the proof of \thrm{Th:24.8a}}
 
 First we note that all the minimisations are convex problems and therefore
 have unique solutions.

@@ -24,11 +24,6 @@ Adnan~A Abu-Dayya and Norman~C Beaulieu.
 \newblock {\em IEEE Transactions on Vehicular Technology}, 43(1):164--173,
   1994.
 
-\bibitem{adler2017relative}
-Andr{\'e} Adler and Anthony~G Pakes.
-\newblock On relative stability and weighted laws of large numbers.
-\newblock {\em Extremes}, 20(1):1--31, 2017.
-
 \bibitem{adler1990introduction}
 Robert~J Adler.
 \newblock An introduction to continuity, extrema, and related topics for
@@ -46,6 +41,16 @@ John Aitchison and James~AC Brown.
 \newblock {\em The Lognormal Distribution with Special Reference to its Uses in
   Economics}.
 \newblock Cambridge University Press, 1957.
+
+\bibitem{alink2004diversification}
+Stan Alink, Matthias L{\"o}we, and Mario~V W{\"u}thrich.
+\newblock Diversification of aggregate dependent risks.
+\newblock {\em Insurance: Mathematics and Economics}, 35(1):77--95, 2004.
+
+\bibitem{alink2007diversification}
+Stan Alink, Matthias L{\"o}we, and Mario~V W{\"u}thrich.
+\newblock Diversification for general copula dependence.
+\newblock {\em Statistica Neerlandica}, 61(4):446--465, 2007.
 
 \bibitem{OnlineAccomp}
 Lars~N{\o}rvang Andersen, Patrick~J. Laub, and Leonardo Rojas-Nandayapa.
@@ -66,6 +71,13 @@ T.~W. Anderson.
 \newblock Wiley Series in Probability and Statistics. Wiley-Interscience [John
   Wiley \& Sons], Hoboken, NJ, third edition, 2003.
 
+\bibitem{APQ}
+S{\o}ren Asmussen.
+\newblock {\em Applied probability and queues}, volume~51 of {\em Applications
+  of Mathematics (New York)}.
+\newblock Springer-Verlag, New York, second edition, 2003.
+\newblock Stochastic Modelling and Applied Probability.
+
 \bibitem{asmussen2017conditional}
 S{\o}ren Asmussen.
 \newblock Conditional {M}onte {C}arlo for sums, with applications to insurance
@@ -80,12 +92,6 @@ S{\o}ren Asmussen and Hansj{\"o}rg Albrecher.
 \newblock World Scientific Publishing Co Pte Ltd, River Edge, NJ, 2 edition,
   2010.
 \newblock Advanced series on statistical science \& applied probability; v. 14.
-
-\bibitem{asmussen2011efficient}
-S{\o}ren Asmussen, Jose Blanchet, Sandeep Juneja, and Leonardo Rojas-Nandayapa.
-\newblock Efficient simulation of tail probabilities of sums of correlated
-  lognormals.
-\newblock {\em Annals of Operations Research}, 189(1):5--23, 2011.
 
 \bibitem{asmussen2007stochastic}
 S{\o}ren Asmussen and Peter~W Glynn.
@@ -105,6 +111,18 @@ S{\o}ren Asmussen, Pierre-Olivier Goffard, and Patrick~J. Laub.
 \newblock Orthonormal polynomial expansion and lognormal sum densities.
 \newblock {\em arXiv preprint arXiv:1601.01763}, 2016.
 
+\bibitem{asmussen2017tail}
+S{\o}ren Asmussen, Enkelejd Hashorva, Patrick~J. Laub, and Thomas Taimre.
+\newblock Tail asymptotics for light-tailed {W}eibull-like sums.
+\newblock {\em Probability and Mathematical Statistics}, 37(2), 2017.
+
+\bibitem{asmussen2018phase}
+S{\o}ren Asmussen, Jevgenijs Ivanovs, Patrick~J. Laub, and Hailiang Yang.
+\newblock Phase-type models in life insurance: Fitting and valuation of
+  equity-linked benefits.
+\newblock {\em Risks}, 2018.
+\newblock To be submitted.
+
 \bibitem{asmussen2014laplace}
 S{\o}ren Asmussen, Jens~Ledet Jensen, and Leonardo Rojas-Nandayapa.
 \newblock On the {L}aplace transform of the lognormal distribution.
@@ -117,15 +135,15 @@ S{\o}ren Asmussen, Jens~Ledet Jensen, and Leonardo Rojas-Nandayapa.
 \newblock {\em Scandinavian Journal of Statistics}, 2016.
 \newblock To appear, DOI 10.1111/sjos.12203.
 
-\bibitem{Asmussen2006}
-S{\o}ren Asmussen and Dirk~P. Kroese.
-\newblock Improved algorithms for rare event simulation with heavy tails.
-\newblock {\em Adv. in Appl. Probab.}, 38(2):545--558, June 2006.
-
 \bibitem{asmussen2006improved}
 S{\o}ren Asmussen and Dirk~P Kroese.
 \newblock Improved algorithms for rare event simulation with heavy tails.
 \newblock {\em Advances in Applied Probability}, 38(2):545--558, 2006.
+
+\bibitem{asmussen1996fitting}
+S{\o}ren Asmussen, Olle Nerman, and Marita Olsson.
+\newblock Fitting phase-type distributions via the em algorithm.
+\newblock {\em Scandinavian Journal of Statistics}, pages 419--441, 1996.
 
 \bibitem{asmussen2008asymptotics}
 S{\o}ren Asmussen and Leonardo Rojas-Nandayapa.
@@ -144,16 +162,11 @@ August~A Balkema, Claudia Kl{\"u}ppelberg, and Sidney~I Resnick.
 \newblock {\em Proceedings of the London Mathematical Society}, 3(3):568--588,
   1993.
 
-\bibitem{balkema2003domains}
-August~A Balkema, Claudia Kl{\"u}ppelberg, and Sidney~I Resnick.
-\newblock Domains of attraction for exponential families.
-\newblock {\em Stochastic processes and their applications}, 107(1):83--103,
-  2003.
-
-\bibitem{Barndorff1989asymptotic}
+\bibitem{barndorff1989asymptotic}
 Ole~E Barndorff-Nielsen and David~Roxbee Cox.
-\newblock {\em Asymptotic Techniques for use in Statistics}.
-\newblock Chapman \& Hall, 1989.
+\newblock {\em Asymptotic techniques for use in statistics}.
+\newblock Monographs on Statistics and Applied Probability. Springer Science \&
+  Business Media, 1989.
 
 \bibitem{beaulieu1995estimating}
 Norman~C Beaulieu, Adnan~A Abu-Dayya, and Peter~J McLane.
@@ -173,6 +186,12 @@ Norman~C Beaulieu and Qiong Xie.
 \newblock {\em IEEE Transactions on Vehicular Technology}, 53(2):479--489,
   2004.
 
+\bibitem{berberan2007expressing}
+M{\'a}rio~N Berberan-Santos.
+\newblock Expressing a probability density function in terms of another {PDF}:
+  A generalized {G}ram-{C}harlier expansion.
+\newblock {\em Journal of Mathematical Chemistry}, 42(3):585--594, 2007.
+
 \bibitem{Berg1984}
 Christian Berg, Jens Peter~Reus Christensen, and Paul Ressel.
 \newblock {\em Harmonic Analysis on Semigroups}, volume 100 of {\em Graduate
@@ -190,12 +209,23 @@ Nicholas~H Bingham, Charles~M Goldie, and Jozef~L. Teugels.
   Mathematics and its Applications}.
 \newblock Cambridge university press, Cambridge, 1989.
 
+\bibitem{bladt2005review}
+Mogens Bladt.
+\newblock A review on phase-type distributions and their use in risk theory.
+\newblock {\em ASTIN Bulletin: The Journal of the IAA}, 35(1):145--161, 2005.
+
+\bibitem{botev2017fast}
+Zdravko Botev, Robert Salomone, and Daniel MacKinlay.
+\newblock Fast and accurate computation of the distribution of sums of
+  dependent log-normals.
+\newblock {\em arXiv preprint arXiv:1705.03196}, 2017.
+
 \bibitem{botev2017normal}
 Zdravko~I. Botev.
 \newblock The normal law under linear restrictions: Simulation and estimation
   via minimax tilting.
 \newblock {\em Journal of the Royal Statistical Society, Series B}, 79:pp.\
-  1--24.
+  1--24, 2016.
 
 \bibitem{botev2010kernel}
 Zdravko~I. Botev, Joseph~F. Grotowski, and Dirk~P. Kroese.
@@ -218,10 +248,30 @@ Jun Cai, Ken~Seng Tan, Chengguo Weng, and Yi~Zhang.
 \newblock Optimal reinsurance under {VaR} and {CTE} risk measures.
 \newblock {\em Insurance: Mathematics and Economics}, 43(1):185 -- 196, 2008.
 
+\bibitem{cambou2017quasi}
+Mathieu Cambou, Marius Hofert, and Christiane Lemieux.
+\newblock Quasi-random numbers for copula models.
+\newblock {\em Statistics and Computing}, 27(5):1307--1329, 2017.
+
+\bibitem{cerou2007adaptive}
+Fr{\'e}d{\'e}ric C{\'e}rou and Arnaud Guyader.
+\newblock Adaptive multilevel splitting for rare event analysis.
+\newblock {\em Stochastic Analysis and Applications}, 25(2):417--443, 2007.
+
+\bibitem{chan2012improved}
+Joshua~CC Chan and Dirk~P Kroese.
+\newblock Improved cross-entropy method for estimation.
+\newblock {\em Statistics and Computing}, 22(5):1031--1040, 2012.
+
 \bibitem{charpentier2009tails}
 Arthur Charpentier and Johan Segers.
 \newblock Tails of multivariate {A}rchimedean copulas.
 \newblock {\em Journal of Multivariate Analysis}, 100(7):1521--1537, 2009.
+
+\bibitem{chateau2017gram}
+Jean-Pierre Chateau and Daniel Dufresne.
+\newblock {G}ram--{C}harlier processes and applications to option pricing.
+\newblock {\em Journal of Probability and Statistics}, 2017, 2017.
 
 \bibitem{Ch10}
 Ka~Chun Cheung.
@@ -253,15 +303,15 @@ J.~S. Christiansen.
 \newblock {\em Journal of Mathematical Analysis and Applications},
   277(1):218--245, 2003.
 
-\bibitem{cline1986convolution}
-Daren~BH Cline.
-\newblock Convolution tails, product tails and domains of attraction.
-\newblock {\em Probability Theory and Related Fields}, 72(4):529--557, 1986.
+\bibitem{cohen2011generalization}
+Leon Cohen.
+\newblock On the generalization of the {E}dgeworth/{G}ram--{C}harlier series.
+\newblock {\em Journal of Mathematical Chemistry}, 49(3):625--628, 2011.
 
 \bibitem{cont2010encyclopedia}
 Rama Cont.
-\newblock Encyclopedia of quantitative finance.
-\newblock 2010.
+\newblock {\em Encyclopedia of quantitative finance}.
+\newblock Wiley, 2010.
 
 \bibitem{corless1996lambertw}
 Robert~M Corless, Gaston~H Gonnet, David~EG Hare, David~J Jeffrey, and Donald~E
@@ -269,15 +319,25 @@ Robert~M Corless, Gaston~H Gonnet, David~EG Hare, David~J Jeffrey, and Donald~E
 \newblock On the {L}ambert {W} function.
 \newblock {\em Advances in Computational Mathematics}, 5(1):329--359, 1996.
 
-\bibitem{Cr99}
-H.~Cramer.
-\newblock {\em Mathematical Methods of Statistics}, volume~9.
-\newblock Princeton University Press, 1999.
+\bibitem{cramer1930mathematical}
+H~Cram{\'e}r.
+\newblock {\em On the {M}athematical {T}heory of {R}isk}.
+\newblock {S}kandia {J}ubilee {V}olume, Stockholm, 1930.
+
+\bibitem{cramer1926some}
+Harald Cram{\'e}r.
+\newblock {\em On some classes of series used in mathematical statistics}.
+\newblock Hoffenberg, 1926.
 
 \bibitem{crow1988lognormal}
 Edwin~L Crow and Kunio Shimizu.
 \newblock {\em Lognormal Distributions: Theory and Applications}.
 \newblock Dekker New York, 1988.
+
+\bibitem{de2005tutorial}
+Pieter-Tjerk De~Boer, Dirk~P Kroese, Shie Mannor, and Reuven~Y Rubinstein.
+\newblock A tutorial on the cross-entropy method.
+\newblock {\em Annals of operations research}, 134(1):19--67, 2005.
 
 \bibitem{de2007extreme}
 Laurens De~Haan and Ana Ferreira.
@@ -290,10 +350,26 @@ M.~Denuit, J.~Dhaene, M.~J. Goovaert, and R.~Kaas.
   Models}.
 \newblock John Wiley \& Sons, Inc., 2006.
 
+\bibitem{deuschel2001large}
+Jean-Dominique Deuschel and Daniel~W Stroock.
+\newblock {\em Large deviations}, volume 342.
+\newblock American Mathematical Soc., 2001.
+
+\bibitem{dick2010digital}
+Josef Dick and Friedrich Pillichshammer.
+\newblock {\em Digital nets and sequences: discrepancy theory and quasi--Monte
+  Carlo integration}.
+\newblock Cambridge University Press, 2010.
+
 \bibitem{duellmann2010regulatory}
 Klaus Duellmann.
 \newblock {\em Regulatory Capital}, volume~IV, pages 1525--1538.
 \newblock Wiley, 2010.
+
+\bibitem{dufresne2000laguerre}
+Daniel Dufresne.
+\newblock Laguerre series for {A}sian and other options.
+\newblock {\em Mathematical Finance}, 10(4):407--428, 2000.
 
 \bibitem{dufresne2004log}
 Daniel Dufresne.
@@ -312,6 +388,11 @@ Daniel Dufresne, Jose Garrido, and Manuel Morales.
 \newblock {\em Methodology and Computing in Applied Probability},
   11(3):359--383, 2009.
 
+\bibitem{dufresne2016pricing}
+Daniel Dufresne and H.~Li.
+\newblock Pricing {A}sian options: {C}onvergence of {G}ram--{C}harlier series.
+\newblock Technical report, Actuarial Research Clearing House, 2016.
+
 \bibitem{EIOPA}
 EIOPA.
 \newblock {Q}uantitative {I}mpact {S}tudies {V}: {T}echnical {S}pecifications.
@@ -328,16 +409,11 @@ Paul Embrechts and M.~Frei.
 \newblock {\em Mathematical Methods of Operations Research}, 69:497--508, July
   2009.
 
-\bibitem{embrechts2014aggregation}
-Paul Embrechts, Enkelejd Hashorva, and Thomas Mikosch.
-\newblock Aggregation of log-linear risks.
-\newblock {\em Journal of Applied Probability}, 51(A):203--212, 2014.
-
-\bibitem{embrechts2013modelling}
-Paul Embrechts, Claudia Kl{\"u}ppelberg, and Thomas Mikosch.
-\newblock {\em Modelling extremal events: for insurance and finance},
-  volume~33.
-\newblock Springer Science \& Business Media, 2013.
+\bibitem{embrechts2009panjer}
+Paul Embrechts and Marco Frei.
+\newblock Panjer recursion versus fft for compound distributions.
+\newblock {\em Mathematical Methods of Operations Research}, 69(3):497--508,
+  2009.
 
 \bibitem{embrechts2014academic}
 Paul Embrechts, Giovanni Puccetti, Ludger R{\"u}schendorf, Ruodu Wang, and
@@ -357,10 +433,28 @@ Carlo Fischione, Fabio Graziosi, and Fortunato Santucci.
   applications.
 \newblock {\em IEEE Transactions on Communications}, 55(10):1984--1993, 2007.
 
-\bibitem{Friel2012}
-Nial Friel and Jason Wyse.
-\newblock Estimating the evidence-- a review.
-\newblock {\em Statistica Neerlandica}, 66(3):288--308, August 2012.
+\bibitem{foss2011introduction}
+Sergey Foss, Dmitry Korshunov, Stan Zachary, et~al.
+\newblock {\em An introduction to heavy-tailed and subexponential
+  distributions}, volume~6.
+\newblock Springer, 2011.
+
+\bibitem{foss2010sums}
+Serguei Foss and Andrew Richards.
+\newblock On sums of conditionally independent subexponential random variables.
+\newblock {\em Mathematics of Operations Research}, 35(1):102--119, 2010.
+
+\bibitem{frachot2001loss}
+Antoine Frachot, Pierre Georges, and Thierry Roncalli.
+\newblock Loss distribution approach for operational risk.
+\newblock Technical report, Groupe de Recherche Op´erationnelle, Cr´edit
+  Lyonnais, France, 2001.
+
+\bibitem{frachot2003loss}
+Antoine Frachot, Olivier Moudoulaud, and Thierry Roncalli.
+\newblock Loss distribution approach in practice.
+\newblock Technical report, Groupe de Recherche Op´erationnelle, Cr´edit
+  Lyonnais, France, 2003.
 
 \bibitem{gao2009asymptotic}
 Xin Gao, Hong Xu, and Dong Ye.
@@ -370,11 +464,27 @@ Xin Gao, Hong Xu, and Dong Ye.
   2009.
 \newblock Volume 2009, Article ID 630857, 28 pages.
 
+\bibitem{gautschi2011numerical}
+Walter Gautschi.
+\newblock {\em Numerical analysis}.
+\newblock Springer Science \& Business Media, 2011.
+
 \bibitem{glasserman2003monte}
 Paul Glasserman.
 \newblock {\em Monte Carlo Methods in Financial Engineering}, volume~53 of {\em
   Stochastic Modelling and Applied Probability series}.
 \newblock Springer, 2003.
+
+\bibitem{glasserman1996splitting}
+Paul Glasserman, Philip Heidelberger, Perwez Shahabuddin, and Tim Zajic.
+\newblock Splitting for rare event simulation: analysis of simple cases.
+\newblock In {\em Proceedings of the 28th conference on Winter simulation},
+  pages 302--308. IEEE Computer Society, 1996.
+
+\bibitem{glasserman1999multilevel}
+Paul Glasserman, Philip Heidelberger, Perwez Shahabuddin, and Tim Zajic.
+\newblock Multilevel splitting for estimating rare event probabilities.
+\newblock {\em Operations Research}, 47(4):585--600, 1999.
 
 \bibitem{StoplossCode}
 Pierre-Olivier Goffard and Patrick~J. Laub.
@@ -397,12 +507,6 @@ Pierre-Olivier Goffard, St{\'e}phane Loisel, and Denys Pommeret.
 \newblock {\em Journal of Computational and Applied Mathematics}, 296:499 --
   511, 2016.
 
-\bibitem{Gubner2006}
-John~A Gubner.
-\newblock {\em Probability and Random Processes for Electrical and Computer
-  Engineers}.
-\newblock Cambridge University Press, 2006.
-
 \bibitem{tankov2015tail}
 Archil Gulisashvili and Peter Tankov.
 \newblock Tail behavior of sums and differences of log-normal random variables.
@@ -422,6 +526,11 @@ Henryk Gzyl and Aldo Tagliani.
   moments of its exponential.
 \newblock {\em Applied Mathematics and Computation}, 219(4):2124 -- 2133, 2012.
 
+\bibitem{hald2000early}
+Anders Hald.
+\newblock The early history of the cumulants and the {G}ram--{C}harlier series.
+\newblock {\em International Statistical Review}, 68(2):137--153, 2000.
+
 \bibitem{hashorva2005asymptotics}
 Enkelejd Hashorva.
 \newblock Asymptotics and bounds for multivariate {G}aussian tails.
@@ -437,18 +546,22 @@ Enkelejd Hashorva.
 \newblock On the residual dependence index of elliptical distributions.
 \newblock {\em Statistics \& Probability Letters}, 80(13):1070--1078, 2010.
 
-\bibitem{hashorva2014asymptotics}
-Enkelejd Hashorva and Jinzhu Li.
-\newblock Asymptotics for a discrete-time risk model with the emphasis on
-  financial risk.
-\newblock {\em Probability in the Engineering and Informational Sciences},
-  28(4):573--588, 2014.
-
 \bibitem{HaZa04}
 Abdelhamid Hassairi and Mohammed Zarai.
 \newblock Characterization of the cubic exponential families by orthogonality
   of polynomials.
 \newblock {\em The Annals of Probability}, 32(3):2463--2476, 2004.
+
+\bibitem{hassan2009actuarial}
+Amin Hassan~Zadeh.
+\newblock {\em Actuarial applications of multivariate phase-type distributions:
+  model calibration and credibility}.
+\newblock PhD thesis, Universit{\'e} de Montr{\'e}al, 2009.
+
+\bibitem{hassan2014use}
+Amin Hassan~Zadeh, Bruce~L Jones, and David~A Stanford.
+\newblock The use of phase-type models for disability insurance calculations.
+\newblock {\em Scandinavian Actuarial Journal}, 2014(8):714--728, 2014.
 
 \bibitem{hcine2015highly}
 Marwane~Ben Hcine and Ridha Bouallegue.
@@ -461,16 +574,14 @@ Janet~E Heffernan.
 \newblock A directory of coefficients of tail dependence.
 \newblock {\em Extremes}, 3(3):279--290, 2000.
 
+\bibitem{Hegland2017}
+Markus Hegland.
+\newblock Lecture notes for {C}omputational {M}athematics, January 2017.
+
 \bibitem{Heyde63}
 C.C.\ Heyde.
 \newblock On a property of the lognormal distribution.
 \newblock {\em J.\ Roy.\ Statist.}, 5(Ser.\ B):392--393, 1963.
-
-\bibitem{holmes2006bayesian}
-Chris~C. Holmes and Leonhard Held.
-\newblock Bayesian auxiliary variable models for binary and multinomial
-  regression.
-\newblock {\em Bayesian analysis}, 1(1):145--168, 2006.
 
 \bibitem{huang2003rare}
 Zhi Huang and P~Shahabuddin.
@@ -484,11 +595,6 @@ Henrik Hult, Filip Lindskog, et~al.
 \newblock Multivariate extremes, aggregation and dependence in elliptical
   distributions.
 \newblock {\em Advances in Applied Probability}, 34(3):587--608, 2002.
-
-\bibitem{jensen1995saddlepoint}
-Jens~Ledet Jensen.
-\newblock {\em Saddlepoint approximations}.
-\newblock Number~16. Oxford University Press, 1995.
 
 \bibitem{JiPrRe16}
 Tao Jin, Serge~B. Provost, and Jiandong Ren.
@@ -505,10 +611,26 @@ Norman~L Johnson, Samuel Kotz, and Narayanaswamy Balakrishnan.
 \newblock {\em Continuous Univariate Distributions}, volume~1.
 \newblock New York: Wiley, 2 edition, 1994.
 
+\bibitem{juneja2002simulating}
+Sandeep Juneja and Perwez Shahabuddin.
+\newblock Simulating heavy tailed processes using delayed hazard rate twisting.
+\newblock {\em ACM Transactions on Modeling and Computer Simulation (TOMACS)},
+  12(2):94--118, 2002.
+
 \bibitem{klugman2012loss}
 Stuart~A Klugman, Harry~H Panjer, and Gordon~E Willmot.
 \newblock {\em Loss models: from data to decisions}, volume 715.
 \newblock John Wiley \& Sons, 2012.
+
+\bibitem{kluppelberg2014risk}
+Claudia Kl{\"u}ppelberg, Daniel Straub, and Isabell~M Welpe.
+\newblock {\em Risk: A Multidisciplinary Introduction}.
+\newblock Springer, 2014.
+
+\bibitem{kolassa2006series}
+John~E Kolassa.
+\newblock {\em Series approximation methods in statistics}, volume~88.
+\newblock Springer Science \& Business Media, 2006.
 
 \bibitem{kotz2001asymmetric}
 Samuel Kotz, Tomaz~J Kozubowski, and Krzysztof Podg{\'o}rski.
@@ -516,11 +638,10 @@ Samuel Kotz, Tomaz~J Kozubowski, and Krzysztof Podg{\'o}rski.
 \newblock In {\em The Laplace Distribution and Generalizations}, pages
   239--272. Springer, 2001.
 
-\bibitem{kroese2007solutions}
-Dirk~P. Kroese, Thomas Taimre, Zdravko~I. Botev, and Reuven~Y. Rubinstein.
-\newblock {\em Solutions manual to accompany {S}imulation and the {M}onte
-  {C}arlo method}.
-\newblock Wiley-Interscience, 2007.
+\bibitem{kroese2013handbook}
+Dirk~P Kroese, Thomas Taimre, and Zdravko~I Botev.
+\newblock {\em Handbook of Monte Carlo Methods}, volume 706.
+\newblock John Wiley \& Sons, 2013.
 
 \bibitem{La15}
 Patrick~J. Laub, S{\o}ren Asmussen, Jens~Ledet Jensen, and Leonardo
@@ -577,10 +698,15 @@ Eckhard Limpert, Werner~A Stahel, and Markus Abbt.
 \newblock Log-normal distributions across the sciences: Keys and clues.
 \newblock {\em BioScience}, 51(5):341--352, 2001.
 
+\bibitem{lundberg1903approximerad}
+Filip Lundberg.
+\newblock {\em I. Approximerad {F}ramst{\"a}llning af {S}annolikhetsfunktionen.
+  II. {\AA}terf{\"o}rs{\"a}kring af {K}ollektivrisker.}
+\newblock Almqvist \& Wiksell, Uppsala, 1903.
+
 \bibitem{mallet1985numerical}
 Arnaud Mallet.
-\newblock Numerical inversion of {L}aplace transform.
-\newblock 2000.
+\newblock {\em Numerical inversion of {L}aplace transform}, 2000.
 \newblock Mathematica package, accessed online on 26th August 2015 at
   \url{http://library. wolfram. com/infocenter/MathSource/2691}.
 
@@ -589,16 +715,20 @@ Harry Markowitz.
 \newblock Portfolio selection.
 \newblock {\em The {J}ournal of {F}inance}, 7(1):77--91, 1952.
 
-\bibitem{Marlow1967}
-NA~Marlow.
-\newblock A normal limit theorem for power sums of independent random
-  variables.
-\newblock {\em Bell System Technical Journal}, 46(9):2081--2089, 1967.
-
 \bibitem{mcneil2015quantitative}
 Alexander~J McNeil, R{\"u}diger Frey, and Paul Embrechts.
 \newblock {\em Quantitative Risk Management: Concepts, Techniques and Tools}.
 \newblock Princeton University Press, 2nd edition, 2015.
+
+\bibitem{meyn2012markov}
+Sean~P Meyn and Richard~L Tweedie.
+\newblock {\em Markov chains and stochastic stability}.
+\newblock Springer Science \& Business Media, 2012.
+
+\bibitem{mikosch2006Copula}
+Thomas Mikosch.
+\newblock Copulas: tales and facts.
+\newblock {\em Extremes}, 9(3), 2006.
 
 \bibitem{milevsky1998asian}
 Moshe~Arye Milevsky and Steven~E Posner.
@@ -624,6 +754,11 @@ Carl~N. Morris.
 \newblock Natural exponential families with quadratic variance functions.
 \newblock {\em The Annals of Statistics}, 10(1):65--80, 1982.
 
+\bibitem{nadarajah2008review}
+Saralees Nadarajah.
+\newblock A review of results on sums of random variables.
+\newblock {\em Acta Applicandae Mathematicae}, 103(2):131--140, 2008.
+
 \bibitem{NaChJi16}
 Saralees Nadarajah, Jeffrey Chu, and Xiao Jiang.
 \newblock On moment based density approximations for aggregate losses.
@@ -646,6 +781,16 @@ Natalia Nolde.
 \newblock Geometric interpretation of the residual dependence coefficient.
 \newblock {\em Journal of Multivariate Analysis}, 123:85--95, 2014.
 
+\bibitem{olsson1996estimation}
+Marita Olsson.
+\newblock Estimation of phase-type distributions from censored data.
+\newblock {\em Scandinavian Journal of Statistics}, pages 443--460, 1996.
+
+\bibitem{pagan1999nonparametric}
+Adrian Pagan and Aman Ullah.
+\newblock {\em Nonparametric econometrics}.
+\newblock Cambridge university press, 1999.
+
 \bibitem{PaWi81}
 Harry~H Panjer and Gordon~E Willmot.
 \newblock Finite sum evaluation of the negative binomial-exponential model.
@@ -655,6 +800,17 @@ Harry~H Panjer and Gordon~E Willmot.
 D.E Papush, G.~S. Patrik, and F.~Podgaits.
 \newblock Approximations of th aggregate loss distribution.
 \newblock {\em CAS Forum (Winter)}, pages 175--186, 2001.
+
+\bibitem{PDQutilsManual}
+Steven~E. Pav.
+\newblock {\em {PDQutils}: {PDQ} Functions via {G}ram {C}harlier, {E}dgeworth,
+  and {C}ornish {F}isher Approximations}, 2017.
+\newblock R package version 0.1.6.
+
+\bibitem{popovic2012easy}
+Ray Popovic and David Goldsman.
+\newblock Easy {G}ram--{C}harlier valuations of options.
+\newblock {\em Journal of Derivatives}, 20(2):79, 2012.
 
 \bibitem{Pr05}
 Serge~B. Provost.
@@ -683,26 +839,20 @@ Christian~P Robert.
 \newblock Simulation of truncated normal variables.
 \newblock {\em Statistics and computing}, 5(2):121--125, 1995.
 
+\bibitem{rojas2017asymptotic}
+Leonardo Rojas-Nandayapa and Wangyue Xie.
+\newblock Asymptotic tail behaviour of phase-type scale mixture distributions.
+\newblock {\em Annals of Actuarial Science}, pages 1--21, 2017.
+
 \bibitem{RoScScTe08}
 Tomasz Rolski, Hanspeter Schmidli, Volker Schmidt, and Jozef~L. Teugels.
 \newblock {\em Risk Processes for finance and insurance}, pages 147--204.
 \newblock John Wiley \& Sons, Inc., 2008.
 
-\bibitem{rootzen1987ratio}
-Holger Rootzen.
-\newblock A ratio limit theorem for the tails of weighted sums.
-\newblock {\em The Annals of Probability}, pages 728--747, 1987.
-
-\bibitem{rosenthal2006first}
-Jeffrey~S. Rosenthal.
-\newblock {\em A first look at rigorous probability theory}.
-\newblock World Scientific Publishing Co Inc, 2006.
-
-\bibitem{RubinsteinReuven1992Saod}
-Reuven~Y. Rubinstein.
-\newblock Sensitivity analysis of discrete event systems by the ``push out''
-  method.
-\newblock {\em Annals of Operations Research}, 39(1):229--250, December 1992.
+\bibitem{rubino2009rare}
+Gerardo Rubino and Bruno Tuffin.
+\newblock {\em Rare event simulation using Monte Carlo methods}.
+\newblock John Wiley \& Sons, 2009.
 
 \bibitem{rubinstein2011simulation}
 Reuven~Y. Rubinstein and Dirk~P. Kroese.
@@ -711,15 +861,20 @@ Reuven~Y. Rubinstein and Dirk~P. Kroese.
 
 \bibitem{Rueschendorf2013}
 Ludger R{\"u}schendorf.
-\newblock {\em Mathematical risk analysis}.
+\newblock {\em Mathematical {R}isk {A}nalysis}.
 \newblock Springer, 2013.
 
-\bibitem{PushoutCode}
+\bibitem{salmon2009recipe}
+F.~Salmon.
+\newblock Recipe for disaster: The formula that killed {W}all {S}treet, 2009.
+\newblock Online 23/02/2009.
+
+\bibitem{Pushout}
 R.~Salomone, Patrick~J. Laub, and Zdravko~I. Botev.
-\newblock {\em Source code and supplementary material for ``{M}onte {C}arlo
-  Estimation of the Density of the Sum of Dependent Random Variables''}, 2018.
-\newblock Available at
-  \url{https://github.com/Pat-Laub/PushoutDensityEstimation}.
+\newblock Monte {C}arlo estimation of the density of the sum of dependent
+  random variables.
+\newblock 2018.
+\newblock Work in progress.
 
 \bibitem{savage1962mills}
 I~Richard Savage.
@@ -731,6 +886,12 @@ Stuart~C Schwartz and Yu-Shuan Yeh.
 \newblock On the distribution function and moments of power sums with
   log-normal components.
 \newblock {\em Bell System Technical Journal}, 61(7):1441--1462, 1982.
+
+\bibitem{senaratne2009numerical}
+Damith Senaratne and Chintha Tellambura.
+\newblock Numerical computation of the lognormal sum distribution.
+\newblock In {\em Global Telecommunications Conference, 2009. GLOBECOM 2009.
+  IEEE}, pages 1--6, 2009.
 
 \bibitem{sibuya1960bivariate}
 Masaaki Sibuya.
@@ -759,16 +920,16 @@ B.~Sz{\"o}kefalvi-Nagy.
 \newblock {\em Introduction to Real Functions and Orthogonal Expansions}.
 \newblock Akad{\'e}miai Kiad{\'o}, 1965.
 
-\bibitem{ThorinWikstad1977}
-Olof Thorin and Nils Wikstad.
-\newblock Calculation of ruin probabilities when the claim distribution is
-  lognormal.
-\newblock {\em Astin Bulletin}, 9(1-2):231--246, 1977.
+\bibitem{turnbull1991quick}
+Stuart~M Turnbull and Lee~Macdonald Wakeman.
+\newblock A quick algorithm for pricing {E}uropean average options.
+\newblock {\em Journal of Financial and Quantitative Analysis}, 26(3):377--389,
+  1991.
 
-\bibitem{watanabe2008convolution}
-Toshiro Watanabe.
-\newblock Convolution equivalence and distributions of random sums.
-\newblock {\em Probability Theory and Related Fields}, 142(3):367--397, 2008.
+\bibitem{wand1994kernel}
+Matt~P Wand and M~Chris Jones.
+\newblock {\em Kernel smoothing}.
+\newblock CRC Press, 1994.
 
 \bibitem{Wi23}
 S.~Wigert.
@@ -786,5 +947,18 @@ Gordon~E. Willmot and X.~Sheldon Lin.
 Gordon~E. Willmot and Jae-Kyung Woo.
 \newblock On the class of erlang mixtures with risk theoretic applications.
 \newblock {\em North American Actuarial Journal}, 11(2):99--115, 2007.
+
+\bibitem{wuthrich2003asymptotic}
+Mario~V W{\"u}thrich.
+\newblock Asymptotic value-at-risk estimates for sums of dependent random
+  variables.
+\newblock {\em Astin Bulletin}, 33(01):75--92, 2003.
+
+\bibitem{yao2016estimating}
+Hui Yao, Leonardo Rojas-Nandayapa, and Thomas Taimre.
+\newblock Estimating tail probabilities of random sums of infinite mixtures of
+  phase-type distributions.
+\newblock In {\em Proceedings of the 2016 Winter Simulation Conference}, pages
+  347--358. IEEE Press, 2016.
 
 \end{thebibliography}

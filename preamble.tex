@@ -1,50 +1,64 @@
 %!TEX root = main.tex
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amstext}
 \usepackage{amsthm}
 \usepackage{appendix}
 \usepackage{array} % for \extrarowheight
+\usepackage{booktabs}
 \usepackage{bm} % for \bm
-\usepackage{commath} % for \dif
-\usepackage{float} % for [H]
-\usepackage{graphicx}
-\usepackage{latexsym} % for the big \Diamond
-% \usepackage{listings}
-\usepackage{mathrsfs} % for mathsf 
-\usepackage{natbib}
-\usepackage{relsize} % for \mathsmaller
-\usepackage{tikz} % for drawing circles and stuff
-% \usepackage{upgreek} % for pi
-\usepackage{url}
-
-\usepackage{multicol}
-\usepackage{multirow}
 \usepackage{cancel}
 \usepackage{cases}
-\usepackage{lastpage}
-\usepackage{fancyhdr}
-\usepackage{pst-all}
-
-% \usepackage{hyperref}% permet de cr\`{e}er des hyperliens dans le document PDF                 <<<<<<-------- causes a memory problem
-\usepackage{amsfonts}% utilise certaines polices de l'American mathematical society
-\usepackage{listings}% permet d'inclure des codes sources (programmes)
-
-\usepackage{graphicx}%pour inclure des graphiques/images
-% \usepackage[T1]{fontenc}% usage des caractËres accentu\`{e}s
+\usepackage{color}
+\usepackage{colortbl} % For nice color in tables
 \usepackage{dsfont}% permet d'utiliser la fonction \mathbb avec des chiffres
-\usepackage{latexsym,stmaryrd}%permet l'utilisation de la police des symboles latex
-\usepackage{verbatim,enumerate}% verbatim : permet d'utiliser l'environnement verbatim
+\usepackage{enumerate}
+\usepackage{fancyhdr}
 \usepackage[perpage]{footmisc} %pour recommencer ‡ indicer les notes de bas de pages ‡ 1 ‡ chaque page
-\usepackage{tabularx}
-
-\usepackage{relsize}
-\usepackage{algorithm, algpseudocode,amsmath,amssymb,bm,mathtools,mathrsfs,multirow,tikz,url}
-\usepackage{upgreek} % for pi
-\usepackage{array}
-\usepackage{pifont} % to get ticks and crosses.
+\usepackage{float} % for [H]
 \usepackage{framed} % to make boxes
+\usepackage{graphicx}
+\usepackage{lastpage}
+\usepackage{latexsym} % for the big \Diamond
+\usepackage{listings}
+\usepackage{lmodern}% better font than default
+\usepackage{mathtools}
+\usepackage{mathrsfs} % for mathsf
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{natbib}
+\usepackage{pst-all}
+\usepackage{relsize} % for \mathsmaller
+\usepackage{setspace}
+\usepackage{stmaryrd}% la police des symboles latex
+\usepackage{subfig}
+\usepackage{tabularx}
+\usepackage{tikz} % for drawing circles and stuff
+\usepackage{upgreek} % for uppi
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{wasysym}
+\usepackage{xcolor}
+\usepackage{xspace}
 
+\onehalfspacing
+
+% \usepackage{pifont} % to get ticks and crosses.
+% \usepackage{hyperref}%  <<<<<<-------- causes a memory problem
+
+% Load images from subdirectory.
+\graphicspath{{images/}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% POSSIBLY TO REMOVE LATER -- ADDED FOR LT Inversion in intro %%%%%%%%%%%
+\newcommand*{\FT}[1]{\mathcal{F}\{#1\}} % Fourier transform
+\newcommand*{\FTsub}[1]{\mathcal{F}_{#1}} % Fourier transform subscript
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% POSSIBLY ADD THIS IN AGAIN LATER -- Removed from Maxima preamble %%%%%%
+% \renewcommand{\phi}{\varphi}
 
 % Probability symbols.
 \DeclareMathOperator{\Prob}{{\mathbb P}}
@@ -52,122 +66,145 @@
 \DeclareMathOperator{\Cov}{\mathbb{C}\mathrm{ov}}
 \DeclareMathOperator{\Var}{\mathbb{V}\mathrm{ar}}
 \DeclareMathOperator{\Q}{\mathbb Q}
-
+\DeclareMathOperator{\Corr}{\mathbb{C}\mathrm{orr}}
 
 % Distributions.
-\newcommand{\Norm}{\mathcal{N}}
-\newcommand{\LN}{\mathrm{LN}}
-\newcommand{\SLN}{\mathrm{SLN}}
-\newcommand{\NormCdf}{\mathrm{\Phi}}
-\newcommand{\iidDist}{\overset{\mathrm{i.i.d.}}{\sim}}
+\newcommand*{\UnifDist}{\mathsf{Uniform}}
+\newcommand*{\ExpDist}{\mathsf{Exponential}}
+\newcommand*{\GammaDist}{\mathsf{Gamma}}
+\newcommand*{\ErlangDist}{\mathsf{Erlang}}
+\newcommand*{\NormDist}{\mathsf{Normal}}
+\newcommand*{\LNDist}{\mathsf{Lognormal}}
+\newcommand*{\SLNDist}{\mathsf{SumLognormal}}
+
+\newcommand*{\EllDist}{\mathsf{Elliptical}}
+\newcommand*{\IGDist}{\mathsf{InverseGaussian}}
+\newcommand*{\LaplaceDist}{\mathsf{Laplace}}
+\newcommand*{\WeibullDist}{\mathsf{Weibull}}
+\newcommand*{\ParetoDist}{\mathsf{Pareto}}
+
+\newcommand*{\ClaytonCop}{\mathsf{Clayton}}
+
+\newcommand*{\BinomialDist}{\mathsf{Binomial}}
+\newcommand*{\PascalDist}{\mathsf{Pascal}}
+\newcommand*{\PoissonDist}{\mathsf{Poisson}}
+
+\newcommand*{\GMDA}{\mathsf{GMDA}}
+
+% Limits and distributional stuff.
+% \newcommand*{\convprob}{\stackrel{{\Prob}}{\rightarrow}}
+% \newcommand*{\convas}{\stackrel{{\mathrm a.s.}}{\rightarrow}}
+\newcommand*{\convas}{\xrightarrow{\:\smash{\mathrm{a.s.}}\:}}
+\newcommand*{\convdistr}{\xrightarrow{\:\smash{\mathcal{D}}\:}}
+\newcommand*{\eqdistr}{\stackrel{\smash{\mathcal{D}}}{=}}
+\newcommand*{\approxdistr}{\mathrel{\dot\sim}}
+
+\newcommand*{\NormCdf}{\mathrm{\Phi}}
+\newcommand*{\iidDist}{\overset{\smash{\mathrm{iid}}}{\sim}}
+\newcommand*{\indDist}{\overset{\smash{\mathrm{ind}}}{\sim}}
 
 % Sets of numbers.
-\newcommand{\NL}{\mathbb{N}}
-\newcommand{\RL}{\mathbb{R}}
-\newcommand{\CL}{\mathbb{C}}
+\newcommand*{\NL}{\mathbb{N}_+}
+\newcommand*{\RL}{\mathbb{R}}
+\newcommand*{\CL}{\mathbb{C}}
+\newcommand*{\NZ}{\mathbb{N}_0}
+\newcommand*{\ZL}{\mathbb{Z}}
 
 % Roman versions of things.
-\newcommand{\e}{\mathrm{e}}
+\newcommand*{\dd}{\mathop{}\!\mathrm{d}}
+\newcommand*{\e}{\mathrm{e}}
+\newcommand*{\sign}{\mathrm{sign}}
+\newcommand*{\diag}{\mathrm{diag}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\supp}{Supp}
+\DeclareMathOperator{\csch}{csch}
 
-% All the bold symbols and letters.
-\newcommand{\bfA}{\bm{A}}
-\newcommand{\bfB}{\bm{B}}
-\newcommand{\bfC}{\bm{C}}
-\newcommand{\bfD}{\bm{D}}
-\newcommand{\bfE}{\bm{E}}
-\newcommand{\bfF}{\bm{F}}
-\newcommand{\bfG}{\bm{G}}
-\newcommand{\bfH}{\bm{H}}
-\newcommand{\bfI}{\bm{I}}
-\newcommand{\bfJ}{\bm{J}}
-\newcommand{\bfK}{\bm{K}}
-\newcommand{\bfL}{\bm{L}}
-\newcommand{\bfM}{\bm{M}}
-\newcommand{\bfN}{\bm{N}}
-\newcommand{\bfO}{\bm{O}}
-\newcommand{\bfP}{\bm{P}}
-\newcommand{\bfQ}{\bm{Q}}
-\newcommand{\bfR}{\bm{R}}
-\newcommand{\bfS}{\bm{S}}
-\newcommand{\bfT}{\bm{T}}
-\newcommand{\bfU}{\bm{U}}
-\newcommand{\bfV}{\bm{V}}
-\newcommand{\bfW}{\bm{W}}
-\newcommand{\bfX}{\bm{X}}
-\newcommand{\bfY}{\bm{Y}}
-\newcommand{\bfZ}{\bm{Z}}
+% Vector functions
+\newcommand*{\ve}{\text{\bf{e}}} % vector e
+\newcommand*{\vlog}{\text{\bf{log}}\,}	% vector log
 
-\newcommand{\bfa}{\bm{a}}
-\newcommand{\bfb}{\bm{b}}
-\newcommand{\bfc}{\bm{c}}
-\newcommand{\bfd}{\bm{d}}
-\newcommand{\bfe}{\bm{e}}
-\newcommand{\bff}{\bm{f}}
-\newcommand{\bfg}{\bm{g}}
-\newcommand{\bfh}{\bm{h}}
-\newcommand{\bfi}{\bm{i}}
-\newcommand{\bfj}{\bm{j}}
-\newcommand{\bfk}{\bm{k}}
-\newcommand{\bfl}{\bm{l}}
-\newcommand{\bfm}{\bm{m}}
-\newcommand{\bfn}{\bm{n}}
-\newcommand{\bfo}{\bm{o}}
-\newcommand{\bfp}{\bm{p}}
-\newcommand{\bfq}{\bm{q}}
-\newcommand{\bfr}{\bm{r}}
-\newcommand{\bfs}{\bm{s}}
-\newcommand{\bft}{\bm{t}}
-\newcommand{\bfu}{\bm{u}}
-\newcommand{\bfv}{\bm{v}}
-\newcommand{\bfw}{\bm{w}}
-\newcommand{\bfx}{\bm{x}}
-\newcommand{\bfy}{\bm{y}}
-\newcommand{\bfz}{\bm{z}}
-
-\newcommand{\bfalpha}{\bm{\alpha}}
-\newcommand{\bfbeta}{\bm{\beta}}
-\newcommand{\bfomega}{\bm{\omega}}
-\newcommand{\bfLambda}{\bm{\Lambda}}
-\newcommand{\bfmu}{\bm{\mu}}
-\newcommand{\bfsigma}{\bm{\sigma}}
-\newcommand{\bfSigma}{\bm{\Sigma}}
-
-\newcommand{\bfzero}{\bm{0}}
-\newcommand{\bfone}{\bm{1}}
+% Indicator
+\newcommand*{\ind}[1]{\mathbb{I}\{ #1 \}}
+\newcommand*{\indBig}[1]{\mathbb{I}\bigl\{ #1 \bigr\}}
+% \newcommand*{\Ind}{\mathbb I} % Indicator
+% \newcommand*{\indi}{\mathbb{I}}%{\bm{1}}
 
 % Integral transforms (pjl: TODO finish this off)
-\newcommand{\Laplace}{\mathcal{L}}
-
+\newcommand*{\Laplace}{\mathscr{L}}
+\newcommand*{\LT}[1]{\mathscr{L}\{#1\}}
+\newcommand*{\LTsub}[1]{\mathscr{L}_{#1}}
+\newcommand*{\Lp}{\mathcal{L}} % e.g. L^2 loss.
+\newcommand*{\PGF}{\mathcal{G}}
 
 % Financial stuff.
-\newcommand{\VaR}{\mathrm{VaR}}
+\newcommand*{\VaR}{\mathrm{VaR}}
 
 % Shortcuts to fix annoying defaults in Latex.
 \renewcommand{\hat}[1]{\widehat{#1}}
 \renewcommand{\tilde}[1]{\widetilde{#1}}
 \renewcommand{\epsilon}{\varepsilon}
-% \renewcommand{\pi}{\uppi}
+\renewcommand{\pi}{\uppi}
 
 % Special symbols.
-\newcommand{\defeq}{\overset{\mathrm{def}}{=}}
-\newcommand{\tr}{\top}
-\newcommand{\ih}{\mathrm{i}}
-\newcommand{\oh}{{\mathrm{o}}}
-\newcommand{\Oh}{{\mathcal{O}}}
+% \newcommand*{\defeq}{\overset{\smash{\mathrm{def}}}{=}}
+\newcommand*{\defeq}{:=}
+\newcommand*{\defeqr}{=:}
+\newcommand*{\tr}{\top}
+\newcommand*{\ih}{\mathrm{i}}
+\newcommand*{\oh}{{\mathrm{o}}}
+\newcommand*{\Oh}{{\mathcal{O}}}
 % \renewcommand{\det}[1]{\lvert \mathrm{det}(#1) \rvert}
-\newcommand{\comp}{\mathsf{c}} % complement
-\newcommand{\Ind}{\mathbb I} % Indicator
-\renewcommand{\L}{\mathcal{L}} % e.g. L^2 loss.
+\newcommand*{\comp}{\mathsf{c}} % complement
+\newcommand*{\argdot}{\makebox[1ex]{$\cdot$}} % for functions like f(.)
+\newcommand*{\BigBinom}[2]{\Bigl( \genfrac{}{}{0pt}{}{#1}{#2} \Bigr)}
 
-\DeclareMathOperator*{\argmax}{arg\,max}
-\DeclareMathOperator*{\argmin}{arg\,min}
-\newcommand{\diag}{\mathrm{diag}}
+
+% Stuff I used in paper one.
+\newcommand*{\LambertW}{\mathcal{W}}
+\newcommand*{\Fset}[1]{\mathcal{F}_{\!\mathsmaller{#1}}}
+\newcommand*{\sbullet}{\tikz[baseline=0] \fill (0,0.05) circle (0.035);}
+\newcommand*{\ms}[1]{\mathsmaller{#1}}
 
 % Norm and absolute value signs.
-\providecommand{\abs}[1]{\lvert #1\rvert } 
-\providecommand{\norm}[1]{\lVert #1\rVert }
+\newcommand*{\card}[1]{\lvert #1\rvert}
+\newcommand*{\abs}[1]{\lvert #1\rvert}
+\newcommand*{\norm}[1]{\lVert #1\rVert}
 
-\newcommand{\dd}{\mathrm{d}}
+
+\newcommand*{\alg}[1]{Algorithm~\ref{#1}}
+\newcommand*{\fig}[1]{Figure~\ref{#1}}
+\newcommand*{\thrm}[1]{Theorem~\ref{#1}}
+\newcommand*{\cor}[1]{Corollary~\ref{#1}}
+\newcommand*{\prop}[1]{Proposition~\ref{#1}}
+
+% Abbreviations
+% \newcommand*{\iid}{iid\xspace}
+% \newcommand*{\rv}{rv\xspace}
+% \newcommand*{\rvs}{rv's\xspace}
+% \newcommand*{\pdf}{pdf\xspace}
+% \newcommand*{\pgf}{pgf\xspace}
+% \newcommand*{\pmf}{pmf\xspace}
+% \newcommand*{\cdf}{cdf\xspace}
+% \newcommand*{\svf}{sf\xspace}
+% \newcommand*{\cf}{cf.\xspace}
+\newcommand*{\fft}{f.f.t.\xspace}
+% \newcommand*{\ie}{i.e.\xspace}
+
+% Regarding theorem numbering.
+\theoremstyle{plain} % the default, bold header, italic body
+\newcounter{thm}
+\newtheorem{theorem}[thm]{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{proposition}[thm]{Proposition}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{pseudoalgorithm}[thm]{Algorithm} % For the long detailed algorithm from the SLN LT paper.
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{test}[thm]{Test}
+\theoremstyle{definition} % Non-italics body
+\newtheorem{example}[thm]{Example}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{assumption}[thm]{Assumption}
 
 % Margins and text.
 \setlength{\textwidth}{16cm}
@@ -176,130 +213,25 @@
 \setlength{\parskip}{3mm}
 \setlength{\parindent}{0mm}
 
-% Stuff I used in paper one.
-% \newcommand{\sqdet}[1]{\sqrt{\det{#1}}}
-\newcommand{\LambertW}{\mathcal{W}}
-\newcommand{\Fset}[1]{\mathcal{F}_{\!\mathsmaller{#1}}}
 
-\newcommand{\sbullet}{
-  \tikz[baseline=0] \fill (0,0.05) circle (0.035);
-}
-\newcommand{\ms}[1]{\mathsmaller{#1}}
-
-\newcommand{\ve}{\bm{\mathrm{e}}} % vector e
-\newcommand{\vlog}{\bm{\mathrm{log}}\,}		  % vector log
-
-
-% Load images from subdirectory.
-\graphicspath{{images/}}
-
-% Regarding code snippets.
-\usepackage{lmodern}% better font than default
-% \usepackage{tgcursor}% tt font with bold/italic styles
-% \lstset{
-% 	basicstyle={\ttfamily\footnotesize},
-% 	breaklines=true,
-% 	showspaces=false,
-% 	showstringspaces=false,
-% 	tabsize=2
-% }
-
-% Regarding theorem numbering.
-\theoremstyle{plain} % the default, bold header, italic body
-\newtheorem{theorem}[subsection]{Theorem}
-\newtheorem{lemma}[subsection]{Lemma}
-\newtheorem{proposition}[subsection]{Proposition}
-\newtheorem{corollary}[subsection]{Corollary}
-\newtheorem{example}[subsection]{Example}
-
-\newtheorem{pseudoalgorithm}[subsection]{Algorithm} % For the long detailed algorithm from the SLN LT paper.
-
-\newtheorem{definition}[subsection]{Definition}
-\newtheorem{test}[subsection]{Test}
-
-\theoremstyle{definition}
-\newtheorem{remark}[subsection]{Remark}
-\newtheorem{assumption}[subsection]{Assumption}
+\numberwithin{thm}{chapter}
+% \numberwithin{equarray}{section}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preamble from Pushout paper
 
-% \usepackage{amssymb}
-% \usepackage{amsthm}
-% \usepackage{amsmath}
-% \usepackage{graphicx}
-% \usepackage{url}
-% \usepackage{mathrsfs}      % new calligraphic fonts
-% \usepackage{newtxtext,newtxmath} 
-
-
-% \usepackage{subfigure}
-% \usepackage{latexsym,amsmath}
-% \usepackage{euscript}
-% \usepackage{amsfonts}
-% \usepackage{moreverb}
-% \usepackage{xcolor}
-% \usepackage[latin1]{inputenc}
-% \usepackage[OT2,T1]{fontenc}
-% \usepackage{algorithm}
-% \usepackage[noend]{algorithmic}
-% \usepackage{epstopdf}
-% \usepackage{siunitx}
-% \usepackage{amsfonts}
-% \usepackage{parskip}
-% \newtheorem{proposition}{Proposition}
-% \newtheorem{theorem}{Theorem}
-% \newtheorem{lemma}{Lemma}
-% \newtheorem{corollary}{Corollary}
-
-
-\newcommand{\todo}{$\clubsuit$ \, TODO: \, }
-\newcommand{\TN}{\mathsf{TN}}
-% \DeclareMathOperator*{\argmin}{argmin}
-\newcommand{\simapprox}{\stackrel{\mathrm{approx}}{\sim}}
-\newcommand{\bb}[1]{\mathbb{#1}}
-\renewcommand{\v}[1]{\boldsymbol{#1}}
-\newcommand{\m}[1]{\mathrm{#1}}
-\renewcommand{\c}[1]{\mathcal{#1}}
-\newcommand{\idef}{\stackrel{\mathrm{def}}{=}}
-
-% % Probability symbols.
-% \DeclareMathOperator{\Prob}{\mathbb{P}}
-% \DeclareMathOperator{\Exp}{\mathbb{E}}
-% \DeclareMathOperator{\Cov}{\mathbb{C}\mathrm{ov}}
-% \DeclareMathOperator{\Var}{\mathbb{V}\mathrm{ar}}
-
-% Sets of numbers.
-% \newcommand{\NL}{\mathbb{N}}
-% \newcommand{\RL}{\mathbb{R}}
-% \newcommand{\CL}{\mathbb{C}}
-
-
-% Distributions.
-% \newcommand{\Norm}{\mathcal{N}}
-% \newcommand{\LN}{\mathrm{LN}}
-% \newcommand{\SLN}{\mathrm{SLN}}
-% \newcommand{\NormCdf}{\mathrm{\Phi}}
-% \newcommand{\iidDist}{\overset{\mathrm{iid}}{\sim}}
-
-% Roman versions of things.
-% \newcommand{\e}{\mathrm{e}}
-% \newcommand{\dd}{\mathop{}\mathopen{}\mathrm{d}}
-% \newcommand{\diag}{\mathrm{diag}}
-\newcommand{\sign}{\mathrm{sign}}
-\newcommand{\rd}{{\rm d}}
-
-\newcommand{\ind}[1]{\mathbb{I}_{\{#1 \}}}
-
+% \newcommand*{\TN}{\mathsf{TN}}
+% \newcommand*{\simapprox}{\stackrel{\mathrm{approx}}{\sim}}
+% \newcommand*{\bb}[1]{\mathbb{#1}}
+% \renewcommand{\v}[1]{\boldsymbol{#1}}
+% \newcommand*{\m}[1]{\mathrm{#1}}
+% \renewcommand{\c}[1]{\mathcal{#1}}
+% \newcommand*{\idef}{\stackrel{\mathrm{def}}{=}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preamble from SLN Orthogonal PDF paper
 
 %% Pierre-Olivier's definitions.
 
-% \renewcommand\thesubfigure{} %pour changer la num\`{e}rotation des subfigures
-
-% \numberwithin{equation}{section}
-%\numberwithin{equarray}{section}
 %\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 %\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
 % \fancyhead[LE,RO]{\bfseries\thepage}
@@ -312,372 +244,202 @@
 %\renewcommand{\headrulewidth}{0pt}
 %\renewcommand{\footrulewidth}{0pt}
 
-\fancypagestyle{empty}{%
-\fancyhf{} % clear all header and footer fields
-%\fancyhead[LE,RO]{\thepage}
-\renewcommand{\headrulewidth}{0.0pt}
-\renewcommand{\footrulewidth}{0.0pt}}
+	% \fancypagestyle{empty}{%
+	% \fancyhf{} % clear all header and footer fields
+	% %\fancyhead[LE,RO]{\thepage}
+	% \renewcommand{\headrulewidth}{0.0pt}
+	% \renewcommand{\footrulewidth}{0.0pt}}
 
-\fancypagestyle{plain}{%
-\fancyhf{} % clear all header and footer fields
-\fancyfoot[LE,RO]{\thepage}
-\renewcommand{\headrulewidth}{0.0pt}
-\renewcommand{\footrulewidth}{0.0pt}}
+	% \fancypagestyle{plain}{%
+	% \fancyhf{} % clear all header and footer fields
+	% \fancyfoot[LE,RO]{\thepage}
+	% \renewcommand{\headrulewidth}{0.0pt}
+	% \renewcommand{\footrulewidth}{0.0pt}}
 
-\fancypagestyle{headings}{%
-\fancyhf{} % clear all header and footer fields
-\fancyfoot[LE,RO]{\thepage}
-\renewcommand{\headrulewidth}{0.0pt}
-\renewcommand{\footrulewidth}{0.0pt}}
+	% \fancypagestyle{headings}{%
+	% \fancyhf{} % clear all header and footer fields
+	% \fancyfoot[LE,RO]{\thepage}
+	% \renewcommand{\headrulewidth}{0.0pt}
+	% \renewcommand{\footrulewidth}{0.0pt}}
 
-\fancypagestyle{monstyle2}{%
-\fancyhf{} % clear all header and footer fields
-\fancyhead[LE,RO]{\thepage}
-%\fancyhead[LO,RE]{\leftmark}
-%\fancyfoot[C]{\thepage}
-\renewcommand{\headrulewidth}{0.0pt}
-\renewcommand{\footrulewidth}{0.0pt}
-}
+	% \fancypagestyle{monstyle2}{%
+	% \fancyhf{} % clear all header and footer fields
+	% \fancyhead[LE,RO]{\thepage}
+	% %\fancyhead[LO,RE]{\leftmark}
+	% %\fancyfoot[C]{\thepage}
+	% \renewcommand{\headrulewidth}{0.0pt}
+	% \renewcommand{\footrulewidth}{0.0pt}
+	% }
 
-\fancypagestyle{monstyle}{
-\fancyhf{} % clear all header and footer fields
-\fancyfoot[LE,RO]{\thepage}
-\fancyhead[LE,RO]{\textit{\leftmark}}
-%\fancyfoot[C]{\thepage}
-\renewcommand{\headrulewidth}{0.0pt}
-\renewcommand{\footrulewidth}{0.0pt}}
+	% \fancypagestyle{monstyle}{
+	% \fancyhf{} % clear all header and footer fields
+	% \fancyfoot[LE,RO]{\thepage}
+	% \fancyhead[LE,RO]{\textit{\leftmark}}
+	% %\fancyfoot[C]{\thepage}
+	% \renewcommand{\headrulewidth}{0.0pt}
+	% \renewcommand{\footrulewidth}{0.0pt}}
 
-
-% \newtheorem{rem}{\sc Remark}[section]
-% \newtheorem{cor}{\sc Corollary}[section]
-%\newcommand{\R}{\mathbb{R}}
-%\newcommand{\N}{\mathbb{N}}
-%\newcommand{\xb}{\bar{x}}
-%\newcommand{\sbt}{\tiny{\textrm{$\bullet$}}}
-%\newcommand{\gx}{\mathbf{X}}
-%\newcommand{\un}{\mathds{1}}
-%\newcommand{\pt}{\mathbb{P}_{\theta}}
-
+%\newcommand*{\xb}{\bar{x}}
+%\newcommand*{\sbt}{\tiny{\textrm{$\bullet$}}}
+%\newcommand*{\gx}{\mathbf{X}}
+%\newcommand*{\un}{\mathds{1}}
+%\newcommand*{\pt}{\mathbb{P}_{\theta}}
 
 % les deux lignes qui suivent servent ‡ supprimer la ligne "Chapitre" lors de la cr\`{e}ation d'un nouveau chapter
 %\usepackage{titlesec}
 %\titleformat{\chapter}[hang]{\bf\huge}{\thechapter}{2pc}{}
 
-%\bibliographystyle{elsarticle-harv}
-\def \si {\sigma}
-\def \la {\lambda}
-\def \al {\alpha}
-% \def\e*{\end{eqnarray*}}
-\def \di{\displaystyle}
-
-\def \E{\mathbb E}
-\def \N{\mathbb N}
-\def \NZ{\mathbb{N}_0}
-\def \I{\mathbb I}
-\def \w{\widehat}
-\def \P {\mathbb P}
-\def \V{\mathbb V}
-
-% \theoremstyle{plain}
-% \newtheorem{theo}{Theorem}
-% \newtheorem{lemm}{Lemma}
-% \newtheorem{prop}{Proposition}
-% \newtheorem{coro}{Corollary}
-% \newtheorem{ex}{Example}
-% \newtheorem{Rk}{Remark}
-
-
-%% Patrick's definitions.
-\newcommand{\nat}{{\mathbb N}}
-
-\renewcommand{\L}{\mathcal{L}} % e.g. L^2 loss.
-
-\newcommand\bfdelta{\bm{\delta}}
-\newcommand\bfgamma{\bm{\gamma}}
-\newcommand\bftheta{\bm{\theta}}
-
-% \renewcommand{\det}[1]{\mathrm{det}(#1)}
-% \newcommand{\sqdet}[1]{\sqrt{\det{#1}}}
-% \newcommand{\LambertW}{\mathcal{W}}
-
-\newcommand{\Corr}{\mathbb{C}\mathrm{orr}}
-
-\renewcommand{\epsilon}{\varepsilon}
-
-\renewcommand{\pi}{\uppi}
-
-\makeatletter
-\newcommand{\oset}[3][0ex]{
-  \mathrel{\mathop{#3}\limits^{
-    \vbox to#1{\kern-2\ex@
-    \hbox{$\scriptstyle#2$}\vss}}}}
-\makeatother
-
-\newcommand{\approxd}{\oset[.2ex]{{\scriptscriptstyle \mathscr D}}{\approx}}
-
 % Ticks and crosses.
-\newcommand{\cmark}{\ding{51}}%
-\newcommand{\xmark}{\ding{55}}%
+% \newcommand*{\cmark}{\ding{51}}%
+% \newcommand*{\xmark}{\ding{55}}%
 
 % \times with less space on left/right (for tables).
-\newcommand{\stimes}{{\mkern-2mu\times\mkern-2mu}}
-
-\graphicspath{{images/}}
-
-% \newenvironment{abstract}
-%                  {\vspace{6pt}
-%                   \begin{center}
-%                   \begin{minipage}{315.83pt}
-%                   \small
-%                   \begin{center}
-%                   {\bf Abstract}
-%                   \end{center}
-%                   \noindent\ignorespaces
-%                  }
-%                  {\end{minipage}\end{center}}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preamble for the SLP Orthogonal paper
-
-
-\newcommand{\Lap}{\mathscr{L}}
-\newcommand{\G}{\mathcal{G}} 
-
-\renewcommand{\baselinestretch}{1}
-
-\newcommand{\C}{\mathbb{C}} 
-\newcommand{\R}{\mathbb{R}} 
-% \newcommand{\N}{\mathbb{N}_0} 
-\newcommand{\Npos}{\mathbb{N}_+} 
-\newcommand{\Z}{\mathbb{Z}} 
-\newcommand{\Lp}{L} 
-\newcommand{\PGF}{\mathcal{G}} 
-\newcommand{\LT}[1]{\mathcal{L}\{#1\}} 
-\newcommand{\LTsub}[1]{\mathcal{L}_{#1}} 
-
-\newcommand{\ddd}{\mathrm{d}} 
-
-\usepackage{xspace}
-\newcommand{\iid}{i.i.d.\xspace}
-\newcommand{\rv}{r.v.\xspace}
-\newcommand{\rvs}{r.v.s\xspace}
-\newcommand{\pdf}{p.d.f.\xspace}
-\newcommand{\pgf}{p.g.f.\xspace}
-\newcommand{\pmf}{p.m.f.\xspace}
-\newcommand{\cdf}{c.d.f.\xspace}
-\newcommand{\svf}{s.f.\xspace}
-\newcommand{\cf}{cf.\xspace}
-\newcommand{\fft}{f.f.t.\xspace}
-
-\newcommand{\ie}{i.e.\xspace}
-
-
-
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preamble from SLN Laplace Transform paper
-
-% \usepackage[UKenglish]{babel}
-% \usepackage{bm}
-% \usepackage{url}
-% 
-% \renewcommand{\baselinestretch}{1}
-% 
-% \newcommand{\CL}{\mathbb{C}}
-% \newcommand{\RL}{\mathbb{R}}
-% \newcommand{\Laplace}{\mathcal{L}}
-% \newcommand{\ve}{\bm{\mathrm{e}}} % vector e
-% \newcommand{\oh}{{\mathrm{o}}}
-% \newcommand{\Oh}{{\mathrm{O}}}
-% \newcommand{\Exp}{\mathbb{E}}
-\newcommand{\dNormal}{\sim\mathsf{Normal}}
-\newcommand{\dLNormal}{\sim\mathsf{LogNormal}}
-\newcommand{\dSLNormal}{\sim\mathsf{SumLogNormal}}
-
-% \newcommand{\Ind}{\mathbb I}
-% \newcommand\bfsigma{\bm{\sigma}}
-% \newcommand\bfSigma{\bm{\Sigma}}
-% \newcommand\bfLambda{\bm{\Lambda}}
-% \newcommand\Fset[1]{\mathcal{F}_{#1}}
-% \newcommand\sbullet{\raisebox{.4pt}{$\scriptscriptstyle \bullet $}}
-% 
-% \newcommand{\bfA}{\bm{A}}
-% \newcommand{\bfC}{\bm{C}}
-% \newcommand{\bfD}{\bm{D}}
-% \newcommand{\bfF}{\bm{F}}
-% \newcommand{\bfH}{\bm{H}}
-% \newcommand{\bfI}{\bm{I}}
-% \newcommand{\bfM}{\bm{M}}
-% \newcommand{\bfX}{\bm{X}}
-% 
-% \newcommand{\bfa}{\bm{a}}
-% \newcommand{\bfb}{\bm{b}}
-% \newcommand{\bfc}{\bm{c}}
-% \newcommand{\bfe}{\bm{e}}
-% \newcommand{\bfq}{\bm{q}}
-% \newcommand{\bfr}{\bm{r}}
-% \newcommand{\bfu}{\bm{u}}
-% \newcommand{\bfw}{\bm{w}}
-% \newcommand{\bfx}{\bm{x}}
-% \newcommand{\bfy}{\bm{y}}
-% \newcommand{\bfz}{\bm{z}}
-% 
-% \newcommand\bfzero{\bm{0}}
-% \newcommand\bfone{\bm{1}}
-% \newcommand\bfbeta{\bm{\beta}}
-% \newcommand\bfmu{\bm{\mu}}
-% \newcommand{\LambertW}{\mathcal{W}}
-% \newcommand{\diag}{\mathop{\mathrm{diag}}\nolimits }
-% \renewcommand{\epsilon}{\varepsilon}
-% \newcommand{\comp}{\mathsf{c}}% sans-serif c for complement
-% \newcommand{\tr}{\top}
-% \newcommand{\defeq}{:=}
-% \newcommand{\iidDist}{\overset{\mathrm{i.i.d.}}{\sim}}
-% \newcommand{\vlog}{\mathop{\bm{\mathrm{log}}}\nolimits }% vector log
-% \newcommand{\qed}{\hfill $\square $}
-% \providecommand{\abs}[1]{\lvert #1\rvert }
-% \providecommand{\norm}[1]{\lVert #1\rVert }
-% 
-% {\theorembodyfont{\rmfamily} \newtheorem{alg}{\noindent Algorithm}[section]}
+\newcommand*{\stimes}{{\mkern-2mu\times\mkern-2mu}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preamble from the Weibull sums paper
 
-
-\usepackage{amsmath,amssymb,amsthm,bm,mathtools,xspace,booktabs,url,tikz,color}
-
-\def\bqny#1{\begin{eqnarray*} #1 \end{eqnarray*}}
-\def\bqn#1{\begin{eqnarray} #1 \end{eqnarray}}
-\newcommand{\pk}[1]{\mathbb{P} \left( #1 \right) }
-\newcommand{\COM}[1]{}
-
-\newcommand{\indi}{\mathbb{I}}%{\bm{1}}
+% \newcommand*{\halmos}{{\mbox{\, \vspace{3mm}}} \hfill
+% \mbox{$\Box$}}
+\newcommand*{\remQED}{{\mbox{\, \vspace{3mm}}} \hfill \mbox{$\Diamond$}}
+% \newcommand*{\halmoss}{\hfill $\Diamond$}
 
 
+% \newcommand*{\Fie\ld}{\mathcal{F}}
+
+% \newcommand*{\wt}{\widetildei}
 
 
-\newcommand{\halmos}{{\mbox{\, \vspace{3mm}}} \hfill
-\mbox{$\Box$}}
-\newcommand{\halmoss}{{\mbox{\, \vspace{3mm}}} \hfill
-\mbox{$\Diamond$}}
+\newcommand*{\cH}{{\mathcal H}}
+\newcommand*{\cHb}{\overline{\mathcal H}}
+\newcommand*{\ch}{{\mathcal h}}
+\newcommand*{\cW}{{\mathcal W}}
+\newcommand*{\cWb}{\overline{\mathcal W}}
+\newcommand*{\cw}{{\mathcal w}}
 
 
-\newcommand{\Field}{\mathcal{F}}
-\newcommand{\pii}{\pi}
-\newcommand\convdistr{
-  \xrightarrow{\:\scriptscriptstyle\smash{\mathcal{D}}\:}
-}
-\newcommand{\wt}{\widetildei}
-\newcommand{\Fb}{\overline F}
-
-\newcommand{\cH}{{\mathcal H}}\newcommand{\cHb}{\overline{\mathcal H}}
-\newcommand{\ch}{{\mathcal h}}
-\newcommand{\cW}{{\mathcal W}}\newcommand{\cWb}{\overline{\mathcal W}}
-\newcommand{\cw}{{\mathcal w}}
-
-
-\newcommand\ginv{
+\newcommand*{\ginv}{
   \tikz[baseline=-0.4ex] \draw[<-] (0,0)--(0.4em,0);
 }
 
-
-%\renewcommand{\mathsf}{\mathrm} %% To fix this later (pjl) 
-\newcommand{\GMDA}{\mathsf{GMDA}}
-
-\renewcommand{\epsilon}{\varepsilon}
-
+\newcommand*{\pinv}{[-1]}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preamble from Maxima paper
 
 
-% \smartqed 
+\newcommand*{\alphaMax}{\overline{\alpha}}
+\newcommand*{\Ftail}{\mkern 1mu\overline{\mkern-1mu{F}\mkern+1.25mu}}
+% \newcommand*{\Fb}{\overline F}
 
-% \usepackage{latexsym}
-\usepackage{algorithm}
-\usepackage{algorithmicx}
-%\usepackage{amsfonts}
-\usepackage{amsmath}
-\usepackage{booktabs}
-\usepackage{bm}
-\usepackage{dsfont}
-\usepackage{graphicx}
-\usepackage{float}
-% \usepackage{amsthm}
-\usepackage{amssymb}
-\usepackage{mathtools}
-% \usepackage{natbib}
-\usepackage{enumerate}
-% \usepackage{mathdots}
-\usepackage{mathrsfs}
-\usepackage{multirow}
-\usepackage{xcolor}
-\usepackage{tabularx}
-\usepackage{url}
-\usepackage{wasysym}
+% \newcommand*{\medcup}[1]{\bigcup\limits_{#1}}%
+% \newcommand*{\medcap}[1]{\bigcap\limits_{#1}}%
 
-\newcommand{\alphaMax}{\overline{\alpha}}
-\newcommand{\Ftail}{\mkern 1mu\overline{\mkern-1mu{F}\mkern+1.25mu}}
-
-% \newcommand{\medcup}[1]{\bigcup\limits_{#1}}%
-% \newcommand{\medcap}[1]{\bigcap\limits_{#1}}%
-
-% \newcommand{\independent}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
-\newcommand{\independent}{\protect\mathpalette{\protect\independenT}{\perp}}
-\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
-
-\newcommand{\LW}{{\mathrm{LambertW}}}
-\newcommand{\RV}{\mathrm{RV}_\alpha}
-\newcommand{\takis}{\usefont{OMS}{ztmcm}{m}{n}}
-\newcommand{\nicecal}[1]{\mbox{\takis #1}}
-
-\newcommand{\TailProb}{\widetilde\Prob}
-% \newcommand{\Ftail}{\overline F}
-\newcommand{\Probx}{\Prob^{(x)}}
-
-\renewcommand{\ast}{\top}
-
-% \newcommand{\Ind}{\mathds{1}}
-\newcommand{\Nat}{{\mathbb N}}
-\newcommand{\Integers}{{\mathbb Z}}
-
-% \newcommand{\dd}{\mathop{}\mathopen{}\mathrm{d}}
-
-\newcommand{\refs}[1]{{\rm (\ref{#1})}}
-\newcommand{\convprob}{\stackrel{{\Prob}}{\rightarrow}}
-\newcommand{\convas}{\stackrel{{\rm a.s.}}{\rightarrow}}
-\newcommand{\eqdistr}{\stackrel{{\scriptstyle \mathcal{D}}}{=}}
-\newcommand{\com}[1]{#1}
-
-\newcommand{\LaplaceDist}{\mathcal{L}}
-\newcommand{\NormDist}{\mathcal{N}}
-\newcommand{\ExpDist}{\mathcal{E}}
-\newcommand{\EllDist}{\mathcal{ELL}}
-\newcommand{\IGDist}{\mathcal{IG}}
-\newcommand{\for}[1]{\,,\qquad \text{for } #1}
+% \newcommand*{\independent}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
+\newcommand*{\indep}{\perp}
+% \newcommand*{\independent}{\protect\mathpalette{\protect\independenT}{\perp}}
+% \def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
 
 
-\newcommand{\thrm}[1] {Theorem~\ref{#1}}
-\newcommand{\cor}[1] {Corollary~\ref{#1}}
-\newcommand{\prop}[1] {Proposition~\ref{#1}}
+\newcommand*{\for}[1]{\,,\qquad \text{for } #1}
+
 
 % Fix := so that the colon is vert. centered.
 % \mathtoolsset{centercolon} <<<<<<<<<<<<<<<<<<<<<<<---------------- this fucks with the =: construction.
 
-\renewcommand{\hat}{\widehat}
-\renewcommand{\phi}{\varphi}
 
-% \@ifundefined{showcaptionsetup}{}{%
-% \PassOptionsToPackage{caption=false}{subfig}}
 
-\usepackage{float,subfig}
 
 %LNA: nice colors in tables
- \usepackage{colortbl}
- \definecolor{Gray}{gray}{0.9}
-\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 
-\newcommand{\BigBinom}[2]{\Bigl({{#1}\atop#2}\Bigr)}
+\definecolor{Gray}{gray}{0.9}
+% \newcommand*{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+
+
+% All the bold symbols and letters.
+\newcommand*{\bfA}{\bm{A}}
+\newcommand*{\bfB}{\bm{B}}
+\newcommand*{\bfC}{\bm{C}}
+\newcommand*{\bfD}{\bm{D}}
+% \newcommand*{\bfE}{\bm{E}}
+\newcommand*{\bfF}{\bm{F}}
+% \newcommand*{\bfG}{\bm{G}}
+\newcommand*{\bfH}{\bm{H}}
+\newcommand*{\bfI}{\bm{I}}
+% \newcommand*{\bfJ}{\bm{J}}
+% \newcommand*{\bfK}{\bm{K}}
+% \newcommand*{\bfL}{\bm{L}}
+% \newcommand*{\bfM}{\bm{M}}
+% \newcommand*{\bfN}{\bm{N}}
+% \newcommand*{\bfO}{\bm{O}}
+% \newcommand*{\bfP}{\bm{P}}
+% \newcommand*{\bfQ}{\bm{Q}}
+% \newcommand*{\bfR}{\bm{R}}
+\newcommand*{\bfS}{\bm{S}}
+% \newcommand*{\bfT}{\bm{T}}
+\newcommand*{\bfU}{\bm{U}}
+% \newcommand*{\bfV}{\bm{V}}
+\newcommand*{\bfW}{\bm{W}}
+\newcommand*{\bfX}{\bm{X}}
+\newcommand*{\bfY}{\bm{Y}}
+\newcommand*{\bfZ}{\bm{Z}}
+
+\newcommand*{\bfa}{\bm{a}}
+\newcommand*{\bfb}{\bm{b}}
+\newcommand*{\bfc}{\bm{c}}
+% \newcommand*{\bfd}{\bm{d}}
+\newcommand*{\bfe}{\bm{e}}
+% \newcommand*{\bff}{\bm{f}}
+% \newcommand*{\bfg}{\bm{g}}
+\newcommand*{\bfh}{\bm{h}} % vector valued function
+% \newcommand*{\bfi}{\bm{i}}
+% \newcommand*{\bfj}{\bm{j}}
+% \newcommand*{\bfk}{\bm{k}}
+% \newcommand*{\bfl}{\bm{l}}
+\newcommand*{\bfm}{\bm{m}}
+% \newcommand*{\bfn}{\bm{n}}
+% \newcommand*{\bfo}{\bm{o}}
+% \newcommand*{\bfp}{\bm{p}}
+\newcommand*{\bfq}{\bm{q}}
+\newcommand*{\bfr}{\bm{r}}
+% \newcommand*{\bfs}{\bm{s}}
+\newcommand*{\bft}{\bm{t}}
+\newcommand*{\bfu}{\bm{u}}
+\newcommand*{\bfv}{\bm{v}}
+\newcommand*{\bfw}{\bm{w}}
+\newcommand*{\bfx}{\bm{x}}
+\newcommand*{\bfy}{\bm{y}}
+\newcommand*{\bfz}{\bm{z}}
+
+\newcommand*{\bfalpha}{\bm{\alpha}}
+\newcommand*{\bfbeta}{\bm{\beta}}
+\newcommand*{\bfdelta}{\bm{\delta}}
+\newcommand*{\bfgamma}{\bm{\gamma}}
+\newcommand*{\bfomega}{\bm{\omega}}
+\newcommand*{\bfLambda}{\bm{\Lambda}}
+\newcommand*{\bfPhi}{\bm{\Phi}}
+\newcommand*{\bfmu}{\bm{\mu}}
+\newcommand*{\bfsigma}{\bm{\sigma}}
+\newcommand*{\bfSigma}{\bm{\Sigma}}
+\newcommand*{\bftheta}{\bm{\theta}}
+\newcommand*{\bfTheta}{\bm{\Theta}}
+
+\newcommand*{\bfzero}{\bm{0}}
+\newcommand*{\bfone}{\bm{1}}
+\newcommand*{\bfeye}{\bfI}
+
+% \setcounter{tocdepth}{4}
+% \setcounter{secnumdepth}{4}
+
+
+\newcommand{\Asymf}{\mathfrak{f}_S}
+\newcommand{\AsymF}{\mathfrak{F}_S}
+\newcommand{\AsymFTail}{\overline{\mathfrak{F}}_S}
+
+\newcommand{\AsymfT}{\mathfrak{f}_T}
+\newcommand{\AsymFT}{\mathfrak{F}_T}
+\newcommand{\AsymFTailT}{\overline{\mathfrak{F}}_T}
+
+\newcommand{\AsymfTrun}{\mathfrak{f}_{S|S>\gamma}}
+\newcommand{\AsymFTrun}{\mathfrak{F}_{S|S>\gamma}}
+\newcommand{\AsymFTailTrun}{\overline{\mathfrak{F}}_{S|S>\gamma}}
