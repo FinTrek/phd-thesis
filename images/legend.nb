@@ -1,0 +1,189 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6811,        181]
+NotebookOptionsPosition[      5605,        146]
+NotebookOutlinePosition[      5979,        162]
+CellTagsIndexPosition[      5936,        159]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{"SetDirectory", "[", 
+  RowBox[{"NotebookDirectory", "[", "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Colours", "=", 
+   RowBox[{
+    RowBox[{"Lookup", "[", "\"\<DefaultPlotStyle\>\"", "]"}], "@", 
+    RowBox[{
+     RowBox[{"Lookup", "[", "Method", "]"}], "@", 
+     RowBox[{"Charting`ResolvePlotTheme", "[", 
+      RowBox[{"Automatic", ",", "Plot"}], "]"}]}]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.7450614219028873`*^9, 
+  3.7450614381730366`*^9}},ExpressionUUID->"371709ef-315d-402c-936e-\
+6053bb7b40d1"],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\patri\\\\Dropbox\\\\papers\\\\Angular IS \
+estimator\\\\Submitted\"\>"], "Output",
+ CellChangeTimes->{{3.7450614294457664`*^9, 3.7450614385679607`*^9}, 
+   3.745061506486302*^9, 
+   3.745227353462843*^9},ExpressionUUID->"abf629b7-2507-4bca-a573-\
+2d4ba5f7d193"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<legend0.pdf\>\"", ",", " ", 
+   RowBox[{"LineLegend", "[", 
+    RowBox[{"Colours", ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<One Term\>\"", ",", "\"\<Two Terms\>\""}], "}"}], ",", 
+     RowBox[{"LegendLayout", "\[Rule]", "\"\<Row\>\""}]}], "]"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<legend1a.pdf\>\"", ",", 
+   RowBox[{"LineLegend", "[", 
+    RowBox[{"Colours", ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<Asymptotics\>\"", ",", "\"\<Polar\>\"", ",", 
+       "\"\<Asmussen-Kroese\>\""}], "}"}], ",", 
+     RowBox[{"LegendLayout", "\[Rule]", "\"\<Row\>\""}], ",", 
+     RowBox[{"LegendMarkers", "\[Rule]", " ", "Automatic"}]}], "]"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<legend1b.pdf\>\"", ",", 
+   RowBox[{"LineLegend", "[", 
+    RowBox[{"Colours", ",", 
+     RowBox[{"{", 
+      RowBox[{"None", ",", "\"\<Polar\>\"", ",", "\"\<Asmussen-Kroese\>\""}], 
+      "}"}], ",", 
+     RowBox[{"LegendLayout", "\[Rule]", "\"\<Row\>\""}], ",", 
+     RowBox[{"LegendMarkers", "\[Rule]", " ", "Automatic"}]}], "]"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<legend2a.pdf\>\"", ",", 
+   RowBox[{"LineLegend", "[", 
+    RowBox[{"Colours", ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<Asymptotics\>\"", ",", "\"\<Polar\>\"", ",", 
+       "\"\<Exponential Tilting\>\""}], "}"}], ",", 
+     RowBox[{"LegendLayout", "\[Rule]", "\"\<Row\>\""}], ",", 
+     RowBox[{"LegendMarkers", "\[Rule]", " ", "Automatic"}]}], "]"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<legend2b.pdf\>\"", ",", 
+   RowBox[{"LineLegend", "[", 
+    RowBox[{"Colours", ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "None", ",", "\"\<Polar\>\"", ",", "\"\<Exponential Tilting\>\""}], 
+      "}"}], ",", 
+     RowBox[{"LegendLayout", "\[Rule]", "\"\<Row\>\""}], ",", 
+     RowBox[{"LegendMarkers", "\[Rule]", " ", "Automatic"}]}], "]"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.745227456203727*^9, 3.7452274726783175`*^9}, {
+  3.7452275288648615`*^9, 3.745227614881566*^9}, {3.745227655561453*^9, 
+  3.7452276817435813`*^9}, {3.745228007328625*^9, 
+  3.745228023697787*^9}},ExpressionUUID->"bb815411-9f6d-414e-bf0b-\
+16bfa391750c"],
+
+Cell[BoxData["\<\"legend0.pdf\"\>"], "Output",
+ CellChangeTimes->{{3.7452274536233025`*^9, 3.7452274824943333`*^9}, {
+   3.7452275379753304`*^9, 3.745227545124261*^9}, 3.745227593219747*^9, {
+   3.7452276703102884`*^9, 3.7452276860608068`*^9}, 
+   3.7452280257484655`*^9},ExpressionUUID->"407bd943-c3b8-4184-b94a-\
+a2d3642952c0"],
+
+Cell[BoxData["\<\"legend1a.pdf\"\>"], "Output",
+ CellChangeTimes->{{3.7452274536233025`*^9, 3.7452274824943333`*^9}, {
+   3.7452275379753304`*^9, 3.745227545124261*^9}, 3.745227593219747*^9, {
+   3.7452276703102884`*^9, 3.7452276860608068`*^9}, 
+   3.745228026195474*^9},ExpressionUUID->"1732566e-c0ce-4272-9f21-\
+33a5c0df2907"],
+
+Cell[BoxData["\<\"legend1b.pdf\"\>"], "Output",
+ CellChangeTimes->{{3.7452274536233025`*^9, 3.7452274824943333`*^9}, {
+   3.7452275379753304`*^9, 3.745227545124261*^9}, 3.745227593219747*^9, {
+   3.7452276703102884`*^9, 3.7452276860608068`*^9}, 
+   3.7452280267578416`*^9},ExpressionUUID->"a65ace70-c89b-4374-a650-\
+40afef23af2c"],
+
+Cell[BoxData["\<\"legend2a.pdf\"\>"], "Output",
+ CellChangeTimes->{{3.7452274536233025`*^9, 3.7452274824943333`*^9}, {
+   3.7452275379753304`*^9, 3.745227545124261*^9}, 3.745227593219747*^9, {
+   3.7452276703102884`*^9, 3.7452276860608068`*^9}, 
+   3.7452280272586327`*^9},ExpressionUUID->"46be2937-6b46-4e9b-885f-\
+d45f53f65f4d"],
+
+Cell[BoxData["\<\"legend2b.pdf\"\>"], "Output",
+ CellChangeTimes->{{3.7452274536233025`*^9, 3.7452274824943333`*^9}, {
+   3.7452275379753304`*^9, 3.745227545124261*^9}, 3.745227593219747*^9, {
+   3.7452276703102884`*^9, 3.7452276860608068`*^9}, 
+   3.745228027914731*^9},ExpressionUUID->"b0ed1914-e8d3-4920-b629-\
+96c69ed202c7"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.745228746680452*^9, 
+  3.7452287475170164`*^9}},ExpressionUUID->"f7c9d792-2567-4074-a119-\
+dfe7f110fe19"]
+},
+WindowSize->{1333, 846},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+Magnification:>1.9 Inherited,
+FrontEndVersion->"11.1 for Microsoft Windows (64-bit) (March 13, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 551, 13, 133, "Input", "ExpressionUUID" -> \
+"371709ef-315d-402c-936e-6053bb7b40d1"],
+Cell[1134, 37, 294, 5, 58, "Output", "ExpressionUUID" -> \
+"abf629b7-2507-4bca-a573-2d4ba5f7d193"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1465, 47, 2307, 56, 466, "Input", "ExpressionUUID" -> \
+"bb815411-9f6d-414e-bf0b-16bfa391750c"],
+Cell[3775, 105, 329, 5, 58, "Output", "ExpressionUUID" -> \
+"407bd943-c3b8-4184-b94a-a2d3642952c0"],
+Cell[4107, 112, 328, 5, 58, "Output", "ExpressionUUID" -> \
+"1732566e-c0ce-4272-9f21-33a5c0df2907"],
+Cell[4438, 119, 330, 5, 58, "Output", "ExpressionUUID" -> \
+"a65ace70-c89b-4374-a650-40afef23af2c"],
+Cell[4771, 126, 330, 5, 58, "Output", "ExpressionUUID" -> \
+"46be2937-6b46-4e9b-885f-d45f53f65f4d"],
+Cell[5104, 133, 328, 5, 58, "Output", "ExpressionUUID" -> \
+"b0ed1914-e8d3-4920-b629-96c69ed202c7"]
+}, Open  ]],
+Cell[5447, 141, 154, 3, 58, "Input", "ExpressionUUID" -> \
+"f7c9d792-2567-4074-a119-dfe7f110fe19"]
+}
+]
+*)
+

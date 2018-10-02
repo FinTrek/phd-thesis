@@ -50,7 +50,7 @@ or gamma  (using exponential tilting).
 
 Applying orthogonal polynomial expansions to sums of lognormals is not a new idea; many papers, whose motivation relates to pricing Asian options, have contributed to this task. The earliest relevant work on this is from Turnbull and Wakeman \cite{turnbull1991quick}, who constructed an orthogonal polynomial expansion for the sum of correlated lognormals using a lognormal reference distribution. Dufresne and Li refer state of this: ``the convergence of those \dots series has never been proved, and their theoretical convergence is highly unlikely'' \cite[p.\ 1]{dufresne2016pricing}. This conjecture is precisely what we have proved here, showing the incompleteness of the lognormal orthogonal polynomials in $\Lp^2(\RL, w(x) \dd x)$.
 
-The next development was Dufresne \cite{dufresne2000laguerre} who tackled the related problem of pricing continuous Asian options --- here the underlying average is $A = \frac1T \int_0^T \e^{X_t} \dd t$ where $\{X_t\}_{t\in[0,T}$ is a Brownian motion. They use an orthogonal polynomial expansion using a gamma reference distribution, and sidestep the integrability problem by approximation the pdf of $1/A$ rather than $A$. The expansion's coefficient are constructed from the moments of $1/A$, which are found using a recursive scheme of symbolic integrations in \textsc{Mathematica}.
+The next development was Dufresne \cite{dufresne2000laguerre} who tackled the related problem of pricing continuous Asian options --- here the underlying average is $A = \frac1T \int_0^T \e^{X_t} \dd t$ where $\{X_t\}_{t\in[0,T]}$ is a Brownian motion. They use an orthogonal polynomial expansion using a gamma reference distribution, and sidestep the integrability problem by approximation the pdf of $1/A$ rather than $A$. The expansion's coefficient are constructed from the moments of $1/A$, which are found using a recursive scheme of symbolic integrations in \textsc{Mathematica}.
 
 Popovic and Goldsman \cite{popovic2012easy} consider the problem pricing discrete Asian options --- that is, the underlying average is $A = \frac1n \sum_{i=1}^n \e^{X_i}$ where $\{X_i\}_{i\in\NZ}$ is a discretely observed Brownian motion (they consider stock prices driven by other L{\'e}vy processes, e.g., the variance-gamma process). They construct an orthogonal expansion of $\log(A)$ using a normal reference distribution, and evaluate the coefficients using Monte Carlo (with some variance reduction techniques). Dufresne and Li \cite{dufresne2016pricing} take the same approach, but add in the theory which was missing by giving the conditions so that the orthogonal expansion will converge. They also write the explicit form of an Asian option price given this orthogonal polynomial approximation for $\log(A)$. Lastly, the paper from Chateau and Dufresne \cite{chateau2017gram}, which is more recent than the contents of this chapter, ought to be noted to complete this review.
 
@@ -73,7 +73,6 @@ to improve by invoking suitable correction terms.
 In the setting of this chapter $X$ is the sum of lognormal random variables and the correction terms are obtained by expansions in terms of orthonormal polynomials.
 Before going into the details of the lognormal example, let us consider the general case.
 
-\newpage
 Assuming all moments of $w$ to be finite,
 the standard Gram--Schmidt orthogonalisation technique shows the existence
 of a set of polynomials $\{p_k\}_{k\in\NZ}$ which are orthonormal in
@@ -373,8 +372,6 @@ $ \widehat{\Exp X_\theta} = \widehat{\Laplace}_1(\theta) / \widehat{\Laplace}_0(
 
 With these regimes, parameter selection for the reference distributions is automatic, and the only choice the user must make is in selecting $K$. In these tests we examined various $K$ from 1 to 40, and show the best approximations found.
 The source code for these tests is available online at \cite{OrthogoCode}, and we invite readers to experiment with the effect of modifying $K$, $\theta$ and the parameters of the reference distributions.
-
-\subsection{Results}
 
 For each test case with $n \le 4$ we plot the $\widehat{f}(x)$ and $f(x)$ together and then $\widehat{f}(x)-f(x)$ over $x \in (0, 2\Exp[S])$. A table then shows the $\Lp^2$ errors over $(0, \Exp[S])$.
 

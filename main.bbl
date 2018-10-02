@@ -326,6 +326,12 @@ Pieter-Tjerk De~Boer, Dirk~P. Kroese, Shie Mannor, and Reuven~Y Rubinstein.
 \newblock A tutorial on the cross-entropy method.
 \newblock {\em Annals of Operations Research}, 134(1):19--67, 2005.
 
+\bibitem{deHaanResnick1977}
+L.~De~Haan and S.~I. Resnick.
+\newblock Limit theory for multivariate sample extremes.
+\newblock {\em Zeitschrift f{\"u}r Wahrschein-lichkeitstheorie und verwandte
+  Gebiete}, 40:317--377, 1977.
+
 \bibitem{de2007extreme}
 Laurens De~Haan and Ana Ferreira.
 \newblock {\em Extreme Value Theory: An Introduction}.
@@ -751,6 +757,12 @@ Saralees Nadarajah, Jeffrey Chu, and Xiao Jiang.
 \newblock On moment based density approximations for aggregate losses.
 \newblock {\em Journal of Computational and Applied Mathematics}, 298:152--166,
   2016.
+
+\bibitem{nandayapa2008risk}
+Leonardo~Rojas Nandayapa.
+\newblock {\em Risk probabilities: asymptotics and simulation}.
+\newblock PhD thesis, University of Aarhus, Department of Mathematical
+  Sciences, 2008.
 
 \bibitem{nelsen2006introduction}
 Roger~B Nelsen.

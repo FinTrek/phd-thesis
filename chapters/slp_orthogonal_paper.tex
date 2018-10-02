@@ -518,7 +518,6 @@ In each plot, the first subplot shows the estimates each estimator produces, and
 \end{align*}
 When the different estimators cross each other, the median obtains an unrealistically jagged character. We therefore use as reference a slightly smoothed version of the median, achieved in \textsc{Mathematica} using \texttt{GaussianFilter[Medians, 2]}. As noted earlier, all of the code used is available online \cite{StoplossCode}.
 
-\newpage
 \subsection{Survival function and stop-loss premium computations}
 
 \label{subsec:NumericsSurvivalFunctionStopLoss}
@@ -527,15 +526,16 @@ To ensure both estimators were implemented correctly, we applied the estimators 
 
 \begin{table}[H]
 \centering
-\caption{Relative errors for the Laplace inversion survival function estimator} \vspace{1em}
+\caption{Relative errors for the Laplace inversion survival function estimator}
 \begin{tabular}{c|ccccc}
 $x$                   & 0.5  & 1  & 1.5  & 2 & 2.5  \\
 \hline
 Error & 7.27e-7 & 1.92e-6 & 5.86e-6 & 1.78e-5 & 4.01e-5 \\
 \end{tabular}
 \label{tbl:PascalExponentialSVFTest}
+\vspace{1em}
 
-\caption{Relative errors for the Laplace inversion stop-loss premium estimator} \vspace{1em}
+\caption{Relative errors for the Laplace inversion stop-loss premium estimator}
 \begin{tabular}{c|ccccc}
 $a$                   & 0.5  & 1  & 1.5  & 2 & 2.5  \\
 \hline

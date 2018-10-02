@@ -42,23 +42,24 @@ Rare-event problems also cause difficulties for the crude Monte Carlo (CMC) esti
 \[ \lim_{\gamma \to \infty} \text{RelativeError}\{ \hat{\ell}_{\text{CMC}}(\gamma) \} = \lim_{\gamma \to \infty} \frac{ \Var[ \hat{\ell}_{\text{CMC}}(\gamma) ] }{ \ell(\gamma)^2 } = \lim_{\gamma \to \infty} \frac{  \ell(\gamma)[1-\ell(\gamma)] }{  \ell(\gamma)^2 } = \infty \,. \]
 Intuitively, the problem is because the indicator $\ind{S > \gamma}$ is eventually always 0 when $\gamma$ gets very large. In response, various variance reduction techniques have been applied so that there are now a large collection of estimators with better performance in this setting, c.f. `rare-event estimation' in \cite{kroese2013handbook,asmussen2007stochastic,glasserman2003monte}.
 
-There is, of course, no silver bullet for the problem. Some estimators only apply to specific distributions (e.g. \cite{botev2017fast} for sums of lognormals, \cite{yao2016estimating} for sums of phase-type mixtures) or to certain classes of distributions (exponential tilting for light-tailed summands \cite{kroese2013handbook,asmussen2007stochastic}, hazard-rate twisting or the Asmussen--Kroese method \cite{asmussen2006improved} for heavy-tailed summands). Other estimators are general but require specifying either some extra information (e.g. some conditional distributions for conditional Monte Carlo \cite{asmussen2017conditional}, or a sampling distribution for importance sampling). The most general estimators --- such as the generalised splitting method, cross-entropy method, or Markov Chain Monte Carlo (MCMC) methods like \cite{chan2012improved} --- are usually computationally demanding, they often depend upon an intelligent selection of input parameters to perform efficiently, and are somewhat complicated.
+There is, of course, no silver bullet for the problem. Some estimators only apply to specific distributions (e.g. \cite{botev2017fast} for sums of lognormals, \cite{yao2016estimating} for sums of phase-type mixtures) or to certain classes of distributions (exponential tilting for light-tailed summands \cite{kroese2013handbook,asmussen2007stochastic}, hazard-rate twisting or the Asmussen--Kroese method \cite{asmussen2006improved} for heavy-tailed summands). Other estimators are general but require specifying either some extra information (e.g.\ availability of conditional distributions for conditional Monte Carlo \cite{asmussen2017conditional}, or an appropriate sampling distribution for use in importance sampling). The most general estimators --- such as the generalised splitting method, cross-entropy method, or Markov Chain Monte Carlo (MCMC) methods like \cite{chan2012improved} --- are usually computationally demanding, they often depend upon an intelligent selection of input parameters to perform efficiently, and are somewhat complicated.
 
-While we almost never have an analytic solution for $\ell(\gamma)$, it is somewhat common to know the \emph{asymptotic approximation} to it, and this forms the basis for our proposed estimator. For example, if $\bfX \sim \mathsf{Lognormal}(\bfmu, \bfSigma)$ where $\bfmu \in \RL^d$ and $\bfSigma \in \RL^{d \times d}$ is positive definite, then it has been shown that \cite{asmussen2008asymptotics}
+Whilst one rarely has an exact expression for $\ell(\gamma)$, it is somewhat common to know the \emph{asymptotic approximation} to it, and this forms the basis for our proposed estimator. For example, if $\bfX \sim \mathsf{Lognormal}(\bfmu, \bfSigma)$ where $\bfmu \in \RL^d$ and $\bfSigma \in \RL^{d \times d}$ is positive definite, then it has been shown that \cite{asmussen2008asymptotics}
 \begin{equation} \label{SLNasymptotic}
 \ell(\gamma) = \Prob(S > \gamma) \sim \sum_{i=1}^d \Prob(X_i > \gamma) \qquad \text{ as } \gamma \to \infty
 \end{equation}
-where $f(x) \sim g(x)$ denotes $\lim_{x \to \infty} f(x)/g(x) = 1$. Thus, one is tempted to label the RHS of \eqref{SLNasymptotic} as $\hat{\ell}_{\mathrm{Asym}}(\gamma)$ and use it as an approximation for $\ell(\gamma)$. For certain values of $(\bfmu,\bfSigma)$ this asymptotic approximation can be accurate, in others it can be wildly inaccurate, depending on how fast the asymptotic approximation converges to the true value; see Figure~\ref{fig:slow_convergence} for an illustration where it is only when $\ell(\gamma) \lesssim 10^{-10}$ that the asymptotic form begins to give accurate estimates (i.e., $\hat{\ell}_{\mathrm{Asym}}(\gamma) / \ell(\gamma) > 0.99$). A discussion of this phenomenon is in \cite{botev2017fast}.
+where $f(x) \sim g(x)$ denotes $\lim_{x \to \infty} f(x)/g(x) = 1$. Thus, one is tempted to label the right-hand side of \eqref{SLNasymptotic} as $\hat{\ell}_{\mathrm{Asym}}(\gamma)$ and use it as an approximation for $\ell(\gamma)$. For certain values of $(\bfmu,\bfSigma)$ this asymptotic approximation can be accurate, in others it can be wildly inaccurate, depending on how fast the asymptotic approximation converges to the true value; see Figure~\ref{fig:slow_convergence} for an illustration where it is only when $\ell(\gamma) \lesssim 10^{-10}$ that the asymptotic form begins to give accurate estimates (i.e., $\hat{\ell}_{\mathrm{Asym}}(\gamma) / \ell(\gamma) > 0.99$). A discussion of this phenomenon is in \cite{botev2017fast}.
 
 \begin{figure}
 \centering
-\includegraphics[width=.95\textwidth]{"Lognormal Asymptotic Comparison"}
+$\vcenter{\hbox{\includegraphics[width=.6\textwidth]{"Lognormal Asymptotic Comparison"}}}$
+ \hspace*{.1in}
+ $\vcenter{\hbox{\includegraphics{legend0.pdf}}}$
 \caption{A comparison of $\ell(\gamma)$ and $\hat{\ell}_{\text{Asym}}(\gamma)$ for $X_1+X_2$ where $X_1 \sim \LNDist(0, 1)$ is independent to $X_2\sim\LNDist(0,\frac{3}{4})$. The $y$ axis plots $\hat{\ell}_{\text{Asym}}(\gamma) / \ell(\gamma)$, and the $x$ axis shows ${-}\log_{10} \ell(\gamma)$. The two lines describe two possible asymptotics, the yellow ``Two terms'' describes $\hat{\ell}_{\text{Asym}}(\gamma)$ as given in \eqref{SLNasymptotic} whereas the blue ``One Term'' uses just the first term of this sum.}
 \label{fig:slow_convergence}
 \end{figure}
 
-We propose an \emph{importance sampling} estimator which incorporates the asymptotic approximation and uses Monte Carlo sampling to estimate the difference between $\ell(\gamma)$ and $\hat{\ell}_{\mathrm{Asym}}(\gamma)$. In the estimator, the asymptotic approximation acts like a prior belief (though it is just a point-estimate) of the value of $\ell(\gamma)$, which gets corrected/updated with more samples.
-
+We propose an \emph{importance sampling} estimator which incorporates the asymptotic approximation and uses Monte Carlo sampling to estimate the difference between $\ell(\gamma)$ and $\hat{\ell}_{\mathrm{Asym}}(\gamma)$.
 The main drawback to importance sampling is \emph{likelihood degeneration}, where one can face numerical errors if $\gamma$ or $d$ is extremely large.
 The degeneration caused by a large $d$ is only partially compensated by our method, so we take $d \le 100$.
 To mitigate degeneration for large $\gamma$, we focus our attention of values of $\gamma$ which are moderately large but not unrealistically so.
@@ -80,7 +81,7 @@ The new density $f_{(S,\bfTheta)}$ is available (if $f_{\bfX}$ is known), and is
 f_{(S,\bfTheta)}(s,\bftheta) = f_{\bfX}(s\bftheta) \times |s|^{d-1}\,.
 \]
 
-Consider IS in this new form. Imagine that we have a density $g_{(S,\bfTheta)}$ which is in some way similar to $f_{(S,\bfTheta)}$, and we also know the marginal density $g_S(s) := \int g_{(S,\bfTheta)}(s,\bftheta) \dd \bftheta$ and the conditional density $g_{\bfTheta \mid S}:=g_{(S,\bfTheta)}/g_S$. If we truncate $g_{(S,\bfTheta)}$ so that $S>\gamma$ a.s., and use this as the IS measure, we get
+Consider IS in this new form. Imagine that we have a density $g_{(S,\bfTheta)}$ which is in some way similar to $f_{(S,\bfTheta)}$, and we also know the marginal density $g_S(s) := \int g_{(S,\bfTheta)}(s,\bftheta) \dd \bftheta$ and the conditional density $g_{\bfTheta \mid S}:=g_{(S,\bfTheta)}/g_S$. If we truncate $g_{(S,\bfTheta)}$ so that $S>\gamma$ a.s., and use this as the IS measure, we obtain
 \begin{equation} \label{eq:general_form_estimator}
 \hat{l}_{\mathrm{IS}}(\gamma) := \frac{\overline{G}_S(\gamma)}{R} \sum_{r=1}^R \frac{ f_{(S,\bfTheta)}(S^{[r]}, \bfTheta^{[r]}) }{ g_S( S^{[r]} ) g_{\bfTheta \mid S}(\bfTheta^{[r]}\,|\, S^{[r]})}
 \quad \text{for} \quad
@@ -90,12 +91,12 @@ where $\overline{G}_S(\gamma) :=  \int_{\gamma}^\infty g_S(s) \dd s$, and $g_{S 
 
 We investigate estimators of the general form of \eqref{eq:general_form_estimator} which we call \emph{polar estimators}.
 These are accurate when $g_{(S,\bfTheta)}= g_S \times g_{\bfTheta \mid S}$ closely resembles $f_{(S,\bfTheta)}=f_S \times f_{\bfTheta \mid S}$.
-This is done in two steps, by finding a \emph{radial approximation} $g_S$ which approximates $f_S$, and an \emph{angular approximation} $g_{\bfTheta \mid S}$ similar to $f_{\bfTheta \mid S}$, problems we discuss in the following sections.
+This is carried out in two steps, by finding a \emph{radial approximation} $g_S$ which approximates $f_S$, and an \emph{angular approximation} $g_{\bfTheta \mid S}$ similar to $f_{\bfTheta \mid S}$, which we discuss in the following sections.
 
 
 \subsection{The radial approximation}
 
-As mentioned in the introduction, we consider utilising the asymptotic form of the sum in our estimator --- they form our radial approximation. To clarify the notation, we again define the relevant asymptotic forms:
+As mentioned in the introduction, we consider utilising an asymptotic form of the sum in our estimator --- they form our radial approximation. To clarify the notation, we precisely define the relevant asymptotic forms:
 
 \begin{definition}[Asymptotic form]
 If for some function $\Asymf \in \Lp^1(\RL)$, with tail $\AsymFTail(s) = \int_s^\infty \Asymf(x) \dd x$, and constant $c_S \in \RL_+$, we have that
@@ -105,7 +106,7 @@ If for some function $\Asymf \in \Lp^1(\RL)$, with tail $\AsymFTail(s) = \int_s^
 then we say $\Asymf$ is an \emph{asymptotic form} of $f_S$. \remQED
 \end{definition}
 
-Thus, in the general form \eqref{eq:general_form_estimator} we will use $g_S = \Asymf$ when it is available and is a proper pdf. There are some technicalities for the cases when $\Asymf$ does not form a proper pdf which we defer for now.
+Thus, in the general form \eqref{eq:general_form_estimator} we will use $g_S = \Asymf$ when it is available and is a proper pdf. There are some technicalities for the cases when $\Asymf$ does not form a proper pdf which we do not detail in this work.
 The estimator resulting from this radial approximation is
 \begin{equation} \label{eq:asymptotic_estimator}
 \hat{l}_{\mathrm{IS2}}(\gamma) := \frac{c_S \AsymFTail(\gamma)}{R} \sum_{r=1}^R \frac{ f_{(S,\bfTheta)}(S^{[r]}, \bfTheta^{[r]}) }{ c_S \Asymf( S^{[r]} )g_{\bfTheta \mid S}(\bfTheta^{[r]}\,|\, S^{[r]})}
@@ -114,11 +115,11 @@ The estimator resulting from this radial approximation is
 \end{equation}
 
 \begin{remark}
-Define $\mathcal{R}(\gamma)$ by
-$ \ell(\gamma)~=~\hat{\ell}_{\mathrm{Asym}}(\gamma) \mathcal{R}(\gamma) $; n.b.\ $\hat{\ell}_{\mathrm{Asym}}(\gamma) := c_S \AsymF(\gamma)$.
+Define a ``correction factor'' to the asymptotic form, $\mathcal{R}(\gamma)$, by
+$ \ell(\gamma)~=~\hat{\ell}_{\mathrm{Asym}}(\gamma) \mathcal{R}(\gamma) $; n.b.\ $\hat{\ell}_{\mathrm{Asym}}(\gamma) := c_S \AsymFTail(\gamma)$.
 We can see that $\hat{\ell}_{\mathrm{IS2}}(\gamma)$ has a nice interpretation, because
 \[ \hat{\ell}_{\mathrm{IS2}}(\gamma) = \hat{\ell}_{\mathrm{Asym}}(\gamma) \times \hat{\mathcal{R}}(\gamma) \,, \]
-where $\hat{\mathcal{R}}(\gamma)$ is a Monte Carlo estimate of $\mathcal{R}(\gamma)$. \remQED
+where $\hat{\mathcal{R}}(\gamma)$ is an unbiased Monte Carlo estimate of the factor $\mathcal{R}(\gamma)$. \remQED
 \end{remark}
 
 The recent applied probability literature has found the $\Asymf$ for a staggering array of distributions of $\bfX$. Perhaps the simplest case is when the $X_i$ are iid subexponential random variables. By definition (cf. \cite{foss2011introduction}), they satisfy
@@ -137,39 +138,56 @@ The Weibull distribution is interesting as it is a family which can be heavy-tai
 
 \begin{proposition} \label{prop:light_weibull} Assume that $X_1, \dots, X_d$ are iid light-tailed $\mathsf{Weibull}(\beta, \lambda)$ where $\beta>1$, $\lambda \in \RL_+$, $d \ge 2$. Then
 \begin{equation*}
-F_S(s)\ \sim\ \Bigl[ \frac{2\beta\pi}{\beta-1}\Bigr]^{(d-1)/2} d^{-1/2} \Big( \frac{s}{\lambda d} \Big)^{\beta(d-1)/2} \Ftail \Big( \frac{s}{d} \Big)^d \for{s \to \infty}\,.
+c_S\AsymFTail(s)\ \sim\ \Bigl[ \frac{2\beta\pi}{\beta-1}\Bigr]^{(d-1)/2} d^{-1/2} \Big( \frac{s}{\lambda d} \Big)^{\beta(d-1)/2} \Ftail \Big( \frac{s}{d} \Big)^d \for{s \to \infty}\,.
 \end{equation*}
 \end{proposition}
 
 The exposition in \cite{asmussen2017tail} details this and more general asymptotics (i.e.\ the independent but non-identically distributed case, and when the variables are not exactly Weibull but are `Weibull-like').
+
+By its very construction, one would expect the estimator utilising an asymptotic form for the right-tail, \eqref{eq:asymptotic_estimator}, to
+enjoy good efficiency properties as $\gamma\to\infty$.  As mentioned in the introduction, our goal is to provide a practically useful
+estimator for `moderately' rare problems, in the range of $\gamma$ before the asymptotic regime takes hold.
+As such, it is our view that the orthodox notions of efficiency have little meaning in our setting.
+Nevertheless, we note that it is straightforward to verify that if the
+ratio $f_{\bfTheta \mid \gamma}/g_{\bfTheta \mid \gamma}$ remains bounded by some finite constant $K\geq 1$ for all $\bftheta$ as $\gamma\to\infty$, then the estimator \eqref{eq:asymptotic_estimator} enjoys
+bounded relative error, and if $K=1$ then the estimator enjoys vanishing relative error.
 
 \subsection{The angular approximation}
 
 The choice of angular approximation is not as obvious as was the choice of radial approximation.
 Finding a conditional density $g_{\bfTheta \mid S}$ which is similar to $f_{\bfTheta \mid S}$ has little to no precedent in the literature.
 
-We can make a simplification by looking at a different conditional distribution. Instead of taking an $S$ which is larger than $\gamma$ and asking `what is the distribution of $\bfTheta$ given this $S$?', we can instead ask `what is the distribution of $\bfTheta$ given $S > \gamma$?'. This second conditional will resemble the first when $\gamma$ becomes large, since it is typically the case that $\Exp[ S-\gamma \mid S > \gamma]$ converges quickly to zero.
-Also we have a computation benefit to finding a $g_{\bfTheta \mid S > \gamma}$ which is similar to $f_{\bfTheta \mid S > \gamma}$ as this distribution will be constant across all Monte Carlo iterates, in contrast to $g_{\bfTheta \mid S^{[r]}}$ and $f_{\bfTheta \mid S^{[r]}}$.
+Instead of taking an $S$ which is larger than $\gamma$ and asking `what is the distribution of $\bfTheta$ given this $S$?', we can instead ask `what is the distribution of $\bfTheta$ given $S > \gamma$?'.
+This is the same situation that is studied in multivariate extreme value theory, where the spectral density characterises the behaviour of $f_{\bfTheta \mid S>\gamma}$ in
+the limit as $\gamma\to\infty$ \cite{deHaanResnick1977}.
+This second conditional distribution will resemble the first in cases that $\Exp[ S-\gamma \mid S > \gamma]$ converges quickly to zero when $\gamma$ becomes large.
+Moreover, we have a computation benefit to finding a $g_{\bfTheta \mid S > \gamma}$ which is similar to $f_{\bfTheta \mid S > \gamma}$ as this distribution will be constant across all Monte Carlo iterates, in contrast to $g_{\bfTheta \mid S^{[r]}}$ and $f_{\bfTheta \mid S^{[r]}}$.
 
-When it is possible, we follow the same approach as the radial approximation and utilise some asymptotic information. However, if one re-uses the previous asymptotic form, that is
+Nevertheless, when it is possible, we follow the same approach as the radial approximation and utilise some asymptotic information. However, we note that if one simply re-uses the previous asymptotic form, that is
 \[ f_{\bfTheta \mid S}(\bftheta | s) = \frac{f_{S,\bfTheta}(s, \bftheta)}{f_S(s)} \sim \frac{f_{\bfX}(s \bftheta) |s|^{d-1}}{\Asymf(s)} =: g_{\bfTheta \mid S}(\bftheta | s) \,, \]
-which is natural, then the estimator \eqref{eq:asymptotic_estimator} degenerates to the deterministic
+which may appear natural, then the estimator \eqref{eq:asymptotic_estimator} degenerates to the deterministic
 \begin{equation*} \label{eq:double_asymptotic_estimator}
-\hat{l}_{\mathrm{IS2}}(\gamma) := \frac{\AsymFTail(\gamma)}{R} \sum_{r=1}^R 1 = \AsymFTail(\gamma) \,.
+\hat{l}_{\mathrm{IS2}}(\gamma) := \frac{c_S \AsymFTail(\gamma)}{R} \sum_{r=1}^R 1 = c_S \AsymFTail(\gamma) \,.
 \end{equation*}
+Moreover, if it is known that $f_{\bfTheta \mid S > \gamma}$ degenerates in the limit
+this does not tell us what we should do for finite $\gamma$.
 
-Unfortunately, the conditional $f_{\bfTheta \mid S}$ and $f_{\bfTheta \mid S}$ distributions are rarely examined in the literature, so we do not have a ready supply of their asymptotics.
-
-When the summands are subexponential, then the distribution of $(\bfTheta \mid S = s)$ as $s\to\infty$ degenerates to a discrete distribution over the unit vectors $\bfe_1$, \dots, $\bfe_d$. This is just a re-casting of the principle of the single big jump (cf.\ Section~\ref{sec:asymptotics} or \cite{foss2011introduction}). One density, which we call the \emph{optimistic density} (see the algorithm below), that is asymptotically equivalent to $(\bfTheta \mid S = s)$ is
+Indeed, when the summands are iid subexponentials, then the distribution of $(\bfTheta \mid S = s)$ as $s\to\infty$ degenerates to a discrete distribution over the $d$-dimensional unit vectors $\bfe_1$, \dots, $\bfe_d$
+(with $\bfe_i$ having a single 1 in the $i$-th coordinate and zeros in all other coordinates).
+This is just a re-casting of the principle of the single big jump (cf.\ Section~\ref{sec:asymptotics} or \cite{foss2011introduction}).
+Unfortunately, for finite $\gamma$ we cannot use this directly as in this case the likelihood ratio appearing in \eqref{eq:general_form_estimator} is not well defined.
+One density, which we call the \emph{optimistic density} (see the algorithm below), that is not degenerate (and therefore will have well-defined likelihood ratio) but is
+asymptotically equivalent to $(\bfTheta \mid S = s)$ for the case of ind subexponential summands is
 \begin{align} \label{OptimisticPDF}
 g_{\bfTheta \mid S}(\bftheta \mid s)
 &= |s|^{d-1} \sum_{i=1}^d p_i(s) f_{\bfX_{-i}}(s \bftheta_{-i}) \ind{ \theta_i = 1-\bfone \cdot \bftheta_{-i} }
 \end{align}
-where the $p_i$ functions are defined by
+and the $p_i$ functions are defined by
 \begin{equation} \label{optim_pi}
 p_i(s) = \frac{\Ftail _i(s)}{\sum_{j=1}^d \Ftail _j(s)} \,.
 \end{equation}
-Algorithm~\ref{Alg:Optimism} shows a method for sampling from this $g_{\bfTheta \mid S}(\bftheta \mid s)$, and Proposition~\ref{prop:optimistic_asymptotic} shows has the expected limiting distribution as $s \to \infty$.
+Algorithm~\ref{Alg:Optimism} shows a method for sampling from this $g_{\bfTheta \mid S}(\bftheta \mid s)$, and Proposition~\ref{prop:optimistic_asymptotic} shows that it
+has a limiting distribution consistent with \eqref{Subexponential_Asymptotics_Non_IID} as $s \to \infty$.
 
 \begin{algorithm}[H]
 \caption{Sampling from the optimistic angular density}\label{Alg:Optimism}
@@ -184,6 +202,10 @@ Algorithm~\ref{Alg:Optimism} shows a method for sampling from this $g_{\bfTheta 
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
+
+When the subexponential summands are only independent in the extreme, a simple
+generalisation of Algorithm~\ref{Alg:Optimism} is to replace Lines~3 to~5 with
+taking a random sample $\bfX^*$ from $f_{\bfX}$.
 
 \begin{proposition} \label{prop:optimistic_asymptotic}
 
@@ -217,11 +239,11 @@ Therefore,
 = \sum_{j=1}^d p_j \e^{\ih t_j}
 = \sum_{j=1}^d p_j \e^{\ih \bft^\top \bfe_j}
 \]
-which has the singular density as in \eqref{OptimisticLimitingDensity}.
+which corresponds to the singular density as in \eqref{OptimisticLimitingDensity}.
 \end{proof}
 
 \begin{remark}
-The polar estimator with the optimistic angular approximation \eqref{OptimisticPDF} simplifies to
+The polar estimator with independent summands and with the optimistic angular approximation \eqref{OptimisticPDF} simplifies to
 \[
 \hat{l}_{\mathrm{IS2}}(\gamma)
 = \frac{c_S \AsymFTail(\gamma)}{R} \sum_{r=1}^R \frac{\mathrm{HarmonicMean}( f_{X_1}( S^{[r]} \Theta^{[r]}_1), \dots, f_{X_d}( S^{[r]} \Theta^{[r]}_d) )}{c_S \Asymf( S^{[r]} )}
@@ -232,18 +254,20 @@ where $S^{[r]} \iidDist \AsymfTrun$, $\bfTheta^{[r]} \indDist g_{\bfTheta \mid S
 The conditional angular asymptotic distribution is harder to obtain in the case of light-tailed summands. The following example shows these distributions differ qualitatively when different copulas are considered.
 
 \begin{example}
-Consider $X_1$ and $X_2$ are \textsf{Exp}(1) variables which are: i) independent, ii) \textsf{Clayton}(1) dependent, or iii) \textsf{Ali-Mikhail-Haq}(-1) dependent. The sum densities are
+Consider $X_1$ and $X_2$ are \textsf{Exp}(1) variables which are: i) independent, ii) \textsf{Clayton}(1) dependent, or iii) \textsf{Ali-Mikhail-Haq}(-1) dependent. The sum densities can be calculated explicitly and
+are given by
 \[ f_S^{\mathrm{Ind}}(s) = s \e^{-s} \quad \text{for } s > 0 \,, \]
-\[ f_S^{\mathrm{Cla}}(s) = \frac{2 - 2 \cosh(s) + s \sinh(s)}{(\cosh(s)-1)^2} \quad \text{for } s > 0 \]
-\[ f_S^{\mathrm{AMH}}(s) = 8 \csch(s)^3 \sinh(s/2)^4 \quad \text{for } s > 0 \]
-respectively, and hence for $s>0$ and $\theta \in (0,1)$
+\[ f_S^{\mathrm{Cla}}(s) = \frac{2 - 2 \cosh(s) + s \sinh(s)}{(\cosh(s)-1)^2} \quad \text{for } s > 0 \,, \]
+\[ f_S^{\mathrm{AMH}}(s) = 8 \csch(s)^3 \sinh(s/2)^4 \quad \text{for } s > 0 \,, \]
+respectively.
+Hence, for $s>0$ and $\theta \in (0,1)$, we have angular densities
 \[ f^{\mathrm{Ind}}_{\Theta_1 | S}(\theta | s) = 1 \,, \]
 \[ f^{\mathrm{Cla}}_{\Theta_1 | S}(\theta | s) = \frac{ s \e^{-s \theta}(\e^s - \e^{s \theta})(\e^{s \theta}-1)}{2 + s - 2\e^s + s \e^s} \,, \]
-\[ f^{\mathrm{AMH}}_{\Theta_1 | S}(\theta | s) = \frac{ s \e^{-s \theta}(\e^s + \e^{2 s \theta})}{2(\e^s - 1)}  \]
-respectively. It is interesting to note that the asymptotic independence of the Clayton copula would indicate that $f^{\mathrm{Cla}}_{\Theta_1 | S}(\theta | s) / f^{\mathrm{Ind}}_{\Theta_1 | S}(\theta | s) \to 1$ as $s\to\infty$ which is almost the case ($f^{\mathrm{Cla}} /  f^{\mathrm{Ind}} \to 2$). In contrast, $f^{\mathrm{AMH}}_{\Theta_1 | S}(\theta | s)$ degenerates to a pair of atoms at 0 and 1 as $s \to \infty$.
+\[ f^{\mathrm{AMH}}_{\Theta_1 | S}(\theta | s) = \frac{ s \e^{-s \theta}(\e^s + \e^{2 s \theta})}{2(\e^s - 1)} \,,  \]
+respectively. It is interesting to note that the asymptotic independence of the Clayton copula would indicate that $f^{\mathrm{Cla}}_{\Theta_1 | S}(\theta | s) / f^{\mathrm{Ind}}_{\Theta_1 | S}(\theta | s) \to 1$ as $s\to\infty$ which is indeed the case. In contrast, $f^{\mathrm{AMH}}_{\Theta_1 | S}(\theta | s)$ degenerates to a pair of atoms at 0 and 1 as $s \to \infty$.
 \end{example}
 
-One (light-tailed) case where we can find an asymptotic angular distribution is for light-tailed Weibull sums. The angular asymptotic can be extracted from the following result in \cite{asmussen2017tail}.
+One (light-tailed) case where we can determine an asymptotic angular distribution is for light-tailed Weibull sums. The angular asymptotic can be extracted from the following result in \cite{asmussen2017tail}.
 
 \begin{proposition} \label{prop:light_weibull_angles}
 Say $X_1, \dots, X_d$ are iid light-tailed $\mathsf{Weibull}(\beta, 1)$ with survival function $\Ftail(x)=\e^{-x^\beta}$ where $\beta>1$, $d \ge 2$.
@@ -255,75 +279,224 @@ Then as $\gamma \to \infty$ we have
 where $\rho = -1/(d-1)$.
 \end{proposition}
 
-When the asymptotic angular approximation is unavailable, there are several backup options.
+Note that the $d$-dimensional multivariate normal distribution appearing in Proposition~\ref{prop:light_weibull_angles} is supported on a $(d-1)$-dimensional subspace.
+
+When the asymptotic angular approximation is unavailable, there are several conceivable alternatives.
 One can select a $g_{\bfTheta \mid S}$ from some family of distributions which has the appropriate support.
 If $\bfX$ has non-negative components, then the support of $g_{\bfTheta \mid S}$ is the simplex
 $ \mathbb{S}^{d-1} = \{ \bftheta \in \RL_+^d \, : \, \bftheta^\top\bfone = 1 \}$.
 To the authors' knowledge, the only commonly known distribution over $\mathbb{S}^{d-1}$ is the Dirichlet distribution.
 
-In some experiments, we sampled $(\bfTheta \mid S > \gamma)$ using MCMC, then used the maximum likelihood Dirichlet fit to the samples as an angular approximation in the polar estimator. The results were disappointing --- the Dirichlet distribution struggles to fit the multimodal angular distributions which are characteristic of subexponential sums conditioned on taking large values. We also attempted the MCMC flavour of the cross-entropy method as outlined by Chan and Kroese \cite{chan2012improved}, though the multimodality led to extremely high variance estimates (relative to the much simpler Asmussen--Kroese method).
+In some experiments, we sampled $(\bfTheta \mid S > \gamma)$ using MCMC, then used the maximum likelihood Dirichlet fit to the samples as an angular approximation in the polar estimator. Unfortunately the results were disappointing and are omitted --- the Dirichlet distribution struggles to fit the multimodal angular distributions which are characteristic of subexponential sums conditioned on taking large values. We also attempted the MCMC flavour of the cross-entropy method as outlined by Chan and Kroese \cite{chan2012improved}, though the multimodality led to extremely high variance estimates (relative to the much simpler Asmussen--Kroese method).
 
-We also attempted to perform an approximation of the angular density using Bernstein polynomials. The angular density $f_{\bfTheta \mid S}(\bftheta \mid s) \propto f_{\bfX}(s \bftheta)$, so it is easy to calculate quantities which are proportional to the desired conditional density. Using Bernstein polynomials effectively constructed an approximation which was a mixture of Dirichlet distributions using these unnormalised angular density values. The results for these experiments are also omitted, since the number of mixture components required to create an accurate approximation easily becomes prohibitively large (then, the computation time for evaluating the pdf of the mixture becomes an issue).
+We also performed an approximation of the angular density using Bernstein polynomials. The angular density $f_{\bfTheta \mid S}(\bftheta \mid s) \propto f_{\bfX}(s \bftheta)$, so it is easy to calculate quantities which are proportional to the desired conditional density. Using Bernstein polynomials effectively constructed an approximation which was a mixture of Dirichlet distributions using these unnormalised angular density values. The results for these experiments are also omitted, since the number of mixture components required to create an accurate approximation easily becomes prohibitively large (then, the computation time for evaluating the pdf of the mixture becomes a bottleneck).
 
 \section{Results} \label{Sec:Results}
 
-Below we show the estimates and the estimated relative errors for the polar estimator and the Asmussen--Kroese estimator for various distributions of $\bfX$. Each estimator is given $R = 10^5$ iid samples of $\bfX$.
 
-The first test takes the sum of $d=16$ independent lognormals random variables, where $X_i~\sim~\LNDist(-i/d, i/d)$. Here, the sum is asymptotically like $X_d \sim \LNDist(-1, 1)$, and the optimistic angular distribution is used.
+In this section we give illustrative results of numerical experiments.
+For subexponential summands, we compare to the most competitive alternative, the Asmussen--Kroese
+estimator, and for light-tailed summands we compare to the standard IS approach of exponential tilting.
+
+
+\subsection{Subexponential Summands}
+
+Below we present the estimates and the estimated relative errors for the polar estimator and the Asmussen--Kroese estimator for various distributions of $\bfX$. Each estimator is given $R = 10^5$ iid samples of $\bfX$.
+
+The first test takes the sum of $d=12$ independent lognormal random variables, where $X_i~\sim~\LNDist(-\frac{i}{d}, \sqrt{\frac{i}{d}})$. Here, the sum behaves asymptotically as the dominant term $X_d \sim \LNDist(-1, 1)$, and the optimistic angular distribution is used.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.95\textwidth]{"Lognormal Estimates"}
+	$\vcenter{\hbox{\includegraphics[width=.6\textwidth]{"Lognormal Estimates"}}}$
+ 	\hspace*{.1in}
+ 	$\vcenter{\hbox{\includegraphics{legend1a.pdf}}}$
 	\caption{Estimates of $\Prob(S > \gamma)$ from each estimator.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.95\textwidth]{"Lognormal Estimated REs"}
+	$\vcenter{\hbox{\includegraphics[width=.6\textwidth]{"Lognormal Estimated REs"}}}$
+ 	\hspace*{.1in}
+ 	$\vcenter{\hbox{\includegraphics{legend1b.pdf}}}$
 	\caption{Estimated relative errors for each estimator.}
 \end{figure}
 
-The second test considers the sum of $d=16$ independent Pareto random variables, where $X_i \sim \ParetoDist(i, 1, 0)$. The sum is asymptotically like $X_1 \sim \ParetoDist(1, 1, 0)$, and the optimistic angular distribution is used.
+The second test considers the sum of $d=16$ independent Pareto random variables, where $X_i \sim \ParetoDist(1, i, 0)$. The sum behaves asymptotically as the dominant term $X_1 \sim \ParetoDist(1, 1, 0)$, and the optimistic angular distribution is used.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.95\textwidth]{"Pareto Estimates"}
+	$\vcenter{\hbox{\includegraphics[width=.6\textwidth]{"Pareto Estimates"}}}$
+ 	\hspace*{.1in}
+ 	$\vcenter{\hbox{\includegraphics{legend1a.pdf}}}$
 	\caption{Estimates of $\Prob(S > \gamma)$ from each estimator.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.95\textwidth]{"Pareto Estimated REs"}
+	$\vcenter{\hbox{\includegraphics[width=.6\textwidth]{"Pareto Estimated REs"}}}$
+ 	\hspace*{.1in}
+ 	$\vcenter{\hbox{\includegraphics{legend1b.pdf}}}$
 	\caption{Estimated relative errors for each estimator.}
 \end{figure}
 
 
-The third test considers the sum of $d=8$ independent heavy-tailed Weibull variables. The marginal distributions are $X_i~\sim~\WeibullDist(\frac{i}{d+1}, \frac{i}{10d})$. The sum is asymptotically like $X_1~\sim~\WeibullDist(\frac{1}{9}, \frac{1}{80})$, and the optimistic angular distribution is used.
+The third test considers the sum of $d=8$ independent heavy-tailed Weibull variables. The marginal distributions are $X_i~\sim~\WeibullDist(\frac{1}{4}, \frac{i}{d})$. The sum behaves asymptotically as the last summand $X_8~\sim~\WeibullDist(\frac{1}{4}, 1)$, and the optimistic angular distribution is used.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.95\textwidth]{"Weibull Heavy Estimates"}
+	$\vcenter{\hbox{\includegraphics[width=.6\textwidth]{"Weibull Heavy Estimates"}}}$
+ 	\hspace*{.1in}
+ 	$\vcenter{\hbox{\includegraphics{legend1a.pdf}}}$
 	\caption{Estimates of $\Prob(S > \gamma)$ from each estimator.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.95\textwidth]{"Weibull Heavy Estimated REs"}
+	$\vcenter{\hbox{\includegraphics[width=.6\textwidth]{"Weibull Heavy Estimated REs"}}}$
+ 	\hspace*{.1in}
+ 	$\vcenter{\hbox{\includegraphics{legend1b.pdf}}}$
 	\caption{Estimated relative errors for each estimator.}
 \end{figure}
 
-The final test takes the sum of $d=2$ iid light-tailed Weibulls, where $X_i \sim \WeibullDist(3, 1)$. An asymptotic survival function for the sum is given by Proposition~\ref{prop:light_weibull}, and the optimistic angular distribution used is from Proposition~\ref{prop:light_weibull_angles}. Instead of the Asmussen--Kroese method, which is designed for subexponential summands, we have compared the polar estimator against \emph{exponential tilting} (cf.\ \eqref{def-exp-tilting} and the surrounding discussion). The exponential tilting method can be very easy to implement (in particular, when applied to distributions in the \emph{natural exponential family}) but it takes some effort in this situation. There are no known ways to directly simulate from exponentially tilted Weibull distributions. We resort to the acceptance--rejection method with proposals coming from a gamma distribution. The specific gamma distribution is moment-matched with the asymptotic normal approximation for the exponentially tilted Weibull distribution, cf.\ Section 6 of \cite{asmussen2017tail}.
+\subsection{Light-tailed Weibull Summands}
+
+This fourth test takes the sum of $d=10$ iid light-tailed Weibulls, where $X_i \sim \WeibullDist(2, 1)$. An asymptotic survival function for the sum is given by Proposition~\ref{prop:light_weibull}, and the optimistic angular distribution used is from Proposition~\ref{prop:light_weibull_angles}. Instead of the Asmussen--Kroese method, which is designed for subexponential summands, we have compared the polar estimator against \emph{exponential tilting}. The exponential tilting method can be very easy to implement (in particular, when applied to distributions in the \emph{natural exponential family}) but it takes some effort in this situation. There are no known ways to directly simulate from exponentially tilted Weibull distributions. We resort to the acceptance--rejection method with proposals coming from a gamma distribution. The specific gamma distribution is moment-matched with the asymptotic normal approximation for the exponentially tilted Weibull distribution, cf.\ Section 6 of \cite{asmussen2017tail}.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.95\textwidth]{"Weibull Light Estimates"}
+	$\vcenter{\hbox{\includegraphics[width=.6\textwidth]{"Weibull Light Estimates"}}}$
+ 	\hspace*{.1in}
+ 	$\vcenter{\hbox{\includegraphics{legend2a.pdf}}}$
 	\caption{Estimates of $\Prob(S > \gamma)$ from each estimator.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.95\textwidth]{"Weibull Light Estimated REs"}
+	$\vcenter{\hbox{\includegraphics[width=.6\textwidth]{"Weibull Light Estimated REs"}}}$
+ 	\hspace*{.1in}
+ 	$\vcenter{\hbox{\includegraphics{legend2b.pdf}}}$
+	\caption{Estimated relative errors for each estimator.}
+\end{figure}
+
+\subsection{Dependent Summands}
+
+Next we reproduce the three subexponential tests above with dependence added by Archimedean copulas. We use the Asmussen--Kroese estimator as outlined in Section~3.2.2.2 of \cite{nandayapa2008risk} as the traditional form of this estimator needs to be adapted for the case of dependent summands.
+
+The following fifth test recreates the first test above, with $d=12$ lognormal random variables, where $X_i~\sim~\LNDist(-\frac{i}{d}, \sqrt{\frac{i}{d}})$. Here, dependence is added via a $\FrankCop(\frac{1}{2})$.
+
+\begin{figure}[H]
+	\centering
+	$\vcenter{\hbox{\includegraphics[width=.6\textwidth]{"Lognormal Frank 05 d12 Estimates"}}}$
+ 	\hspace*{.1in}
+ 	$\vcenter{\hbox{\includegraphics{legend1a.pdf}}}$
+	\caption{Estimates of $\Prob(S > \gamma)$ from each estimator.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	$\vcenter{\hbox{\includegraphics[width=.6\textwidth]{"Lognormal Frank 05 d12 Estimated REs"}}}$
+ 	\hspace*{.1in}
+ 	$\vcenter{\hbox{\includegraphics{legend1b.pdf}}}$
+	\caption{Estimated relative errors for each estimator.}
+\end{figure}
+
+We see immediately that introducing even a mild level of dependence gives rise to substantially more variability in the polar estimator in the pre-asymptotic regime as
+a result of using the optimistic angular distribution --- an illustration of likelihood ratio degeneracy in $d$.
+To illustrate this point, we carry out the same test with $d=4$ below.
+
+\begin{figure}[H]
+	\centering
+	$\vcenter{\hbox{\includegraphics[width=.6\textwidth]{"Lognormal Frank 05 d4 Estimates"}}}$
+ 	\hspace*{.1in}
+ 	$\vcenter{\hbox{\includegraphics{legend1a.pdf}}}$
+	\caption{Estimates of $\Prob(S > \gamma)$ from each estimator.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	$\vcenter{\hbox{\includegraphics[width=.6\textwidth]{"Lognormal Frank 05 d4 Estimated REs"}}}$
+ 	\hspace*{.1in}
+ 	$\vcenter{\hbox{\includegraphics{legend1b.pdf}}}$
+	\caption{Estimated relative errors for each estimator.}
+\end{figure}
+
+The sixth test is similar to the second test above, considering $d=16$ Pareto random variables where $X_i \sim \ParetoDist(1, i, 0)$, except that the summands exhibit dependence via a  $\ClaytonCop(\frac{9}{10})$ copula.
+
+\begin{figure}[H]
+	\centering
+	$\vcenter{\hbox{\includegraphics[width=.6\textwidth]{"Pareto Clayton 09 d16 Estimates"}}}$
+ 	\hspace*{.1in}
+ 	$\vcenter{\hbox{\includegraphics{legend1a.pdf}}}$
+	\caption{Estimates of $\Prob(S > \gamma)$ from each estimator.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	$\vcenter{\hbox{\includegraphics[width=.6\textwidth]{"Pareto Clayton 09 d16 Estimated REs"}}}$
+ 	\hspace*{.1in}
+ 	$\vcenter{\hbox{\includegraphics{legend1b.pdf}}}$
+	\caption{Estimated relative errors for each estimator.}
+\end{figure}
+
+Once again, we observe significant likelihood ratio degeneracy in the polar estimator, and for comparison we repeat the experiment with $d=4$ below.
+
+\begin{figure}[H]
+	\centering
+	$\vcenter{\hbox{\includegraphics[width=.6\textwidth]{"Pareto Clayton 09 d4 Estimates"}}}$
+ 	\hspace*{.1in}
+ 	$\vcenter{\hbox{\includegraphics{legend1a.pdf}}}$
+	\caption{Estimates of $\Prob(S > \gamma)$ from each estimator.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	$\vcenter{\hbox{\includegraphics[width=.6\textwidth]{"Pareto Clayton 09 d4 Estimated REs"}}}$
+ 	\hspace*{.1in}
+ 	$\vcenter{\hbox{\includegraphics{legend1b.pdf}}}$
+	\caption{Estimated relative errors for each estimator.}
+\end{figure}
+
+Test seven is similar to the third test, with $d=8$ heavy-tailed Weibull variables with marginal distributions $X_i~\sim~\WeibullDist(\frac{1}{4}, \frac{i}{d})$, except with a $\GumbelCop(1.25)$ copula (which is dependent in the extreme).
+
+\begin{figure}[H]
+	\centering
+	$\vcenter{\hbox{\includegraphics[width=.6\textwidth]{"Weibull Heavy Gumbel 1p25 d8 Estimates"}}}$
+ 	\hspace*{.1in}
+ 	$\vcenter{\hbox{\includegraphics{legend1a.pdf}}}$
+	\caption{Estimates of $\Prob(S > \gamma)$ from each estimator.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	$\vcenter{\hbox{\includegraphics[width=.6\textwidth]{"Weibull Heavy Gumbel 1p25 d8 Estimated REs"}}}$
+ 	\hspace*{.1in}
+ 	$\vcenter{\hbox{\includegraphics{legend1b.pdf}}}$
+	\caption{Estimated relative errors for each estimator.}
+\end{figure}
+
+As one would expect, as $\gamma$ increases, both estimators behave increasingly poorly due to the upper-tail dependence of this copula.
+We repeat the experiment below with $d=2$ to more clearly illustrate this phenomenon.
+
+\begin{figure}[H]
+	\centering
+	$\vcenter{\hbox{\includegraphics[width=.6\textwidth]{"Weibull Heavy Gumbel 1p25 d2 Estimates"}}}$
+ 	\hspace*{.1in}
+ 	$\vcenter{\hbox{\includegraphics{legend1a.pdf}}}$
+	\caption{Estimates of $\Prob(S > \gamma)$ from each estimator.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	$\vcenter{\hbox{\includegraphics[width=.6\textwidth]{"Weibull Heavy Gumbel 1p25 d2 Estimated REs"}}}$
+ 	\hspace*{.1in}
+ 	$\vcenter{\hbox{\includegraphics{legend1b.pdf}}}$
 	\caption{Estimated relative errors for each estimator.}
 \end{figure}
 
 
 \section{Conclusion} \label{Sec:Conclusion}
 
-On the tests performed so far, our estimator appears to perform about as well as the Asmussen--Kroese method, and outperforms all the other methods compared against (i.e.\ the improved cross-entropy method, fitting mixtures of Dirichlet variables, and Bernstein polynomial approximation). In particular, the polar estimator seems to consistently outperform the Asmussen--Kroese method whenever the summands are not identically distributed. In fairness, our implementation of the polar estimator is slower than the Asmussen--Kroese estimator since it is quite general, though with some optimisation the difference could be reduced. More research is needed to see whether the angular distribution can be more optimally chosen in the case of dependent summands.
+
+On the tests carried out in this work, our estimator appears to perform on par with the Asmussen--Kroese method for independent subexponential summands, and outperforms all the other methods compared against (i.e.\ the improved cross-entropy method, fitting mixtures of Dirichlet variables, and Bernstein polynomial approximation). In particular, the $L^1$ polar estimator seems to consistently outperform the Asmussen--Kroese method whenever the summands are not identically distributed.  Moreover, for the comparison of iid light-tailed Weibull summands, our estimator outperforms exponential tilting.
+
+However, with the introduction of dependence for subexponential summands (even with upper-tail independence of the copula) the performance of our estimator
+degrades rapidly as dimension increases (likelihood ratio degeneracy) as a consequence of utilising the optimistic angular distribution, and
+unsurprisingly performs poorly when the copula has upper-tail dependence.
+Thus there remains the opportunity for further research into suitable choice of the angular distribution in the case of dependent summands.

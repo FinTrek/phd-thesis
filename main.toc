@@ -47,58 +47,60 @@
 \contentsline {subsection}{\numberline {3.3.3}Sums of lognormals with a gamma reference distribution}{71}
 \contentsline {section}{\numberline {3.4}Numerical illustrations}{73}
 \contentsline {subsection}{\numberline {3.4.1}The estimators}{73}
-\contentsline {subsection}{\numberline {3.4.2}Results}{75}
-\contentsline {section}{\numberline {3.A}Proof of Proposition\nobreakspace {}3.3\hbox {}}{79}
-\contentsline {section}{\numberline {3.B}Computing the coefficients of the expansion $\{a_{k}\}_{k\in \mathbb {N}_0}$ in the gamma case}{81}
-\contentsline {chapter}{\numberline {4}Two numerical methods to evaluate stop-loss premiums}{85}
-\contentsline {section}{\numberline {4.1}Introduction}{85}
-\contentsline {section}{\numberline {4.2}Compound distributions and risk theory}{88}
-\contentsline {subsection}{\numberline {4.2.1}Compound distributions}{88}
-\contentsline {subsection}{\numberline {4.2.2}Risk theory}{90}
-\contentsline {section}{\numberline {4.3}Orthogonal polynomial approximations}{92}
-\contentsline {subsection}{\numberline {4.3.1}Approximating general density functions}{92}
-\contentsline {subsection}{\numberline {4.3.2}Approximating densities of positive random variables}{93}
-\contentsline {subsection}{\numberline {4.3.3}Approximating densities of positive compound distributions}{98}
-\contentsline {subsubsection}{Choice of $r$ and $m$}{99}
-\contentsline {subsubsection}{Computation of the $a_k$}{101}
-\contentsline {section}{\numberline {4.4}Laplace transform inversion approximations}{103}
-\contentsline {section}{\numberline {4.5}Numerical illustrations}{104}
-\contentsline {subsection}{\numberline {4.5.1}Survival function and stop-loss premium computations}{105}
-\contentsline {subsection}{\numberline {4.5.2}Finite-time ruin probability with no initial reserve}{109}
-\contentsline {subsection}{\numberline {4.5.3}Concluding remarks}{110}
-\contentsline {chapter}{\numberline {5}Rare tail approximation using asymptotics and polar coordinates}{112}
-\contentsline {section}{\numberline {5.1}Introduction}{112}
-\contentsline {section}{\numberline {5.2}The polar estimator}{115}
-\contentsline {subsection}{\numberline {5.2.1}The general form}{115}
-\contentsline {subsection}{\numberline {5.2.2}The radial approximation}{116}
-\contentsline {subsection}{\numberline {5.2.3}The angular approximation}{118}
-\contentsline {section}{\numberline {5.3}Results}{122}
-\contentsline {section}{\numberline {5.4}Conclusion}{125}
-\contentsline {chapter}{\numberline {6}Rare maxima of random variables}{127}
-\contentsline {section}{\numberline {6.1}Introduction}{127}
-\contentsline {section}{\numberline {6.2}Estimators of $\alpha $}{130}
-\contentsline {subsection}{\numberline {6.2.1}Proposed estimators of $\alpha $}{130}
-\contentsline {subsection}{\numberline {6.2.2}Discussion of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \alpha $}\mathaccent "0362{\alpha }_1$ estimator}{133}
-\contentsline {subsection}{\numberline {6.2.3}Relation of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \alpha $}\mathaccent "0362{\alpha }_n$ estimators to control variates}{133}
-\contentsline {subsection}{\numberline {6.2.4}Combining $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \alpha $}\mathaccent "0362{\alpha }_1$ with importance sampling}{133}
-\contentsline {section}{\numberline {6.3}Estimators of $\beta _n$}{135}
-\contentsline {subsection}{\numberline {6.3.1}Applying $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \beta $}\mathaccent "0362{\beta }_i$ to estimate $\alpha $}{137}
-\contentsline {section}{\numberline {6.4}Efficiency results}{138}
-\contentsline {subsection}{\numberline {6.4.1}Variance Reduction}{139}
-\contentsline {subsection}{\numberline {6.4.2}Efficiency criteria}{140}
-\contentsline {subsection}{\numberline {6.4.3}Efficiency for identical marginals and dependence}{142}
-\contentsline {subsubsection}{Asymptotic dependence}{143}
-\contentsline {subsubsection}{Residual tail index}{143}
-\contentsline {subsubsection}{Archimedean Copulas}{145}
-\contentsline {subsection}{\numberline {6.4.4}Efficiency for the case of normal and elliptical distributions}{146}
-\contentsline {subsubsection}{Definitions and categories of elliptical distributions}{148}
-\contentsline {subsubsection}{Efficiency for type I elliptical distributions}{148}
-\contentsline {section}{\numberline {6.5}Numerical experiments}{151}
-\contentsline {subsection}{\numberline {6.5.1}Test setup}{153}
-\contentsline {subsection}{\numberline {6.5.2}Results}{154}
-\contentsline {subsection}{\numberline {6.5.3}Discussion}{157}
-\contentsline {section}{\numberline {6.6}Conclusion}{158}
-\contentsline {subsection}{\numberline {6.6.1}Future work}{159}
-\contentsline {section}{\numberline {6.A}Elliptical distribution asymptotics}{159}
-\contentsline {subsection}{\numberline {6.A.1}Asymptotic properties of normal distributions}{159}
-\contentsline {subsection}{\numberline {6.A.2}Asymptotic properties of type I elliptical distributions}{160}
+\contentsline {section}{\numberline {3.A}Proof of Proposition\nobreakspace {}3.3\hbox {}}{78}
+\contentsline {section}{\numberline {3.B}Computing the coefficients of the expansion $\{a_{k}\}_{k\in \mathbb {N}_0}$ in the gamma case}{80}
+\contentsline {chapter}{\numberline {4}Two numerical methods to evaluate stop-loss premiums}{84}
+\contentsline {section}{\numberline {4.1}Introduction}{84}
+\contentsline {section}{\numberline {4.2}Compound distributions and risk theory}{87}
+\contentsline {subsection}{\numberline {4.2.1}Compound distributions}{87}
+\contentsline {subsection}{\numberline {4.2.2}Risk theory}{89}
+\contentsline {section}{\numberline {4.3}Orthogonal polynomial approximations}{91}
+\contentsline {subsection}{\numberline {4.3.1}Approximating general density functions}{91}
+\contentsline {subsection}{\numberline {4.3.2}Approximating densities of positive random variables}{92}
+\contentsline {subsection}{\numberline {4.3.3}Approximating densities of positive compound distributions}{97}
+\contentsline {subsubsection}{Choice of $r$ and $m$}{98}
+\contentsline {subsubsection}{Computation of the $a_k$}{100}
+\contentsline {section}{\numberline {4.4}Laplace transform inversion approximations}{102}
+\contentsline {section}{\numberline {4.5}Numerical illustrations}{103}
+\contentsline {subsection}{\numberline {4.5.1}Survival function and stop-loss premium computations}{104}
+\contentsline {subsection}{\numberline {4.5.2}Finite-time ruin probability with no initial reserve}{108}
+\contentsline {subsection}{\numberline {4.5.3}Concluding remarks}{109}
+\contentsline {chapter}{\numberline {5}Rare tail approximation using asymptotics and polar coordinates}{111}
+\contentsline {section}{\numberline {5.1}Introduction}{111}
+\contentsline {section}{\numberline {5.2}The polar estimator}{114}
+\contentsline {subsection}{\numberline {5.2.1}The general form}{114}
+\contentsline {subsection}{\numberline {5.2.2}The radial approximation}{115}
+\contentsline {subsection}{\numberline {5.2.3}The angular approximation}{117}
+\contentsline {section}{\numberline {5.3}Results}{121}
+\contentsline {subsection}{\numberline {5.3.1}Subexponential Summands}{122}
+\contentsline {subsection}{\numberline {5.3.2}Light-tailed Weibull Summands}{124}
+\contentsline {subsection}{\numberline {5.3.3}Dependent Summands}{125}
+\contentsline {section}{\numberline {5.4}Conclusion}{129}
+\contentsline {chapter}{\numberline {6}Rare maxima of random variables}{131}
+\contentsline {section}{\numberline {6.1}Introduction}{131}
+\contentsline {section}{\numberline {6.2}Estimators of $\alpha $}{134}
+\contentsline {subsection}{\numberline {6.2.1}Proposed estimators of $\alpha $}{134}
+\contentsline {subsection}{\numberline {6.2.2}Discussion of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \alpha $}\mathaccent "0362{\alpha }_1$ estimator}{137}
+\contentsline {subsection}{\numberline {6.2.3}Relation of $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \alpha $}\mathaccent "0362{\alpha }_n$ estimators to control variates}{137}
+\contentsline {subsection}{\numberline {6.2.4}Combining $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \alpha $}\mathaccent "0362{\alpha }_1$ with importance sampling}{137}
+\contentsline {section}{\numberline {6.3}Estimators of $\beta _n$}{139}
+\contentsline {subsection}{\numberline {6.3.1}Applying $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \beta $}\mathaccent "0362{\beta }_i$ to estimate $\alpha $}{141}
+\contentsline {section}{\numberline {6.4}Efficiency results}{142}
+\contentsline {subsection}{\numberline {6.4.1}Variance Reduction}{143}
+\contentsline {subsection}{\numberline {6.4.2}Efficiency criteria}{144}
+\contentsline {subsection}{\numberline {6.4.3}Efficiency for identical marginals and dependence}{146}
+\contentsline {subsubsection}{Asymptotic dependence}{147}
+\contentsline {subsubsection}{Residual tail index}{147}
+\contentsline {subsubsection}{Archimedean Copulas}{149}
+\contentsline {subsection}{\numberline {6.4.4}Efficiency for the case of normal and elliptical distributions}{150}
+\contentsline {subsubsection}{Definitions and categories of elliptical distributions}{152}
+\contentsline {subsubsection}{Efficiency for type I elliptical distributions}{152}
+\contentsline {section}{\numberline {6.5}Numerical experiments}{155}
+\contentsline {subsection}{\numberline {6.5.1}Test setup}{157}
+\contentsline {subsection}{\numberline {6.5.2}Results}{158}
+\contentsline {subsection}{\numberline {6.5.3}Discussion}{161}
+\contentsline {section}{\numberline {6.6}Conclusion}{162}
+\contentsline {subsection}{\numberline {6.6.1}Future work}{163}
+\contentsline {section}{\numberline {6.A}Elliptical distribution asymptotics}{163}
+\contentsline {subsection}{\numberline {6.A.1}Asymptotic properties of normal distributions}{163}
+\contentsline {subsection}{\numberline {6.A.2}Asymptotic properties of type I elliptical distributions}{164}
