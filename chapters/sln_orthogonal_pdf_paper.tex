@@ -97,7 +97,7 @@ From Proposition~\ref{prop:complete_polynomials}, we know that if there is an $\
 \end{equation}
 then the polynomials $\{p_k\}_{k\in\NZ}$ are complete in $\Lp^2(\RL, w(x) \dd x)$. The implication is that if $f/w \in \Lp^2(\RL, w(x) \dd x)$, that is, if
 \begin{equation}\label{L2Condition1}
-\int_{\RL} \frac{f(x)^2}{w(x)^2} w(x) \dd x\ =\ \int_{\RL} \frac{f(x)^2}{w(x)}\dd \lambda(x)\ <\ \infty\,,
+\int_{\RL} \frac{f(x)^2}{w(x)^2} w(x) \dd x\ =\ \int_{\RL} \frac{f(x)^2}{w(x)} \dd x\ <\ \infty\,,
 \end{equation}
 we may expand $f/w$ as $\sum_{k=0}^\infty a_k p_k$ where
 \begin{align}\label{28.10a}a_k\ &=
@@ -106,7 +106,7 @@ we may expand $f/w$ as $\sum_{k=0}^\infty a_k p_k$ where
 This suggests that we use the form of \eqref{orthog_approx} as an approximation of $f$ in situations where the pdf of $X$ is unknown but the moments are accessible.
 
 \begin{remark}\label{Rem:27.10a}
-If the first $m$ moments of $X$ and $w$ coincide, one has $a_k=0$ for $k=1$, \ldots, $m$.
+If the first $m$ moments of $X$ and $w$ coincide, one has $a_k=0$ for $k=1$, \ldots, $m$, which is a consequence of the linear independence of the orthogonal polynomials.
 When choosing $w$, a possible guideline is therefore to match as many moments as possible.
 \remQED
 \end{remark}
@@ -235,7 +235,7 @@ result related to the fact that the lognormal and the Stieltjes--Wigert distribu
 \thrm{LogNormalOrthogonalPolynomialProposition} is incomplete
 in $\Lp^2(\RL, w(x) \dd x)$. That is, {\rm span}$\{p_k\}_{k \in \NZ}$ is a proper subset of $\Lp^2(\RL, w(x) \dd x)$.
 \end{proposition}
-\begin{proof} Let $Y$ be a random variable whose distribution is the given lognormal $\nu$
+\begin{proof} Let $Y$ be a random variable whose distribution is the lognormal with pdf $w(x)$
 and $X$ a random variable with a distribution different from $Y$
 but with the same moments. According to \cite[pp.\ 201--202]{Berg1984} such an $X$ can be
 chosen such that $f_X/w$ is bounded and hence in $\Lp^2(\RL, w(x) \dd x)$. The projection of
@@ -244,7 +244,7 @@ $f_X/w$  onto ${\rm span}\{p_k\}$ is then
 \sum_{k=0}^\infty \Exp\left[p_k(X)\right]p_k\ =\ \sum_{k=0}^\infty \Exp\left[p_k(Y) p_0(Y) \right]p_k\\
 &=\ p_0\ =\ 1\,\neq f_X/w,
 \end{align*}
-where the first step used \eqref{28.10a} and the second that the moments are the same (and that $p_0 \equiv 1$).
+where the first step used \eqref{28.10a}, the second step that the moments are the same (and that $p_0 \equiv 1$), and the third follows by orthogonality of the polynomials.
 This implies $f_X/w\in\Lp^2(\RL, w(x) \dd x)\setminus{\rm span}\{p_k\}$ and the assertion.
 \end{proof}
 %
@@ -456,13 +456,12 @@ cf.\ \cite{hcine2015highly}\footnote{Note that in \cite{hcine2015highly}, the fo
 \item the conditional Monte Carlo approximation $\widehat{f}_{\mathrm{Cond}}$ , cf.\ Example~4.3 on p.\ 146 of \cite{asmussen2007stochastic}, uses the representation $f(x)=$
 $\Exp[\Prob(S\in\dd x \mid Y)]$ for some suitable $Y$ (here chosen as one of the
 normal random variables $X_i$ occurring in \eqref{7.12a}) and simulates the conditional expectation;
-% \item $f_{\Laplace}$ : the inverted Laplace transform approximation of \cite{La15},
 \item $\widehat{f}_{\mathrm{N}}$ is the approximation described in Section~\ref{SS:LNNormalNu} using a logarithmic transformation
 and the Hermite polynomials with a normal reference distribution;
 \item $\widehat{f}_{\,\Gamma}$ is the approximation described in Section~\ref{SS:LNGammaNu} using exponential tilting and the generalised Laguerre polynomials with a gamma reference distribution.
 \end{itemize}
 
-These approximations are all estimators of functions (i.e., not pointwise estimators, such as in \cite{La15}) and they do not take excessive computational effort to construct. The first two, $\widehat{f}_{\mathrm{FW}}$ and $\widehat{f}_{\mathrm{Sk}}$, only need $\bfmu$ and $\bfSigma$ and do not have any Monte Carlo element. Similarly, the estimator $\widehat{f}_{\,\Gamma}$ when utilising the Gauss--Hermite quadrature described in \eqref{eq:gauss-hermite-quad}
+These approximations are all estimators of functions (i.e., not pointwise estimators, such as in Chapter~\ref{chp:Laplace}) and they do not take excessive computational effort to construct. The first two, $\widehat{f}_{\mathrm{FW}}$ and $\widehat{f}_{\mathrm{Sk}}$, only need $\bfmu$ and $\bfSigma$ and do not have any Monte Carlo element. Similarly, the estimator $\widehat{f}_{\,\Gamma}$ when utilising the Gauss--Hermite quadrature described in \eqref{eq:gauss-hermite-quad}
 in the Appendix does not use Monte Carlo. For the remaining approximations we utilise the \emph{common random numbers} technique, meaning that the same $R=10^5$ iid $\SLNDist(\bfmu, \bfSigma)$ samples $\bfS = (S_1, \dots, S_R)^\tr$ are given to each algorithm. Lastly, all the estimators except $\widehat{f}_{\,\Gamma}$ satisfy $\int_{\RL} \widehat{f}(x) \dd x = 1$. One problem with the orthogonal polynomial estimators is that they can take negative values; this can easily be fixed, but we do not make that adjustment here.
 
 % One can instead use the density proportional to $\max\{\widehat{f}(x), 0\}$ with the appropriate normalisation, though we do not  here.
@@ -479,10 +478,6 @@ $ \widehat{\Exp X_\theta} = \widehat{\Laplace}_1(\theta) / \widehat{\Laplace}_0(
 
 With these regimes, parameter selection for the reference distributions is automatic, and the only choice the user must make is in selecting $K$. In these tests we examined various $K$ from 1 to 40, and show the best approximations found.
 The source code for these tests is available online at \cite{OrthogoCode}, and we invite readers to experiment with the effect of modifying $K$, $\theta$ and the parameters of the reference distributions.
-
-% TODO (PJL): Mention the $\Laplace^{-1}$ of \cite{La15} approach, but don't actually compute estimates for it. \\
-
-% \enlargethispage{2.75em}
 
 \subsection{Results}
 
@@ -744,20 +739,11 @@ for $\bfZ \sim \NormDist(\bfzero, \bfeye)$, and
 Substitute $\bfx = \bfx^* + \bfH^{-\frac12} \bfy$ into $\Laplace_i(\theta)$, then multiply by $\exp\{ \pm \text{ some constants}\}$:
 \begin{align*}
 	\Laplace_i(\theta) &= \int_{\RL^n} \frac{ (2\pi)^{-\frac{n}{2}} }{\sqrt{\abs{\det(\bfSigma)}}} \exp\{ i \log(\bfone^\tr \ve^{\bfmu + \bfx}) - \theta \bfone^\tr \ve^{\bfmu + \bfx} - \frac12 \bfx^\tr \bfSigma^{-1} \bfx \}  \dd \bfx \\
-	% &= \int_{\RL^n} \frac{ (2\pi)^{-\frac{n}{2}} }{\sqrt{\abs{\det(\bfSigma \bfH)}}} \exp\{ i \log(\bfone^\tr \ve^{\bfmu + \bfx^* + \bfH^{-\frac12} \bfy}) - \theta \bfone^\tr \ve^{\bfmu + \bfx^* + \bfH^{-\frac12} \bfy} \\
-	% &\qquad - \frac12 (\bfx^* + \bfH^{-\frac12} \bfy)^\tr \bfSigma^{-1} (\bfx^* + \bfH^{-\frac12} \bfy) \}  \dd \bfy \\
 	&= \widetilde{\Laplace}_i(\theta) \exp\{ -i \log(\bfone^\tr \ve^{\bfmu + \bfx^*}) + \theta \bfone^\tr \ve^{\bfmu + \bfx^*} \} \\
 	&\qquad \times \int_{\RL^n} (2\pi)^{-\frac{n}{2}} \exp\{ i \log(\bfone^\tr \ve^{\bfmu + \bfx^* + \bfH^{-\frac12} \bfy}) - \theta \bfone^\tr \ve^{\bfmu + \bfx^* + \bfH^{-\frac12} \bfy} \\
 	&\qquad\qquad -(\bfx^*)^\tr \bfSigma^{-1} \bfH^{-\frac12} \bfy - \frac12 \bfy^\tr (\bfSigma \bfH)^{-1} \bfy \}  \dd \bfy \,.
 \end{align*}
 That is, $\Laplace_i(\theta) = \widetilde{\Laplace}_i(\theta) I_i(\theta)$. In $I_i(\theta)$, take the change of variable $\bfy = (\bfSigma\bfH)^{\frac12} \bfz$, and the result follows.
-% \begin{align*}
-% 	I_i(\theta) &= \sqrt{\abs{\det(\bfSigma \bfH)}} \exp\{ -i \log(\bfone^\tr \ve^{\bfmu + \bfx^*}) + \theta \bfone^\tr \ve^{\bfmu + \bfx^*} \} \\
-% 	&\qquad \times \int_{\RL^n} (2\pi)^{-\frac{n}{2}} \exp\{ i \log(\bfone^\tr \ve^{\bfmu + \bfx^* + \bfSigma^{\frac12}\bfz}) - \theta \bfone^\tr \ve^{\bfmu + \bfx^* + \bfSigma^{\frac12} \bfz} \\
-% 	&\qquad\qquad -(\bfx^*)^\tr \bfSigma^{-1} \bfSigma^{\frac12} \bfz - \frac12 \bfz^\tr \bfeye \bfz \} \dd \bfz \\
-% 	&= \sqrt{\abs{\det(\bfSigma \bfH)}} \, v(\bfzero)^{-1} \, \Exp[v(\bfSigma^{\frac12} \bfZ)]
-% \end{align*}
-% with $v$ and $\bfZ$ as defined in the proposition.
 \end{proof}
 
 
@@ -766,7 +752,7 @@ The form of $I_i(\theta)$ naturally suggests evaluation using \emph{Gauss--Hermi
 \begin{equation} \label{eq:gauss-hermite-quad}
 	\widehat{\Laplace}_i(\theta) = \frac{\exp\{-h_{\theta,i}(\bfx^*)\}}{v(\bfzero) \,\pi^{\,n/2}} \sum_{i_1=1}^H \cdots \sum_{i_n=1}^H v(\bfSigma^{\frac12} \bfz)  \prod_{j=1}^n w_{i_j}
 \end{equation}
-where $\bfz = (z_{i_1}, \dots, z_{i_n})^\top$, the set of weights and nodes $\{(w_i, z_i) : 1 \le i \le H\}$ is specified by the Gauss--Hermite quadrature algorithm, and $H \ge 1$ is the order of the approximation. This approximation is accurate, especially so when the $i$ in $\Laplace_i$ becomes large. Even for $\Laplace$ ($= \Laplace_0$) this method appears to outperform the quasi-Monte Carlo scheme outlined in \cite{La15}. \remQED
+where $\bfz = (z_{i_1}, \dots, z_{i_n})^\top$, the set of weights and nodes $\{(w_i, z_i) : 1 \le i \le H\}$ is specified by the Gauss--Hermite quadrature algorithm, and $H \ge 1$ is the order of the approximation. This approximation is accurate, especially so when the $i$ in $\Laplace_i$ becomes large. Even for $\Laplace$ ($= \Laplace_0$) this method appears to outperform the quasi-Monte Carlo scheme outlined in Chapter~\ref{chp:Laplace}. \remQED
 \end{remark}
 
 

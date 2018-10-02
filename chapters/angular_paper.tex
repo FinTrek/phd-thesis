@@ -5,7 +5,8 @@
 
 \vspace{1em}
 
-{\bf Citation:} Thomas Taimre, Patrick J.\ Laub (2018), \emph{Rare tail approximation using asymptotics and polar coordinates}, Advances in Applied Probability (submitted)
+
+{\bf Citation:} Thomas Taimre, Patrick J.\ Laub (2018), \emph{Rare tail approximation using asymptotics and L1 polar coordinates}, Statistics and Computing (submitted)
 
 \vspace{1em}
 
@@ -274,7 +275,7 @@ respectively. It is interesting to note that the asymptotic independence of the 
 % \hfill $\Diamond$
 % \end{example}
 
-One (light-tailed) case where we can find an asymptotic angular distribution is for light-tailed Weibull sums. The angular asymptotic can be extract from the following result in \cite{asmussen2017tail}.
+One (light-tailed) case where we can find an asymptotic angular distribution is for light-tailed Weibull sums. The angular asymptotic can be extracted from the following result in \cite{asmussen2017tail}.
 
 \begin{proposition} \label{prop:light_weibull_angles}
 Say $X_1, \dots, X_d$ are iid light-tailed $\mathsf{Weibull}(\beta, 1)$ with survival function $\Ftail(x)=\e^{-x^\beta}$ where $\beta>1$, $d \ge 2$.
@@ -456,7 +457,7 @@ The third test considers the sum of $d=8$ independent heavy-tailed Weibull varia
 	\caption{Estimated relative errors for each estimator.}
 \end{figure}
 
-The final test takes the sum of $d=2$ iid light-tailed Weibulls, where $X_i \sim \WeibullDist(3, 1)$. An asymptotic survival function for the sum is given by Proposition~\ref{prop:light_weibull}, and the optimistic angular distribution used is from Proposition~\ref{prop:light_weibull_angles}. Instead of the Asmussen--Kroese method, which is designed for subexponential summands, we have compared the polar estimator against \emph{exponential tilting} (cf.\ \eqref{def-exp-tilting} and the surrounding discussion). The exponential tilting method is usually easy to implement but it takes some effort in this situation. Simulating each exponentially tilted Weibull variable is done via acceptance--rejection; the proposals come from the gamma distribution which is moment-matched to the asymptotic normal approximation for the exponentially tilted Weibull distribution, cf.\ Section 6 of \cite{asmussen2017tail}.
+The final test takes the sum of $d=2$ iid light-tailed Weibulls, where $X_i \sim \WeibullDist(3, 1)$. An asymptotic survival function for the sum is given by Proposition~\ref{prop:light_weibull}, and the optimistic angular distribution used is from Proposition~\ref{prop:light_weibull_angles}. Instead of the Asmussen--Kroese method, which is designed for subexponential summands, we have compared the polar estimator against \emph{exponential tilting} (cf.\ \eqref{def-exp-tilting} and the surrounding discussion). The exponential tilting method can be very easy to implement (in particular, when applied to distributions in the \emph{natural exponential family}) but it takes some effort in this situation. There are no known ways to directly simulate from exponentially tilted Weibull distributions. We resort to the acceptance--rejection method with proposals coming from a gamma distribution. The specific gamma distribution is moment-matched with the asymptotic normal approximation for the exponentially tilted Weibull distribution, cf.\ Section 6 of \cite{asmussen2017tail}.
 
 \begin{figure}[H]
 	\centering

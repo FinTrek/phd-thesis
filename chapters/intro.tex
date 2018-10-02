@@ -140,7 +140,7 @@ If we replace the piece-wise constant approximation by a piece-wise linear appro
 
 This integration scheme may seem to be too simple to ever be used, but it will appear in Section~\ref{sec:laplace_inversion} on Laplace transform inversion. Trapezoidal integration has the property that it performs well on highly oscillatory integrands, such as integrals involving the complex exponential function.
 
-The process can continue, with the approximations becoming higher order polynomials which interpolate the integrand. For example, if we look split the range of integration as
+The process can continue, with the approximations becoming higher order polynomials which interpolate the integrand. For example, if we split the range of integration as
 \[ \int_a^b f(x) \dd x = \int_{x_1}^{x_3} f(x) \dd x + \int_{x_3}^{x_5} f(x) \dd x + \dots + \int_{x_{n-2}}^{x_n} f(x) \dd x \,, \]
 then we can approximately integrate $\int_{x_1}^{x_3} f(x) \dd x$ by fitting a quadratic to the triplet \[ \bigl\{ \bigl( x_1, f(x_1) \bigr), \bigl(x_2, f(x_2)\bigr), \bigl(x_3, f(x_3)\bigr) \bigr\} \]
 and integrating the resulting fit. This is called a \emph{Simpson's rule approximation}, and is illustrated in \fig{fig:simpson}.
@@ -173,7 +173,7 @@ For many common choices of weight function $w(x)$ (e.g.\ $w(x) = \e^{-x^2}$) and
 
 For an arbitrary choice of $\{x_1, \dots, x_n\}$, the Newton--Cotes method has a surprising guarantee, which is that it will be exact when $f$ is a polynomial of degree $n-1$ or less. This is because the polynomial approximation of $f$ is just the original function $f$, i.e. $p_{n-1}(f; x_1, \dots, x_n; x) = f(x)$, so the $\approx$ becomes $=$ in \eqref{NewtonCotesApprox}. The name for this property is that the Newton--Cotes method with $n$ points has \emph{degree of exactness} $n-1$, and the natural next question is, can we achieve a greater degree of exactness than $n-1$ with just $n$ points?
 
-We cannot, at least, not by letting $\{x_1, \dots, x_n\}$ be an arbitrary choice. If we consider the form of the approximation
+We cannot achieve this. Specifically, we cannot do so by letting $\{x_1, \dots, x_n\}$ be an arbitrary choice. If we consider the form of the approximation
 \begin{equation} \label{QuadratureGenForm}
 	\int_a^b f(x) w(x) \dd x \approx \sum_{i=1}^n w_i f(x_i) \,,
 \end{equation}
@@ -204,7 +204,7 @@ Divide $f$ by $\omega_n$, so
 \end{equation}
 where the quotient $q$ and the remainder $r$ are polynomials of order $\le n-1$, so
 \[ \int_a^b f(x) w(x) \dd x = \int_a^b q(x) \omega_n(x) w(x) \dd x + \int_a^b r(x) w(x) \dd x \,. \]
-The first integral is zero by \eqref{NodePolynomialOrthogonal}, % so we just need to show
+The first integral on the right-hand side is zero by \eqref{NodePolynomialOrthogonal}, % so we just need to show
 % \[ \int_a^b f(x) w(x) \dd x = \int_a^b r(x) w(x) \dd x = \sum_{i=1}^n w_i f(x_i) \,. \]
 and since $r$ is of order $\le n-1$, we know its $n$-point Newton--Cotes approximation is exact, i.e.
 \[ \int_a^b r(x) w(x) \dd x = \sum_{i=1}^n w_i r(x_i) \,, \]
@@ -567,9 +567,9 @@ Determining $C$ can be laboriously done by hand, or it can be the result of a ro
 
 \subsubsection{Markov chain Monte Carlo}
 
-The most general, and most complicated, form of sampling is \emph{Markov chain Monte Carlo (MCMC)}. While the algorithms listed above sample exactly from the desired target distribution $f_X$, MCMC samples will only be approximately from this distribution. Furthermore, the samples produced will not be independent and will not identically distributed.
+The most general, and most complicated, form of sampling is \emph{Markov chain Monte Carlo (MCMC)}. While the algorithms listed above sample exactly from the desired target distribution $f_X$, MCMC samples will only be approximately from this distribution. Furthermore, the samples produced will not be independent and will not be identically distributed.
 
-The main idea is to construct a Markov chain, $\{ X_n \}_{n\in\NZ}$, which has a stationary distribution is equal to the target distribution $f_X$, then the LLN and the CLT both apply to the sequence $\frac1j\sum_{i=0}^j g(X_j)$. We will skip the Markov chain details as they are not relevant to this thesis, cf. \cite{meyn2012markov}, or for a general treatment on MCMC see any detailed textbook on Monte Carlo such as \cite{asmussen2007stochastic,glasserman2003monte,kroese2013handbook}.
+The main idea is to construct a Markov chain, $\{ X_n \}_{n\in\NZ}$, which has a stationary distribution which is equal to the target distribution $f_X$, then the LLN and the CLT both apply to the sequence $\frac1j\sum_{i=0}^j g(X_j)$. We will skip the Markov chain details as they are not relevant to this thesis, cf. \cite{meyn2012markov}, or for a general treatment on MCMC see any detailed textbook on Monte Carlo such as \cite{asmussen2007stochastic,glasserman2003monte,kroese2013handbook}.
 
 The crucial step is to provide a \emph{transition kernel} $q(x \hookrightarrow y)$, which for every fixed $x$ in the support of $f_X$ is a pdf in $y$, i.e.\ $q(x \hookrightarrow \argdot) \ge 0$, and $\int_{\RL} q(x \hookrightarrow y) \dd y = 1$. Also, we need to be able to simulate from $q(x \hookrightarrow \argdot)$. If this is satisfied, then sampling becomes a sequence of \emph{Metropolis--Hasting} steps:
 
@@ -632,7 +632,7 @@ If the problem is to estimate $\ell = \Prob(X > \gamma)$ for a large $\gamma$, t
 \begin{equation} \label{def-exp-tilting}
 f_Y(x) = \frac{\e^{\theta x}}{\Exp[\e^{\theta X}]} f_X(x)
 \end{equation}
-where $\theta$ is a positive constant (it can be negative if we wish to induce more small samples). The optimal choice of $\theta$ can be calculated, and it is the value which satisfies $\Prob(Y > \gamma) = \frac12$.
+where $\theta$ is a positive constant (it can be negative if we wish to induce more small samples). The optimal choice of $\theta$ can be calculated, and it is the value which satisfies $\Exp[Y] = \gamma$.
 
 Exponential tilting (with a positive $\theta$) is only applicable when the original distribution $f_X$ has a well-defined moment generating function (otherwise $\Exp[\e^{\theta X}] = \infty$). A similar technique which can be employed (if $X$ is a positive random variable) in this scenario is \emph{hazard rate twisting},
 \[ f_Y(x) = (1-\theta) f_X(x) \e^{\theta \Lambda_X(x)} \]
@@ -714,7 +714,7 @@ These allow us to compare two competing methods on their theoretical properties.
 
 \subsection{Dependence and copulas}
 
-A theme of modern probability research, and of this thesis, is to relax the independence assumptions which constrict older models. \emph{Copulas} allow us to analyse just the dependence structure of a random vector, without considerations of the marginal distributions. A copula is a joint cdf for a random vector of $\UnifDist(0,1)$ random variables. \emph{Sklar's theorem} which is show below (adapted from \cite{nelsen2006introduction}) is the foundational result which shows the generality of copulas.
+A theme of modern probability research, and of this thesis, is to relax the independence assumptions which constrict older models. \emph{Copulas} allow us to analyse just the dependence structure of a random vector, without considerations of the marginal distributions. A copula is a joint cdf for a random vector of $\UnifDist(0,1)$ random variables. \emph{Sklar's theorem} which is shown below (adapted from \cite{nelsen2006introduction}) is the foundational result which shows the generality of copulas.
 
 \begin{theorem}[Sklar's theorem]
 
@@ -765,7 +765,7 @@ For Archimedean copulas, there is an alternative approach which uses the \emph{M
 \]
 This form is utilised in Asmussen \cite{asmussen2017conditional}, \cite{Pushout}, and in Chapter~\ref{chp:angular} below.
 
-Nelson \cite{nelsen2006introduction} and Joe \cite{joe1997multivariate} are the common references on copulas, though I would recommend McNeil et al.\ \cite{mcneil2015quantitative} especially for the application of copulas to financial modelling. Also, see Mikosch \cite{mikosch2006Copula} and the many responses for a lively debate around the limitations of copula analysis.
+Nelsen \cite{nelsen2006introduction} and Joe \cite{joe1997multivariate} are the common references on copulas, though I would recommend McNeil et al.\ \cite{mcneil2015quantitative} especially for the application of copulas to financial modelling. Also, see Mikosch \cite{mikosch2006Copula} and the many responses for a lively debate around the limitations of copula analysis.
 
 % \begin{equation} \label{GenCondMC}
 % f_{X_i | \bfX_{-i}}(x_i | \bfx_{-i}) = f_{X_i}(x_i) \psi^{(1)}( F_{X_i}(x_i)) \frac{\phi^{(n)}( \sum_{j=1}^n \psi(F_{X_j}(x_j)) ) }{\phi^{(n-1)}( \sum_{j\not=i} \psi(F_{X_j}(x_j)))} \,.
@@ -817,7 +817,7 @@ Since each chapter covers different problems, a specialised literature review is
 
 \subsection{The normal approximation}
 
-I will begin this overview of the various methods for approximating sums of random variables with the simplest approximation suggested by the \emph{central limit theorem}. The standard CLT suggests that we the pdf $f$ of a sum $S = X_1 + \dots + X_d$ by
+I will begin this overview of the various methods for approximating sums of random variables with the simplest approximation suggested by the \emph{central limit theorem}. The standard CLT suggests that we approximate the pdf $f$ of a sum $S = X_1 + \dots + X_d$ by
 \[ \hat{f}_{\mathrm{CLT}}(x) = \phi_{\mu,\sigma^2}(x) \]
 where $\mu=\Exp[S]$, $\sigma^2=\Var[X]$, and $\phi_{\mu,\sigma^2}$ is the pdf of $\NormDist(\mu,\sigma^2)$.
 This approximation has many excellent qualities: the approximation matches $S$'s first two moments, the approximation will improve if $d \to \infty$ (specifically, we have uniform convergence of the cdfs), the CLT is a famous and simple theorem, the approximating distribution (the normal distribution) is known explicitly and it is analytically tractable, and the approximation only requires us to find the mean (as easy as $\mu = \sum_{i=1}^n \Exp[X_i]$) and variance of~$S$.
@@ -859,7 +859,7 @@ Parametric approximations assume that the sum distribution belongs to a specific
 
 The accuracy of the parametric approximations are limited by the number of parameters which specify the approximating family. Thus, the families of distributions which allow an arbitrary number of parameters are common; for example, we can fit an approximation using a mixture distribution with $n$ components, check if the resulting accuracy is sufficient, and if not repeat with a larger $n$. Mixtures of exponential or Erlang distributions are common for positive random variables \cite{WiWo07,LeLi10,WiLi11}, though these are a special case of \emph{phase-type distributions} which are also prevalent approximations in the literature \cite{bladt2005review,hassan2009actuarial,hassan2014use,APQ,asmussen2010ruin}. Phase-type approximations are sometimes avoided as they cannot produce heavy-tailed approximations \cite{embrechts2009panjer} but one can take the more general class of infinite-mixtures of phase-type distributions to create both heavy and light tailed approximations \cite{rojas2017asymptotic,yao2016estimating}.
 
-All parametric approximations can be criticised for the arbitrariness of enforcing one particular family of distributions on the data, but the phase-type approximation can be somewhat justified by the fact that these distributions are dense in the class of all continuous distributions on $\RL_+$. However, from my contribution to \cite{asmussen2018phase}, I have found that fitting phase-type distributions using the standard expectation--maximisation algorithm \cite{asmussen1996fitting,olsson1996estimation}) can be a non-trivial numerical challenge which is remarkably slow if the number of phases is moderately high.
+All parametric approximations can be criticised for the arbitrariness of enforcing one particular family of distributions on the data, but the phase-type approximation can be somewhat justified by the fact that these distributions are dense in the class of all continuous distributions on $\RL_+$. However, from my contribution to \cite{asmussen2018phase}, I have found that fitting phase-type distributions using the standard expectation--maximisation algorithm \cite{asmussen1996fitting,olsson1996estimation} can be a non-trivial numerical challenge which is remarkably slow if the number of phases is moderately high.
 
 The \emph{kernel density estimator (KDE)} \cite{wand1994kernel} takes the samples $S^{[1]}, \dots, S^{[R]}$ (e.g.\ sampled using CMC) and gives the approximation
 \[ \hat{f}_{\mathrm{KDE}}(s) = \frac{1}{R} \sum_{r=1}^{R} \frac{1}{h} K\bigl(\frac{S^{[r]} - x}{h}\bigr) \,, \]
@@ -979,6 +979,6 @@ Chapter~\ref{chp:slp_ortho} also focuses on orthogonal expansions to approach pd
 
 % In the process of constructing a new estimator for the survival function of a sum of random variables, given in Chapter~\ref{chp:angular}, we found we needed to describe the asymptotics for the sum of light-tailed Weibull random variables. This result of this Weibull investigation is given in Chapter~\ref{chp:weibull}. In it, we consider sums of $n$ iid random variables with tails close to $\e^{{-}x^\beta}$ for some $\beta>1$. The asymptotics  developed by Rootz\'en (1987) and Balkema, Kl\"uppelberg \& Resnick (1993) are discussed from the point of view of tails rather of densities, using a somewhat different angle, and supplemented with bounds, results on a random number $N$ of terms, and simulation algorithms.
 
-Orthogonal expansions aim to give pdf approximations which are accurate across the whole support of the random variable. Instead, it is sometimes more valuable to have the pdf or the cdf at a single point be approximated with high accuracy. I have included some work-in-progress in Chapter~\ref{chp:angular} for accurate approximation of the survival function of a sum of random variables. Here, the proposed estimator is based on an importance sampling scheme which incorporates our knowledge of the asymptotic form for the sum distribution. We compare this IS estimator against the Asmussen--Kroese estimator, exponential tilting, hazard-rate twisting, the cross-entropy method, and MCMC methods. It considers sums of independent variables, but in future work we expect to be able to incorporate copulas which are asymptotically independent. We designed it as a rare-event estimator but with a focus on intermediate level of rareness.
+Orthogonal expansions aim to give pdf approximations which are accurate across the whole support of the random variable. Instead, it is sometimes more valuable to have the pdf or the cdf at a single point be approximated with high accuracy. I have included some work-in-progress in Chapter~\ref{chp:angular} for accurate approximation of the survival function of a sum of random variables. Here, the proposed estimator is based on an importance sampling scheme which incorporates our knowledge of the asymptotic form for the sum distribution. We compare this IS estimator against the Asmussen--Kroese estimator, exponential tilting, hazard-rate twisting, the cross-entropy method, and MCMC methods. It considers sums of independent variables, but in future work we expect to be able to incorporate copulas which are asymptotically independent. We designed it as a rare-event estimator but with a focus on intermediate levels of rareness.
 
 Lastly, Chapter~\ref{chp:maxima} constructs a rare-event estimator for the probability of a union of dependent events. The central example given is calculating the probability that the maximum of a random vector exceeds a large threshold. We propose a flexible series of estimators for such probabilities, and describe variance reduction schemes applied to the proposed estimators. We derive efficiency results of the estimators in rare-event settings, in particular those associated with extremes. Finally, we examine the performance of our estimators in a numerical example.

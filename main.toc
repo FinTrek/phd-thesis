@@ -33,20 +33,20 @@
 \contentsline {section}{\numberline {2.5}Estimators of $\mathscr {L}(\theta )$ and $I(\theta )$}{55}
 \contentsline {section}{\numberline {2.6}Numerical Results}{57}
 \contentsline {section}{\numberline {2.7}Closing Remarks}{58}
-\contentsline {section}{\numberline {2.A}Remaining steps in the proof of Theorem\nobreakspace {}2.7\hbox {}}{59}
-\contentsline {chapter}{\numberline {3}Orthonormal polynomial expansions and densities of sums of lognormals}{62}
-\contentsline {section}{\numberline {3.1}Introduction}{62}
-\contentsline {section}{\numberline {3.2}Orthogonal polynomial representation of probability density functions}{64}
-\contentsline {subsection}{\numberline {3.2.1}Normal reference distribution}{66}
-\contentsline {subsection}{\numberline {3.2.2}Gamma reference distribution}{67}
-\contentsline {subsection}{\numberline {3.2.3}Lognormal reference distribution}{67}
-\contentsline {subsection}{\numberline {3.2.4}Convergence of the estimators w.r.t.\ $K$ }{69}
-\contentsline {section}{\numberline {3.3}Application to sums of lognormals}{70}
-\contentsline {subsection}{\numberline {3.3.1}Tail asymptotics of sums of lognormals}{71}
-\contentsline {subsection}{\numberline {3.3.2}Sums of lognormals with a normal reference distribution}{71}
-\contentsline {subsection}{\numberline {3.3.3}Sums of lognormals with a gamma reference distribution}{72}
-\contentsline {section}{\numberline {3.4}Numerical illustrations}{74}
-\contentsline {subsection}{\numberline {3.4.1}The estimators}{74}
+\contentsline {section}{\numberline {2.A}Remaining steps in the proof of Theorem\nobreakspace {}2.7\hbox {}}{58}
+\contentsline {chapter}{\numberline {3}Orthonormal polynomial expansions and densities of sums of lognormals}{61}
+\contentsline {section}{\numberline {3.1}Introduction}{61}
+\contentsline {section}{\numberline {3.2}Orthogonal polynomial representation of probability density functions}{63}
+\contentsline {subsection}{\numberline {3.2.1}Normal reference distribution}{65}
+\contentsline {subsection}{\numberline {3.2.2}Gamma reference distribution}{66}
+\contentsline {subsection}{\numberline {3.2.3}Lognormal reference distribution}{66}
+\contentsline {subsection}{\numberline {3.2.4}Convergence of the estimators w.r.t.\ $K$ }{68}
+\contentsline {section}{\numberline {3.3}Application to sums of lognormals}{69}
+\contentsline {subsection}{\numberline {3.3.1}Tail asymptotics of sums of lognormals}{70}
+\contentsline {subsection}{\numberline {3.3.2}Sums of lognormals with a normal reference distribution}{70}
+\contentsline {subsection}{\numberline {3.3.3}Sums of lognormals with a gamma reference distribution}{71}
+\contentsline {section}{\numberline {3.4}Numerical illustrations}{73}
+\contentsline {subsection}{\numberline {3.4.1}The estimators}{73}
 \contentsline {subsection}{\numberline {3.4.2}Results}{75}
 \contentsline {section}{\numberline {3.A}Proof of Proposition\nobreakspace {}3.3\hbox {}}{79}
 \contentsline {section}{\numberline {3.B}Computing the coefficients of the expansion $\{a_{k}\}_{k\in \mathbb {N}_0}$ in the gamma case}{81}
@@ -56,14 +56,13 @@
 \contentsline {subsection}{\numberline {4.2.1}Compound distributions}{88}
 \contentsline {subsection}{\numberline {4.2.2}Risk theory}{90}
 \contentsline {section}{\numberline {4.3}Orthogonal polynomial approximations}{92}
-\contentsline {subsubsection}{Approximating general density functions}{92}
-\contentsline {subsubsection}{Approximating densities of positive random variables}{93}
-\contentsline {subsection}{\numberline {4.3.1}Approximating densities of positive compound distributions}{99}
+\contentsline {subsection}{\numberline {4.3.1}Approximating general density functions}{92}
+\contentsline {subsection}{\numberline {4.3.2}Approximating densities of positive random variables}{93}
+\contentsline {subsection}{\numberline {4.3.3}Approximating densities of positive compound distributions}{98}
 \contentsline {subsubsection}{Choice of $r$ and $m$}{99}
 \contentsline {subsubsection}{Computation of the $a_k$}{101}
-\contentsline {section}{\numberline {4.4}Laplace transform inversion approximations}{102}
-\contentsline {subsection}{\numberline {4.4.1}Estimators of survival function and stop-loss premium for compound distributions}{103}
-\contentsline {section}{\numberline {4.5}Numerical illustrations}{103}
+\contentsline {section}{\numberline {4.4}Laplace transform inversion approximations}{103}
+\contentsline {section}{\numberline {4.5}Numerical illustrations}{104}
 \contentsline {subsection}{\numberline {4.5.1}Survival function and stop-loss premium computations}{105}
 \contentsline {subsection}{\numberline {4.5.2}Finite-time ruin probability with no initial reserve}{109}
 \contentsline {subsection}{\numberline {4.5.3}Concluding remarks}{110}

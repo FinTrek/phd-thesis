@@ -30,13 +30,13 @@ In addition to this, I completed the majority of the computational work and of t
 
 The distribution of the sum of random variables is, in some ways, similar to the maximum of those random variables, and many of the techniques used to analyse the former can be applied to the latter. For example, one well-known result connecting $S = \sum_{i=1} X_i$ to $M = \max_i X_i$ when the $X_i$ are subexponentially distributed is
 \[ \Prob(S > \gamma) \sim \Prob(M > \gamma) \qquad \text{as } \gamma \to \infty\,. \]
-Another connection is that the distribution of $M$ is rarely known in a closed form, except when the $X_i$ are independent hence we ignore this simple case. In this chapter, I will give the results we achieved in approximating interesting quantities relating to this new distribution.
+Another connection is that the distribution of $M$ is rarely known in a closed form, except when the $X_i$ are independent hence we ignore this simple case. In this chapter, I will give the results we achieved in approximating interesting quantities relating to these maxima distributions.
 
 The estimators in this chapter apply to quite general problems, not just to maxima variables. We will first introduce them as relating to rare maxima of dependent random vectors, and then generalise.
 For a random vector $\bfX = (X_1, \dots, X_d)$, the first problem we consider is estimating
 \[ \alpha(\gamma) = \Prob(M > \gamma) \,. \]
 %for large $\gamma$.
-This problem has many applications in many areas, for example in actuarial science (e.g.\ default probabilities \cite{asmussen2010ruin}), finance (e.g.\ probability of `knock-out' in a barrier option \cite{cont2010encyclopedia}), survival analysis, reliability \cite{rausand2004system} and engineering (e.g.\ failure probability of a series circuit).
+This problem has applications in many areas, for example in actuarial science (e.g.\ default probabilities \cite{asmussen2010ruin}), finance (e.g.\ probability of `knock-out' in a barrier option \cite{cont2010encyclopedia}), survival analysis, reliability \cite{rausand2004system} and engineering (e.g.\ failure probability of a series circuit).
 
 We construct estimators for this probability, which are in terms of
 \[ E(\gamma) = \sum_{i=1}^d \ind{X_i > \gamma} \,,\]
@@ -46,12 +46,11 @@ the random variable which counts the number of $X_i$ which exceed $\gamma$.\foot
   \hat{\alpha}_1 \label{alpha_1}
   &= \sum_{i=1}^d \Prob(X_i > \gamma) + \frac1R \sum_{r=1}^R (1 - E_r(\gamma)) \ind{E_r(\gamma) \ge 2 } \,, \text{ and} \\
   \hat{\alpha}_2  \label{alpha_2}
-  &= \sum_{i=1}^d \Prob(X_i > \gamma) - \sum_{i=1}^{d-1} \sum_{j=i+1}^d \Prob(X_i > \gamma, X_j > \gamma) \\
-  &\quad + \frac1R \sum_{r=1}^R \Bigl[1 - E_r(\gamma) + \frac{E_r(\gamma) (E_r(\gamma) -1)}{2} \Bigr] \ind{E_r(\gamma) \ge 3} \,. \notag
+  &= \sum_{i=1}^d \Prob(X_i > \gamma) - \sum_{i=1}^{d-1} \sum_{j=i+1}^d \Prob(X_i > \gamma, X_j > \gamma) \notag \\
+  &\quad + \frac1R \sum_{r=1}^R \Bigl[1 - E_r(\gamma) + \frac{E_r(\gamma) (E_r(\gamma) -1)}{2} \Bigr] \ind{E_r(\gamma) \ge 3} \,.
 \end{align}
 where $R \in \NL$ and the $E_r(\gamma)$ are derived from iid samples of $\bfX$.
-The fact that these are unbiased estimators of $\alpha(\gamma)$ follows from
-\prop{prop:means_of_binomial} below. Estimation of
+The fact that these are unbiased estimators of $\alpha(\gamma)$ follows from their construction --- see equations \eqref{estimator_incl_excl} to \eqref{eq:alpha_2_hat} and the surrounding discussion below. Estimation of
 $\Prob(M > \gamma)$ is a difficult problem and treatments in the literature make distributional assumptions on $\bfX$.
  One such example is Adler et al.\ \cite{adler2012efficient} where $\bfX$ is assumed to be multivariate normal. In this case, our estimator $\hat{\alpha}_1$, with appropriate importance sampling, is the same as one of the estimators from \cite{adler2012efficient}.
 
@@ -67,7 +66,7 @@ where $X_{(1)} \ge X_{(2)} \ge \dots \ge X_{(d)}$ are the order statistics of $\
 
 Our main $\beta_1$ estimator uses the fact that
 \begin{align} \label{extreme-first-partition}
-\{M > \gamma\}  \defeq \bigcup_{i=1}^d \{X_i > \gamma\} = \bigcup_{i=1}^d \{X_1 \le \gamma, \dots, X_{i-1} \le \gamma, X_i > \gamma\}
+\{M > \gamma\}  \defeq \bigcup_{i=1}^d \{X_i > \gamma\} = \{X_1 > \gamma\} \cup \left( \bigcup_{i=2}^d \{X_1 \le \gamma, \dots, X_{i-1} \le \gamma, X_i > \gamma\} \right)
 \end{align}
 where the events in the union on the right are disjoint.
 This supplies a form of $\beta_1$ which is amenable to efficient Monte Carlo estimation:
@@ -102,7 +101,9 @@ estimators in Section~\ref{scn:numerical_results}.
 
 \section{Estimators of $\alpha$} \label{scn:alpha_ests}
 
-In the following, we first explain the construction of our estimators of $\alpha$, then discuss possible variance reduction schemes. As the $\gamma$ notation can be cumbersome, we simply write $A=A(\gamma)$, $A_i = A_i(\gamma)$, $E = E(\gamma)$, $\alpha = \alpha(\gamma)$ and $\beta_n = \beta_n(\gamma)$. Similarly, we often write $\sum_i$, $\sum_{i<j}$, $\cup_i$, $\cap_i$ for $\sum_{i=1}^d$,$\sum_{1=i<j}^d$, $\cup_{i=1}^d$ and $\cap_{i=1}^d$.
+In the following, we first explain the construction of our estimators of $\alpha$, then discuss possible variance reduction schemes. As the $\gamma$ notation can be cumbersome, we simply write $A=A(\gamma)$, $A_i = A_i(\gamma)$, $E = E(\gamma)$, $\alpha = \alpha(\gamma)$ and $\beta_n = \beta_n(\gamma)$. Also, we often write $\sum_i$, $\sum_{i<j}$, $\cup_i$, $\cap_i$ for $\sum_{i=1}^d$,$\sum_{1=i<j}^d$, $\cup_{i=1}^d$ and $\cap_{i=1}^d$.
+The $\cap$ notation is often dropped. We write $\Prob(A_i, A_j)$ instead of $\Prob(A_i \cap A_j)$, which is similar to the standard notation of $\Prob(X_i > \gamma, X_j > \gamma)$ to refer to $\Prob(\{X_i > \gamma\} \cap \{X_j > \gamma\})$. We also write $\ind{ A_1 \dots A_j}$ instead of $\ind{ A_1 \cap \dots \cap A_j}$.
+Lastly, we use the notation $\sum_{\card{I} = i}$ to refer to the summation over all subsets of indices $I \subset \{1, \dots, d\}$ such that $I$ contains $i$ indices ($\card{I} = i$).
 
 \subsection{Proposed estimators of $\alpha$}
 
@@ -157,19 +158,19 @@ So the following has mean $\alpha$, and forms the nucleus of our $\hat{\alpha}_i
 We present estimators which deterministically \emph{calculate} the first larger terms of the IEF \eqref{incl_excl} and Monte Carlo (MC) \emph{estimate} the remaining smaller terms using sample means of \eqref{summands}.
 We begin by constructing the single-replicate estimator $\hat{\alpha}_1$
 where the first summand is calculated and the remaining terms are estimated:
-\begin{align*}
-	\hat{\alpha}_1 \defeq& \sum_i \Prob(A_i)  + \sum_{i=2}^d \Bigl[ (-1)^{i-1} \BigBinom{E}{i} \ind{E \ge i} \Bigr] \\
+\begin{align} \label{eq:alpha_1_hat}
+	\hat{\alpha}_1 \defeq& \sum_i \Prob(A_i)  + \sum_{i=2}^d \Bigl[ (-1)^{i-1} \BigBinom{E}{i} \ind{E \ge i} \Bigr] \notag \\
 	  % &= \sum_i \Prob(A_i)  +  \sum_{i=2}^{E} \Bigl[ (-1)^{i-1} \BigBinom{E}{i} \Bigr]
 	   % \ind{E \ge 2} \\
 	=& \sum_i \Prob(A_i)
 + (1 - E) \ind{E \ge 2 } \,, \quad \text{using} \quad \sum_{k=0}^n (-1)^{k-1} \BigBinom{n}{k} = 0 \,.
-\end{align*}
+\end{align}
 In identical fashion, the single-replicate estimator calculating the first two terms from the IEF is
-\begin{align*}
+\begin{align} \label{eq:alpha_2_hat}
 	\hat{\alpha}_2
-	\defeq& \sum_i \Prob(A_i) - \sum_{i<j}\Prob(A_i, A_j) + \sum_{i=3}^d \Bigl[ (-1)^{i-1} \BigBinom{E}{i} \ind{E \ge i} \Bigr] \\
+	\defeq& \sum_i \Prob(A_i) - \sum_{i<j}\Prob(A_i, A_j) + \sum_{i=3}^d \Bigl[ (-1)^{i-1} \BigBinom{E}{i} \ind{E \ge i} \Bigr] \notag \\
 	=& \sum_i \Prob(A_i) - \sum_{i<j}\Prob(A_i, A_j) + \Bigl[1 - E + \frac{E (E-1)}{2} \Bigr] \ind{E \ge 3} \,.
-\end{align*}
+\end{align}
 Thus, for $n \in \{1,\dots,d-1\}$,\footnote{Note that by the IEF, we have
 $\hat{\alpha}_d\defeq\alpha$, so this possibility is ignored.}
 %This definition ignores the uninteresting cases of $n=0$ (the crude MC estimator %$\hat{\alpha}_0\defeq\ind{E \ge 1}$) and $n=d$ (the trivial estimator } we have
@@ -775,7 +776,7 @@ which we denote $\EllDist(\bfmu, \bfSigma, F)$, where $F$ is the cdf of a positi
 	\bfX \eqdistr \bfmu + R \, \bfC \, U
 \end{equation}
 where $R \sim F$ is called the \emph{radial component}, $U$ is (independent of $R$ and) distributed uniformly on the $d$-dimensional unit hypersphere, and $\bfC \in \RL^{d \times d}$ satisfies $\bfC \bfC^\top = \bfSigma$.
-For background on elliptical distributions, see \cite{MR1990662}.
+For background on elliptical distributions, see \cite{anderson2003introduction}.
 The efficiency of $\hat{\alpha}_1$ turns out to be related with
 max-domain of attraction (MDA) of the radial
 component. The MDA is known from standard extreme value theory, see \cite{de2007extreme}.
@@ -890,7 +891,7 @@ The \textsc{Matlab} and \textsc{Mathematica} code used to generate them are avai
 
 \subsection*{Case 1: Multivariate Normal distributions}
 
-Let $\bfX \sim \NormDist_d(\bfzero, \bfSigma)$ where $\bfSigma = (1-\rho) \bfeye + \rho$; that is, each $X_i \sim \NormDist_1(0,1)$ and $\Corr(X_i,X_j)=\rho$. We implement the first- and second-order IS regimes. The necessary conditional distributions are well-known and simple; both $\bfX_{-i} \mid X_i$ and $\bfX_{-i,-j} \mid (X_i, X_j)$ are normally distributed \cite{anderson1962introduction}.
+Let $\bfX \sim \NormDist_d(\bfzero, \bfSigma)$ where $\bfSigma = (1-\rho) \bfeye + \rho$; that is, each $X_i \sim \NormDist_1(0,1)$ and $\Corr(X_i,X_j)=\rho$. We implement the first- and second-order IS regimes. The necessary conditional distributions are well-known and simple; both $\bfX_{-i} \mid X_i$ and $\bfX_{-i,-j} \mid (X_i, X_j)$ are normally distributed \cite{anderson2003introduction}.
 Sampling from $X_i \mid X_i > \gamma$ can be easily done by acceptance--rejection with shifted exponential proposals \cite{robert1995simulation} (or by inverse transform sampling \cite[Remark 2.4]{asmussen2007stochastic}, though this can be problematic using only double precision arithmetic). To simulate $(X_i,X_j) \mid \min(X_i, X_j)>\gamma$ we use Botev's \textsc{Matlab} library \cite{botev2017normal}, but also remark that a Gibb's sampler is a commonly used alternative \cite{breslaw1994random,robert1995simulation}.
 
 

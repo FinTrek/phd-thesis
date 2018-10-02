@@ -662,20 +662,7 @@ explained. \remQED
 
 For applications we will need to find $\bfx^*$ for a large number of $\theta$
 numerically. The results above give a sensible starting point for an iterative
-solver, such as Newton--Raphson. Another option is based on the following
-formulation. Let $\bfA \defeq \bfD - \diag(\bfD)$ and write the defining
-equation as
-%
-\[ \theta \ve^{\bfmu + \bfx^*} + \diag(\bfD)  \bfx^* = - \bfA \bfx^* . \]
-%
-For each row $i$, all $x_i^*$ are now on the left-hand side. Using properties
-of the Lambert W function we see that
-%
-\[ x_i^* = -\LambertW \Bigl[ \frac{\theta \e^{\mu_i}}{D_{i,i}}
- \exp\Bigl( - \frac{\bfA_{i,\sbullet} \bfx^*}{D_{i,i}} \Bigr) \Bigr] -
- \frac{\bfA_{i,\sbullet} \bfx^*}{D_{i,i}} . \] One can use this to perform a
- component-wise fixed-point iteration as an alternative to the Newton--Raphson
- scheme.
+solver, such as Newton--Raphson.
 
 \section{Asymptotic behaviour of $I(\theta)$}\label{S:Asympt}
 

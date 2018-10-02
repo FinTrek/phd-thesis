@@ -94,7 +94,7 @@ We introduce compound distributions along with a brief account of their importan
 
 \subsection{Compound distributions}
 
-Let $S_N=\sum_{k=1}^{N}U_k$ be the aggregated claim amounts associated with a non-life insurance portfolio over a fixed time period. The number of claims, also called the claim frequency, is modeled by a counting random variable $N$ having a probability mass function $f_N$. The claim sizes form a sequence $\{U_k\}_{k\in \NZ}$ of iid non-negative random variables with common pdf $f_{U}$. We further assume that the claim sizes are independent from the claim frequency, so the random variable $S_N$ follows the compound distribution $(f_N,f_U)$.
+Let $S_N=\sum_{k=1}^{N}U_k$ be the aggregated claim amounts associated with a non-life insurance portfolio over a fixed time period. The number of claims, also called the claim frequency, is modeled by a counting random variable $N$ having a probability mass function $f_N$. The claim sizes form a sequence $\{U_k\}_{k\in \NZ}$ of iid non-negative random variables with common pdf $f_{U}$. We further assume that the claim sizes are independent from the claim frequency.
 
 As $S_N=0$ whenever $N=0$ (assuming this occurs with positive probability), the distribution of $S_N$ is the sum of a singular part (the probability mass $\Prob(S_N=0)=f_N(0)>0$) and a continuous part (describing $S_N$ where $N>0$) with a defective pdf $f_{S_N}^+$ and cdf $F_{S_N}^+$. From the law of total probability, we have
 \begin{equation}\label{eq:DefectivePDFCompoundDistribution}
@@ -105,7 +105,7 @@ This density is intractable because of the infinite series. Furthermore, the sum
 \begin{equation*}\label{eq:TransformsForCompoundDistribution}
 \LTsub{S_N}(t) = \PGF_N[ \LTsub{U}(t) ] \,,
 \end{equation*}
-where $\PGF_N(t) \defeq \Exp[t^N]$ is the \emph{probability generating function} of $N$. The simple expression of the Laplace transform has made possible the use of numerical methods involving the moments or transform inversion to recover the distribution of $S_N$. The distribution is typically recovered using Panjer's algorithm or a Fast Fourier Transform algorithm based on the inversion of the discrete Fourier transform; these two methods are compared in the work of Embrechts and Frei \cite{EmFr09}. Our orthogonal polynomial method involves the standard integer moment sequence for $S_N$, in contrast to more exotic types of moments used by some recent methods. Gzyl and Tagliani \cite{GzTa12} uses the fractional moments within a max-entropic based method, while Mnatsakanov and Sarkisian \cite{Mnatsakanov2013} performs an inversion of the scaled Laplace transform via the exponential moments. In addition to proposing an approximation for the survival function of $S_N$, we provide an efficient way to compute the usual stop-loss premium \eqref{eq:DefUsualStopLossPremium} for reinsurance applications.
+where $\PGF_N(t) \defeq \Exp[t^N]$ is the \emph{probability generating function} of $N$. The simple expression of the Laplace transform has made possible the use of numerical methods involving the moments or transform inversion to recover the distribution of $S_N$. The distribution is typically recovered using Panjer's algorithm or a Fast Fourier Transform algorithm based on the inversion of the discrete Fourier transform; these two methods are compared in the work of Embrechts and Frei \cite{embrechts2009panjer}. Our orthogonal polynomial method involves the standard integer moment sequence for $S_N$, in contrast to more exotic types of moments used by some recent methods. Gzyl and Tagliani \cite{GzTa12} uses the fractional moments within a max-entropic based method, while Mnatsakanov and Sarkisian \cite{Mnatsakanov2013} performs an inversion of the scaled Laplace transform via the exponential moments. In addition to proposing an approximation for the survival function of $S_N$, we provide an efficient way to compute the usual stop-loss premium \eqref{eq:DefUsualStopLossPremium} for reinsurance applications.
 
 \subsection{Risk theory}
 
@@ -170,7 +170,7 @@ Lef\`evre and Picard \cite[Corollary~4.3]{LePi11} show that equations \eqref{Cra
 \section{Orthogonal polynomial approximations}\label{sec:PolynomialApproximation}
 
 
-\subsubsection{Approximating general density functions} \label{ssec:PolynomialApproxIntro}
+\subsection{Approximating general density functions} \label{ssec:PolynomialApproxIntro}
 
 Let $X$ be an arbitrary random variable with pdf $f_X$.\footnote{This section is written from the perspective of approximating a pdf, however the main results also hold if applied to a defective density.} We assume that the density is unknown and we propose an approximation of the form
 \begin{equation}\label{eq:PolynomialApproximation}
@@ -178,7 +178,7 @@ Let $X$ be an arbitrary random variable with pdf $f_X$.\footnote{This section is
 \end{equation}
 where $w$ is the \emph{reference density}. The $\{p_{k}\}_{k\in\NZ}$ are the polynomials which are orthonormal with respect to $w$, just as in Chapters~\ref{chp:intro} and \ref{chp:sln_orth_pdf}.
 
-Just as earlier, we can generating the polynomials by the Gram--Schmidt procedure if $w$ admits moments of all orders (i.e.\ $\forall n \in \NZ :$ $\Exp[X^n] < \infty$ where $X \sim w$), and the resulting polynomials are complete in $\Lp^2(\RL, w(x) \dd x)$ if $\int_{\RL} \e^{sx} w(x) \dd x < \infty$ for some $s>0$.
+Just as earlier, we can generate the polynomials by the Gram--Schmidt procedure if $w$ admits moments of all orders (i.e.\ $\forall n \in \NZ :$ $\Exp[X^n] < \infty$ where $X \sim w$), and the resulting polynomials are complete in $\Lp^2(\RL, w(x) \dd x)$ if $\int_{\RL} \e^{s\abs{x}} w(x) \dd x < \infty$ for some $s>0$.
 
 Therefore, if $f_{X}/w\in \Lp^2(\RL, w(x) \dd x)$ we have
 \begin{equation}\label{eq:PolynomialRepresentationTheory}
@@ -194,9 +194,9 @@ The approximation \eqref{eq:PolynomialApproximation} follows by simply truncatin
 Typical choices of reference distributions are ones that belong to a Natural Exponential Family with Quadratic Variance Function (NEF-QVF) which includes the normal, gamma, hyperbolic, Poisson, binomial, and Pascal distributions.
 This family of distributions is convenient as the associated orthogonal polynomials are classical, see the characterisation by Morris \cite{Mo82}. The polynomials are known explicitly, so the time-consuming Gram--Schmidt orthogonalisation procedure is unneccessary. Furthermore, it has been shown in a paper by Provost \cite{Pr05} that the recovery of unknown densities from the knowledge of the moments of the distribution naturally leads to an approximation in terms of the gamma density and Laguerre polynomials when $X$ admits $\RL_{+}$ as support, and in terms of the normal density and Hermite polynomials when $X$ has $\RL$ as support.
 
-\subsubsection{Approximating densities of positive random variables} \label{ssec:PolynomialApproxPositive}
+\subsection{Approximating densities of positive random variables} \label{ssec:PolynomialApproxPositive}
 
-To approximate the pdf for positive $X$, a natural candidate for the reference density is the gamma density. It has been proven to be efficient in practice, see the work of Goffard et al.\ \cite{GoLoPo15,GoLoPo16}, and Jin et al.\ \cite{JiPrRe16}. The work of Papush et al.\ \cite{PaPaPo01} showed that among the gamma, normal and lognormal distribution, the gamma distribution seems to be better suited to model certain aggregate losses. The lognormal distribution is a problematic choice. Even though the orthogonal polynomials are available in a closed form (see Section~\ref{app:lognormal_poly}), Proposition~\ref{prop:ln_incomplete} shows that they are incomplete in $\Lp^2(\RL, w(x) \dd x)$. The case of the inverse Gaussian as basis received a treatment in the work of Nishii \cite{Ni96}, where it is shown that the only way to get a complete system of polynomials is by using the Gram--Schmidt orthogonalisation procedure. Differentiating the density (as it is done in the case of NEF-QVF) does not lead to an orthogonal polynomial system, and starting from the Laguerre polynomials leads to a system of orthogonal functions which is not complete. A solution might be to exploit the bi-orthogonality property pointed out in the work of Hassairi and Zarai \cite{HaZa04}. To close this review of reference densities, we mention the work of Nadarajah et al.\ \cite{NaChJi16} where Weibull and exponentiated exponential distributions are considered as reference density.
+To approximate the pdf for positive $X$, a natural candidate for the reference density is the gamma density. It has been proven to be efficient in practice, see the work of Goffard et al.\ \cite{GoLoPo15,GoLoPo16}, and Jin et al.\ \cite{JiPrRe16}. The work of Papush et al.\ \cite{PaPaPo01} showed that among the gamma, normal and lognormal distributions, the gamma distribution seems to be better suited to model certain aggregate losses. The lognormal distribution is a problematic choice. Even though the orthogonal polynomials are available in a closed form (see Section~\ref{app:lognormal_poly}), Proposition~\ref{prop:ln_incomplete} shows that they are incomplete in $\Lp^2(\RL, w(x) \dd x)$. The case of the inverse Gaussian as basis received a treatment in the work of Nishii \cite{Ni96}, where it is shown that the only way to get a complete system of polynomials is by using the Gram--Schmidt orthogonalisation procedure. Differentiating the density (as it is done in the case of NEF-QVF) does not lead to an orthogonal polynomial system, and starting from the Laguerre polynomials leads to a system of orthogonal functions which is not complete. A solution might be to exploit the bi-orthogonality property pointed out in the work of Hassairi and Zarai \cite{HaZa04}. To close this review of reference densities, we mention the work of Nadarajah et al.\ \cite{NaChJi16} where Weibull and exponentiated exponential distributions are considered as reference density.
 
 Consider $w$ to be the pdf of the $\mathsf{Gamma}(r,m)$ distribution
 % \begin{equation*}\label{eq:PDFGamma}
@@ -260,7 +260,7 @@ where we have set $c_i = b_i m^i \Gamma(r+i) / \Gamma(r)$.
 \end{proof}
 
 \begin{remark}
-For $r=1$, the formula for $c_i$, \eqref{eq:PiExpression}, simplifies to
+When $r=1$ (that is, when $w(x)$ is the pdf of an exponential distribution) the formula for $c_i$, \eqref{eq:PiExpression}, simplifies to
 \[ c_i = \sum_{k=i}^\infty a_k (-1)^{i+k} \binom{k}{i} \,. \]
 \remQED
 \end{remark}
@@ -299,8 +299,8 @@ Then notice that for every $i \in \NL$, we have that
 &= m (r+i) \Gamma_{u}(r+i+1,m,a).\label{eq:UsualStopLossXProof2}
 \end{align}
 Therefore substituting \eqref{eq:PseudoMixtureOfGammas} and \eqref{eq:TailFunctionX} into \eqref{eq:UsualStopLossXProof1} and simplifying with \eqref{eq:UsualStopLossXProof2} yields \eqref{eq:UsualStoplossX}.
-
 \end{proof}
+
 Let us make the connection between our approach and Erlang mixture more precise. Assuming that $f_{X}/w\in\Lp^2(\RL, w(x) \dd x)$ then taking the Laplace transform on both side of \eqref{eq:PseudoMixtureOfGammas} yields
 \begin{equation*}
 \LTsub{X}(s)=\sum_{i=0}^{\infty} c_i \left(\frac{1}{1+sm}\right)^{r+i}
@@ -335,28 +335,14 @@ c_i&=\frac{1}{i!}\frac{\dd^{i}}{\dd z^{i}}\mathcal{P}(z)\Big\rvert_{z=0}  =\text
 In practice, the singularities of the function $\mathcal{P}(z)$ at zero mean this procedure is not viable. Instead, the $c_i$ are approximated by computing the $a_k$ and truncating their expression \eqref{eq:PiExpression} up to a given order. The practical evaluation of the $a_k$ is discussed in Section~\ref{sssec:ComputingOrthogonalCoefficients}.
 
 A sufficient condition for $f_{X}/w\in\Lp^2(\RL, w(x) \dd x)$ is
-\begin{equation*}\label{eq:IntegrabilityCondition}
+\begin{equation} \label{eq:IntegrabilityCondition}
 f_{X}(x)=
 \begin{cases}
 \Oh(\e^{- x/\delta})&\text{ as }x\rightarrow\infty\text{ with }m>\delta/2,\\
 \Oh(x^{\beta})&\text{  as }x\rightarrow0\text{ with } r < 2( \beta + 1).
 \end{cases}
-\end{equation*}
-When $X$ has a well-defined moment generating function one can typically choose $r$ and $m$ so this integrability condition is satisfied. Define the radius of convergence of the random variable $X$ as
-$$
-\rho_X=\sup\{s>0\text{ , }\LT{f_{X}}(-s)<\infty\},
-$$
-and consider the following result.
-\begin{proposition}\label{prop:ExpBound}
-Let $X$ be a non-negative random variable having a pdf $f_X$, having a well defined moment generating function, then
-$$
-f_X(x)=\Oh(\e^{- x\rho_X})\text{ as }x\rightarrow\infty.
-$$
-\end{proposition}
-\begin{proof}
-The result follows from applying Chernoff bound on the survival function, then De L'H\^opital's rule enables us to conclude.
-\end{proof}
-The integrability condition is satisfied if $m>\rho_X^{-1}/2$. When we consider heavy-tailed distributions, which is a desirable model characteristic in the applications, the integrability condition cannot be satisfied. The work-around is to use the expansion
+\end{equation}
+When $X$ has a well-defined moment generating function one can typically choose $r$ and $m$ so this integrability condition is satisfied. When we consider heavy-tailed distributions, which is a desirable model characteristic in the applications, the integrability condition cannot be satisfied. The work-around is to use the expansion
 \[ \e^{-\theta x} f_{X}(x)
 = \sum_{k=0}^\infty a_k p_k(x) w(x),  \]
 for some $\theta > 0$. Thus, we can use
@@ -388,7 +374,7 @@ This idea has been used in Asmussen et al.\ \cite{asmussen2016orthonormal}.
 It is easily seen that taking $m >\theta^{-1}/2$ implies that $(\e^{-\theta x} f_{X}(x))/w(x)\in\Lp^2(\RL, w(x) \dd x)$.
 
 \subsection{Approximating densities of positive compound distributions}
-We now focus on variables $S_N$ which admit a compound distribution. Since these distributions have an atom at 0, we put aside this singularity and focus on the defective pdf $f_{S_N}^+$. The discussion in Sections \ref{ssec:PolynomialApproxIntro} and \ref{ssec:PolynomialApproxPositive} also apply to defective densities. Namely, if $f_{S_N}^{+}/w\in \Lp^2(\RL, w(x) \dd x)$ then the expansion in Lemma \ref{Lemma:PseudoMixtureOfGammas} is valid, we have
+We now focus on variables $S_N$ which admit a compound distribution. Since these distributions have an atom at 0, we put aside this singularity and focus on the defective pdf $f_{S_N}^+$. The discussion in Sections \ref{ssec:PolynomialApproxIntro} and \ref{ssec:PolynomialApproxPositive} also applies to defective densities. Namely, if $f_{S_N}^{+}/w\in \Lp^2(\RL, w(x) \dd x)$ then the expansion in Lemma \ref{Lemma:PseudoMixtureOfGammas} is valid, we have
 \begin{equation*}\label{eq:PseudoErlangMixtureRepresentationDefectivePDF}
 f_{S_N}^+(x)= \sum_{k=0}^\infty a_k p_k(x) \, \gamma(r, m, x) = \sum_{i=0}^{\infty} c_i \gamma(r+i,m,x),\text{ for }x>0,
 \end{equation*}
@@ -402,13 +388,42 @@ f_{S_N}^{+}(x)
 where $\widehat{p}_i =\sum_{k=i}^K a_k (-1)^{i+k} / [i! \, (k-i)! ] \sqrt{k! \Gamma(k+r) / \Gamma(r)}$ for $i \le K$. The survival function $\Ftail_{S_N}$ and the stop-loss premium $\Exp\left[\left(S_N-a\right)_{+}\right]$ follows from \prop{prop:OrthogonalPolynomialForm}. If the integrability condition is not satisfied then the exponentially tilted version of the defective pdf is expanded.
 
 \subsubsection{Choice of $r$ and $m$}\label{ssec:ChoosingmAndr}
-The parameters for the polynomial approximations are set differently for the light-tailed and heavy-tailed cases. In the light-tailed cases moment matching of order $2$ is the natural procedure to set the values of $r$ and $m$. We need to take into account the result in \prop{prop:ExpBound} and make sure that $m>\rho_X^{-1}/2$, where $\rho_X=\sup\{s>0\text{ ; }\LT{f_{S_N}^{+}}(-s)<\infty\}$. Hence, the value of $\rho_X$ depends on the distributions of $N$ and $U$. The two distributions we use for modeling the claim frequency $N$ are the \emph{Poisson} and the \emph{Pascal} distributions. We denote the Poisson distribution as $\PoissonDist(\lambda)$ and define the Pascal random variable to be the number of failures counted before observing $\alpha \in \NL$ successes, denoted $\PascalDist(\alpha,p)$.
+
+Firstly, we need to ensure that the choice of $r$ and $m$ satisfy the integrability condition \eqref{eq:IntegrabilityCondition}. It is not simple to ensure this condition is met in general, so we look at the case of random sums of gamma distributed random variables. Define the radius of convergence of a random variable $X$ as
+$$
+\rho_X \defeq \sup\{s>0, ~ \LT{f_{X}}(-s)<\infty\},
+$$
+and consider the following result.
+
+\begin{proposition}\label{prop:ExpBound}
+Let $S_N$ have summands where $U_i \iidDist \GammaDist(r^*, m^*)$, then
+$$
+f_{S_N}^+(x) = \Oh(\exp\{- x \rho_{S_N}\}) \quad \text{as } x \to \infty \,.
+$$
+\end{proposition}
+\begin{proof}
+We have $f_{S_N}^+(x) = \sum_{n=1}^\infty f_N(n) f_{S_n}(x)$ and we also know that $S_n \sim \GammaDist(n r^*, m^*)$. As $S_n$ is gamma distributed we have $f_{S_n}(x) \sim \frac{1}{m^*} \Ftail_{S_n}(x)$ as $x \to \infty$.
+So applying the Chernoff inequality for each $S_n$ we have
+$ \Ftail_{S_n}(x) \le \e^{-s x} \LTsub{S_n}(-s)  = \e^{-s x} \LTsub{U}(-s)^n $
+for all $s \in [0, \rho_U)$. Combining this we have
+\begin{align*}
+f_{S_N}^+(x)
+&\sim \frac{1}{m^*} \sum_{n=1}^\infty f_N(n) \Ftail_{S_n}(x)
+\le \frac{\e^{-s x}}{m^*} \sum_{n=1}^\infty f_N(n) \LTsub{U}(-s)^n \\
+&\le \frac{\e^{-s x}}{m^*} \Exp[ \LTsub{U}(-s)^N ] = \frac{\e^{-s x}}{m^*} \PGF_N( \LTsub{U}(-s) ) = \frac{\e^{-s x}}{m^*} \LTsub{S_N}(-s)
+\end{align*}
+for $s \in [0, \rho_{S_N})$. This proves that $f_{S_N}^+(x) = \Oh( \e^{-s x} )$ for $s \in [0, \rho_{S_N})$, and taking $s \nearrow \rho_{S_N}$ gives the result.
+\end{proof}
+
+\prop{prop:ExpBound} implies that for sums of gamma variables, the integrability condition is satisfied if $m>1/(2 \rho_{S_N})$.
+
+The parameters for the polynomial approximations are set differently for the light-tailed and heavy-tailed cases. In the light-tailed cases moment matching of order $2$ is the natural procedure to set the values of $r$ and $m$, while ensuring that $m>(2 \rho_{S_N})$. The two distributions we use for modeling the claim frequency $N$ are the \emph{Poisson} and the \emph{Pascal} distributions. We denote the Poisson distribution as $\PoissonDist(\lambda)$ and define the Pascal random variable to be the number of failures counted before observing $\alpha \in \NL$ successes, denoted $\PascalDist(\alpha,p)$.
 \begin{example}\label{ex:ParametersCompoundPoisson}
 Let $N$ be Poisson distributed, the moment generating function of $S_N$ is then given by
 \[
 \LTsub{S_N}(-s)=\exp \{ \lambda [ \LTsub{U}(-s)-1 ] \} \,.
 \]
-The radius of convergence of $S_N$ coincides with the one of $U$, $\rho_{S_N}=\rho_U$. In  that case, we can set $r=1$ and m=$\lambda\Exp[U]$ which corresponds to a moment matching procedure of order 1 or set $r=\lambda\Exp[U]^2/\Exp[U^2]$ and $m=\Exp[U^2]/\Exp[U]$ which, in turns, matches the two first moments.
+The radius of convergence of $S_N$ coincides with the one of $U$, $\rho_{S_N}=\rho_U$. In that case, we can set $r=1$ and $m=\lambda\Exp[U]$ which corresponds to a moment matching procedure of order 1 or set $r=\lambda\Exp[U]^2/\Exp[U^2]$ and $m=\Exp[U^2]/\Exp[U]$ which, in turns, matches the two first moments.
 \end{example}
 \begin{example}\label{ex:ParametersCompoundPascal}
 Let $N$ be Pascal distributed, the moment generating function of $S_N$ is then given by
@@ -510,11 +525,17 @@ a_k&=\frac{1}{d_k}\frac{1}{k!}\frac{\dd^{k}}{\dd z^{k}}\mathcal{Q}(z)\Big\rvert_
 
 \section{Laplace transform inversion approximations}\label{sec:NumericalInversionLaplaceTransform}
 
-The Laplace transform inversion approach which is given in Section~\ref{sec:laplace_inversion} is applied here.
-It is a method inspired by the work of Abate and Whitt \cite{Abate1992} which recovers the survival function of a compound distribution from the knowledge of its Laplace transform. The methodology is further applied to the computation of stop-loss premiums by taking advantage of the connection between the stop-loss premium of $S_N$ and the survival function of the equilibrium distribution of $S_N$.
-% We begin by stating some useful transform relations, then discuss the general Laplace inversion framework that we will use, and will apply the method to the compound distribution problem.
+The Laplace transform inversion approach described in Section~\ref{sec:laplace_inversion} is applied here. It uses a method inspired by the work of Abate and Whitt \cite{Abate1992}, and the key equations are repeated here for clarity. For a function $f$ we define for $\ell=1,2,\dots$
+\begin{equation*}
+s_\ell(x) \defeq \frac{\e^{a/2}}{2x}\LT{f} \left(\frac{a}{2 x}\right) + \frac{\e^{a/2}}{x} \sum_{k=1}^\ell (-1)^{k} \Re\left[\LT{f}\left(\frac{a+ 2\pi \ih k}{2 x}\right)\right] \,,
+\end{equation*}
+and with some positive integers $M_1$ and $M_2$, we have
+\begin{equation} \label{eq:LaplaceInversion}
+f_{\text{approx}}(x) \defeq \sum_{k=0}^{M_1} \binom{M_1}{k} 2^{-M_1} s_{M_2+k}(x) \approx f(x) \,.
+\end{equation}
 
-\subsection{Estimators of survival function and stop-loss premium for compound distributions}
+% The methodology is further applied to the computation of stop-loss premiums by taking advantage of the connection between the stop-loss premium of $S_N$ and the survival function of the equilibrium distribution of $S_N$.
+
 
 For a random sum $S_N$, we consider using the technique above to evaluate its survival function $\Ftail_{S_N}$ and stop-loss premiums from its Laplace transform.
 We invert $\LT{\Ftail_{S_N}}$, but note that inverting $\LT{F_{S_N}}$ produces almost identical results.
@@ -539,7 +560,7 @@ and Laplace transform
 % \[ \Prob(X^\ast > d) = \frac12 + \frac1\pi PV \int_0^\infty \Re \left[ \frac{\e^{-i u d} \hat{\mu}_{X^\ast}(u)}{i u} \right] \dd u \]
 % where $\hat{\mu}_{X^\ast}(u) = \frac{\hat{\mu}_X(u) - 1}{i u \Exp X}$.
 
-The stop-loss premium is then obtained, replacing in \eqref{eq:LinkStopLossPremiumEquilibriumDistribution} the survival function of $S_N^{\ast}$ by its approximation through \eqref{eq:FinalApproxLaplaceInversion}.
+The stop-loss premium is then obtained, replacing in \eqref{eq:LinkStopLossPremiumEquilibriumDistribution} the survival function of $S_N^{\ast}$ by its approximation through \eqref{eq:LaplaceInversion}.
 %The approximation of limited stop-loss premium follows from the one of the stop-loss premium by taking advantage of the identity
 %\begin{equation}\label{eq:LinkStopLossPremiumLimitedStopLossPremium}
 %\Exp\left\{
@@ -565,7 +586,7 @@ For each test case we compare the orthogonal polynomial approximation, the Lapla
 % In most cases, the true value of the quantity being estimated is unknown so we must estimate the absolute and relative errors. Thus, we plot the absolute error and relative error of the estimators with respect to the median of their estimates.
 
 The parameters for the polynomial approximations has been discussed in Section \ref{ssec:ChoosingmAndr}, the calibration is depending on the assumptions over the claim frequency and claim sizes distribution.
-The parameters for the Laplace inversion technique are set to $M_1=11$, $M_2=15$ and $a=18.5$ following the example of Rolski et al.\ \cite[Chapter 5, Section 5]{RoScScTe08}; note, this choice of $a$ implies that the discretisation error is less than $10^{-8}$, as derived from \eqref{BoundedDiscretizationError}.
+The parameters for the Laplace inversion technique are set to $M_1=11$, $M_2=15$ and $a=18.5$ following the example of Rolski et al.\ \cite[Chapter 5, Section 5]{RoScScTe08}; note, this choice of $a$ implies that the discretisation error is less than $10^{-8}$, as derived from \eqref{BoundedDiscretizationError}. Note, we do not use any built-in routines for the Laplace inversion, but simply implement \eqref{eq:LaplaceInversion}.
 
 % Each choice of $(f_N,f_U)$ in the tests below has been chosen so $\Exp[S_N]=\Exp[N]\Exp[U]=1$. This does not lose any generality; say the $(f_N,f_U)$ pair of interest has mean $\Exp[S_N]=\mu\not=1$, then we can approximate the $(f_N,f_V)$ pair which is the normalized version
 % \[ S_N^* = \frac{S_N}{\mu} = \sum_{i=1}^N \frac{U_i}{\mu} = \sum_{i=1}^N V_i \]
