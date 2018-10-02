@@ -73,7 +73,7 @@ From a practical point of view, a reinsurance treaty over the whole portfolio is
 
 Unfortunately, one is seriously constrained when calculating these quantities analytically, as there are only a few cases where either the pdf or the survival function is available in a simple tractable form. To estimate the VaR or the stop-loss premium we must find fast and accurate approximations for these functions.
 
-We discuss the use of an approximation of the pdf in terms of the gamma density and its orthonormal polynomials. This method has been studied in the recent works of Goffard et al.\ \cite{GoLoPo15} and Jin et al.\ \cite{JiPrRe16}. We emphasise here the computational aspect of this numerical method and detail some practical improvements. An exponential change of measure can be used to recover the pdf of $S_N$ when the claim sizes are governed by a heavy-tailed distribution. This refinement has been successfully applied in the work of Asmussen et al.\ \cite{asmussen2016orthonormal} to recover the density of the sum of lognormally distributed random variables.
+We discuss the use of an approximation of the pdf in terms of the gamma density and its orthonormal polynomials. This method has been studied in the recent works of Goffard et al.\ \cite{GoLoPo15} and Jin et al.\ \cite{JiPrRe16}. We emphasise here the computational aspect of this numerical method and detail some practical improvements. An exponential change of measure can be used to recover the pdf of $S_N$ when the claim sizes are governed by a heavy-tailed distribution. This refinement has been successfully applied in Chapter~\ref{chp:sln_orth_pdf} to recover the density of the sum of lognormally distributed random variables.
 
 This method is compared to a numerical inversion of the Laplace transform which is known to be efficient to recover the survival function of a compound distribution. The critical step in Laplace inversion is to select which numerical integration technique to apply. We implement a method inspired by the work of Abate and Whitt \cite{Abate1992} which is very similar to the method of Rolski et al.\ \cite[Chapter 5, Section 5]{RoScScTe08}. An approximation of the stop-loss premium is then proposed relying on the connection with the survival function of the equilibrium distribution of $S_N$. Note that Dufresne et al.\ \cite{DuGaMo09} successfully applied a Laplace inversion based technique to the evaluation of stop-loss premiums.
 
@@ -332,7 +332,7 @@ Calculating the $a_i$ and $c_i$, topic covered in Section~\ref{sssec:ComputingOr
 = \LT{ f_{X}(x) }(t+\theta).
 \end{align*}
 The method described above is the same (up to some constants) as approximating the exponentially tilted distribution.
-This idea has been used in Asmussen et al.\ \cite{asmussen2016orthonormal}.
+This idea has been used in Chapter~\ref{chp:sln_orth_pdf}.
 It is easily seen that taking $m >\theta^{-1}/2$ implies that $(\e^{-\theta x} f_{X}(x))/w(x)\in\Lp^2(\RL, w(x) \dd x)$.
 
 \subsection{Approximating densities of positive compound distributions}
