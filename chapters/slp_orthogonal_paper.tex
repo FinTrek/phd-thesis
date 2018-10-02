@@ -41,8 +41,6 @@ Frequently $S_N$ models the aggregated losses of a non-life insurance portfolio 
 One popular risk measure is the VaR. In actuarial contexts, the VaR at level $\alpha \in (0,1)$ is defined such that the probability of (aggregated) losses exceeding the level VaR is at most $1-\alpha$.
 Following the European recommendation of the Solvency II directive, the standard value for $\alpha$ is $0.995$, see \cite{EIOPA}. It is used by risk managers in banks, insurance companies, and other financial institutions to allocate risk reserves and to determine solvency margins. Also, we have stop-loss premiums which are risk measures that are commonly used in reinsurance agreements.
 
-% \subsubsection{Stop-loss premiums for reinsurance agreements}
-
 A reinsurance agreement is a common risk management contract between insurance companies, one called the \emph{cedant} and the other the \emph{reinsurer}. Its aim is to keep the cedant's long-term earnings stable by protecting the cedant against large losses. The reinsurer absorbs part of the cedant's loss, say $f(S_N)$ where $0\leq f(S_N)\leq S_N$, leaving the cedant with $I_{f}(S_N)=S_N-f(S_N)$. In return, the cedant pays a premium linked to
 \begin{equation*}\label{eq:DefinitionReinsurancePremium}
 \Pi=\Exp[f(S_N)],
@@ -70,11 +68,6 @@ Also, the change-loss function is defined as
 f(S_N)=c(S_N-a)_{+},\text{ }0\leq c\leq1,
 \end{equation*}
 which is in between stop-loss and quota-share reinsurance. The ratemaking in each case requires the expectation in \eqref{eq:DefUsualStopLossPremium}.
-%, for instance the limited stop-loss premium may be expressed as
-%\begin{equation}\label{eq:LimitedStoplossPremium}
-%\mathbb{E}\left\{\min[(S_N-c)_{+},d]\right\}=\Exp\left[(S_N-c)_{+}\right]-\Exp\left[(S_N-c-d)_{+}\right]
-%\end{equation}
-
 
 From a practical point of view, a reinsurance treaty over the whole portfolio is less expensive to handle than one which involves claim-by-claim management. It also grants protection in the event of an unusual number of claims, triggered for instance by a natural disaster. From a theoretical point of view, it is well known that the stop-loss ceded function allows one to minimise the variance of the retained loss for a given premium level, see for instance the monograph of Denuit et al.\ \cite{DeDhGoKa06}. Recently, it has been shown that stop-loss reinsurance is also optimal when trying to minimise the VaR and the expected shortfall of the retained loss, see the works of Cai et al.\ \cite{CaTaWeZh08}, Cheung \cite{Ch10}, and Chi and Tan \cite{ChTa11}. Note that some other ceded loss functions appear in their work, there are however very close to the stop-loss one.
 
@@ -153,20 +146,10 @@ This implies $\psi(0,T) = \Exp [ \min( S_{N(T)}, cT ) ]/cT$ where $S_{N(T)} \def
 \begin{align} \label{eq:ConnectionFiniteTimeRuinProbabilityStopLossPremium}
 \psi(0, T)
 &= \frac{1}{cT} \Exp[ \min( S_{N(T)}, cT ) ] \nonumber \\
-% &= 1 + \frac{1}{cT} \Exp\Big[ \min\{S_{N(T)} - cT, 0 \} \Big] \nonumber \\
-% &= 1 + \frac{1}{cT} \Exp\Big[ (S_{N(T)} - cT) - \max(S_{N(T)} - cT, 0 ) \Big] \nonumber \\
-% &= (cT)^{-1} \Big[ \Exp (S_{N(T)} ) - \Exp (S_{N(T)} - cT)_+ \Big]\\
-% &= 1 + \frac{\Exp[N(T)] \Exp[U_1]}{cT} - \frac{\Exp\Big[ (S_{N(T)} - cT)_+ \Big]}{cT} \nonumber \\
 &= (cT)^{-1} \{ \Exp[N(T)] \, \Exp[U_1] - \Pi_{cT}(S_{N(T)}) \} \,.
-% &=1 - \Exp\left[\left(1-\frac{S_{N(T)}}{cT}\right)_{+}\right]
 \end{align}
 Lef\`evre and Picard \cite[Corollary~4.3]{LePi11} show that equations \eqref{CramersFormula} and \eqref{eq:ConnectionFiniteTimeRuinProbabilityStopLossPremium} hold in the more general case where the claim arrival process forms a \textit{mixed Poisson process}. This connection has been exploited recently in Lef\`evre et al.\ \cite{LeTrZu17} where the influence of the claim size distribution on the ruin probabilities is studied via stochastic ordering considerations.
-%\begin{definition} \label{def:HomogeneousPointProcess}
-%A point process on $[0, T]$ is a \emph{homogeneous point process} \cite{de1999inequality,LePi11} if for all $n > 0$ we have
-%\[ (N(s) \mid N(t) = n) \sim \mathsf{Binomial}\big(n, \frac{s}{t} \big) \,. \]
-%This generalises the standard Poisson process by allowing the distribution of $N(T)$ to be arbitrary.
-%Theorem~A2 of \cite{de1999inequality} shows that any homogeneous point process on $[0,\infty)$ is a mixed Poisson process.
-%\end{definition}
+
 \section{Orthogonal polynomial approximations}\label{sec:PolynomialApproximation}
 
 
@@ -199,10 +182,6 @@ This family of distributions is convenient as the associated orthogonal polynomi
 To approximate the pdf for positive $X$, a natural candidate for the reference density is the gamma density. It has been proven to be efficient in practice, see the work of Goffard et al.\ \cite{GoLoPo15,GoLoPo16}, and Jin et al.\ \cite{JiPrRe16}. The work of Papush et al.\ \cite{PaPaPo01} showed that among the gamma, normal and lognormal distributions, the gamma distribution seems to be better suited to model certain aggregate losses. The lognormal distribution is a problematic choice. Even though the orthogonal polynomials are available in a closed form (see Section~\ref{app:lognormal_poly}), Proposition~\ref{prop:ln_incomplete} shows that they are incomplete in $\Lp^2(\RL, w(x) \dd x)$. The case of the inverse Gaussian as basis received a treatment in the work of Nishii \cite{Ni96}, where it is shown that the only way to get a complete system of polynomials is by using the Gram--Schmidt orthogonalisation procedure. Differentiating the density (as it is done in the case of NEF-QVF) does not lead to an orthogonal polynomial system, and starting from the Laguerre polynomials leads to a system of orthogonal functions which is not complete. A solution might be to exploit the bi-orthogonality property pointed out in the work of Hassairi and Zarai \cite{HaZa04}. To close this review of reference densities, we mention the work of Nadarajah et al.\ \cite{NaChJi16} where Weibull and exponentiated exponential distributions are considered as reference density.
 
 Consider $w$ to be the pdf of the $\mathsf{Gamma}(r,m)$ distribution
-% \begin{equation*}\label{eq:PDFGamma}
-% w(x)\defeq\gamma(r,m,x)=\frac{x^{r-1}\e^{-\frac{x}{m}}}{\Gamma(r)m^{r}},\text{ }x\in\RL^{+},
-% \end{equation*}
-% where $\Gamma$ denotes the gamma function.
 and the associated orthonormal polynomials are given by
 \begin{equation*}\label{eq:GeneralizedLaguerrePolynomials}
 p_{n}(x)
@@ -215,41 +194,29 @@ L_{n}^{r-1}(x)
 =\sum_{i=0}^{n} \binom{n + r - 1}{n - i} \frac{(-x)^i}{i!}
 =\sum_{i=0}^{n} \frac{\Gamma(n+r)}{\Gamma(n-i+1)\Gamma(r+i)}\frac{(-x)^i}{i!}, \text{ }n\geq 0,
 \end{equation*}
-cf.\ the classical book by Szeg{\"o} \cite{Szegoe1939}. %The following lemma is a consequence of a rearrangement in the polynomial representation \eqref{eq:PolynomialRepresentation}.
+cf.\ the classical book by Szeg{\"o} \cite{Szegoe1939}.
 
 \begin{lemma}\label{Lemma:PseudoMixtureOfGammas}
 If $w$ is the pdf of the $\GammaDist(r,m)$ distribution, the polynomial expansion \eqref{eq:PolynomialRepresentation}  may be rewritten as
 \begin{align}\label{eq:PseudoMixtureOfGammas}
-f_{X}(x)&= \sum_{i=0}^{\infty} c_i \gamma(r+i,m,x), %\\
-% &= \sum_{k=0}^{\infty}  a_k \left( \frac{\Gamma(k+r)\Gamma(k+1)}{\Gamma(r)} \right)^{1/2} \sum_{i=0}^{k} (-1)^{k+i} \frac{\gamma(r+i,m,x)}{\Gamma(k-i+r)\Gamma(i+1)}
+f_{X}(x)&= \sum_{i=0}^{\infty} c_i \gamma(r+i,m,x) \,,
 \end{align}
 where
 \begin{equation}\label{eq:PiExpression}
 c_i
-% = \frac{(-1)^i }{i! \sqrt{\Gamma(r)}} \sum_{k=i}^\infty a_k (-1)^k \frac{\sqrt{k! \Gamma(k+r) }} {\Gamma(k-i+1) }
 =\sum_{k=i}^\infty a_k \frac{(-1)^{i+k}}{i! \, (k-i)!} \sqrt{\frac{k! \Gamma(k+r)}{\Gamma(r)}},
 \end{equation}
 and the function $\gamma(r,m,x)$ is the pdf of the $\GammaDist(r,m)$ distribution.
-% \begin{align*}
-% c_i
-% &= d_i m^i \frac{\Gamma(r+i)}{\Gamma(r)} \\
-% &= m^i \frac{\Gamma(r+i)}{\Gamma(r)} \frac{(-1)^i \Gamma(r)^{\frac12} }{m^i \Gamma(r+i) \Gamma(i+1)} \sum_{k=i}^\infty a_k (-1)^k \frac{ \big[ \Gamma(k+r) \Gamma(k+1) \big]^{\frac12}}{\Gamma(k-i+r) } \\
-% &= \frac{(-1)^i }{\Gamma(r)^{\frac12} \Gamma(i+1)} \sum_{k=i}^\infty a_k (-1)^k \frac{ \big[ \Gamma(k+r) \Gamma(k+1) \big]^{\frac12}}{\Gamma(k-i+r) }
-% \end{align*}
-
 \end{lemma}
 \begin{proof}
 If we change the sum in \eqref{eq:PolynomialRepresentation} from iterating over Laguerre polynomials to iterating over monomials we get
 \[
-f_{X}(x)=\sum_{k=0}^{\infty} a_k p_{k}(x) \gamma(r,m,x) = \sum_{i=0}^\infty b_i x^i \gamma(r,m,x) \, ,
+f_{X}(x)=\sum_{k=0}^{\infty} a_k p_{k}(x) \gamma(r,m,x) = \sum_{i=0}^\infty b_i x^i \gamma(r,m,x) \,,
 \]
 where
 \begin{align*}
 b_i
-&= \sum_{k=0}^\infty \text{Coefficient}(x^i, a_k  p_k(x)) %\\
-% &= \sum_{k=i}^\infty a_k \text{Coefficient}\left[x^i, (-1)^{k} \binom{k + r - 1}{k}^{-\frac12} L_{k}^{r-1}\big( \frac{x}{m} \big) \right] \\
-% &= \sum_{k=i}^\infty a_k (-1)^{k} \binom{k + r - 1}{k}^{-\frac12} \text{Coefficient}\left[x^i, \sum_{j=0}^{k} \binom{k + r - 1}{k - j} \frac{(-x/m)^j}{j!} \right] \\
-%&
+&= \sum_{k=0}^\infty \text{Coefficient}(x^i, a_k  p_k(x))
 = \frac{(-1)^i}{m^i i!} \sum_{k=i}^\infty a_k (-1)^{k} \binom{k + r - 1}{k}^{-\frac12} \binom{k + r - 1}{k - i} \,.
 \end{align*}
 We also note that
@@ -265,15 +232,10 @@ When $r=1$ (that is, when $w(x)$ is the pdf of an exponential distribution) the 
 \remQED
 \end{remark}
 
-%Therefore, if we truncate  $\{ a_k \}_{k\in\N}$ so that $a_k = 0$ for $k > K \in \N$, and if the resulting $c_i$'s are non-negative, then \eqref{eq:PseudoMixtureOfGammas} tells us that the orthogonal polynomial approximation is a mixture of gamma distributions. This simplifies calculating survival functions, and stop-loss premiums.
 The expression of the pdf in \eqref{eq:PseudoMixtureOfGammas} resembles the one of an Erlang mixture, which are extensively used for risk modeling purposes, cf.\ Willmot and Woo \cite{WiWo07}, Lee and Lin \cite{LeLi10}, and Willmot and Lin \cite{WiLi11}. However, the $c_i$ defined in \eqref{eq:PiExpression} do not form a proper probability mass function as they are not always positive. Hence our approximation cannot be considered as an approximation through an Erlang mixture although it enjoys the same features when it comes to approximating the survival function and the stop-loss premium as shown in the following result.
 \begin{proposition} \label{prop:OrthogonalPolynomialForm}
 Letting $\Gamma_u(r,m,x)$ be the survival function of the $\GammaDist(r,m)$ distribution,  we have:
 \begin{itemize}
-%\item[(i)] The cdf of $S_N$ is given by
-%\begin{eqnarray}\label{eq:CDFX}
-%F_{S_N}(x)&=&f_N(0)+\sum_{n=0}^{\infty}\sum_{i=0}^{n}a_n\tilde{q}_{i,n}\Gamma_{l}(r+i,m,x) \quad \text{for } x \ge 0 \,.
-%\end{eqnarray}
 \item[(i)] the survival function of $X$ is given by
 \begin{equation}\label{eq:TailFunctionX}
 \Ftail_{X}(x) = \sum_{i=0}^{\infty}c_i\Gamma_{u}(r+i,m,x) \quad \text{for } x \ge 0 \,,
@@ -433,10 +395,7 @@ $$
 The radius of convergence $\rho_{S_N}$ is the positive solution of the equation $\LTsub{U}(-s)=q^{-1}$. We set $r=1$ and $m=\rho_{S_N}^{-1}$.
 \end{example}
 The parametrisation proposed in Example \ref{ex:ParametersCompoundPascal} is linked to the fact that it leads to the exact defective pdf in the case of a compound Pascal model with exponentially distributed claim sizes.
-% First, we need to introduce the binomial distribution denoted by $\BinomialDist(n,p)$ with pmf
-%  \[ f_N(k) = \binom{n}{k} p^k q^{n-k} \,, \quad \text{ for }k = 0,1,\dots, n\,, \]
- % where $p \in (0,1)$, $n \in \NL$, and $p+q=1$.
- The following lemma, adapted from \cite{PaWi81}, shows a useful correspondence between the Pascal and binomial distributions when used in compound sums with the exponential distribution.
+The following lemma, adapted from \cite{PaWi81}, shows a useful correspondence between the Pascal and binomial distributions when used in compound sums with the exponential distribution.
 \begin{lemma} \label{lemma:BinomialPascalEquivalence}
 Consider the random sums $X = \sum_{i=1}^{N_1} U_i$ and $Y = \sum_{i=1}^{N_2} V_i$, where
 \[
@@ -452,24 +411,13 @@ Both $X$ and $Y$ have the same Laplace transform, so $X \eqdistr Y$.
 \begin{corollary} \label{Coro:PascalExponentialStopLoss}
 Consider the compound sum $S_N = \sum_{i=1}^N U_i$ where $N \sim \PascalDist(\alpha,p)$ and the $U_i \iidDist\GammaDist(1,\beta)$.
 Then the survival function of $S_N$ is given by
-% \begin{align*}
-% \Ftail_{S_N}(x) &= \sum_{i=1}^\alpha \binom{\alpha}{i} p^i q^{\alpha-i} \e^{-p \beta x} \sum_{j=0}^{i-1} \frac{(p \beta x)^j}{j!}
-% = \sum_{i=1}^\alpha \binom{\alpha}{i} p^i q^{\alpha-i} \, \Gamma_u(i, p\beta, x)
-% \end{align*}
-% \begin{color}{red}
 \begin{align*}
 \Ftail_{S_N}(x) &= \sum_{i=1}^\alpha \binom{\alpha}{i} q^i p^{\alpha-i} \, \Gamma_u\left(i, p^{-1}\beta, x\right),
 \end{align*}
-% \end{color}
 and its stop-loss premium is given by
-% \begin{equation*}\label{eq:StopLossCompoundNegBinExp}
-% \Exp\left[\left(S_N-a\right)_{+}\right] = \sum_{i=1}^\alpha \binom{\alpha}{i} p^i q^{\alpha-i} \left[ \frac{i}{p \beta} \Gamma_u\big(i+1, a p \beta, (a p \beta)^2 \big) - a \Gamma_u(i, \frac{1}{p \beta} , a) \right]
-% \end{equation*}
-% \begin{color}{red}
 \begin{equation*}\label{eq:StopLossCompoundNegBinExp}
 \Exp\left[\left(S_N-a\right)_{+}\right] = \sum_{i=1}^\alpha \binom{\alpha}{i} q^i p^{\alpha-i} \left[ \frac{i\beta}{p } \Gamma_u\big(i+1, p^{-1} \beta , a \big) - a \Gamma_u\left(i, p^{-1}\beta , a\right) \right].
 \end{equation*}
-% \end{color}
 \end{corollary}
 \begin{proof}
 By Lemma~\ref{lemma:BinomialPascalEquivalence} we can instead consider the $S_N$ defined by $N \sim \BinomialDist(\alpha,q)$ and with $U_i \iidDist \GammaDist(1,p^{-1} \beta)$.
@@ -478,9 +426,6 @@ Noting that $S_n = U_1 + \dots + U_n \sim \GammaDist(n, p^{-1} \beta)$ gives the
 One conclusion of \cor{Coro:PascalExponentialStopLoss} is that the exact solution coincides with our approximation when $r=1$ and $m=p^{-1}\beta$ (and with $K \ge \alpha - 1$). Note that $p\beta^{-1}$ is the solution of the equation $\LTsub{U}(-s)=q^{-1}$ which is consistent with the parametrisation proposed in Example \ref{ex:ParametersCompoundPascal}.\\
 
 In the heavy-tailed cases (i.e.\ when exponential tilting is required) we set $\theta~=~1$ and $m~=~\theta/2 = 1/2$ (at the lower limit for $m$; this gives $\widetilde{m}=1$), and choose $r = \Exp[U]$.
- % which satisfies
-% \[ \int_{0}^\infty x \frac{\e^{- \theta x} f_{S_N}^{+}(x)}{\LT{f_{S_N}^+}(\theta)} \dd x  = {-}\frac{\LTsub{U}'(\theta)}{\LT{f_{S_N}^+}(\theta)} \PGF_N' \big[ \LTsub{U}(\theta) \big]
-% \equiv \Exc_w[ X ] = r m \,. \]
 
 \subsubsection{Computation of the $a_k$} \label{sssec:ComputingOrthogonalCoefficients}
 
@@ -505,7 +450,7 @@ As $f_{S_N}^+/w\in\Lp^2(\RL, w(x) \dd x)$, the polynomial representation of $f_{
 f_{S_N}^+(x)=\sum_{k=0}^{\infty}\sum_{i=0}^{k}a_k\frac{(-1)^{i+k}}{i! \, (k-i)!} \sqrt{\frac{k! \Gamma(k+r)}{\Gamma(r)}}\gamma(r+i,m,x).
 \end{equation}
 Taking the Laplace transform in \eqref{eq:prop:PolynomialRepresentationgX} yields
-\begin{align*} %\label{eq:LaplaceTransfornToCoefficientGeneratingFunction}
+\begin{align*}
 \LT{f_{S_N}^+}(s)
 &= \left(\frac{1}{1+sm}\right)^{r}\sum_{k=0}^{\infty}a_k \sum_{i=0}^{k} (-1)^{k+i} \left(\frac{\Gamma(k+r)}{\Gamma(k+1)\Gamma(r)}\right)^{1/2} \binom{k}{i} \left(\frac{1}{1+sm}\right)^{i}\nonumber \\
 &= \left(\frac{1}{1+sm}\right)^{r}\sum_{k=0}^{\infty}a_k d_k (-1)^{k} \sum_{i=0}^{k} \binom{k}{i} \left(\frac{-1}{1+sm}\right)^{i} \nonumber\\
@@ -534,9 +479,6 @@ and with some positive integers $M_1$ and $M_2$, we have
 f_{\text{approx}}(x) \defeq \sum_{k=0}^{M_1} \binom{M_1}{k} 2^{-M_1} s_{M_2+k}(x) \approx f(x) \,.
 \end{equation}
 
-% The methodology is further applied to the computation of stop-loss premiums by taking advantage of the connection between the stop-loss premium of $S_N$ and the survival function of the equilibrium distribution of $S_N$.
-
-
 For a random sum $S_N$, we consider using the technique above to evaluate its survival function $\Ftail_{S_N}$ and stop-loss premiums from its Laplace transform.
 We invert $\LT{\Ftail_{S_N}}$, but note that inverting $\LT{F_{S_N}}$ produces almost identical results.
 
@@ -556,41 +498,17 @@ and Laplace transform
 \begin{equation*}\label{eq:LaplaceTransformEquilibriumDistribution}
 \LTsub{S_N^{\ast}}(s)=\frac{1-\LTsub{S_N}(s)}{s\Exp[S_N]}.
 \end{equation*}
-% Dufresne have this as
-% \[ \Prob(X^\ast > d) = \frac12 + \frac1\pi PV \int_0^\infty \Re \left[ \frac{\e^{-i u d} \hat{\mu}_{X^\ast}(u)}{i u} \right] \dd u \]
-% where $\hat{\mu}_{X^\ast}(u) = \frac{\hat{\mu}_X(u) - 1}{i u \Exp X}$.
 
 The stop-loss premium is then obtained, replacing in \eqref{eq:LinkStopLossPremiumEquilibriumDistribution} the survival function of $S_N^{\ast}$ by its approximation through \eqref{eq:LaplaceInversion}.
-%The approximation of limited stop-loss premium follows from the one of the stop-loss premium by taking advantage of the identity
-%\begin{equation}\label{eq:LinkStopLossPremiumLimitedStopLossPremium}
-%\Exp\left\{
-%\min\left[\left(X-d\right)_{+},c\right]\right\}=\Exp\left\{
-%\left[X-(c+d)\right]_{+}\right\}-\Exp\left[\left(X-d\right)_{+}\right].
-%\end{equation}
-%\framebox{(pjl) Should we mention this earlier?}
-%\begin{equation}\label{eq:FourierInversionFormulaSurvival2}
-%
-%\end{equation}
 
-%!TEX root = Main.tex
 \section{Numerical illustrations}\label{sec:NumericalIllustrations}
 
 We illustrate the performance of the two proposed numerical procedures. Section \ref{subsec:NumericsSurvivalFunctionStopLoss} focuses on approximating the survival function and the stop-loss premium associated to aggregated claim sizes, while Section \ref{subsec:ApproximationFiniteTimeRuinProbability} considers the approximation of the finite-time ruin probability with no initial reserves using formula \eqref{eq:ConnectionFiniteTimeRuinProbabilityStopLossPremium}.
 
 For each test case we compare the orthogonal polynomial approximation, the Laplace inversion approximation, and for the crude Monte Carlo approximation. For the cases when $U$ is gamma distributed, we use the fact that $S_n$ is Erlang distributed to produce an approximate distribution for $S_N$ by truncating $N$ to be less than some large level.
 
-%  We define~\footnote{Note, the first definition deviates from the standard definition which has an absolute value.}
-% \[
-% \text{AbsoluteError}( \widehat{f}, x ) = \widehat{f}(x)-f(x) \,, \quad \text{and} \quad \text{RelativeError}( \widehat{f}, x ) = \frac{\widehat{f}(x)-f(x)}{f(x)} \,.
-% \]
-% In most cases, the true value of the quantity being estimated is unknown so we must estimate the absolute and relative errors. Thus, we plot the absolute error and relative error of the estimators with respect to the median of their estimates.
-
 The parameters for the polynomial approximations has been discussed in Section \ref{ssec:ChoosingmAndr}, the calibration is depending on the assumptions over the claim frequency and claim sizes distribution.
 The parameters for the Laplace inversion technique are set to $M_1=11$, $M_2=15$ and $a=18.5$ following the example of Rolski et al.\ \cite[Chapter 5, Section 5]{RoScScTe08}; note, this choice of $a$ implies that the discretisation error is less than $10^{-8}$, as derived from \eqref{BoundedDiscretizationError}. Note, we do not use any built-in routines for the Laplace inversion, but simply implement \eqref{eq:LaplaceInversion}.
-
-% Each choice of $(f_N,f_U)$ in the tests below has been chosen so $\Exp[S_N]=\Exp[N]\Exp[U]=1$. This does not lose any generality; say the $(f_N,f_U)$ pair of interest has mean $\Exp[S_N]=\mu\not=1$, then we can approximate the $(f_N,f_V)$ pair which is the normalized version
-% \[ S_N^* = \frac{S_N}{\mu} = \sum_{i=1}^N \frac{U_i}{\mu} = \sum_{i=1}^N V_i \]
-% where $f_V(x) = f_U(x/\mu)/\mu$, and then $\Ftail_{S_N}(\mu x) = \Ftail_{S_N^*}(x/\mu)$.
 
 In each plot, the first subplot shows the estimates each estimator produces, and the second shows the \emph{approximate absolute error}. We define this, for estimator $i \in \{1,\dots,I\}$, as
 \begin{align*}
@@ -614,7 +532,6 @@ To ensure both estimators were implemented correctly, we applied the estimators 
 $x$                   & 0.5  & 1  & 1.5  & 2 & 2.5  \\
 \hline
 Error & 7.27e-7 & 1.92e-6 & 5.86e-6 & 1.78e-5 & 4.01e-5 \\
-% Laplace Inversion slp & 8.68e-7 & 2.27e-6 & 5.92e-6 & 1.12e-5 & -2.12e-5 \\
 \end{tabular}
 \label{tbl:PascalExponentialSVFTest}
 
@@ -622,24 +539,11 @@ Error & 7.27e-7 & 1.92e-6 & 5.86e-6 & 1.78e-5 & 4.01e-5 \\
 \begin{tabular}{c|ccccc}
 $a$                   & 0.5  & 1  & 1.5  & 2 & 2.5  \\
 \hline
-% Laplace Inversion survival function & 7.27e-7 & 1.92e-6 & 5.86e-6 & 1.78e-5 & 4.01e-5 \\
 Error & 8.68e-7 & 2.27e-6 & 5.92e-6 & 1.12e-5 & -2.12e-5 \\
 \end{tabular}
 
 \label{tbl:PascalExponentialSLPTest}
 \end{table}
-
-% \begin{figure}[H]
-% \centering
-% \includegraphics[width=0.95\textwidth]{exponential_svf.pdf}
-% \caption{Survival function estimates and approximate absolute error.}
-% \end{figure}
-
-% \begin{figure}[H]
-% \centering
-% \includegraphics[width=0.95\textwidth]{exponential_slp.pdf}
-% \caption{Stop-loss premium estimates and approximate absolute error.}
-% \end{figure}
 
 \begin{test}
 $N\sim\PoissonDist(\lambda=2)$, and $U\sim\GammaDist(r=3/2,m=1/3)$
@@ -678,8 +582,6 @@ This test case (up to the scaling constant) has been considered by Jin et al.\ \
 
 \begin{test} \label{test:poiss_pareto} $N\sim\PoissonDist(\lambda=4)$, and $U\sim\ParetoDist(a=5,b=11,\theta=0)$
 \end{test}
-% The survival function for $U$, given $x \ge \theta=0$, is
-% \[ \Ftail_U(x) = \bigl( 1 + \frac{x-\theta}{a} \bigr)^{-b} = \bigl( 1 + \frac{x}{5} \bigr)^{-11} \,. \]
 The Laplace inversion estimator breaks down for small values of $x$ or $a$ in this test case. The specific error given is an ``out of memory'' exception when \textsc{Mathematica} is attempting to do some algebra with extremely large numbers. It is unclear whether a different implementation or selection of parameters would fix this behaviour.
 
 \begin{figure}[H]
@@ -712,12 +614,6 @@ The Laplace inversion estimator breaks down for small values of $x$ or $a$ in th
 
 \subsection{Finite-time ruin probability with no initial reserve} \label{subsec:ApproximationFiniteTimeRuinProbability}
 
-% \begin{test}
-% $\lambda=2$, $U\sim\ExpDist(4)$ and $c=7.2$
-% \end{test}
-
-
-% The finite-time ruin probability is known under a closed form, the expression is given in Albrecher and Asmussen \cite[Chapter 5, Proposition~1.3]{asmussen2010ruin}.
 The plots above have used common random numbers to smooth the estimators, however this isn't possible in the following plots so they will appear less smooth.
 
 \begin{test}

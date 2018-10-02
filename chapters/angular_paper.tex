@@ -27,14 +27,6 @@ In addition to this, I completed the majority of the computational work.
 
 \section{Introduction}
 
-% A typical problem in the field of rare-event estimation is to find the probability
-% \begin{equation} \label{ProbabilityOfInterest}
-% \ell(\gamma) := \Prob(S > \gamma)
-% \end{equation}
-% where $S := X_1 + \dots + X_d$ for a fixed $d \in \NL$ and where the $\gamma \in \RL$ is large or increasing. In applications, we often wish to understand the behaviour of a combination of random factors, and hence the random variable (random variable) $S$ is ubiquitous in real-world modeling problems. It can model, for example: aggregate risk or portfolio value for holding $d$ risky assets \cite{mcneil2015quantitative,Rueschendorf2013}, the aggregate losses for $d$ insurance policy claims \cite{asmussen2010ruin,klugman2012loss}, the combined signal interference from $d$ wireless transmission sources \cite{fischione2007approximation}. Probabilities of the form \eqref{ProbabilityOfInterest} are used to understand how a system would behave under extreme scenarios such as a market crash, a power surge, or a natural disaster. One is typically interested not just in the quantity $\ell(\gamma)$ but in the behaviour of the summands when the extreme event $\{ S > \gamma \}$ occurs.
-
-% This probability is available in closed-form for only a few basic cases, when the density of $S$ (which is an $d$-fold convolution) has a known closed-form solution, c.f. \cite{nadarajah2008review}. For example, when the summands are independent and identically distributed (iid) then it is sometimes simple to calculate (for exponential, gamma, normal, binomial, geometric, or negative binomial summands) and sometimes it is still intractable (for lognormal, Weibull, Cauchy, Laplace, Beta, or Chi-squared summands). However, requiring the assumption of independence (let alone iid-ness) of the summands is a stifling restriction when modeling real-world events; a notorious example would be the partial blame of the 2008--9 global financial crisis on mathematicians' inappropriate use of a simplistic dependence model (the Gaussian copula) \cite{salmon2009recipe}.
-
 This chapter focuses on evaluating
 \begin{equation} \label{ProbabilityOfInterest}
 \ell(\gamma) := \Prob(S > \gamma)
@@ -70,7 +62,7 @@ We propose an \emph{importance sampling} estimator which incorporates the asympt
 The main drawback to importance sampling is \emph{likelihood degeneration}, where one can face numerical errors if $\gamma$ or $d$ is extremely large.
 The degeneration caused by a large $d$ is only partially compensated by our method, so we take $d \le 100$.
 To mitigate degeneration for large $\gamma$, we focus our attention of values of $\gamma$ which are moderately large but not unrealistically so.
-Our goal is to provide an estimator which is practically useful when $\ell(\gamma)$ is between roughly $10^{-3}$ and $10^{-7}$.%; one motivation comes from the US Nuclear Regulatory Commission uses a ``95/95'' rule, where decisions are made based on the upper 95\% confidence interval for a 95\% quantile of a random quantity \cite{lurie2011applying}.
+Our goal is to provide an estimator which is practically useful when $\ell(\gamma)$ is between roughly $10^{-3}$ and $10^{-7}$.
 
 The range of probabilities that we consider are unusual as they are less rare than much of the standard rare-event literature. The orthodox approach is to construct an estimator $\hat{\ell}(\gamma)$ and analyse the limit $\lim_{\gamma\to\infty} \Var(\hat{\ell}(\gamma))/\ell(\gamma)^2$; if the limit is small (i.e., zero, bounded, or at least grows only at a polynomial rate) then the estimator is branded as a success (it has `vanishing relative error', `bounded relative error', or is `logarithmically efficient' respectively) regardless of its behaviour in the finite $\gamma$ situation. It can happen that these desirable limiting properties are only discernible in cases when the probabilities are truly minuscule (e.g. of order $10^{-10}$ or smaller); in a situation like this, the model error would surely dominate any estimation error.
 
@@ -248,32 +240,8 @@ respectively, and hence for $s>0$ and $\theta \in (0,1)$
 \[ f^{\mathrm{Ind}}_{\Theta_1 | S}(\theta | s) = 1 \,, \]
 \[ f^{\mathrm{Cla}}_{\Theta_1 | S}(\theta | s) = \frac{ s \e^{-s \theta}(\e^s - \e^{s \theta})(\e^{s \theta}-1)}{2 + s - 2\e^s + s \e^s} \,, \]
 \[ f^{\mathrm{AMH}}_{\Theta_1 | S}(\theta | s) = \frac{ s \e^{-s \theta}(\e^s + \e^{2 s \theta})}{2(\e^s - 1)}  \]
-respectively. It is interesting to note that the asymptotic independence of the Clayton copula would indicate that $f^{\mathrm{Cla}}_{\Theta_1 | S}(\theta | s) / f^{\mathrm{Ind}}_{\Theta_1 | S}(\theta | s) \to 1$ as $s\to\infty$ which is almost the case ($f^{\mathrm{Cla}} /  f^{\mathrm{Ind}} \to 2$). In contrast, $f^{\mathrm{AMH}}_{\Theta_1 | S}(\theta | s)$ degenerates to a pair of atoms at 0 and 1 as $s \to \infty$. %, see:
-% \begin{figure}[H]
-% \centering
-% \includegraphics[width=0.7\textwidth]{amh.png}
-% \end{figure}
+respectively. It is interesting to note that the asymptotic independence of the Clayton copula would indicate that $f^{\mathrm{Cla}}_{\Theta_1 | S}(\theta | s) / f^{\mathrm{Ind}}_{\Theta_1 | S}(\theta | s) \to 1$ as $s\to\infty$ which is almost the case ($f^{\mathrm{Cla}} /  f^{\mathrm{Ind}} \to 2$). In contrast, $f^{\mathrm{AMH}}_{\Theta_1 | S}(\theta | s)$ degenerates to a pair of atoms at 0 and 1 as $s \to \infty$.
 \end{example}
-
-% \begin{example}
-
-% % \begin{align*}
-% %     f(\bftheta | s) &= \frac{f_{\bfX}(s \bftheta) s^{d-1}}{ f_S(s) } \\
-% %     &= \frac{ c( F_1(s \theta_1), \dots, F_d(s \theta_d)) \prod_{i=1}^d f_{X_i}(s \theta_i) s^{d-1}}{ f_S(s) } \times \frac{ f_{S_{Ind}}(s) }{ f_{S_{Ind}}(s) } \\
-% %     &= c( F_1(s \theta_1), \dots, F_d(s \theta_d)) \times \frac{  \prod_{i=1}^d f_{X_i}(s \theta_i) s^{d-1} }{ f_{S_{Ind}}(s)} \times \frac{ f_{S_{Ind}}(s) } { f_S(s) } \\
-% % \end{align*}
-
-% For the $\mathsf{Exp}(1)$ case, we have%\footnote{Note sure if this is true for all copulas, or just for all copulas with these marginals, or just for all copulas with the same marginals, or\dots}
-% \[ \frac{  \prod_{i=1}^d f_{X_i}(s \theta_i) s^{d-1} }{ f_{S_{Ind}}(s)} = 1 \qquad \text{for all valid } \bftheta \]
-% For the $\mathsf{Clayton}(1)$ copula, we have
-% \[ \frac{ f_{S_{\mathrm{Ind}}}(s) } { f_S(s) } = \frac{s e^{-s} (\cosh (s)-1)^2}{s \sinh (s)-2 \cosh (s)+2}  \]
-% which goes to $1/2$ as $s \to \infty$. \\
-% For the $\mathsf{AMH}(-1)$ copula, we have
-% \[ \frac{ f_{S_{\mathrm{Ind}}}(s) } { f_S(s) } = \frac{1}{8} s e^{-s} \sinh ^3(s) \text{csch}^4\left(\frac{s}{2}\right)
-%   \]
-% which goes to $\infty$ as $s \to \infty$.
-% \hfill $\Diamond$
-% \end{example}
 
 One (light-tailed) case where we can find an asymptotic angular distribution is for light-tailed Weibull sums. The angular asymptotic can be extracted from the following result in \cite{asmussen2017tail}.
 
@@ -286,122 +254,6 @@ Then as $\gamma \to \infty$ we have
 \[ (\bfW(\gamma) \mid S > \gamma) \convdistr \NormDist\left(\bfzero, (1 - \rho) \bfI + \rho \right) \,,\]
 where $\rho = -1/(d-1)$.
 \end{proposition}
-
-% In the subexponential case, we conjecture that the following simulates from the asymptotic angular distribution:
-
-%\begin{Conjecture}
-%Assume that $X_1, \dots, X_d$ are independent non-identically distributed positive subexponential r.v.'s with cdfs $F_1$, \dots, $F_d$.
-%Given $S = s$, define $I$ as a random variable in $\{1, \dots, d\}$ with $\Prob(I=i) \propto \Ftail _i(s)$. An asymptotic form of $\bfTheta \mid S=s$ is
-%\begin{equation} \label{OptimisticPDF}
-%g_{\bfTheta \mid S}(\bftheta \mid s) = \sum_{i=1}^d  \Prob(I = i) \prod_{j\not=i} f_{X_j}(s \, \theta_j) \,.
-%\end{equation}
-%\end{Conjecture}
-%\begin{proof}
-%TODO: Prove this bad boy then rename from conjecture to theorem.
-%\end{proof}
-
-
-
-
-
-
-
-% Notation.  Write $\bftheta=(\theta_1,\dots,\theta_d)$ with $\theta_d := 1-\sum_{j=1}^{d-1}\theta_j$.
-
-% Write $\bfone_k$ for a $k\times 1$ vector of all ones.
-% Write $\bfzero_k$ for a $k\times 1$ vector of all zeros.
-% Write $\bfe^{(k)}_i$ for a $k\times 1$ vector of zeros with a single one in the $i$-th position.
-% Write $I_k$ for the $k\times k$ identity matrix.
-% Write $Z_{m,n}$ for the $m\times n$ matrix of zeros.  In the case of a square matrix, write simply $Z_k := Z_{k,k}$.
-
-% For a $k\times 1$ vector $\bfv$, $v^{(-i)}$ is the $(k-1)\times 1$ vector with $i$-th element removed.
-% For an $m\times n$ matrix $A$, $A^{(-i)}$ is the $(m-1)\times n$ matrix with $i$-th row removed.
-
-
-
-
-% Write $\bftheta^{(-i)}$ for $\bftheta$ with $i$-th element removed.
-
-
-% \begin{proof}
-% Fix the $(d-1)$ independent variables as $\bftheta^{(-d)}$.
-% For some $\mathbf{t}=(t_1,\dots,t_{d-1})' \in \mathbb{R}^{d-1}$, the characteristic function of
-% the limiting random variable is
-% \[
-% \phi_\infty(\mathbf{t}) := \Exp_{g_\infty} \exp\left(\ih\,\mathbf{t}' \bfTheta^{(-d)} \right) = p_d(s) + \sum_{i=1}^{d-1} p_i(s) \e^{\ih\,t_i}\,.
-% \]
-% For the characteristic function corresponding to \eqref{OptimisticPDF}, we have
-% \[
-% \phi_s(\mathbf{t}) := \Exp_{g_{\bfTheta \mid S}} \exp\left(\ih\,\mathbf{t}' \bfTheta^{(-d)} \right) =\sum_{i=1}^d p_i(s) \frac{\int_{\mathbb{S}^{d-1}} \e^{\ih\,\mathbf{t}' \bftheta^{(-d)}}\,\prod_{j\not=i} f_{j}(s \, \theta_j) \dd \bftheta }{\int_{\mathbb{S}^{d-1}} \prod_{j\not=i} f_{j}(s \, \theta_j) \dd \bftheta}\,.
-% \]
-% For each $i=1,\dots,d$, consider a single term in the sum.
-% Apply the following transformation of variables to both integrals in the numerator and denominator.
-
-% Let $\mathbf{a} := \bfe_d^{(d)}$ and
-% \[
-% B = \begin{pmatrix}
-% I_{d-1}\\
-% -\bfone_{d-1}'
-% \end{pmatrix}\,.
-% \]
-% Change variables as
-% \[
-% \bfv^{(i)} = s \bftheta^{(-i)} = s\left( \mathbf{a}^{(-i)} + B^{(-i)} \bftheta^{(-d)} \right)\,,
-% \]
-% so that
-% \[
-% \bftheta^{(-d)} = \left(B^{(-i)}\right)^{-1} \left( s^{-1} \, \bfv^{(i)} - \mathbf{a}^{(-i)} \right)\,.
-% \]
-% Note that, if $i=d$ then $\left(B^{(-i)}\right)^{-1} = I_{d-1}$, otherwise for $i=1,\dots,d-1$ we have
-% \[
-% \left(B^{(-i)}\right)^{-1} =
-% \begin{pmatrix}
-% I_{i-1} & Z_{i-1,d-i-1} & \bfzero_{i-1}\\
-% & - \bfone_{d-1}' & \\
-% Z_{d-i-1,i-1} & I_{d-i-1} & \bfzero_{d-i-1}\\
-% \end{pmatrix}\,,
-% \]
-% so that in particular we have $ - \left(B^{(-i)}\right)^{-1} \mathbf{a}^{(-i)} = \bfe_i^{(d-1)}$ for $i=1,\dots,d-1$
-% and $- \left(B^{(-d)}\right)^{-1} \mathbf{a}^{(-d)} = \bfzero_{d-1}$.
-% For fixed $s$, under these changes of variables, we have
-% \[
-% \phi_s(\mathbf{t}) %= \sum_{i=1}^d p_i(s) \frac{\int_{s\,\mathbb{S}^{d-1}} s^{-1} \, \e^{\ih\,\mathbf{t}' \left(B^{(-i)}\right)^{-1} \left( s^{-1} \, \bfv^{(i)} - \mathbf{a}^{(-i)} \right)}\,\prod_{j\not=i} f_{j}(v^{(i)}_{j-\ind(j>i)}) \dd \bfv^{(i)}}{\int_{s\,\mathbb{S}^{d-1}} s^{-1} \, \prod_{j\not=i} f_{j}(v^{(i)}_{j-\ind(j>i)}) \dd \bfv^{(i)}}
-% = \sum_{i=1}^d p_i(s) \frac{\e^{\ih\,\mathbf{t}'  \left( \ind(i\not=d)\bfe_i^{(d-1)} + \ind(i=d) \bfzero_{d-1}\right)}\,\int_{s\,\mathbb{S}^{d-1}} \e^{\ih\,\mathbf{t}'  \left( s^{-1} \, \left(B^{(-i)}\right)^{-1} \bfv^{(i)}\right)}\,\prod_{j\not=i} f_{j}(v^{(i)}_{j-\ind(j>i)}) \dd \bfv^{(i)}}{\int_{s\,\mathbb{S}^{d-1}} \prod_{j\not=i} f_{j}(v^{(i)}_{j-\ind(j>i)}) \dd \bfv^{(i)}}\,.
-% \]
-% Notice that, as $s\to\infty$, $s\,\mathbb{S}^{d-1} \to \mathbb{R}^{d-1}$.
-% Moreover, for fixed $\mathbf{t}$, as all terms remain bounded for any $s>0$, we may freely exchange a limits and integrals as $s\to\infty$.
-% Thus, we have
-% \[
-% \lim_{s\to\infty} \phi_s(\mathbf{t}) =
-% \sum_{i=1}^d p_i \frac{\e^{\ih\,\mathbf{t}'  \left( \ind(i\not=d)\bfe_i^{(d-1)} + \ind(i=d) \bfzero_{d-1}\right)}\,\int_{\mathbb{R}^{d-1}} \lim_{s\to\infty} \e^{\ih\,\mathbf{t}'  \left( s^{-1} \, \left(B^{(-i)}\right)^{-1} \bfv^{(i)} \right)}\,\prod_{j\not=i} f_{j}(v^{(i)}_{j-\ind(j>i)}) \dd \bfv^{(i)}}{\int_{\mathbb{R}^{d-1}} \prod_{j\not=i} f_{j}(v^{(i)}_{j-\ind(j>i)}) \dd \bfv^{(i)}}\,,
-% \]
-% which is
-% \[
-% \lim_{s\to\infty} \phi_s(\mathbf{t}) =
-% \sum_{i=1}^d p_i \frac{\e^{\ih\,\mathbf{t}'  \left( \ind(i\not=d)\bfe_i^{(d-1)} + \ind(i=d) \bfzero_{d-1}\right)}\,\int_{\mathbb{R}^{d-1}} \prod_{j\not=i} f_{j}(v^{(i)}_{j-\ind(j>i)}) \dd \bfv^{(i)}}{\int_{\mathbb{R}^{d-1}} \prod_{j\not=i} f_{j}(v^{(i)}_{j-\ind(j>i)}) \dd \bfv^{(i)}}\,,
-% \]
-% which further reduces to
-% \[
-% \lim_{s\to\infty} \phi_s(\mathbf{t}) =
-% \sum_{i=1}^d p_i \e^{\ih\,\ind(i\not=d)t_i}\,,
-% \]
-% or in other words $\lim_{s\to\infty} \phi_s(\mathbf{t}) = \phi_\infty(\mathbf{t})$ pointwise, and as $\phi_\infty$ is continuous at the origin,
-% we have the required convergence in distribution.
-% \end{proof}
-
-% Let's check if the density of $\bfX^*$ is correct. First split up
-% \[ \mathcal{S}_+(s) = \{ \RL_+^d : \bfone \cdot \bfx = s \} , \quad
-%    \mathcal{S}_-(s) = \{ \RL^d : \bfone \cdot \bfx = s, \bfx_{[1]}<0 \} \]
-% so $\mathcal{S}(s)$ is partitioned by $\mathcal{S}_+(s)$ and $\mathcal{S}_-(s)$.
-
-% \begin{align*}
-% &~\int_{\bfx \in \mathcal{S}(s)}
-% \sum_{i=1}^d p_i(s) f_{\bfX_{-i}}(\bfx_{-i}) \delta_{\{x_i = s - \bfone \cdot \bfx_{-i} \}} \dd \bfx \\
-% &= \sum_{i=1}^d p_i(s)  \int_{\bfx \in \RL^d}
-% f_{\bfX_{-i}}(\bfx_{-i}) \delta_{\{x_i = s - \bfone \cdot \bfx_{-i} \}} \dd \bfx \\
-% &= \sum_{i=1}^d p_i(s)  \int_{\bfx_{-i} \in \RL_+^{d-1}}
-% f_{\bfX_{-i}}(\bfx_{-i}) \int_{x_i \in \RL_+} \delta_{\{x_i = s - \bfone \cdot \bfx_{-i} \}} \dd x_i \dd \bfx_{-i} \\
-% \end{align*}
 
 When the asymptotic angular approximation is unavailable, there are several backup options.
 One can select a $g_{\bfTheta \mid S}$ from some family of distributions which has the appropriate support.
@@ -470,20 +322,6 @@ The final test takes the sum of $d=2$ iid light-tailed Weibulls, where $X_i \sim
 	\includegraphics[width=0.95\textwidth]{"Weibull Light Estimated REs"}
 	\caption{Estimated relative errors for each estimator.}
 \end{figure}
-
-
-% \foreach \test in {Lognormal iid sums d=2 , Lognormal iid sums d=2 rare ,Lognormal ind sums d=2 ,Lognormal dep sums d=2 small R ,Weibull (HT beta 3 on 4) iid sums d=2 ,Weibull (HT beta 1 on 2) iid sums d=2 ,Pareto sums iid d=2 } {
-% \foreach \test in {Lognormal ,Weibull ,Pareto } {
-%     \noindent \textbf{Test: \test}
-%     %\foreach \plot in {Estimates, Estimated REs, Actual REs Without Asymptotics} {
-%     \foreach \plot in {Estimates, Estimated REs} {
-%         \begin{figure}[H]
-%         \centering
-%         \includegraphics[width=0.95\textwidth]{"\test \plot"}
-%         \caption{\test, \plot}
-%         \end{figure}
-%     }
-% }
 
 
 \section{Conclusion} \label{Sec:Conclusion}

@@ -1,7 +1,6 @@
 %!TEX root = ../main.tex
 \newpage
 
-
 \vspace*{\fill}
 
 {\large \bf Chapter~\ref{chp:Laplace} Authorship Statement}
@@ -164,17 +163,13 @@ where $\bfLambda \defeq \theta  \diag(\ve^{\bfmu + \bfx^*})$.
 As $h_\theta(\bfx)$ is strictly convex, a unique minimum exists. Since $\nabla
 h_\theta(\bfx^*) = \bfzero$, the linear term vanishes in the Taylor expansion,
 so we have
-%
 \[ h_\theta(\bfx) \approx h_\theta(\bfx^*)
   + \frac12 (\bfx - \bfx^*)^\tr \bfH (\bfx - \bfx^*) \]
-%
 where $\bfH$ is defined as the Hessian $\partial^2 h_\theta(\bfx) / ( \partial
 x_i \, \partial x_j )$ evaluated at $\bfx^*$.  To find the value of $\bfH$, we
 just take derivatives:
-%
 \[ \nabla h_\theta(\bfx) = \theta \ve^{\bfmu + \bfx} + \bfD \bfx,
   \quad \bfH = \bfLambda + \bfD. \]
-%
 Since $\bfLambda$ and $\bfD$ are both positive definite, so is $\bfH$. Also,
 $\nabla h_\theta(\bfx^*) = \bfzero$ gives
 \begin{equation} \label{grad_zero_subs}
@@ -241,9 +236,7 @@ and $\bfZ \sim \NormDist(\bfzero, \bfeye)$.
 \begin{proof}
 To show that $I(\theta)$ can be written as the first expectation in
 \eqref{I_as_norm_exps}, use $\bfH = \bfLambda + \bfD$, then add and subtract a term, to get
-%
 \[ (\bfSigma \bfH)^{-1} = [\bfSigma (\bfD + \bfLambda)]^{-1} = (\bfeye + \bfSigma \bfLambda)^{-1} \bfeye  \pm (\bfeye + \bfSigma \bfLambda)^{-1} (\bfSigma \bfLambda)  = \bfeye - \bfH^{-1} \bfLambda  \]
-%
 and substitute this into the $-\frac12 \bfy^\tr (\bfSigma \bfH)^{-1} \bfy$ term in \eqref{I_in_propos}.
 
 To prove $I(\theta)$ equals the second expectation of \eqref{I_as_norm_exps},
@@ -258,12 +251,10 @@ change variables in \eqref{I_in_propos} so that $\bfy = (\bfSigma \bfH)^{1/2} \b
 
 \begin{remark}\label{R:W} When $n=1$, $\bfSigma = \sigma^2$ and $\mu=0$,
 \eqref{std_norm_form} becomes
-%
 \[
 	I(\theta) = \sqrt{ 1 + \theta \sigma^2 \e^{x^*}} \int_{\RL}
         \frac{1}{\sqrt{2\pi}} \exp\Bigl\{ \frac{x^*}{\sigma^2} (\e^{\sigma z} - 1 - \sigma z ) - \frac12 z^2 \Bigr\} \dd z.
 \]
-%
 This can be simplified using the \emph{Lambert W} function, denoted $\LambertW$,
 which is defined \cite{corless1996lambertw} as the solution to the equation $\LambertW(z)
 \e^{\LambertW(z)} = z$. With this we have $x^* =
@@ -282,7 +273,7 @@ equation (2.3). \remQED
 
 
 \begin{remark}
-% \textbf{TODO: This was originally commented out, so check it's all correct and the notation is fine.}
+
 
 The simplistic representation above hides a more subtle understanding. The following is based off Senaratne and Tellambura \cite{senaratne2009numerical} who considered numerically evaluating $\Laplace(\theta)$ for $n=1$. Consider $\theta \in \CL_+$, and note that $\exp\{ h_\theta(\argdot) \}$ is analytic everywhere (that is, it satisfies the Cauchy--Riemann conditions). Then consider contour integrals of the form
 \[ \int_{\mathcal{C}} \exp\{ h_\theta(\bfz) \} \dd \bfz \,, \]
@@ -348,11 +339,9 @@ Inserting \eqref{all_pos_x_star} in \eqref{to_solve_xstar} we find
 + \bfa \log_2 \theta - \bfD  \bfmu + \bfD  \vlog \bfa + \bfD \bfr(\theta) = \bfzero .
 \]
 Looking at these equations we see that we must have
-%
 \[
  \limsup_\theta \max_i r_i(\theta) = \liminf_\theta \min_i r_i(\theta) = 0,
 \]
-%
 and to remove the $\log_2 \theta$ term the main term of $r_i(\theta)$ has to
 be $-\log_2 \theta /\log \theta$. This gives the result of the
 proposition.\qed
@@ -365,20 +354,16 @@ intricate.
 \begin{theorem}\label{Th:24.8a}
 There exists a partition of $\{1,\ldots,n\}$ into $\Fset{+}$ and $\Fset{-}$
 such that for $i \in \Fset{+}$,
-%
 \[
 x_i^*=-\log\theta+\log_{k_i}\theta- \mu_i + c_i +\oh(1)
 \]
-%
 for some $1<k_i\le n$. All $x_i^*$ in $\Fset{-}$ follow the general form of
 \eqref{general_form}.  In more detail, there exists a partition of $\Fset{-}$
 into $\Fset{-}(1)$ and $\Fset{-} \setminus \Fset{-}(1)$, such that if $i\in
 \Fset{-}(1)$ then $\beta_{i,1} < -1$, and if $i \in \Fset{-} \setminus
 \Fset{-}(1)$ then
-%
 \[ \beta_{i,1} = -1,\ \beta_{i,2} = \cdots = \beta_{i,k_i-1} = 0,\ \beta_{i,k_i}
 < 0 \]
-%
 for some $1<k_i\le n$.  Finally we have, writing subscripts $+$ and $-$ for
 $\Fset{+}$ and $\Fset{-}$, that $\bfx_{-} = \bfC \bfx_{+} + \oh(1)$ where
 $\bfC = -\bfD_{{-},{-}}^{-1}\bfD_{{-},{+}}$. The sets $\Fset{+}$, $\Fset{-}$,
@@ -531,12 +516,10 @@ Let $\bfb = -\bfbeta_{\sbullet,1}$. We have
 	\end{cases}
 \]
 Split $\bfD$ according to indices in $\Fset{*}$ and $\Fset{\sim}$, then
-%
 \[ \bfD_{{\sim},{*}} \bfb_{*} + \bfD_{{\sim},{\sim}} \bfb_{\sim} = \bfzero
 \quad \text{and}
  \quad \bfD_{{*},{*}} \bfb_{*} + \bfD_{{*},{\sim}} \bfb_{\sim}  =
  \ve^{\bfc_{*}}  > \bfzero. \]
-%
 The first equation gives $\bfb_{{\sim}} =  - \bfD_{{\sim},{\sim}}^{-1}
 \bfD_{{\sim},{*}} \bfb_{*}$, and this with the second equation shows
 that
@@ -638,11 +621,9 @@ where $c_{3} = 0.9 -0.1 \log 2.2 + 1.1 \log 0.79$, and
   describe an interesting link between the row sums and the \emph{minimum
     variance portfolio}. They show that the leading asymptotic term of
   $\Prob(S_n < x)$ as $x \downarrow 0$ depends upon
-%
 \[ \overline{\bfw}^\tr \bfSigma \, \overline{\bfw}
  = \min_{\bfw \in \Delta} \bfw^\tr \bfSigma  \bfw , \text{ where }
 \Delta \defeq \Bigl\{ \bfw : \sum_i w_i = 1, w_i \geq 0 \Bigr\} . \]
-%
 The $i$ for which $\overline{w}_i > 0$ indicate which summands in $S_n$ have
 the `least variance'. These summands are asymptotically important in the left
 tail, as they will struggle the most to take very small values. Seen from the
@@ -713,9 +694,7 @@ latter comes from the positive definiteness of $\bfB^*$, the convergence of
 $\bfB$ to $\bfB^*$ and the convergence of \eqref{second_exp_to_zero}. Next,
 convexity implies that the exponent is bounded by $-g_2\norm{\bfz}$ for $\norm{\bfz}
 > 1$. In total we have the bound
-%
 \[ \exp( g_1 \ind{\norm{\bfz} \leq 1} - g_2 \norm{\bfz} \ind{\norm{\bfz} > 1} ) \,, \]
-%
 which is an integrable function. Thus the conditions for dominated convergence
 are satisfied and we can safely switch the limit and integral to obtain
 $I(\theta) \to 1$.
@@ -730,10 +709,8 @@ impossible for large $n$). The next na{\"i}ve approach is to estimate the
 expectation $\Exp[\e^{-\theta S_n}]$ by crude Monte Carlo (CMC). This would
 involve simulating random vectors $\bfX_1, \dots, \bfX_R \iidDist \LNDist(\bfmu,
 \bfSigma)$, with $\bfX_r = (X_{r,1}, \dots, X_{r,n})$, and computing
-%
 \[ \widehat{\Laplace}_{\mathrm{CMC}}(\theta) \defeq \frac{1}{R} \sum_{r=1}^R
   \exp\Bigl\{-\theta \sum_{i=1}^n X_{r,i}\Bigr\}. \]
-%
 However this estimator is not efficient for large $\theta$, and rare-event
 simulation techniques are required.
 
@@ -750,7 +727,6 @@ not seem promising. The second estimator---$\sqrt{\det(\bfSigma
   \bfH)} \, \Exp[ v(\bfSigma^{1/2} \bfZ) ]$---can be viewed as the first
 estimator after importance sampling has been applied, so we focus upon
 this. Taking $\bfZ_1, \dots, \bfZ_R \iidDist \NormDist(\bfzero, \bfSigma)$,
-%
 \[ \widehat{\Laplace}_{\mathrm{IS}}(\theta) \defeq \frac{1}{R}
   \exp\left\{ \Bigl(\bfone - \frac12 \bfx^* \Bigr)^\tr \bfD \bfx^* \right\}
   \sum_{r=1}^R \exp\left\{ (\bfx^*)^\tr \bfD (\ve^{\bfZ_r} - \bfone - \bfZ_r)
@@ -777,9 +753,7 @@ $\widehat{\Laplace}_{\mathrm{IS}}(\theta)$; for a detailed explanation of
 these techniques see \cite{glasserman2003monte} or
 \cite{asmussen2007stochastic}. Both individually achieved significant variance
 reduction, and together provided the best estimator. Specifically,
-%
 \[ \widehat{\Laplace}_{\mathrm{Q}}(\theta) \defeq \frac{1}{R} \exp\Bigl\{ \Bigl(\bfone - \frac12 \bfx^* \Bigr)^\tr \bfD \bfx^* \Bigr\}  \sum_{r=1}^R \exp\left\{ (\bfx^*)^\tr \bfD (\ve^{\bfq_r} - \bfone - \bfq_r) \right\}, \]
-%
 where $\bfq_r \defeq \bfSigma^{1/2} \mathrm{\bfPhi}^{-1}(\bfu_r)$, using
 $\mathrm{\bfPhi}^{-1}$ as the (element-wise) standard normal inverse
 cdf, and where $\{\bfu_1, \bfu_2, \dots\}$ is the $n$-dimensional Sobol
@@ -903,10 +877,8 @@ $\bfw_{\Fset{-}(k-1)}$ in terms of $\bfu$ from the equations
 $\bfD_{i,\sbullet}\bfw=0$, $i\in \Fset{-}(k-1)$. The derivative of $\bfw^\tr
 \bfD \bfw$ with respect to $u_i$ ($i$ being the index inherited from $\bfw$)
 is then
-%
 $$2\bfD_{i,\sbullet}\bfw+2\frac{\partial \bfw_{\Fset{-}(k-1)}}{\partial
 u_i}\bfD_{\Fset{-}(k-1)}\bfw= 2\bfD_{i,\sbullet}\bfw.$$
-%
 As above we find that the derivative of $\bfw^\tr \bfD \bfw$ with respect to
 $u_i$ at the minimising point is zero when $u_i<0$ and less than or equal to
 zero when $u_i=0$.

@@ -24,8 +24,6 @@ In addition to this, I completed the majority of the computational work and of t
 
 \chapter{Rare maxima of random variables} \label{chp:maxima}
 
-% \framebox{(pjl) Add in the closed form soln for ind. $X_i$'s}
-
 \section{Introduction}
 
 The distribution of the sum of random variables is, in some ways, similar to the maximum of those random variables, and many of the techniques used to analyse the former can be applied to the latter. For example, one well-known result connecting $S = \sum_{i=1} X_i$ to $M = \max_i X_i$ when the $X_i$ are subexponentially distributed is
@@ -35,13 +33,11 @@ Another connection is that the distribution of $M$ is rarely known in a closed f
 The estimators in this chapter apply to quite general problems, not just to maxima variables. We will first introduce them as relating to rare maxima of dependent random vectors, and then generalise.
 For a random vector $\bfX = (X_1, \dots, X_d)$, the first problem we consider is estimating
 \[ \alpha(\gamma) = \Prob(M > \gamma) \,. \]
-%for large $\gamma$.
 This problem has applications in many areas, for example in actuarial science (e.g.\ default probabilities \cite{asmussen2010ruin}), finance (e.g.\ probability of `knock-out' in a barrier option \cite{cont2010encyclopedia}), survival analysis, reliability \cite{rausand2004system} and engineering (e.g.\ failure probability of a series circuit).
 
 We construct estimators for this probability, which are in terms of
 \[ E(\gamma) = \sum_{i=1}^d \ind{X_i > \gamma} \,,\]
-the random variable which counts the number of $X_i$ which exceed $\gamma$.\footnote{We use $\ind{\cdot}$ to denote the indicator function, and $\ind{\emptyset} = 1$.} Our two main estimators in this setting are % and $\omega_{\cdot} \iid \Prob(\cdot)$,
-%\footnote{We denote the standard probability space as $(\Omega, \mathcal{F}, \Prob)$.}
+the random variable which counts the number of $X_i$ which exceed $\gamma$.\footnote{We use $\ind{\cdot}$ to denote the indicator function, and $\ind{\emptyset} = 1$.} Our two main estimators in this setting are
 \begin{align}
   \hat{\alpha}_1 \label{alpha_1}
   &= \sum_{i=1}^d \Prob(X_i > \gamma) + \frac1R \sum_{r=1}^R (1 - E_r(\gamma)) \ind{E_r(\gamma) \ge 2 } \,, \text{ and} \\
@@ -81,7 +77,6 @@ Let $A(\gamma) = \cup_{i=1}^d A_i(\gamma)$ be the union of events $A_1(\gamma),\
     We consider the problem of estimating $\Prob ( A(\gamma) ) $ when the events are rare, that is, $\Prob(A(\gamma)) \to 0$ as $\gamma \to \infty$.
 Define
 \[ \alpha(\gamma) \defeq \Prob ( A(\gamma) ) \quad \text{and} \quad \quad E(\gamma) \defeq \sum_{i=1}^d \ind{A_i(\gamma)} \, .
-%\quad \text{and} \quad \beta_n(\gamma) \defeq \Exp [ Y \ind{ E_\gamma \ge n } ]  for $i=1,\dots,d$.
 \]
 Note that we recover our introductory example by having
 $A_i(\gamma) = \{X_i > \gamma\}$. Aside from this example, $A(\gamma)$ is quite general (a union of arbitrary events)
@@ -136,15 +131,6 @@ For $i = 1,\dots, d$,
 = \sum_{k=i}^{d} \BigBinom{k}{i} \ind{E = k }
 = \BigBinom{E}{i} \ind{E \ge i} \,.
 \end{align*}
-% \end{proof}
-% \begin{align*}
-% \sum_{\card{I}=i} \ind{ \cap_{i\in I}A_i}(\omega)
-% &= \sum_{k=i}^{d} \sum_{\card{I}=i} \ind{ \cap_{i\in I}A_i\}(\omega)\Ind\{E(\omega) = k } \\
-% &= \sum_{k=i}^{d} \sum_{\card{I}=i} \sum_{\substack{|J|=k-i \\ I \cap J = \emptyset}} \ind{ \cap_{i\in (I\cup J)}A_i,  \cap_{i\in (I\cup J)^c}A_i^c  }(\omega) \\
-% &= \sum_{k=i}^{d} \BigBinom{k}{i} \sum_{|K|=k} \ind{ \cap_{i\in K}A_i, \cap_{i\in K^c}A_i^c }(\omega) \\
-%  &= \sum_{k=i}^{d} \BigBinom{k}{i} \ind{E(\omega) = k } = \BigBinom{E(\omega)}{i}
-%   \ind{E(\omega) \ge i} \,.
-% \end{align*}
 \end{proof}
 Taking the expectation of \eqref{summands} gives
 \begin{equation*}
@@ -160,8 +146,6 @@ We begin by constructing the single-replicate estimator $\hat{\alpha}_1$
 where the first summand is calculated and the remaining terms are estimated:
 \begin{align} \label{eq:alpha_1_hat}
 	\hat{\alpha}_1 \defeq& \sum_i \Prob(A_i)  + \sum_{i=2}^d \Bigl[ (-1)^{i-1} \BigBinom{E}{i} \ind{E \ge i} \Bigr] \notag \\
-	  % &= \sum_i \Prob(A_i)  +  \sum_{i=2}^{E} \Bigl[ (-1)^{i-1} \BigBinom{E}{i} \Bigr]
-	   % \ind{E \ge 2} \\
 	=& \sum_i \Prob(A_i)
 + (1 - E) \ind{E \ge 2 } \,, \quad \text{using} \quad \sum_{k=0}^n (-1)^{k-1} \BigBinom{n}{k} = 0 \,.
 \end{align}
@@ -173,7 +157,6 @@ In identical fashion, the single-replicate estimator calculating the first two t
 \end{align}
 Thus, for $n \in \{1,\dots,d-1\}$,\footnote{Note that by the IEF, we have
 $\hat{\alpha}_d\defeq\alpha$, so this possibility is ignored.}
-%This definition ignores the uninteresting cases of $n=0$ (the crude MC estimator %$\hat{\alpha}_0\defeq\ind{E \ge 1}$) and $n=d$ (the trivial estimator } we have
 \begin{equation} \label{hat_alpha_n}
 	\hat{\alpha}_n \defeq
 \sum_{i=1}^n (-1)^{i-1} \sum_{\card{I}=i} \Prob\Bigl( \bigcap_{i\in I} A_i \Bigr)
@@ -244,7 +227,7 @@ As
 \]
 we can see that $\hat{\alpha}_1$ under this change of measure, with $R \in \NL$ replicates, is
 \begin{equation} \label{alpha_1_IS1}
-  \hat{\alpha}_{1}^{[1]} \defeq \frac1R \sum_{r=1}^R \frac{\alphaMax}{E_r^{[1]}} \,, %\quad \omega_r \iid \Q^{[1]}\,.
+  \hat{\alpha}_{1}^{[1]} \defeq \frac1R \sum_{r=1}^R \frac{\alphaMax}{E_r^{[1]}} \,,
 \end{equation}
 where the superscript ``$[1]$'' indicates that the $E_r^{[1]}$ are (independently) sampled under $\Q^{[1]}$. This estimator corresponds to one from the paper of Adler et al.\ \cite{adler1990introduction}, though applied in a  more general way (they consider rare maxima of normally distributed vectors).
 
@@ -259,11 +242,8 @@ which induces a likelihood ratio of
 Thus, after simplifying, the estimator $\hat{\alpha}_2$ under $\Q^{[2]}$ is
 \begin{align} \label{alpha_2_IS_2}
   \hat{\alpha}_{2}^{[2]} \defeq
-  \alphaMax -  \frac{2q}{R} \sum_{r=1}^R \frac{1}{E_r^{[2]}} .% \,, \quad \omega_r \iid \Q^{[2]} \, ,
+  \alphaMax -  \frac{2q}{R} \sum_{r=1}^R \frac{1}{E_r^{[2]}} \,.
 \end{align}
-
-% \begin{remark} Under $\Q^{[2]}$,  $\hat{\alpha}_1 \equiv \hat{\alpha}_2$. \remQED \end{remark}
-% NOTE: The above remark seems wrong.. Possibly Q^{[2]} is not a valid IS distribution for \hat{\alpha}_1..?
 
 \begin{remark}
 As the $\Q^{[2]}$-mean of $\frac2{E}$ is less than 1, this fraction can be seen as a correction term for the two-term truncation of \eqref{incl_excl}. We know from \eqref{bonf_even} that $\alpha \ge \alphaMax - q$. \remQED
@@ -338,8 +318,7 @@ The following proposition gives the partition of the event $\{E \ge i\}$:
 This proposition implies that
  \begin{align*}
   \beta_n&=\Exp\bigl[Y\indBig{\bigcup_{\card{I}=n} B_I}\bigr]
-    =\Exp\bigl[Y\indBig{\bigcup_{\card{I}=n} B_IC_I}\bigr] %\\
-  %&=\sum_{\card{I}=i}\Exp\left[Y  \ind{B_IC_I}\right]
+    =\Exp\bigl[Y\indBig{\bigcup_{\card{I}=n} B_IC_I}\bigr]
   =\sum_{\card{I}=n}\Exp[Y \ind{C_I} \mid B_I ] \Prob(B_I).
  \end{align*}
   Therefore, if (i)
@@ -388,7 +367,7 @@ This leads to the set of estimators
    \sum_{r=1}^{\lceil R/\binom{d}{n} \rceil}
    \Bigl[ \sum_{i=0}^{n-1} (-1)^{i} \BigBinom{E_{I,r}}{i} \Bigr]
 	\ind{ E \ge n }_{I,r} \,,
-\end{align*}% \hspace{-5pt}
+\end{align*}
 for $n = 2, \dots d-1$.
 In particular, for $n=2$
 \begin{align} \label{beta_on_alpha_2}
@@ -399,7 +378,6 @@ In particular, for $n=2$
    (1 - E_{ij,r}) \ind{ E \ge 2 }_{ij,r} \,,
 \end{align}
 where the $ij$ subscript indicates sampling conditional on $A_iA_j$, similar to before.
-%where $\omega_{ij\cdot} \iid \Prob(\,\cdot \mid A_iA_j )$.
 
 \section{Efficiency results} \label{scn:efficiency_results}
 
@@ -443,7 +421,7 @@ $\hat{\beta}_n$ is of at least of a factor $\max_{\card{I}=n}\Prob(B_I)$
 with respect to the non-conditional (crude) version estimator $\hat{\beta}_n^{[0]}$
 defined as
 \begin{equation}
- \hat{\beta}_n^{[0]}\defeq\sum_{\card{I}=n} \frac1{\lceil R / \binom{d}{n} \rceil} \sum_{r=1}^{\lceil R / \binom{d}{n} \rceil}  Y_{Ir}\ind{B_IC_I}% \,, \quad \omega_{\cdot\cdot} \iid \Prob(\cdot)\,.
+ \hat{\beta}_n^{[0]}\defeq\sum_{\card{I}=n} \frac1{\lceil R / \binom{d}{n} \rceil} \sum_{r=1}^{\lceil R / \binom{d}{n} \rceil}  Y_{Ir}\ind{B_IC_I} \,.
 \end{equation}
 \begin{proposition}\label{prop:VarRedCMC}
  \begin{equation*}
@@ -630,7 +608,7 @@ $\eta = (1 + \rho)/2$ and $L(x) \propto (\log x)^{-\rho/(1+\rho)}$; Section~\ref
 \centering
 \caption{Residual tail dependence index $\eta$ and $L(x)$ for various copulas. This is a subset of Table~1 of \protect{\cite{heffernan2000directory}} (their row numbers are preserved).} \label{tbl:etas_for_copulas}
 \subfloat[Copulas with BRE.]{
-\resizebox{0.45\textwidth}{!}{%
+\resizebox{0.45\textwidth}{!}{
 \centering
 \begin{tabular}{|c|c|c|c|}
 \hline
@@ -657,7 +635,7 @@ $\eta = (1 + \rho)/2$ and $L(x) \propto (\log x)^{-\rho/(1+\rho)}$; Section~\ref
 \end{tabular}}}
 \qquad
 \subfloat[Copulas without BRE.]{
-\resizebox{.45\textwidth}{!}{%
+\resizebox{.45\textwidth}{!}{
 \begin{tabular}{|c|c|c|c|}
 \hline
 \bf{\#} & \bf{Name} & $\eta$ & $L(x)$ \\
@@ -709,7 +687,7 @@ Charpentier and Segers \cite{charpentier2009tails} have helpfully created a dire
 \centering
 \caption{Examples of Archimedean copula families. Names (if they are named) and generator functions are listed, as are the ranges for which $\theta$ is valid and the subset of $\theta$ which ensures that $\hat{\alpha}_1$ has BRE. A $\Theta$ in the final column means that all valid $\theta$ ensure BRE. The families listed appear in Table 4.1 of \protect{\cite{nelsen2006introduction}} and Table 1 of \protect{\cite{charpentier2009tails}}.} \label{effic_arch_cops}
 \vspace{1em}
-\resizebox{.75\textwidth}{!}{%
+\resizebox{.75\textwidth}{!}{
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 \bf{\#} & \bf{Name} & \bf{Generator} $\psi(t)$ & \bf{Valid} $\theta$ & \bf{Efficient} $\theta$ \\[3pt]
@@ -819,15 +797,6 @@ Consider $\bfX \sim \EllDist(\bfmu, \bfSigma, F)$ where $F \in \mathsf{MDA(Gumbe
 \begin{proof}
  It follows from \eqref{berman} and \thrm{thm:type_1_asymptotics} in the Appendix.
 \end{proof}
-
-% Note(pat): That didn't seem necessary.
-% \begin{remark}
-% In \thrm{thm:ellip_efficiency}, the computation of $\kappa$ as the maximum of all pairs $\kappa_{ij}$ is necessary due to the fact that for normal/elliptical distributions,
-% one can construct a covariance matrix $\bfSigma$ such that
-% $\argmax_i \Prob(X_i>\gamma) = 1$ and
-% $\argmax_{i < j} \Prob(X_i > \gamma, X_j > \gamma) = (2,3)$
-% for $\gamma \to \infty$. \remQED
-% \end{remark}
 
 \begin{example}[Kotz Type III]
  One family of type I elliptical distributions, is the \emph{Kotz Type III} distributions, defined by
@@ -943,8 +912,6 @@ The estimators tested are $\hat{\alpha}_0$ (crude Monte Carlo) and
  $\hat{\alpha}_1$, $\hat{\alpha}_2$, $\hat{\alpha}_1^{[1]}$, $\hat{\alpha}_2^{[2]}$, $\widehat{(\beta_1 \ddagger \alpha)}$, $\widehat{(\beta_2 \ddagger \alpha)}$, defined in \eqref{alpha_1}, \eqref{alpha_2}, \eqref{alpha_1_IS1}, \eqref{alpha_2_IS_2}, \eqref{beta_on_alpha_1} and \eqref{beta_on_alpha_2} respectively. As a reference, we show the true value $\alpha$ (calculated by numerical integration using \textsc{Mathematica}), and the first two truncations of the IEF:
 $ \alphaMax(\gamma) \defeq \sum_i \Prob(X_i > \gamma)$ and $\alphaMax(\gamma){-}q(\gamma) \defeq \sum_i \Prob(X_i > \gamma) - \sum_{i<j} \Prob(X_i > \gamma, X_j > \gamma)$.
 Each estimator is given $R=10^6$, and an asterisk is placed in table entries where the corresponding estimate had 0 variance (i.e., the estimator had degenerated).
-% \setlength\extrarowheight{2pt}
-% \input{tables.tex}
 
 \newpage
 \subsection{Results}
@@ -970,7 +937,6 @@ $\widehat{(\beta_1 \ddagger \alpha)}$ & 5.634e-02 & 1.095e-04 & 3.838e-09 & 2.48
 \bottomrule
 \end{tabular}
 \caption{Estimates of $\Prob(M>\gamma)$ where $M=\max_i X_i$ and $\bfX \sim \NormDist_4(\bfzero_4, \bfSigma)$, $\rho = 0.75$.}
-%where $\bfSigma = (1-0.75) \bfeye + 0.75$ (constant correlation $\rho=0.75$).}
 \label{table:norm_ests}
 \end{table}
 
@@ -1173,8 +1139,6 @@ to a more general setting makes them useful for a larger variety of estimation p
 
 We did not discuss stratification strategies for $\hat{\beta}_i$ that could result in further reductions in variance. Nor did we investigate which permutations of the $A_i$ minimise the variance of $\hat{\beta}_i$. Further investigation into the use of $\hat{\beta}_i$ to estimate tail probabilities of order statistics would be of value.
 
-% \section*{Acknowledgements}
-%  LRN is supported by ARC grant DE130100819.
 
 \begin{subappendices}
 \section{Elliptical distribution asymptotics} \label{scn:elliptical_asymptotics}
@@ -1223,7 +1187,7 @@ Then with $\upsilon_{ij}(\gamma)=(\gamma-\mu_{ij})/\kappa_{ij}+c_{ij}(\gamma)$ f
    \Prob(X_i > \gamma, X_j > \gamma)
    &= \Ftail(\upsilon_{ij}(\gamma)) \times \begin{cases}
    		 \Bigl( 2\pi \upsilon_{ij}(\gamma) w(\upsilon_{ij}(\gamma)) \Bigr)^{-1/2}(1 + \oh(1)),
-   		 & \text{ if } \rho_{ij} > a_{ij}, \\%[1cm]
+   		 & \text{ if } \rho_{ij} > a_{ij}, \\
          \Bigl( 2\pi \upsilon_{ij}(\gamma) w(\upsilon_{ij}(\gamma)) \Bigr)^{-1}(C_{a,\rho} + \oh(1)),
          & \text{ if } \rho_{ij} < a_{ij},
    	\end{cases}

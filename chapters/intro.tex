@@ -11,9 +11,7 @@
 
 \section{A seemingly simple problem}
 
-% \cite{asdf}
-
-I remember the moment when I was first confronted with the problem of sums of random variables. I was tutoring introductory probability, and one of my students (whose full-time job was in insurance) asked about how to find the distribution of a sum of random variables. My response was that there were simple cases when the distribution of the sum was known (sums of exponentials or gammas were gamma distributed, sums of normals were normal); indeed, these kind of calculations featured prominently in the course's assignments. But, the student asked, what about all the other situations which didn't fit into these niches? %The other solutions which came to mind were to calculate the density of the sum by using its convolution integral form, or to find an integral transform (such as Laplace transform) of the sum and invert this.
+I remember the moment when I was first confronted with the problem of sums of random variables. I was tutoring introductory probability, and one of my students (whose full-time job was in insurance) asked about how to find the distribution of a sum of random variables. My response was that there were simple cases when the distribution of the sum was known (sums of exponentials or gammas were gamma distributed, sums of normals were normal); indeed, these kind of calculations featured prominently in the course's assignments. But, the student asked, what about all the other situations which didn't fit into these niches?
 
 As it turns outs, there is an abundance of solutions to this problem, and none of the answers are as simple as the original question.
 To be more specific about the problem, let us consider the standard procedure for statistical inference:
@@ -161,8 +159,6 @@ The Newton--Cotes method approximates this integral as
 where $p_{n-1}(f; x_1, \dots, x_n; x)$ is the unique polynomial of degree $n-1$ which interpolates $f$ on the points $\{ x_1, \dots, x_n\}$ evaluated at the point $x$.
 This interpolating polynomial, written in \emph{Lagrangian form}, is
 \[ p_{n-1}(f; x_1, \dots, x_n; x) = \sum_{k=1}^{n} f(x_k) \ell_k(x) \,, \quad \text{where} \quad \ell_k(x) = \prod_{i=1, i\not=k}^n \frac{x - x_i}{x_k - x_i}  \,. \]
-% where $\ell_k$ are the \emph{cardinal functions}
-% \[ \ell_k(x) = \prod_{i=1, i\not=k}^n \frac{x - x_i}{x_k - x_i} \,. \]
 The approximating integral can be written as
 \[ \int_a^b p_{n-1}(f; x_1, \dots, x_n; x) w(x) \dd x = \sum_{k=1}^n w_k f(x_k) \,, \]
 where
@@ -204,8 +200,7 @@ Divide $f$ by $\omega_n$, so
 \end{equation}
 where the quotient $q$ and the remainder $r$ are polynomials of order $\le n-1$, so
 \[ \int_a^b f(x) w(x) \dd x = \int_a^b q(x) \omega_n(x) w(x) \dd x + \int_a^b r(x) w(x) \dd x \,. \]
-The first integral on the right-hand side is zero by \eqref{NodePolynomialOrthogonal}, % so we just need to show
-% \[ \int_a^b f(x) w(x) \dd x = \int_a^b r(x) w(x) \dd x = \sum_{i=1}^n w_i f(x_i) \,. \]
+The first integral on the right-hand side is zero by \eqref{NodePolynomialOrthogonal},
 and since $r$ is of order $\le n-1$, we know its $n$-point Newton--Cotes approximation is exact, i.e.
 \[ \int_a^b r(x) w(x) \dd x = \sum_{i=1}^n w_i r(x_i) \,, \]
 so rearranging \eqref{PolynomialDivision} gives
@@ -216,7 +211,7 @@ Finding the precise $\{x_1, \dots, x_n\}$ which satisfy the requirements of \thr
 
 So, the procedure for Gaussian quadrature is to find the $n$-th orthogonal polynomial for the given weight function $w(x)$ and range of integration $[a,b]$ (either by looking in the literature or by Gram--Schmidt orthogonalisation), set $\{x_1, \dots, x_n\}$ to be zeros of this polynomial, and set the $w_k$ by \eqref{NewtonCotesWeights}.
 
-There is a large literature on quadrature (cf.\ \cite{gautschi2011numerical} and references), however these algorithms are subject to the ominously-named \emph{curse of dimensionality}. This phrase refers to the fact that, when trying to achieve some fixed accuracy using the approximation %\eqref{basic_num_int}
+There is a large literature on quadrature (cf.\ \cite{gautschi2011numerical} and references), however these algorithms are subject to the ominously-named \emph{curse of dimensionality}. This phrase refers to the fact that, when trying to achieve some fixed accuracy using the approximation
 \begin{equation*} \label{basic_num_int}
 \Exp[g(\bfX)] \approx \sum_{i=1}^n w_i g( \bfx_i ) f_{\bfX}( \bfx_i ) \,,
 \end{equation*}
@@ -226,7 +221,6 @@ the number of evaluation points $n$ required increases exponentially in the dime
 \subsection{Laplace transform inversion} \label{sec:laplace_inversion}
 
 To discuss Laplace transform inversion, we must first define the Laplace transform.
-% \subsection{Laplace transforms} \label{sec:LaplaceProperties}
 
 \begin{definition} \label{def:TransformDefs} For a function $f : \RL_+ \to \RL_+$, we define
 \[
@@ -238,14 +232,6 @@ For a positive random variable $X$ with probability density function (pdf) $f_X$
 Some useful relations for Laplace transforms include, for $t>0$
 \[ \LT{ F_X }(t) = \frac{\LT{f_X}(t)}{t} = \frac{\LTsub{X}(t)}{t} \,, \text{ and } \]
 \[ \LT{ \Ftail_X }(t) = \frac1t - \LT{F_X(x) }(t) = \frac{1 - \LTsub{X}(t)}{t}  \,. \]
-% If $t=0$ then \framebox{(pjl) Check this.}
-% \[ \LT{ \Ftail_X }(0) = \int_0^\infty \Ftail_X(s) \dd s ?=? \Exp[X]  \,. \]
-%If we need to consider the defective pdf $f_X^+$, its Laplace transform is related via
-%\[ \LTsub{X}(t) = \LT{f_X}(t) = \LT{f_X^+}(t) + \Prob(X=0)
-%\quad \text{and} \quad
-%\LT{F_X^+}(t) = \frac{\LT{f_X^+}(t)}{t}  \,. \]
-
-
 
 A function $f$ can be recovered from its Laplace transform by a standard Bromwich integral.
 We assume $f:\,\RL_+ \to \RL_+$, is a measurable function with locally bounded variation.
@@ -253,38 +239,6 @@ To define the Bromwich integral, first select a $\gamma > 0$ then
 \[
 f(x)=\frac{2\e^{\gamma x}}{\pi}\int_{0}^{\infty}\cos(xs)\Re\left[\LT{f}(\gamma + \ih s)\right]\dd s.
 \]
-% To see this, consider the following two results.
-% \begin{lemma}[Lemma 5.5.1 of \cite{RoScScTe08}] \label{Lemma:FourierInversion}
-% Consider a measurable function $f$ where $|f| \in L^1$.
-% \begin{enumerate}[(a)]
-%   \item If $|\FT{f}| \in \Lp^1$, then $f$ is a bounded continuous function, and for all $x\in\RL$
-%   \begin{equation}\label{eq:FourierInversionFormula}
-%   f(x)=\frac{1}{2\pi}\int_{\RL} \e^{-\ih tx} \FT{f}(t)\dd t \,.
-%   \end{equation}
-%   \item If $f$ is continuous with locally bounded variation, then for all $x\in\RL$
-%   \begin{equation}\label{eq:FourierInversionFormulaLimit}
-%   f(x)=\frac{1}{2\pi} \lim_{T \to \infty} \int_{-T}^{T} \e^{-\ih tx} \FT{f}(t)\dd t\,.
-%   \end{equation}
-% \end{enumerate}
-% \end{lemma}
-% % One can use this result to derive an inversion formula for Laplace transforms.
-% \begin{theorem}[Theorem~5.5.1 of \cite{RoScScTe08}]
-%   Consider a measurable function $f : \RL_+ \to \RL_+$ with locally bounded variation.
-%   For all $x \ge 0$ and $\gamma > 0$
-%   \begin{equation}\label{eq:LaplaceInversionFormula}
-%   f(x)=\frac{2 \e^{\gamma x}}{\pi} \lim_{T \to \infty} \int_{0}^{T} \cos(x t) \Re\bigl[ \LT{f}(\gamma+\ih t) \bigr] \dd t\,.
-%   \end{equation}
-% \end{theorem}
-% \begin{proof}
-% We sketch the proof. One defines the function
-% \[
-% g(x)=\begin{cases}
-% \e^{- \gamma x} f(x),&\text{ for } x \ge 0 \\
-% g(-x), &\text{ for } x < 0
-% \end{cases} \,,
-% \]
-% applies Lemma~\ref{Lemma:FourierInversion} to $g$, and simplifies.
-% \end{proof}
 We apply a basic quadrature rule to the Bromwich integral by first \emph{discretizing} the integral and then \emph{truncating} the resulting infinite sum. In both steps, we follow the steps of Abate and Whitt \cite{Abate1992}.
 
 \subsubsection{Discretisation} \label{Sub:Discretization}
@@ -295,12 +249,6 @@ With a grid size $h>0$, this discretisation yields
 f(x) \approx f_{\text{disc}}(x) \defeq \frac{2\e^{\gamma x}}{\pi} \cdot h \, \bigl \{ \tfrac12 \LT{f}(\gamma) + \sum_{j=1}^\infty  \cos(x \cdot hj)\Re\left[\LT{f}(\gamma + \ih hj)\right] \bigr \},
 \]
 since  $\Re\left[\LT{f}(\gamma)\right] = \LT{f}(\gamma)$. We simplify this by choosing $h = \pi/(2 x)$ and $\gamma = a / (2 x)$ for an $a > 0$, achieving
-% \[
-% f_{\text{disc}}(x) = \frac{2\e^{\frac{a}{2 x} x}}{\pi} \frac{\pi}{2 x} \left\{ \frac12 \LT{f}(\frac{a}{2 x}) + \sum_{j=1}^\infty  \cos(x j\frac{\pi}{2 x})\Re\left[\LT{f}(\frac{a}{2 x} + ij \frac{\pi}{2 x})\right] \right\}
-% \]
-% \[
-% f_{\text{disc}}(x) = \frac{\e^{a/2}}{x} \left\{ \frac12 \LT{f}(\frac{a}{2 x}) + \sum_{j=1}^\infty \cos(j\frac{\pi}{2})\Re\left[\LT{f}\left(\frac{a+ i j \pi}{2 x}\right)\right] \right\}
-% \]
 \begin{equation} \label{DiscretizedInversion}
 f_{\text{disc}}(x) = \frac{\e^{a/2}}{2x}\LT{f} \left(\frac{a}{2 x}\right) + \frac{\e^{a/2}}{x} \sum_{k=1}^\infty (-1)^{k} \Re\left[\LT{f}\left(\frac{a+ 2\pi \ih k}{2 x}\right)\right] \,.
 \end{equation}
@@ -332,17 +280,6 @@ f(x) \approx f_{\text{disc}}(x) \approx f_{\text{approx}}(x) \defeq \sum_{k=0}^{
 
 \subsection{Orthogonal polynomials} \label{subsc:ortho_poly}
 
-% Intro: why not interpolation / Weirerstrass.
-
-% \begin{quote}
-% Polynomials are the most frequently used ``general-purpose'' approximants for
-% dealing with functions on bounded domains (finite intervals or finite sets of
-% points). One reason is Weierstrass's theorem, which states that any continuous
-% function can be approximated on a finite interval as closely as one wishes by a
-% polynomial of sufficiently high degree. \cite[pp. 55--56]{gautschi2011numerical}
-% \end{quote}
-
-% Conclusion: it doesn't work.
 We begin by a discussion of orthogonality of functions and generalised Fourier series expansions. This exposition draws on \cite{Szegoe1939} and \cite{gautschi2011numerical}. Firstly, we will define some vector space notation for a space over $\RL$ with respect to a \emph{weight function} $w : \RL \to \RL_+$. For the purposes of this thesis, we have that $w$ is a pdf, i.e.\ $\int_{\RL} w(x) \dd x = 1$.
 
 \begin{definition}
@@ -382,7 +319,6 @@ Any set of linearly independent functions can be used to construct a set of orth
 \For{$j = 0, \dots, i-1$}
 \State $\phi_i \gets \phi_i - \langle f_i, \phi_j \rangle_w \phi_j$
 \EndFor
-% \State $\overline{\phi}_i(x) = m_i(x) - \sum_{j=0}^{i-1} \langle m_i, p_j \rangle_w \, p_j(x)$
 \State $\overline{\phi}_i \gets \phi_i / \norm{\phi_i}_w$
 \EndFor
 \State \textbf{return} $\{ \overline{\phi}_0, \dots, \overline{\phi}_n \}$
@@ -466,9 +402,6 @@ If there exists an $\alpha>0$ such that
 \end{equation*}
 then the orthonormal polynomials $\{ p_k \}_{k\in\NZ}$ are complete in $\Lp^2(\RL, w(x) \dd x)$.
 \end{proposition}
-% \begin{proof}
-% \textbf{TODO: Find this proof.}
-% \end{proof}
 
 See \cite[p.\ 333]{Na65} for the proof.
 
@@ -554,16 +487,6 @@ Acceptance--rejection is quite general, as it works if $f_X(x)$ is substituted f
 This efficiency of acceptance--rejection depends heavily upon the constant $C$. If we use $f_X$ and not $\tilde{f}_X$ above (i.e.\ we know the normalising constant of the desired distribution) then $C$ can be easily interpreted. That is, the expected number of samples from $f_Y$ needed to accept one sample from $f_X$ is $1 / C$. So the optimal value of $C$ is 1; then, we never generate proposal samples which are wastefully discarded.
 
 Determining $C$ can be laboriously done by hand, or it can be the result of a root-finding algorithm. Extending to $d>1$ dimensions is possible, but the determination of $C$ becomes even more difficult.
-
-% \subsubsection{Special cases: normal distribution}
-
-% Some common special cases can be described by considering the normal distribution. A well-known algorithm for sampling standard normal random variables is the \emph{Box--Muller transform}, where we generate a pair of independent normal variables $Z_1, Z_2 \iidDist \NormDist(0,1)$ as
-% \[ (Z_1, Z_2) = \sqrt{-2 \log (U_1)} \bigl( \cos(2\pi U_2), \sin(2 \pi U_2) \bigr) \text{ where } U_1, U_2 \iidDist \UnifDist(0,1) \,. \]
-% Location and scaling operations are easily handled:
-% \[ X^{[r]} = \mu + \sigma Z^{[r]} \iidDist \NormDist(\mu, \sigma^2) \text{ where } Z^{[r]} \iidDist \NormDist(0,1) \,. \]
-% Similarly, we can generate multi-dimensional normal variables by applying transformations to independent unit normals:
-% \[ \bfX^{[r]} = \bfmu + \bfC \bfZ^{[r]} \iidDist \NormDist(\mu, \bfSigma) \text{ where } \bfZ^{[r]} \iidDist \NormDist(\bfzero, \bfeye) \text{ and } \bfC \bfC^\tr = \bfSigma \,. \]
-
 
 \subsubsection{Markov chain Monte Carlo}
 
@@ -705,13 +628,6 @@ has \emph{logarithmic efficiency}, \emph{bounded relative error}, or \emph{vanis
 
 These allow us to compare two competing methods on their theoretical properties. Of course, just as the seemingly inefficient $\Oh(n^2)$ \emph{quicksort} algorithm is usually faster than the $\Oh(n \log n)$ \emph{mergesort} algorithm, the fact that an estimator satisfies vanishing relative error does not always translate into better variance reduction.
 
-% \subsubsection{Conclusion of Monte Carlo integration}
-
-% In conclusion, Monte Carlo integration can be slow, difficult to implement, or just give the uninformative result that $\Exp[ g(\bfX) ] \approx 0$. \\ There are elaborate solutions to these well-known problems
-% ``for small $d$ and smooth integrands $f$, standard quadrature rules perform excellently and
-% are in general superior to Monte Carlo methods'' \cite[p.\ 13]{asmussen2007stochastic}
-% ... integrals should be solved analytically or numerically if these options are available.
-
 \subsection{Dependence and copulas}
 
 A theme of modern probability research, and of this thesis, is to relax the independence assumptions which constrict older models. \emph{Copulas} allow us to analyse just the dependence structure of a random vector, without considerations of the marginal distributions. A copula is a joint cdf for a random vector of $\UnifDist(0,1)$ random variables. \emph{Sklar's theorem} which is shown below (adapted from \cite{nelsen2006introduction}) is the foundational result which shows the generality of copulas.
@@ -767,20 +683,6 @@ This form is utilised in Asmussen \cite{asmussen2017conditional}, \cite{Pushout}
 
 Nelsen \cite{nelsen2006introduction} and Joe \cite{joe1997multivariate} are the common references on copulas, though I would recommend McNeil et al.\ \cite{mcneil2015quantitative} especially for the application of copulas to financial modelling. Also, see Mikosch \cite{mikosch2006Copula} and the many responses for a lively debate around the limitations of copula analysis.
 
-% \begin{equation} \label{GenCondMC}
-% f_{X_i | \bfX_{-i}}(x_i | \bfx_{-i}) = f_{X_i}(x_i) \psi^{(1)}( F_{X_i}(x_i)) \frac{\phi^{(n)}( \sum_{j=1}^n \psi(F_{X_j}(x_j)) ) }{\phi^{(n-1)}( \sum_{j\not=i} \psi(F_{X_j}(x_j)))} \,.
-% \end{equation}
-
-% Some Archimedean copulas, such as the Clayton and Gumbel--Hougaard copulas, have what is called a Marshall--Olkin representation. An Archimedean copula is in the Marshall--Olkin representation class if  $\phi(s) = \Exp[\e^{-s Z}]$ for some positive random variable $Z$ with cdf $F_Z$. Then an $\bfX$ with this dependence structure can be simulated via
-% \begin{equation} \label{MarshallOlkin} \bfX = \Big(F_{X_1}^{-1}\Big( \phi\Big(\frac{E_1}{Z}\Big) \Big), \dots, F_{X_n}^{-1}\Big( \phi\Big(\frac{E_n}{Z}\Big) \Big) \Big) , \quad E_i \iidDist \ExpDist(1),\; Z \sim F_Z \,.
-% \end{equation}
-% For this case, Asmussen \cite[Proposition~8.3]{asmussen2017conditional} conditions upon the $Z$ as well as $\bfX_{-i}$ to obtain what we call the \emph{extended Conditional Monte Carlo estimator}
-% \begin{align} \label{ExtCondMC}
-%  \widehat{f}_{\mathrm{ExtCond}}(s) &= \frac{1}{n}\sum_{i=1}^n f_{X_i | \bfX_{-i}, Z}( s - S_{-i} ),
-% \end{align}
-% where $f_{X_i | \bfX_{-i}, Z}(x_i ) = -z \psi'(F_i( x_i )) f_{X_i}( x_i ) \, \e^{ -z \psi(F_i( x_i )) }$ and  $\bfX$ is given by \eqref{MarshallOlkin}.
-
-
 \subsection{Asymptotic analysis and extreme value theory} \label{sec:asymptotics}
 
 A common theme in this thesis is to consider complicated expressions, and see how they behave with extremely large or extremely small inputs. This is called asymptotic analysis, and it can lead to very interesting insights. A prime example of this, is the behaviour of sums of \emph{subexponential random variables}.
@@ -805,15 +707,9 @@ Both extreme-value theory, and the related field of \emph{large deviations theor
 
 Only in some chapters do we use the Fisher--Tippet result to categorise distributions according to their limiting distribution, also called their \emph{maximum domain of attraction (MDA)}. For example, we write $F \in$ \textsf{MDA(Fr\'echet)} if the limit in the Fisher--Tippet theorem for the distribution $F$ is Fr{\'e}chet distributed.
 
-% \begin{quote}
-% In estimation theory one is often able to obtain the rate of convergence of some non-random error criterion, such as MSE, as the sample size $n$ increases, even in situations where the exact error cannot be formulated explicitly. The concept of rate of convergence has the simple interpretation of showing how ``quickly'' an estimator approaches its target as the sample size grows and can be very useful for comparison of different competing estimators. P.\ 18 Kernel Smoothing by Wand and ...
-% \end{quote}
-
 \section{Existing methods and contributions}
 
 Since each chapter covers different problems, a specialised literature review is included in each. This chapter outlines some general methods which are used for sums of random variables, and describes the contributions of this thesis.
-
-% \subsection{General methods}
 
 \subsection{The normal approximation}
 
@@ -838,11 +734,8 @@ Taking inspiration from Fourier's expansion of periodic functions in terms of tr
 \[ \frac{f(x)}{w(x)} = \sum_{i=0}^\infty \big\langle \frac{f_S}{w}, p_i \big\rangle_w \, p_i(x) = \sum_{i=0}^K \Exp[ p_i(S) ] p_i(x) \,, \]
 and truncated it to $K+1$ terms to achieve
 \[ \widehat{f}_{\mathrm{OP}}(x) = \sum_{i=0}^K \Exp[ p_i(S) ] p_i(x) w(x) \,. \]
-% As it is possible to write $\Exp[ p_i(S) ]$ in terms of $S$'s moments, or more indirectly using $S$'s cumulants,
-% more recent treatments of the approximation do this .
 
 Overall, the results using the orthogonal polynomial approach can be impressive, cf.\ \cite{GoLoPo15,GoLoPo16} for some applications in insurance. As $\widehat{f}_S$ is in such a simple form, integrals involving it can often be solved analytically --- for example, Dufresne and Li \cite{dufresne2016pricing} give an explicit form for the price of a (discrete) Asian option using the orthogonal polynomial pdf approximation. Also, a recent R package \texttt{PDQUtils} helps to automate this procedure in that language \cite{PDQutilsManual}.
-% \textbf{TODO: Read}
 
 
 However, care must be taken to ensure the approximation is theoretically valid. For $\widehat{f}_S$ to converge as $K\to\infty$, we need the check that the integrability condition $f_S/w \in \Lp^2(\RL, w(x) \dd x)$ is satisfied. Oftentimes this fails, and instead we have to approximate $f_{\tilde{S}}$ where $\tilde{S} = g(S)$ is some transformation of the sum (e.g.\ $\tilde{S} = \log(S)$, or $\tilde{S} = 1/S$), then write $f_S$ in terms of $f_{\tilde{S}}$ by using the change of variables formula. The other theoretical requirement is that the polynomials $\{ p_i \}_{i\in\NZ}$ are complete in the space $\Lp^2(\RL, w(x) \dd x)$. If they are incomplete, as is the case for $w$ being a lognormal pdf, then $\widehat{f}_S$ will converge as $K\to\infty$ but not to $f_S$ (in the lognormal case, it converges to a different pdf with the same sequence of moments as $w$). These extra requirements may explain why the the method is most commonly used where $w$ is taken as either a normal pdf or a gamma pdf. Here, the orthonormal polynomials (the Hermite and Laguerre polynomials) are classical and need not be constructed by an orthogonalisation procedure.
@@ -870,99 +763,6 @@ for some \emph{bandwidth} $h > 0$, and \emph{kernel} $K$. The most common kernel
 Accordingly, there are now various algorithms for choosing the value of $h$. Section~2.7.1 of \cite{pagan1999nonparametric} and Section~8.5 of \cite{kroese2013handbook} lists some methods, including \emph{least squares cross-validation}, the \emph{plug-in method}, and \emph{likelihood cross-validation}, none of which appears to be categorically superior to the others. An alternative KDE method by Botev et al.\ \cite{botev2010kernel} is available as a \textsc{Matlab} library for easy use.
 
 
-
-% In general, these approaches use the samples $S^{[1]}, \dots, S^{[R]}$ without incorporating the fact that they represent sums, and as such ignore important information. For example, we may be able to evaluate the joint pdf of the summand $f_{\bfX}$ (or at least up to proportionality), and the marginal pdfs and cdfs. The pushout estimator we introduce in Chapter~\ref{chp:Pushout} creates more accurate density estimates by incorporating the joint pdf of the summands; similarly, the conditional Monte Carlo and Asmussen--Kroese estimators (described in that chapter) also incorporate knowledge of the summands to reduce variance.
-
-
-
-% \textbf{TODO:} Mixtures of exponentials (non-pdf and pdf) using Orthogonal polynomials for the transformed ccdf or sqrt pdf from Dufresnse
-% \cite{dufresne2007fitting}
-
-
-
-% \subsection{Panjer's algorithm}
-
-
-
-% \begin{itemize}
-% \item Pretend the sum is BLA distributed, moment-match it, and go from there (e.g. SLN = LN)
-% \item Fit the sum value directly (any model, or KDE) --- doesn't allow for playing with the copula, doesn't allow for easy adaption for weighted sums (portfolio of stock
-% \item Generate some function approximation for the pdf of the sum --- see orthogonal polynomial work
-% \item Invert the integral transform to get CDF --- this is common, see SLP paper, need to have the transform of the sum though (not always true -- see Laplace transform paper)
-% \item Discretize using Panjer's algorithm --- find something about this, maybe light-tails or something
-% \item Use MCI by sampling $X_i$'s --- great if $X_i$'s are easy to sample and $d$ is manageable, can be wasteful for huge $d$ or when each $X_i$'s is sampled via A-R or via MCMC
-% \item Use asymptotic knowledge --- can be fine, but no guarantee that it will be accurate
-% \end{itemize}
-
-% \subsection{Orthogonal expansions for sums of lognormals}
-
-% Chapter~\ref{chp:sln_orth_pdf} describes the use of orthogonal polynomial expansions to approximate the sum of lognormals distribution; a main motivation of this is to price discrete Asian options. The earliest relevant work on this is from Turnbull and Wakeman \cite{turnbull1991quick}, who constructed an orthogonal polynomial expansion for the sum of correlated lognormals using a lognormal reference distribution. Dufresne and Li refer state of this: ``the convergence of those Edgeworth series has never been proved, and their theoretical convergence is highly unlikely'' \cite[p.\ 1]{dufresne2016pricing}. We prove this conjecture, by constructing the orthonormal polynomials w.r.t.\ the lognormal distribution and show they are not complete in the relevant vector space.
-
-% The next development was Dufresne \cite{dufresne2000laguerre} who tackled the related problem of pricing continuous Asian options --- here the underlying average is $A = \frac1T \int_0^T \e^{X_t} \dd t$ where $\{X_t\}_{t\in[0,T}$ is a Brownian motion. They use an orthogonal polynomial expansion using a gamma reference distribution, and sidestep the integrability problem by approximation the pdf of $1/A$ rather than $A$. The expansion's coefficient are constructed from the moments of $1/A$, which are found using a recursive scheme of symbolic integrations in \textsc{Mathematica}.
-
-% Popovic and Goldsman \cite{popovic2012easy} consider the problem pricing discrete Asian options --- that is, the underlying average is $A = \frac1n \sum_{i=1}^n \e^{X_i}$ where $\{X_i\}_{i\in\NZ}$ is a discretely observed Brownian motion (they consider stock prices driven by other L{\'e}vy processes, e.g., the variance-gamma process). They construct an orthogonal expansion of $\log(A)$ using a normal reference distribution, and evaluate the coefficients using Monte Carlo (with some variance reduction techniques). Dufresne and Li \cite{dufresne2016pricing} take the same approach, but add in the theory which was missing by giving the conditions so that the orthogonal expansion will converge. They also write the explicit form of an Asian option price given this orthogonal polynomial approximation for $\log(A)$.
-
-% Chapter~\ref{chp:sln_orth_pdf} considers the task of using orthogonal polynomial expansions for the sum of lognormals distribution, with lognormal, normal, and gamma reference densities. As noted above, we are the first to derive the orthogonal polynomials w.r.t.\ the lognormal reference, and prove their incompleteness in the relevant space. Our normal reference approximation is applied to the logarithm of the sum, akin to \cite{popovic2012easy} and \cite{dufresne2016pricing}. The gamma reference approximation is not applied to the reciprocal random variable, like \cite{dufresne2000laguerre}, but to the exponentially tilted sum of lognormal distribution. This drew on our earlier work on approximating the Laplace transform of the sum of lognormals, work which is covered in Chapter~\ref{chp:Laplace}.
-
-
-
-
-% \textbf{Old notes}:
-
-
-
-% % \subsection{}
-
-% % Attempting to solve either \eqref{basic_convolution} or \eqref{basic_chf_inversion} analytically usually leads to a Catch-22 scenario: if an analytic solution existed then (almost surely) someone would already have found it, and then it would be taught to students in introductory probability courses. So for most interesting cases these approached must be approximated numerically. Evaluating \eqref{basic_convolution} numerically can be unreliable even for $n=2$, and the accuracy degrades with impressive swiftness as $n$ grows larger (this is ominously-named \emph{curse of dimensionality} which is outlined in Section~\ref{sec:numerical_integration}). And as I was later to discover, the problem of numerically evaluating \eqref{basic_chf_inversion} or any other integral transform inversion is notorious for its difficulty. The now-orthodox approach of Abate and Whitt \cite{Abate1992} is detailed in Section~\ref{sec:laplace_inversion}.
-
-% % % [.. insert plot for the numerical evaluation of the convolution formulas for a situation when we know the answer ..]
-
-
-
-% The other solutions that came to mind, for $S = X_1 + \dots + X_n$, were to evaluate the convolution integral or to use an integral transform. If we convolve the densities for $X_1$ and $X_2$, then we recover the density for $X_1+X_2$, i.e.,
-% \begin{equation} \label{basic_convolution}
-% f_{X_1+X_2}(s) = (f_{X_1} \star f_{X_2})(s) = \int_{\RL} f_{X_1}(t) f_{X_2}(s-t) \dd t \,.
-% \end{equation}
-% One can repeat this procedure ($f_{X_1+X_2+X_3} = f_{X_1+X_2} \star f_{X_3}$) to find the density
-% \begin{equation} \label{full_convolution}
-% f_S(s) = \int_{\RL} \dots \int_{\RL} f_{X_1}(t_1) \dots f_{X_{d-1}}(t_{d-1}) f_{X_d} \Big( s - \sum_{i=1}^{d-1} t_i \Big) \dd t_1 \dots \dd t_{d-1} \,.
-% \end{equation}
-% The integral transform approach uses the fact that
-% \[ \phi_S(\theta) = \prod_{i=1}^d \phi_{X_i}(\theta) \]
-% where $\phi_{X_i}(\theta) = \Exp[ \e^{\ih \theta X_i} ]$ denotes $X_i$'s characteristic function (though this approach can also be performed for Laplace transforms and Fourier transforms) then calculating the density $f_S$ by an inversion formula, such as%\footnote{I also clearly remember Phil Pollett first showing me this formula in a well-loved copy of Grimmett and Stirzaker's \emph{Probability and Random Processes} \cite{grimmett2001probability}.}
-% \begin{equation} \label{basic_chf_inversion}
-% f_S(x) = \frac{1}{2 \pi} \int_{\RL} \e^{-\ih t x} \phi_S(t) \dd t \,.
-% \end{equation}
-
-% Later I realised that both the convolutional and the integral transform approaches are very problematic, not least because they assert that the $X_i$'s must be independent of each other. And even if they could allow us to evaluate $f_S$, this ability is rarely useful for real world applications for these sum distributions.
-
-% % \subsection{What do we use probability density functions for?}
-
-% % To see why my answers to the student were not practically useful, we must first consider the role of pdfs within the broader context of statistical inference.
-
-% % As every probability can be written as an expectation, we can say that the goal of statistical inference is to evaluate expectations. Probabilists and statisticians use pdfs to achieve perform Steps 2 and 3 above, but pdfs themselves are not at all of inherent value to practitioners.
-
-% % \subsection{Methods for evaluating expectations}
-
-% Let's consider some of the most common ways one could evaluate $\Exp[g(\bfX)]$ given some function $g : \RL^d \to \RL$ and the pdf $f_{\bfX}$ of a $d$-dimensional random vector $\bfX$. If $f_{\bfX}$ is available in closed-form, the best solution is to solve the integral
-% \begin{equation} \label{exp_integral}
-% \Exp[g(\bfX)] = \int_{\RL} \dots \int_{\RL} g(x_1, \dots, x_n) f_{\bfX}(x_1, \dots, x_n) \dd x_1 \dots \dd x_n \,.
-% \end{equation}
-% Calculating this by hand is becoming increasingly infeasible as our statistical models become more realistic and hence the choices of $g$ and $f_{\bfX}$ become more complex. The last significant achievement using this approach which comes to mind is from 1973, the now-famous Black--Scholes equation \cite{black1973pricing}, which led to Nobel prizes and tens of thousands of citations. Nowadays, one can feed uni- and multi-dimensional integrals into a software package like \textsc{Mathematica} and often it will return the solution, even if it is in terms of remarkably obscure special functions.
-
-% While this method is always worth trying, it often fails to return an answer. The next best approach is to evaluate the integral numerically, that is, select some smart choice of points $\{ \bfx_1, \dots, \bfx_n\}$ and weights $\{w_1, \dots, w_n\}$ and use the approximation
-% \begin{equation} \label{basic_num_int}
-% \Exp[g(\bfX)] \approx \sum_{i=1}^n w_i g( \bfx_i ) f( \bfx_i ) \,.
-% \end{equation}
-
-
-% %and the limited slp
-% %\begin{equation}\label{eq:UsualStopLossPremium}
-% %\tilde{\Pi}_{c,d}(S_N)=\E\left\{\min[(S_N-c)_{+},d]\right\}.
-% %\end{equation}
-% %\framebox{(pjl) We don't actually use the $\tilde{\Pi}_{c,d}$ notation later on, yet.}
-% %
-
 \section{Contributions}
 
 As the work presented in the remainder of this thesis was done in collaboration with other authors, the pronouns will switch from `I' to `we' to reflect the multiple authors (or, more commonly, to refer to the reader and the authors).
@@ -974,10 +774,6 @@ variances or be dependent. We consider orthogonal expansions for the pdf of $\lo
 
 Chapter~\ref{chp:slp_ortho} also focuses on orthogonal expansions to approach pdfs of sums of random variables, though it instead focuses on compound sums and gives applications for insurance. While the chapter provides new results for orthogonal expansions of compound sums, it can also be seen as an in-depth comparison (in the style of \cite{embrechts2009panjer}) of orthogonal expansions to the Laplace transform inversion technique. The motivating application is to evaluate the stop-loss premium associated to a non-proportional global reinsurance treaty. The orthogonal expansion uses the gamma density as its reference pdf.
 
-% In Chapter~\ref{chp:Pushout}, we introduce a novel unbiased estimator to solve this problem, to approximate the density of a sum of random variables at a point. Our estimator possesses several advantages over the conditional Monte Carlo approach. Specifically, it applies to the case of dependent random variables, allows for transformations of random variables, is computationally faster to run, and is simpler to implement. We provide several numerical examples that illustrate these advantages.
-
-
-% In the process of constructing a new estimator for the survival function of a sum of random variables, given in Chapter~\ref{chp:angular}, we found we needed to describe the asymptotics for the sum of light-tailed Weibull random variables. This result of this Weibull investigation is given in Chapter~\ref{chp:weibull}. In it, we consider sums of $n$ iid random variables with tails close to $\e^{{-}x^\beta}$ for some $\beta>1$. The asymptotics  developed by Rootz\'en (1987) and Balkema, Kl\"uppelberg \& Resnick (1993) are discussed from the point of view of tails rather of densities, using a somewhat different angle, and supplemented with bounds, results on a random number $N$ of terms, and simulation algorithms.
 
 Orthogonal expansions aim to give pdf approximations which are accurate across the whole support of the random variable. Instead, it is sometimes more valuable to have the pdf or the cdf at a single point be approximated with high accuracy. I have included some work-in-progress in Chapter~\ref{chp:angular} for accurate approximation of the survival function of a sum of random variables. Here, the proposed estimator is based on an importance sampling scheme which incorporates our knowledge of the asymptotic form for the sum distribution. We compare this IS estimator against the Asmussen--Kroese estimator, exponential tilting, hazard-rate twisting, the cross-entropy method, and MCMC methods. It considers sums of independent variables, but in future work we expect to be able to incorporate copulas which are asymptotically independent. We designed it as a rare-event estimator but with a focus on intermediate levels of rareness.
 

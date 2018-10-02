@@ -47,18 +47,12 @@
 
 \onehalfspacing
 
-% \usepackage{pifont} % to get ticks and crosses.
-% \usepackage{hyperref}%  <<<<<<-------- causes a memory problem
-
 % Load images from subdirectory.
 \graphicspath{{images/}}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% POSSIBLY TO REMOVE LATER -- ADDED FOR LT Inversion in intro %%%%%%%%%%%
 \newcommand*{\FT}[1]{\mathcal{F}\{#1\}} % Fourier transform
 \newcommand*{\FTsub}[1]{\mathcal{F}_{#1}} % Fourier transform subscript
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% POSSIBLY ADD THIS IN AGAIN LATER -- Removed from Maxima preamble %%%%%%
-% \renewcommand{\phi}{\varphi}
 
 % Probability symbols.
 \DeclareMathOperator{\Prob}{{\mathbb P}}
@@ -92,8 +86,6 @@
 \newcommand*{\GMDA}{\mathsf{GMDA}}
 
 % Limits and distributional stuff.
-% \newcommand*{\convprob}{\stackrel{{\Prob}}{\rightarrow}}
-% \newcommand*{\convas}{\stackrel{{\mathrm a.s.}}{\rightarrow}}
 \newcommand*{\convas}{\xrightarrow{\:\smash{\mathrm{a.s.}}\:}}
 \newcommand*{\convdistr}{\xrightarrow{\:\smash{\mathcal{D}}\:}}
 \newcommand*{\eqdistr}{\stackrel{\smash{\mathcal{D}}}{=}}
@@ -127,8 +119,6 @@
 % Indicator
 \newcommand*{\ind}[1]{\mathbb{I}\{ #1 \}}
 \newcommand*{\indBig}[1]{\mathbb{I}\bigl\{ #1 \bigr\}}
-% \newcommand*{\Ind}{\mathbb I} % Indicator
-% \newcommand*{\indi}{\mathbb{I}}%{\bm{1}}
 
 % Integral transforms (pjl: TODO finish this off)
 \newcommand*{\Laplace}{\mathscr{L}}
@@ -147,18 +137,15 @@
 \renewcommand{\pi}{\uppi}
 
 % Special symbols.
-% \newcommand*{\defeq}{\overset{\smash{\mathrm{def}}}{=}}
 \newcommand*{\defeq}{:=}
 \newcommand*{\defeqr}{=:}
 \newcommand*{\tr}{\top}
 \newcommand*{\ih}{\mathrm{i}}
 \newcommand*{\oh}{{\mathrm{o}}}
 \newcommand*{\Oh}{{\mathcal{O}}}
-% \renewcommand{\det}[1]{\lvert \mathrm{det}(#1) \rvert}
 \newcommand*{\comp}{\mathsf{c}} % complement
 \newcommand*{\argdot}{\makebox[1ex]{$\cdot$}} % for functions like f(.)
 \newcommand*{\BigBinom}[2]{\Bigl( \genfrac{}{}{0pt}{}{#1}{#2} \Bigr)}
-
 
 % Stuff I used in paper one.
 \newcommand*{\LambertW}{\mathcal{W}}
@@ -178,18 +165,7 @@
 \newcommand*{\cor}[1]{Corollary~\ref{#1}}
 \newcommand*{\prop}[1]{Proposition~\ref{#1}}
 
-% Abbreviations
-% \newcommand*{\iid}{iid\xspace}
-% \newcommand*{\rv}{rv\xspace}
-% \newcommand*{\rvs}{rv's\xspace}
-% \newcommand*{\pdf}{pdf\xspace}
-% \newcommand*{\pgf}{pgf\xspace}
-% \newcommand*{\pmf}{pmf\xspace}
-% \newcommand*{\cdf}{cdf\xspace}
-% \newcommand*{\svf}{sf\xspace}
-% \newcommand*{\cf}{cf.\xspace}
 \newcommand*{\fft}{f.f.t.\xspace}
-% \newcommand*{\ie}{i.e.\xspace}
 
 % Regarding theorem numbering.
 \theoremstyle{plain} % the default, bold header, italic body
@@ -213,102 +189,12 @@
 \setlength{\parskip}{3mm}
 \setlength{\parindent}{0mm}
 
-
 \numberwithin{thm}{chapter}
-% \numberwithin{equarray}{section}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preamble from Pushout paper
-
-% \newcommand*{\TN}{\mathsf{TN}}
-% \newcommand*{\simapprox}{\stackrel{\mathrm{approx}}{\sim}}
-% \newcommand*{\bb}[1]{\mathbb{#1}}
-% \renewcommand{\v}[1]{\boldsymbol{#1}}
-% \newcommand*{\m}[1]{\mathrm{#1}}
-% \renewcommand{\c}[1]{\mathcal{#1}}
-% \newcommand*{\idef}{\stackrel{\mathrm{def}}{=}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preamble from SLN Orthogonal PDF paper
-
-%% Pierre-Olivier's definitions.
-
-%\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-%\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
-% \fancyhead[LE,RO]{\bfseries\thepage}
-%\fancyhead[LO]{\bfseries\rightmark}
-%\fancyhead[RE]{\bfseries\leftmark} \addtolength{\headheight}{1.6pt}
-%\renewcommand{\headrulewidth}{0.5pt}
-
-%\fancyhead{}
-%\fancyfoot{}
-%\renewcommand{\headrulewidth}{0pt}
-%\renewcommand{\footrulewidth}{0pt}
-
-	% \fancypagestyle{empty}{%
-	% \fancyhf{} % clear all header and footer fields
-	% %\fancyhead[LE,RO]{\thepage}
-	% \renewcommand{\headrulewidth}{0.0pt}
-	% \renewcommand{\footrulewidth}{0.0pt}}
-
-	% \fancypagestyle{plain}{%
-	% \fancyhf{} % clear all header and footer fields
-	% \fancyfoot[LE,RO]{\thepage}
-	% \renewcommand{\headrulewidth}{0.0pt}
-	% \renewcommand{\footrulewidth}{0.0pt}}
-
-	% \fancypagestyle{headings}{%
-	% \fancyhf{} % clear all header and footer fields
-	% \fancyfoot[LE,RO]{\thepage}
-	% \renewcommand{\headrulewidth}{0.0pt}
-	% \renewcommand{\footrulewidth}{0.0pt}}
-
-	% \fancypagestyle{monstyle2}{%
-	% \fancyhf{} % clear all header and footer fields
-	% \fancyhead[LE,RO]{\thepage}
-	% %\fancyhead[LO,RE]{\leftmark}
-	% %\fancyfoot[C]{\thepage}
-	% \renewcommand{\headrulewidth}{0.0pt}
-	% \renewcommand{\footrulewidth}{0.0pt}
-	% }
-
-	% \fancypagestyle{monstyle}{
-	% \fancyhf{} % clear all header and footer fields
-	% \fancyfoot[LE,RO]{\thepage}
-	% \fancyhead[LE,RO]{\textit{\leftmark}}
-	% %\fancyfoot[C]{\thepage}
-	% \renewcommand{\headrulewidth}{0.0pt}
-	% \renewcommand{\footrulewidth}{0.0pt}}
-
-%\newcommand*{\xb}{\bar{x}}
-%\newcommand*{\sbt}{\tiny{\textrm{$\bullet$}}}
-%\newcommand*{\gx}{\mathbf{X}}
-%\newcommand*{\un}{\mathds{1}}
-%\newcommand*{\pt}{\mathbb{P}_{\theta}}
-
-% les deux lignes qui suivent servent ‡ supprimer la ligne "Chapitre" lors de la cr\`{e}ation d'un nouveau chapter
-%\usepackage{titlesec}
-%\titleformat{\chapter}[hang]{\bf\huge}{\thechapter}{2pc}{}
-
-% Ticks and crosses.
-% \newcommand*{\cmark}{\ding{51}}%
-% \newcommand*{\xmark}{\ding{55}}%
 
 % \times with less space on left/right (for tables).
 \newcommand*{\stimes}{{\mkern-2mu\times\mkern-2mu}}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preamble from the Weibull sums paper
-
-% \newcommand*{\halmos}{{\mbox{\, \vspace{3mm}}} \hfill
-% \mbox{$\Box$}}
 \newcommand*{\remQED}{{\mbox{\, \vspace{3mm}}} \hfill \mbox{$\Diamond$}}
-% \newcommand*{\halmoss}{\hfill $\Diamond$}
-
-
-% \newcommand*{\Fie\ld}{\mathcal{F}}
-
-% \newcommand*{\wt}{\widetildei}
-
 
 \newcommand*{\cH}{{\mathcal H}}
 \newcommand*{\cHb}{\overline{\mathcal H}}
@@ -323,37 +209,12 @@
 }
 
 \newcommand*{\pinv}{[-1]}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preamble from Maxima paper
-
-
 \newcommand*{\alphaMax}{\overline{\alpha}}
 \newcommand*{\Ftail}{\mkern 1mu\overline{\mkern-1mu{F}\mkern+1.25mu}}
-% \newcommand*{\Fb}{\overline F}
-
-% \newcommand*{\medcup}[1]{\bigcup\limits_{#1}}%
-% \newcommand*{\medcap}[1]{\bigcap\limits_{#1}}%
-
-% \newcommand*{\independent}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
 \newcommand*{\indep}{\perp}
-% \newcommand*{\independent}{\protect\mathpalette{\protect\independenT}{\perp}}
-% \def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
-
-
 \newcommand*{\for}[1]{\,,\qquad \text{for } #1}
 
-
-% Fix := so that the colon is vert. centered.
-% \mathtoolsset{centercolon} <<<<<<<<<<<<<<<<<<<<<<<---------------- this fucks with the =: construction.
-
-
-
-
-%LNA: nice colors in tables
-
 \definecolor{Gray}{gray}{0.9}
-% \newcommand*{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 
 
 % All the bold symbols and letters.
@@ -361,24 +222,11 @@
 \newcommand*{\bfB}{\bm{B}}
 \newcommand*{\bfC}{\bm{C}}
 \newcommand*{\bfD}{\bm{D}}
-% \newcommand*{\bfE}{\bm{E}}
 \newcommand*{\bfF}{\bm{F}}
-% \newcommand*{\bfG}{\bm{G}}
 \newcommand*{\bfH}{\bm{H}}
 \newcommand*{\bfI}{\bm{I}}
-% \newcommand*{\bfJ}{\bm{J}}
-% \newcommand*{\bfK}{\bm{K}}
-% \newcommand*{\bfL}{\bm{L}}
-% \newcommand*{\bfM}{\bm{M}}
-% \newcommand*{\bfN}{\bm{N}}
-% \newcommand*{\bfO}{\bm{O}}
-% \newcommand*{\bfP}{\bm{P}}
-% \newcommand*{\bfQ}{\bm{Q}}
-% \newcommand*{\bfR}{\bm{R}}
 \newcommand*{\bfS}{\bm{S}}
-% \newcommand*{\bfT}{\bm{T}}
 \newcommand*{\bfU}{\bm{U}}
-% \newcommand*{\bfV}{\bm{V}}
 \newcommand*{\bfW}{\bm{W}}
 \newcommand*{\bfX}{\bm{X}}
 \newcommand*{\bfY}{\bm{Y}}
@@ -387,22 +235,11 @@
 \newcommand*{\bfa}{\bm{a}}
 \newcommand*{\bfb}{\bm{b}}
 \newcommand*{\bfc}{\bm{c}}
-% \newcommand*{\bfd}{\bm{d}}
 \newcommand*{\bfe}{\bm{e}}
-% \newcommand*{\bff}{\bm{f}}
-% \newcommand*{\bfg}{\bm{g}}
-\newcommand*{\bfh}{\bm{h}} % vector valued function
-% \newcommand*{\bfi}{\bm{i}}
-% \newcommand*{\bfj}{\bm{j}}
-% \newcommand*{\bfk}{\bm{k}}
-% \newcommand*{\bfl}{\bm{l}}
+\newcommand*{\bfh}{\bm{h}}
 \newcommand*{\bfm}{\bm{m}}
-% \newcommand*{\bfn}{\bm{n}}
-% \newcommand*{\bfo}{\bm{o}}
-% \newcommand*{\bfp}{\bm{p}}
 \newcommand*{\bfq}{\bm{q}}
 \newcommand*{\bfr}{\bm{r}}
-% \newcommand*{\bfs}{\bm{s}}
 \newcommand*{\bft}{\bm{t}}
 \newcommand*{\bfu}{\bm{u}}
 \newcommand*{\bfv}{\bm{v}}
@@ -427,10 +264,6 @@
 \newcommand*{\bfzero}{\bm{0}}
 \newcommand*{\bfone}{\bm{1}}
 \newcommand*{\bfeye}{\bfI}
-
-% \setcounter{tocdepth}{4}
-% \setcounter{secnumdepth}{4}
-
 
 \newcommand{\Asymf}{\mathfrak{f}_S}
 \newcommand{\AsymF}{\mathfrak{F}_S}

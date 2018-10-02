@@ -3,7 +3,6 @@
 \begin{center}
 \includegraphics[width=0.70\textwidth]{logo} \\[2cm]
 
-% { \large \bfseries \{Dependence and VaR\}: \{Subtitle\} }\\
 { \large \bfseries Computational methods for sums of random variables }\\
 Patrick John Laub \\
 BE(Software, Hons.\ I)/BSc(Mathematics), BSc(Mathematics, Hons.\ I) \\[7cm]
@@ -18,9 +17,6 @@ Aarhus University, Department of Mathematical Sciences} \\
 \pagenumbering{roman}
 
 \begin{abstract}
-  % The abstract should outline the main approach and findings of the thesis and
-  % must be between 300 and 800 words.
-
 A typical problem in the field of rare-event estimation is to find the probability $\Prob(S > \gamma)$ where $S := X_1 + \dots + X_d$ for a fixed $d \in \NL$ and where the $\gamma \in \RL$ is large or increasing. In applications we often wish to understand the behaviour of a combination of random factors. Hence the random variable $S$ is ubiquitous in real-world modeling problems.
 It can model, for example, aggregate risk or portfolio value for holding $d$ risky assets \cite{mcneil2015quantitative,Rueschendorf2013}, the aggregate losses for $d$ insurance policy claims \cite{asmussen2010ruin,klugman2012loss}, and the combined signal interference from $d$ wireless transmission sources \cite{fischione2007approximation}.
 Probabilities of this form are used to understand how a system would behave under extreme scenarios such as a market crash, a power surge, or a natural disaster. One is typically interested in, not just the quantity $\Prob(S > \gamma)$, but the behaviour of the summands when the extreme event $\{ S > \gamma \}$ occurs.
@@ -32,10 +28,8 @@ However, requiring the assumption of independence (let alone iid-ness) of the su
 
 This thesis outlines methods for approximating quantities related to sums of random variables. Two chapters consider the use of \emph{orthogonal polynomial expansions} in approximating probability density functions; one focuses on sums of correlated lognormal random variables, and the other on random sums which are used in insurance.
 We also introduce
-%a Monte Carlo estimator for the density of a sum distribution which uses the \emph{push-out method}, and
 an \emph{importance sampling estimator} for the survival function of a sum distribution which uses knowledge of the asymptotic form of the sum.
 We also give the results of an \emph{asymptotic analysis}
-%of the survival function of sums with Weibull-like summands, and
 of the Laplace transform for the sum of lognormal random variables.
 A related problem, of estimating the probability of the maximum of a random vector exceeding a large threshold, is also considered.
 \end{abstract}
@@ -61,12 +55,10 @@ Denne afhandling beskriver metoder til approksimation af st\o rrelser relateret 
 Vi introducerer ogs\aa\ en \emph{importance sampling-estimator} for overlevelsesfunktionen af en sumfordeling, som bygger p\aa\ viden om den asymptotiske form af summen.
 Endvidere giver vi resultaterne af en \emph {asymptotisk analyse}
 af Laplace-transformen af summen af lognormale stokastiske variable. Endeligt behandler vi et relateret problem, som vedr\o rer estimation af sandsynligheden for, at maksimum af en stokastisk vektor overskrider et givet stort niveau.
-% \end{abstract}
 
 
 \newpage
 {\bf \underline{Declaration by author}} \\
-% (All candidates to reproduce this section in their thesis verbatim)
 
 This thesis is composed of my original work, and contains no material
 previously published or written by another person except where due reference
@@ -141,43 +133,6 @@ No works submitted towards another degree have been included in this thesis.
 
 No animal or human subjects were involved in this research.
 
-
-
-
-
-% \begin{tabular}{|l|l|}
-%   \hline
-%   Contributor & Statement of contribution \\ \hline
-%   Author XXXX (Candidate) & Designed experiments (60\%) \\
-%                           & Wrote the paper (70\%) \\
-% \hline
-%   Author YYYY & Designed experiments (40\%) \\
-%                           & Wrote and edited paper (30\%) \\
-% \hline
-%   Author ZZZZ & Statistical analysis of data in tables 2 and 3 \\
-% \hline
-% \end{tabular}
-
-% If you have no publications included in this thesis then state ``No
-% publications included''.
-
-% \newpage
-
-% {\bf \underline{Contributions by others to the thesis}}
-
-% For jointly authored papers which are included in this thesis as chapters the relative contribution of each author is given on the page preceding the chapter. Apart from those contributions, there are no contributions by others.
-
-% For each paper, the authors contributed equally to the development of mathematical theorems, propositions, et cetera. Similarly, we were equally involved in writing the text. For the proofreading and editing I typically contributed the most (particularly for the papers where I was the only native English speaking author). Also, I completed all of the numerical work except for significant contributions from Lars N{\o}rvang Andersen and Pierre-Olivier Goffard in the works we collaborated on.
-
-% List the significant and substantial inputs made by others to the research,
-% work and writing represented and/or reported in the thesis. These could include
-% significant contributions to: the conception and design of the project;
-% non-routine technical work; analysis and interpretation of research data;
-% drafting significant parts of the work or critically revising it so as to
-% contribute to the interpretation. If no one contributed significantly then
-% state ``No contributions by others.''
-
-
 \newpage
 
 {\bf \underline{Acknowledgements}}
@@ -189,9 +144,9 @@ No animal or human subjects were involved in this research.
 \vspace{-1.6em}
 \hfill G.\ K.\ Chesterton~~~~~~~~
 
-I have been incredibly lucky to have been supported by many institutions, academics, mentors, friends, and family members, without whom this thesis would not exist. %Here, I am delighted to be able to record my thanks to some of these people.
+I have been incredibly lucky to have been supported by many institutions, academics, mentors, friends, and family members, without whom this thesis would not exist.
 
-Firstly, I must sincerely thank my supervisors in Aarhus and Brisbane, S{\o}ren Asmussen and Phil Pollett. S{\o}ren welcomed me into Denmark, gave me a path in applied probability, and calmly guided me along the way. It is due to his meetings, emails, lectures, and books that I have learned so much these past years, and met so many friendly mathematicians all across Europe. Having joined the hiking trip in Greenland which he organised, and seen his pre-departure presentation, inspires me to go and make the most of each day.%\footnote{In this presentation he described many previous hiking adventures, including one in which a companion did not return. While this certainly heightened the \emph{carpe diem} sensation, it was decidedly unhelpful for allaying last-minute jitters!}
+Firstly, I must sincerely thank my supervisors in Aarhus and Brisbane, S{\o}ren Asmussen and Phil Pollett. S{\o}ren welcomed me into Denmark, gave me a path in applied probability, and calmly guided me along the way. It is due to his meetings, emails, lectures, and books that I have learned so much these past years, and met so many friendly mathematicians all across Europe. Having joined the hiking trip in Greenland which he organised, and seen his pre-departure presentation, inspires me to go and make the most of each day.
 
 Phil Pollett is the reason why I became passionate about probability in the first place. It was only by chance that I enrolled in his probability course STAT3004 in 2012. His well prepared and entertaining lectures (replete with a \emph{schadenfreude}-inducing tyranny aimed at the unpunctual students) inspired me to pursue mathematics research instead of a standard engineering career. As my honours supervisor Phil was unfailingly positive and helpful, always emphasising that the enjoyment of the journey was of paramount importance. He gave me the confidence to begin my PhD. I can say, with probability one, that two better supervisors than S{\o}ren and Phil cannot be found!
 
@@ -256,14 +211,10 @@ cdf & Cumulative distribution function $F(x)$ \\
 CMC & Crude Monte Carlo \\
 iid & Independent and identically distributed  \\
 MCMC & Markov Chain Monte Carlo \\
-% mgf & Moment generating function \\
 pdf & Probability density function  $f(x)$ \\
 pgf & Probability generating function \\
 pmf & Probability mass function $f(n)$ \\
 resp. & respectively \\
-% rv  & Random variable \\
-% sf  & Survival function $\Ftail(x) = 1 - F(x)$ \\
-% slp & Stop-loss premium $\Pi_{a}(S_N)=\Exp[(S_N-a)_{+}]$ \\
 VaR & Value-at-Risk \\
 w.l.o.g.\ & without loss of generality \\
 w.r.t.\ & with respect to
@@ -322,7 +273,6 @@ $\bfSigma^{\tr}$ & Transpose of matrix $\bfSigma$
 
 \emph{Parametrisations of probability distributions:}
 
-% \begin{itemize}
 \underline{Uniform distribution}: denoted $\UnifDist(a,b)$ where $a,b\in\RL$ and $a < b$, has pdf
 \[ f(x) = \frac{1}{b-a} \,, \quad  a < x < b \,. \]
 
