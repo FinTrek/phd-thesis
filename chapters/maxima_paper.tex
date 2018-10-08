@@ -26,36 +26,38 @@ In addition to this, I completed the majority of the computational work and of t
 
 \section{Introduction}
 
-The distribution of the sum of random variables is, in some ways, similar to the maximum of those random variables, and many of the techniques used to analyse the former can be applied to the latter. For example, one well-known result connecting $S = \sum_{i=1} X_i$ to $M = \max_i X_i$ when the $X_i$ are subexponentially distributed is
-\[ \Prob(S > \gamma) \sim \Prob(M > \gamma) \qquad \text{as } \gamma \to \infty\,. \]
-Another connection is that the distribution of $M$ is rarely known in a closed form, except when the $X_i$ are independent hence we ignore this simple case. In this chapter, I will give the results we achieved in approximating interesting quantities relating to these maxima distributions.
-
-The estimators in this chapter apply to quite general problems, not just to maxima variables. We will first introduce them as relating to rare maxima of dependent random vectors, and then generalise.
-For a random vector $\bfX = (X_1, \dots, X_d)$, the first problem we consider is estimating
-\[ \alpha(\gamma) = \Prob(M > \gamma) \,. \]
-This problem has applications in many areas, for example in actuarial science (e.g.\ default probabilities \cite{asmussen2010ruin}), finance (e.g.\ probability of `knock-out' in a barrier option \cite{cont2010encyclopedia}), survival analysis, reliability \cite{rausand2004system} and engineering (e.g.\ failure probability of a series circuit).
-
-We construct estimators for this probability, which are in terms of
-\[ E(\gamma) = \sum_{i=1}^d \ind{X_i > \gamma} \,,\]
-the random variable which counts the number of $X_i$ which exceed $\gamma$.\footnote{We use $\ind{\cdot}$ to denote the indicator function, and $\ind{\emptyset} = 1$.} Our two main estimators in this setting are
-\begin{align}
-  \hat{\alpha}_1 \label{alpha_1}
-  &= \sum_{i=1}^d \Prob(X_i > \gamma) + \frac1R \sum_{r=1}^R (1 - E_r(\gamma)) \ind{E_r(\gamma) \ge 2 } \,, \text{ and} \\
-  \hat{\alpha}_2  \label{alpha_2}
-  &= \sum_{i=1}^d \Prob(X_i > \gamma) - \sum_{i=1}^{d-1} \sum_{j=i+1}^d \Prob(X_i > \gamma, X_j > \gamma) \notag \\
-  &\quad + \frac1R \sum_{r=1}^R \Bigl[1 - E_r(\gamma) + \frac{E_r(\gamma) (E_r(\gamma) -1)}{2} \Bigr] \ind{E_r(\gamma) \ge 3} \,.
-\end{align}
-where $R \in \NL$ and the $E_r(\gamma)$ are derived from iid samples of $\bfX$.
-The fact that these are unbiased estimators of $\alpha(\gamma)$ follows from their construction --- see equations \eqref{estimator_incl_excl} to \eqref{eq:alpha_2_hat} and the surrounding discussion below. Estimation of
-$\Prob(M > \gamma)$ is a difficult problem and treatments in the literature make distributional assumptions on $\bfX$.
- One such example is Adler et al.\ \cite{adler2012efficient} where $\bfX$ is assumed to be multivariate normal. In this case, our estimator $\hat{\alpha}_1$, with appropriate importance sampling, is the same as one of the estimators from \cite{adler2012efficient}.
-
-The next problem we consider is estimating
-\[ \beta_n(\gamma) \defeq \Exp[ Y \ind{ E(\gamma) \ge n} ] \]
+Let $A(\gamma) = \cup_{i=1}^d A_i(\gamma)$ be the union of events $A_1(\gamma),\dots,A_d(\gamma)$ for an index parameter $\gamma \in \mathbb{R}$.
+We consider the problem of estimating
+\[ \alpha(\gamma) \defeq \Prob ( A(\gamma) ) \]
+when the events are rare, that is, when $\Prob(A(\gamma)) \to 0$ as $\gamma \to \infty$.
+We also estimate
+\[ \beta_n(\gamma) \defeq \Exp[ Y \ind{ E(\gamma) \ge n} ] \quad \text{where} \quad E(\gamma) \defeq \sum_{i=1}^d \ind{A_i(\gamma)}
+\]
 for $n=1,\dots,d$ and some random variable $Y$.
 We do not make any assumptions of independence between the $\{X_i > \gamma\}$ events themselves or between the events and $Y$.
 
-The subcase of $Y=1$ a.s.\ has some interesting examples:
+This $A(\gamma)$ is quite general (a union of arbitrary events) and many interesting events arising in applied probability and statistics can be
+formulated as a union. The quantity $\beta_n(\gamma)$ is reminiscent of \emph{expected shortfall} from risk management \cite{mcneil2015quantitative}.
+
+Our motivation for considering this problem arises from considering the rare-event estimation problems for the maximum value of a dependent random vector. Specifically, set $A_i(\gamma) = \{X_i > \gamma\}$ where the $X_i$ form a dependent random vector $\bfX = (X_1, \dots, X_d)$. Then
+\[ \alpha(\gamma) = \Prob(M > \gamma) \quad \text{where} \quad M = \max_{i} X_i \,. \]
+
+This problem has applications in many areas, for example in actuarial science (e.g.\ default probabilities \cite{asmussen2010ruin}), finance (e.g.\ probability of `knock-out' in a barrier option \cite{cont2010encyclopedia}), survival analysis, reliability \cite{rausand2004system} and engineering (e.g.\ failure probability of a series circuit).
+
+Estimation of $\Prob(M > \gamma)$ is a difficult problem (except when the $X_i$ are independent, hence we ignore this simple case) and treatments in the literature make distributional assumptions on $\bfX$.
+One such example is Adler et al.\ \cite{adler2012efficient} where $\bfX$ is assumed to be multivariate normal. We recover one of the estimators from \cite{adler2012efficient}, when an appropriate importance sampling is applied.
+
+The distribution of the maximum of random variables is, in some ways, similar to the sum of those random variables, and many of the techniques used to analyse the one can be applied to the other. For example, one well-known result connecting $S = \sum_{i=1} X_i$ to $M = \max_i X_i$ when the $X_i$ are subexponentially distributed is
+\[ \Prob(S > \gamma) \sim \Prob(M > \gamma) \qquad \text{as } \gamma \to \infty\,. \]
+Another connection is that the distribution of $M$ is also rarely known in a closed form
+
+Our estimators of $\alpha(\gamma)$ are based on the fact that
+\[
+\alpha(\gamma) = \Exp \left[ \sum_{i=1}^d (-1)^{i-1} \BigBinom{E(\gamma)}{i} \ind{E(\gamma) \ge i} \right] \,,
+\]
+which follows from the inclusion--exclusion formula --- we will prove this shortly (c.f.\ \eqref{summands} to \eqref{estimator_incl_excl}).
+
+The quantity $\beta_n(\gamma)$, when $A_i(\gamma) = \{X_i > \gamma\}$ and when $Y=1$ a.s., has some interesting interpretations:
 \[ \beta_1(\gamma) = \Prob(M > \gamma) = \alpha(\gamma) \,, \quad \text{and} \quad
  \beta_n(\gamma) = \Prob(X_{(n)} > \gamma) \]
 where $X_{(1)} \ge X_{(2)} \ge \dots \ge X_{(d)}$ are the order statistics of $\bfX$. The probability of a parallel circuit failing is a simple application for $\Prob(X_{(n)} > \gamma)$.
@@ -66,28 +68,21 @@ Our main $\beta_1$ estimator uses the fact that
 \end{align}
 where the events in the union on the right are disjoint.
 This supplies a form of $\beta_1$ which is amenable to efficient Monte Carlo estimation:
-\begin{equation} \label{extreme-beta_1}
- \beta_1=\sum_{i=1}^d \Exp [ Y \, \ind{X_1 \le \gamma, \dots, X_{i-1} \le \gamma } \mid X_i > \gamma ] \Prob\left(X_i > \gamma \right) \,.
+\begin{equation}  \label{extreme-beta_1}
+\begin{aligned}
+ \beta_1
+ &= \Exp[\, Y  \mid X_1 > \gamma ] \Prob\left(X_1 > \gamma \right) \\
+ &\hphantom{= } \quad + \sum_{i=2}^d \Exp [ Y \, \ind{X_1 \le \gamma, \dots, X_{i-1} \le \gamma } \mid X_i > \gamma ] \Prob\left(X_i > \gamma \right) \,.
+\end{aligned}
 \end{equation}
 
-As previously mentioned, while they are main example and motivation, the extremes considered so far are a very specific instance of estimators. We now
-turn our attention to the general set-up treated in the chapter.
-
-Let $A(\gamma) = \cup_{i=1}^d A_i(\gamma)$ be the union of events $A_1(\gamma),\dots,A_d(\gamma)$ for an index parameter $\gamma \in \mathbb{R}$.
-    We consider the problem of estimating $\Prob ( A(\gamma) ) $ when the events are rare, that is, $\Prob(A(\gamma)) \to 0$ as $\gamma \to \infty$.
-Define
-\[ \alpha(\gamma) \defeq \Prob ( A(\gamma) ) \quad \text{and} \quad \quad E(\gamma) \defeq \sum_{i=1}^d \ind{A_i(\gamma)} \, .
-\]
-Note that we recover our introductory example by having
-$A_i(\gamma) = \{X_i > \gamma\}$. Aside from this example, $A(\gamma)$ is quite general (a union of arbitrary events)
-and many interesting events arising in applied probability and statistics can be
-formulated as a union. The quantity $\beta_n(\gamma)$ is reminiscent of \emph{expected shortfall} from risk management \cite{mcneil2015quantitative}.
+As previously mentioned, while they are our main example and motivation, the extremes considered so far are a very specific instance of estimators. We will now return to the general set-up given earlier.
 
 Traditional Monte Carlo methods are unreliable in the rare-event setting. We will use standard techniques from the \emph{rare-event simulation methodology}, such as importance sampling for variance reduction and applicable
 measures of efficiency: \emph{bounded relative error} and \emph{logarithmic efficiency}, cf.\ \cite{asmussen2007stochastic,glasserman2003monte,rubinstein2011simulation}. The resulting estimators are among the most efficient possible under the
 most general assumptions.
 
-The chapter is structured as follows. In Sections \ref{scn:alpha_ests} and \ref{scn:beta_ests} we formally introduce our estimators for $\alpha(\gamma)$ and $\beta_n(\gamma)$ respectively,
+The chapter is structured as follows. In Sections \ref{scn:alpha_ests} and \ref{scn:beta_ests} we introduce our estimators for $\alpha(\gamma)$ and $\beta_n(\gamma)$ respectively,
 we prove their validity, and
 show how to combine them with some existing variance reduction techniques; the efficiency properties
 for the general estimators are analysed in Section~\ref{scn:efficiency_results}, in addition we further investigate
@@ -909,11 +904,10 @@ This is summarised in the following algorithm.
 \subsection{Test setup}
 
 The estimators tested are $\hat{\alpha}_0$ (crude Monte Carlo) and
- $\hat{\alpha}_1$, $\hat{\alpha}_2$, $\hat{\alpha}_1^{[1]}$, $\hat{\alpha}_2^{[2]}$, $\widehat{(\beta_1 \ddagger \alpha)}$, $\widehat{(\beta_2 \ddagger \alpha)}$, defined in \eqref{alpha_1}, \eqref{alpha_2}, \eqref{alpha_1_IS1}, \eqref{alpha_2_IS_2}, \eqref{beta_on_alpha_1} and \eqref{beta_on_alpha_2} respectively. As a reference, we show the true value $\alpha$ (calculated by numerical integration using \textsc{Mathematica}), and the first two truncations of the IEF:
+ $\hat{\alpha}_1$, $\hat{\alpha}_2$, $\hat{\alpha}_1^{[1]}$, $\hat{\alpha}_2^{[2]}$, $\widehat{(\beta_1 \ddagger \alpha)}$, $\widehat{(\beta_2 \ddagger \alpha)}$, defined in \eqref{eq:alpha_1_hat}, \eqref{eq:alpha_2_hat}, \eqref{alpha_1_IS1}, \eqref{alpha_2_IS_2}, \eqref{beta_on_alpha_1} and \eqref{beta_on_alpha_2} respectively. As a reference, we show the true value $\alpha$ (calculated by numerical integration using \textsc{Mathematica}), and the first two truncations of the IEF:
 $ \alphaMax(\gamma) \defeq \sum_i \Prob(X_i > \gamma)$ and $\alphaMax(\gamma){-}q(\gamma) \defeq \sum_i \Prob(X_i > \gamma) - \sum_{i<j} \Prob(X_i > \gamma, X_j > \gamma)$.
 Each estimator is given $R=10^6$, and an asterisk is placed in table entries where the corresponding estimate had 0 variance (i.e., the estimator had degenerated).
 
-\newpage
 \subsection{Results}
 \enlargethispage{1cm}
 
@@ -1044,7 +1038,6 @@ $\widehat{(\beta_1 \ddagger \alpha)}$ & 1.937e-05 & 6.086e-07 & 1.908e-08 & 5.99
 \caption{Standard deviations of the estimates in Table~\ref{table:laplace_ests}.}
 \end{table}
 
-\newpage
 \subsection{Discussion}
 
 We begin with some trends which we expected to find in the results:
