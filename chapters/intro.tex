@@ -67,12 +67,13 @@ A tool used by actuaries to control many types of risk is the \emph{loss distrib
 \[ L = \sum_{i=1}^N X_i \]
 where $N$ is the random number of events (cases of fraud, et cetera), and the $X_i$ are the associated monetary losses for each event. The LDA specifies that practitioners fit a model for $N$ and for the $X_i$, such as $N\sim\PoissonDist(\lambda)$ and $X_i \iidDist \LNDist(\mu,\sigma)$, then calculate a risk measure such as \emph{Value-at-Risk (VaR)}. The VaR at level $\alpha \in (0,1)$ is defined such that the probability of losses exceeding the level VaR is at most $1-\alpha$. We denote this $\alpha$-quantile as
 \begin{equation*}
-\text{VaR}_\alpha = \inf\{x\geq0, F_{L}(x)\geq \alpha\}.
+\mathrm{VaR}_\alpha = \inf\{x\geq0, F_{L}(x)\geq \alpha\}.
 \end{equation*}
+
 Depending on which regulations are applicable, the value of $\alpha$ is taken to be in the range of $0.995$ to $0.9997$ see \cite{EIOPA,frachot2001loss}.
 
 The LDA is not limited to modelling operational risk, and indeed elements of the approach pervade nearly all domains of risk management \cite{mcneil2015quantitative}. It has received intense scrutiny amongst mathematicians, and one result is that the VaR has been found to behave incorrectly when various risks need to be aggregated (to be precise, the measure is not a \emph{coherent} risk measure). There are many alternative risk measures to choose from, including \emph{expected shortfall}
-\[ \text{ES}_\alpha = \Exp[ L \mid L > \text{VaR}_\alpha ] \,, \]
+\[ \mathrm{ES}_\alpha = \Exp[ L \mid L > \mathrm{VaR}_\alpha ] \,, \]
 cf.\ \cite{mcneil2015quantitative} or \cite{kluppelberg2014risk}.
 \remQED
 \end{example}
@@ -99,9 +100,9 @@ The book by Asmussen and Albrecher \cite{asmussen2010ruin} considers the estimat
 
 \begin{example}[Wireless systems analysis]
 Wireless engineers measure the quality of one user's wireless connection by
-\[ \Prob( \text{SINR} < \alpha ) \]
+\[ \Prob( \mathrm{SINR} < \alpha ) \]
 where $\alpha \in \RL$ is a fixed threshold, and SINR is the \emph{signal to interference plus noise ratio}. If the signal's power is denoted $X_0$ and there are $N$ interfering signals, each with power $X_1$, \dots, $X_n$, and background noise $N_0$, then
-\[ \text{SINR} = \frac{X_0}{X_1 + \dots + X_n + N_0} \,. \]
+\[ \mathrm{SINR} = \frac{X_0}{X_1 + \dots + X_n + N_0} \,. \]
 Fischione \cite{fischione2007approximation} and related papers take these random variables to be lognormally distributed, so that the denominator in SINR's definition is a sum of (correlated) lognormal random variables.
 \remQED
 \end{example}
@@ -246,20 +247,20 @@ We apply a basic quadrature rule to the Bromwich integral by first \emph{discret
 We will use a semi-infinite trapezoidal rule, despite the apparent simplicity of the method.
 With a grid size $h>0$, this discretisation yields
 \[
-f(x) \approx f_{\text{disc}}(x) \defeq \frac{2\e^{\gamma x}}{\pi} \cdot h \, \bigl \{ \tfrac12 \LT{f}(\gamma) + \sum_{j=1}^\infty  \cos(x \cdot hj)\Re\left[\LT{f}(\gamma + \ih hj)\right] \bigr \},
+f(x) \approx f_{\mathrm{disc}}(x) \defeq \frac{2\e^{\gamma x}}{\pi} \cdot h \, \bigl \{ \tfrac12 \LT{f}(\gamma) + \sum_{j=1}^\infty  \cos(x \cdot hj)\Re\left[\LT{f}(\gamma + \ih hj)\right] \bigr \},
 \]
 since  $\Re\left[\LT{f}(\gamma)\right] = \LT{f}(\gamma)$. We simplify this by choosing $h = \pi/(2 x)$ and $\gamma = a / (2 x)$ for an $a > 0$, achieving
 \begin{equation} \label{DiscretizedInversion}
-f_{\text{disc}}(x) = \frac{\e^{a/2}}{2x}\LT{f} \left(\frac{a}{2 x}\right) + \frac{\e^{a/2}}{x} \sum_{k=1}^\infty (-1)^{k} \Re\left[\LT{f}\left(\frac{a+ 2\pi \ih k}{2 x}\right)\right] \,.
+f_{\mathrm{disc}}(x) = \frac{\e^{a/2}}{2x}\LT{f} \left(\frac{a}{2 x}\right) + \frac{\e^{a/2}}{x} \sum_{k=1}^\infty (-1)^{k} \Re\left[\LT{f}\left(\frac{a+ 2\pi \ih k}{2 x}\right)\right] \,.
 \end{equation}
 
 From Theorem~5.5.1 of \cite{RoScScTe08} we have that the \emph{discretisation error} (also called \emph{sampling error}) is simply
 \begin{equation} \label{DiscretizationError}
-    f_{\text{disc}}(x) - f(x) = \sum_{k=1}^\infty \e^{-a k} f[ (2k+1) x ] \,.
+    f_{\mathrm{disc}}(x) - f(x) = \sum_{k=1}^\infty \e^{-a k} f[ (2k+1) x ] \,.
 \end{equation}
 In particular, if $0 \le f(x) \le 1$, then
 \begin{equation} \label{BoundedDiscretizationError}
-    f_{\text{disc}}(x) - f(x) \le \frac{\e^{-a}}{1-\e^{-a}} \,.
+    f_{\mathrm{disc}}(x) - f(x) \le \frac{\e^{-a}}{1-\e^{-a}} \,.
 \end{equation}
 
 There are no absolute value signs here --- the discretisation introduces a systematic overestimate of the true value.
@@ -275,7 +276,7 @@ s_\ell(x) \defeq \frac{\e^{a/2}}{2x}\LT{f} \left(\frac{a}{2 x}\right) + \frac{\e
 \end{equation*}
 Then, for some positive integers $M_1$ and $M_2$,
 \begin{equation}\label{eq:FinalApproxLaplaceInversion}
-f(x) \approx f_{\text{disc}}(x) \approx f_{\text{approx}}(x) \defeq \sum_{k=0}^{M_1} \binom{M_1}{k} 2^{-M_1} s_{M_2+k}(x) \,.
+f(x) \approx f_{\mathrm{disc}}(x) \approx f_{\mathrm{approx}}(x) \defeq \sum_{k=0}^{M_1} \binom{M_1}{k} 2^{-M_1} s_{M_2+k}(x) \,.
 \end{equation}
 
 \subsection{Orthogonal polynomials} \label{subsc:ortho_poly}

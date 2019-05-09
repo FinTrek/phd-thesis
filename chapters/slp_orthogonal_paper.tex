@@ -50,7 +50,7 @@ under the expected value premium principle.
 
 In practice, there are a variety of reinsurance designs from which an insurer can choose. We focus in this work on the stop-loss reinsurance treaty associated with the following ceded loss function
 \begin{equation*}\label{eq:StopLossCededFunction}
-f(S_N)=(S_N-a)_{+},\text{ }a\geq0,
+f(S_N)=(S_N-a)_{+},\quad a\geq0,
 \end{equation*}
 where $a$ is referred to as the retention level or priority. The ratemaking of the stop-loss reinsurance policy requires the evaluation of
 \begin{equation}\label{eq:DefUsualStopLossPremium}
@@ -60,12 +60,12 @@ also known as the usual stop loss premium.
 
 One variation is the limited stop-loss function,
 \begin{equation}\label{eq:LimitedStopLossCededFunction}
-f(S_N)=\min[(S_N-a)_{+},b],\text{ }b\geq0,
+f(S_N)=\min[(S_N-a)_{+},b], \quad b\geq0,
 \end{equation}
 where $b$ is called the limit. The limited stop-loss function \eqref{eq:LimitedStopLossCededFunction} is very appealing in practice because it prevents the cedant from over-estimating their losses and therefore over-charging the reinsurer.
 Also, the change-loss function is defined as
 \begin{equation*}\label{eq:ChangeLossCededFunction}
-f(S_N)=c(S_N-a)_{+},\text{ }0\leq c\leq1,
+f(S_N)=c(S_N-a)_{+}, \quad 0\leq c\leq1,
 \end{equation*}
 which is in between stop-loss and quota-share reinsurance. The ratemaking in each case requires the expectation in \eqref{eq:DefUsualStopLossPremium}.
 
@@ -118,7 +118,7 @@ and
 \end{equation*}
 These probabilities are often reformulated (for mathematical convenience) in terms of the associated claims surplus process $\{S(t),t\geq0\}$,
 \begin{equation*} \label{eq:ClaimsSurplusProcess}
-S(t) = \sum_{k=1}^{N(t)} U_k - ct,\text{ }t\geq0,
+S(t) = \sum_{k=1}^{N(t)} U_k - ct,\quad t\geq0,
 \end{equation*}
 specifically,
 \begin{equation*}
@@ -192,7 +192,7 @@ where $\{L_{n}^{r-1}\}_{n\in\NZ}$ are the generalised Laguerre polynomials,
 \begin{equation*}\label{eq:GeneralizedLaguerrePolynomialsExpression}
 L_{n}^{r-1}(x)
 =\sum_{i=0}^{n} \binom{n + r - 1}{n - i} \frac{(-x)^i}{i!}
-=\sum_{i=0}^{n} \frac{\Gamma(n+r)}{\Gamma(n-i+1)\Gamma(r+i)}\frac{(-x)^i}{i!}, \text{ }n\geq 0,
+=\sum_{i=0}^{n} \frac{\Gamma(n+r)}{\Gamma(n-i+1)\Gamma(r+i)}\frac{(-x)^i}{i!}, \quad n\geq 0,
 \end{equation*}
 cf.\ the classical book by Szeg{\"o} \cite{Szegoe1939}.
 
@@ -216,7 +216,7 @@ f_{X}(x)=\sum_{k=0}^{\infty} a_k p_{k}(x) \gamma(r,m,x) = \sum_{i=0}^\infty b_i 
 where
 \begin{align*}
 b_i
-&= \sum_{k=0}^\infty \text{Coefficient}(x^i, a_k  p_k(x))
+&= \sum_{k=0}^\infty \mathrm{Coefficient}(x^i, a_k  p_k(x))
 = \frac{(-1)^i}{m^i i!} \sum_{k=i}^\infty a_k (-1)^{k} \binom{k + r - 1}{k}^{-\frac12} \binom{k + r - 1}{k - i} \,.
 \end{align*}
 We also note that
@@ -292,7 +292,7 @@ If one takes $r=1$ and $m=\beta$ then $\mathcal{P}(z)=1$ and the polynomial repr
 \end{example}
 The coefficients of the polynomials could be derived by differentiating the generating function $\mathcal{P}(z)$ as
 \begin{align*}\label{eq:PolynomialExpansionCoefficientDerivativeGeneratingFunction}
-c_i&=\frac{1}{i!}\frac{\dd^{i}}{\dd z^{i}}\mathcal{P}(z)\Big\rvert_{z=0}  =\text{Coefficient}(i, \text{MaclaurinSeries}(\mathcal{P}(z))) \, \quad i \in \NZ\,.
+c_i&=\frac{1}{i!}\frac{\dd^{i}}{\dd z^{i}}\mathcal{P}(z)\Big\rvert_{z=0}  =\mathrm{Coefficient}(i, \mathrm{MaclaurinSeries}(\mathcal{P}(z))) \, \quad i \in \NZ\,.
 \end{align*}
 In practice, the singularities of the function $\mathcal{P}(z)$ at zero mean this procedure is not viable. Instead, the $c_i$ are approximated by computing the $a_k$ and truncating their expression \eqref{eq:PiExpression} up to a given order. The practical evaluation of the $a_k$ is discussed in Section~\ref{sssec:ComputingOrthogonalCoefficients}.
 
@@ -431,7 +431,7 @@ In the heavy-tailed cases (i.e.\ when exponential tilting is required) we set $\
 
 The inherent challenge of the implementation of the polynomial method remains the evaluation of the coefficients $\{a_k \}_{k \in \NZ}$. Recall that
 \begin{equation*}
-a_{k}=\int_{0}^{\infty}p_k(x)f_{S_N}^+(x)\dd x,\text{ }k\geq0.
+a_{k}=\int_{0}^{\infty}p_k(x)f_{S_N}^+(x)\dd x,\quad k\geq0.
 \end{equation*}
 We propose an evaluation based on the Laplace transform $\LT{f_{S_N}^+}$. Define the generating function of the sequence $\{a_k d_k \}_{k \in \NZ}$ as $\mathcal{Q}(z)=\sum_{k=0}^{\infty}a_{k}d_{k}z^{k}$, where
 \begin{equation*}\label{eq:ck}
@@ -465,7 +465,7 @@ $$
 $$
 The coefficients of the polynomials can be derived after differentiation of the generating function $\mathcal{Q}(z)$ as
 \begin{align*}\label{eq:PolynomialExpansionCoefficientDerivativeGeneratingFunction}
-a_k&=\frac{1}{d_k}\frac{1}{k!}\frac{\dd^{k}}{\dd z^{k}}\mathcal{Q}(z)\Big\rvert_{z=0}  =\frac{1}{d_k} \text{Coefficient}(k, \text{MaclaurinSeries}(\mathcal{Q}(z))).
+a_k&=\frac{1}{d_k}\frac{1}{k!}\frac{\dd^{k}}{\dd z^{k}}\mathcal{Q}(z)\Big\rvert_{z=0}  =\frac{1}{d_k} \mathrm{Coefficient}(k, \mathrm{MaclaurinSeries}(\mathcal{Q}(z))).
 \end{align*}
 
 \section{Laplace transform inversion approximations}\label{sec:NumericalInversionLaplaceTransform}
@@ -476,7 +476,7 @@ s_\ell(x) \defeq \frac{\e^{a/2}}{2x}\LT{f} \left(\frac{a}{2 x}\right) + \frac{\e
 \end{equation*}
 and with some positive integers $M_1$ and $M_2$, we have
 \begin{equation} \label{eq:LaplaceInversion}
-f_{\text{approx}}(x) \defeq \sum_{k=0}^{M_1} \binom{M_1}{k} 2^{-M_1} s_{M_2+k}(x) \approx f(x) \,.
+f_{\mathrm{approx}}(x) \defeq \sum_{k=0}^{M_1} \binom{M_1}{k} 2^{-M_1} s_{M_2+k}(x) \approx f(x) \,.
 \end{equation}
 
 For a random sum $S_N$, we consider using the technique above to evaluate its survival function $\Ftail_{S_N}$ and stop-loss premiums from its Laplace transform.
@@ -512,9 +512,9 @@ The parameters for the Laplace inversion technique are set to $M_1=11$, $M_2=15$
 
 In each plot, the first subplot shows the estimates each estimator produces, and the second shows the \emph{approximate absolute error}. We define this, for estimator $i \in \{1,\dots,I\}$, as
 \begin{align*}
-\text{ApproximateAbsoluteError}( \widehat{f}_i, x )
-&\defeq \widehat{f}_i(x)- \text{Median}\big\{ \widehat{f}_1(x),\dots,\widehat{f}_I(x) \big\} \\
-&\approx \widehat{f}_i(x)-f(x) \defeqr \text{AbsoluteError}( \widehat{f}_i, x ) \,.
+\mathrm{ApproximateAbsoluteError}( \widehat{f}_i, x )
+&\defeq \widehat{f}_i(x)- \mathrm{Median}\big\{ \widehat{f}_1(x),\dots,\widehat{f}_I(x) \big\} \\
+&\approx \widehat{f}_i(x)-f(x) \defeqr \mathrm{AbsoluteError}( \widehat{f}_i, x ) \,.
 \end{align*}
 When the different estimators cross each other, the median obtains an unrealistically jagged character. We therefore use as reference a slightly smoothed version of the median, achieved in \textsc{Mathematica} using \texttt{GaussianFilter[Medians, 2]}. As noted earlier, all of the code used is available online \cite{StoplossCode}.
 

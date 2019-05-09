@@ -2,20 +2,15 @@
 \usepackage{algorithm}
 \usepackage{algorithmicx}
 \usepackage{algpseudocode}
-\usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{amstext}
 \usepackage{amsthm}
 \usepackage{appendix}
 \usepackage{array} % for \extrarowheight
 \usepackage{booktabs}
 \usepackage{bm} % for \bm
 \usepackage{cancel}
-\usepackage{cases}
-\usepackage{color}
 \usepackage{colortbl} % For nice color in tables
-\usepackage{dsfont}% permet d'utiliser la fonction \mathbb avec des chiffres
 \usepackage{enumerate}
 \usepackage{fancyhdr}
 \usepackage[perpage]{footmisc} %pour recommencer ‡ indicer les notes de bas de pages ‡ 1 ‡ chaque page
@@ -23,27 +18,24 @@
 \usepackage{framed} % to make boxes
 \usepackage{graphicx}
 \usepackage{lastpage}
-\usepackage{latexsym} % for the big \Diamond
 \usepackage{listings}
 \usepackage{lmodern}% better font than default
 \usepackage{mathtools}
-\usepackage{mathrsfs} % for mathsf
+\usepackage{mathrsfs} % for mathscr
 \usepackage{multicol}
 \usepackage{multirow}
 \usepackage{natbib}
-\usepackage{pst-all}
 \usepackage{relsize} % for \mathsmaller
 \usepackage{setspace}
-\usepackage{stmaryrd}% la police des symboles latex
 \usepackage{subfig}
 \usepackage{tabularx}
-\usepackage{tikz} % for drawing circles and stuff
+\usepackage{tikz} % for drawing circles and lines (\sbullet & \ginv)
 \usepackage{upgreek} % for uppi
 \usepackage{url}
 \usepackage{verbatim}
-\usepackage{wasysym}
 \usepackage{xcolor}
 \usepackage{xspace}
+
 
 \onehalfspacing
 
@@ -115,12 +107,11 @@
 \DeclareMathOperator{\csch}{csch}
 
 % Vector functions
-\newcommand*{\ve}{\text{\bf{e}}} % vector e
-\newcommand*{\vlog}{\text{\bf{log}}\,}	% vector log
+\newcommand*{\ve}{\mathbf{e}} % vector e
+\DeclareMathOperator{\vlog}{\mathbf{log}}	% vector log
 
 % Indicator
-\newcommand*{\ind}[1]{\mathbb{I}\{ #1 \}}
-\newcommand*{\indBig}[1]{\mathbb{I}\bigl\{ #1 \bigr\}}
+\DeclarePairedDelimiterXPP{\ind}[1]{\mathbb{I}}{\{}{\}}{}{#1}
 
 % Integral transforms (pjl: TODO finish this off)
 \newcommand*{\Laplace}{\mathscr{L}}
@@ -146,7 +137,7 @@
 \newcommand*{\oh}{{\mathrm{o}}}
 \newcommand*{\Oh}{{\mathcal{O}}}
 \newcommand*{\comp}{\mathsf{c}} % complement
-\newcommand*{\argdot}{\makebox[1ex]{$\cdot$}} % for functions like f(.)
+\newcommand*{\argdot}{{}\cdot{}} % for functions like f(.)
 \newcommand*{\BigBinom}[2]{\Bigl( \genfrac{}{}{0pt}{}{#1}{#2} \Bigr)}
 
 % Stuff I used in paper one.
@@ -196,7 +187,7 @@
 % \times with less space on left/right (for tables).
 \newcommand*{\stimes}{{\mkern-2mu\times\mkern-2mu}}
 
-\newcommand*{\remQED}{{\mbox{\, \vspace{3mm}}} \hfill \mbox{$\Diamond$}}
+\newcommand*{\remQED}{{\mbox{\, \vspace{3mm}}} \hfill \mbox{\tikz \draw [rotate=45, rounded corners=0.01pt] (0,0) rectangle (5.5pt,5.5pt);}}
 
 \newcommand*{\cH}{{\mathcal H}}
 \newcommand*{\cHb}{\overline{\mathcal H}}
@@ -210,6 +201,7 @@
   \tikz[baseline=-0.4ex] \draw[<-] (0,0)--(0.4em,0);
 }
 
+
 \newcommand*{\pinv}{[-1]}
 \newcommand*{\alphaMax}{\overline{\alpha}}
 \newcommand*{\Ftail}{\mkern 1mu\overline{\mkern-1mu{F}\mkern+1.25mu}}
@@ -220,48 +212,25 @@
 
 
 % All the bold symbols and letters.
-\newcommand*{\bfA}{\bm{A}}
-\newcommand*{\bfB}{\bm{B}}
-\newcommand*{\bfC}{\bm{C}}
-\newcommand*{\bfD}{\bm{D}}
-\newcommand*{\bfF}{\bm{F}}
-\newcommand*{\bfH}{\bm{H}}
-\newcommand*{\bfI}{\bm{I}}
-\newcommand*{\bfS}{\bm{S}}
-\newcommand*{\bfU}{\bm{U}}
-\newcommand*{\bfW}{\bm{W}}
-\newcommand*{\bfX}{\bm{X}}
-\newcommand*{\bfY}{\bm{Y}}
-\newcommand*{\bfZ}{\bm{Z}}
+\usepackage{etoolbox}
+\newcommand\Bolder[1]{
+  \ifcsundef{bf#1}{
+    \csdef{bf#1}{\bm{#1}}
+  }{
+    \ERROR
+  }
+}
+\newcommand\BolderS[1]{
+  \ifcsundef{bf#1}{
+    \csdef{bf#1}{\bm{\csname #1\endcsname}}
+  }{
+    \ERROR
+  }
+}
 
-\newcommand*{\bfa}{\bm{a}}
-\newcommand*{\bfb}{\bm{b}}
-\newcommand*{\bfc}{\bm{c}}
-\newcommand*{\bfe}{\bm{e}}
-\newcommand*{\bfh}{\bm{h}}
-\newcommand*{\bfm}{\bm{m}}
-\newcommand*{\bfq}{\bm{q}}
-\newcommand*{\bfr}{\bm{r}}
-\newcommand*{\bft}{\bm{t}}
-\newcommand*{\bfu}{\bm{u}}
-\newcommand*{\bfv}{\bm{v}}
-\newcommand*{\bfw}{\bm{w}}
-\newcommand*{\bfx}{\bm{x}}
-\newcommand*{\bfy}{\bm{y}}
-\newcommand*{\bfz}{\bm{z}}
-
-\newcommand*{\bfalpha}{\bm{\alpha}}
-\newcommand*{\bfbeta}{\bm{\beta}}
-\newcommand*{\bfdelta}{\bm{\delta}}
-\newcommand*{\bfgamma}{\bm{\gamma}}
-\newcommand*{\bfomega}{\bm{\omega}}
-\newcommand*{\bfLambda}{\bm{\Lambda}}
-\newcommand*{\bfPhi}{\bm{\Phi}}
-\newcommand*{\bfmu}{\bm{\mu}}
-\newcommand*{\bfsigma}{\bm{\sigma}}
-\newcommand*{\bfSigma}{\bm{\Sigma}}
-\newcommand*{\bftheta}{\bm{\theta}}
-\newcommand*{\bfTheta}{\bm{\Theta}}
+\forcsvlist\Bolder{a,b,c,e,h,m,q,r,t,u,v,w,x,y,z}
+\forcsvlist\Bolder{A,B,C,D,F,H,I,S,U,W,X,Y,Z}
+\forcsvlist\BolderS{alpha,beta,delta,gamma,omega,Lambda,Phi,mu,sigma,Sigma,theta,Theta}
 
 \newcommand*{\bfzero}{\bm{0}}
 \newcommand*{\bfone}{\bm{1}}
