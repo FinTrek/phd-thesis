@@ -294,11 +294,11 @@ where $\Gamma$ is the gamma function.
 
 \underline{Multivariate normal distribution}: denoted $\NormDist(\bfmu, \bfSigma)$ where $\bfmu \in \RL^d$ and $\bfSigma \in \RL^{d,d}$ is positive semi-definite, has pdf
 \[
-  f(\bfx) = \frac{1}{\sqrt{(2\pi)^d \det(\bfSigma)}} \exp\Bigl\{ {-}\frac12 (\bfx - \bfmu)^\tr \bfSigma^{-1} (\bfx - \bfmu) \Bigr\} \dd \bfx \,, \quad \bfx \in \RL^d \,.
+  f(\bfx) = \frac{1}{\sqrt{(2\pi)^d \det(\bfSigma)}} \exp\Bigl\{ {-}\frac12 (\bfx - \bfmu)^\tr \bfSigma^{-1} (\bfx - \bfmu) \Bigr\} \,, \quad \bfx \in \RL^d \,.
 \]
 
 \underline{Multivariate lognormal distribution}: denoted $\LNDist(\bfmu, \bfSigma)$ where $\bfmu \in \RL^d$ and $\bfSigma~\in~\RL^{d,d}$ is positive semi-definite, has pdf
-\[ f(\bfx) = \frac{1}{\sqrt{(2\pi)^d \det(\bfSigma)} \prod_{i=1}^d x_i} \exp\Bigl\{ {-}\frac12 ( \vlog(\bfx) - \bfmu )^\tr \bfSigma^{-1} (\vlog(\bfx) - \bfmu) \Bigr\} \dd \bfx \,, \quad \bfx \in \RL_+^d \,. \]
+\[ f(\bfx) = \frac{1}{\sqrt{(2\pi)^d \det(\bfSigma)} \prod_{i=1}^d x_i} \exp\Bigl\{ {-}\frac12 ( \vlog(\bfx) - \bfmu )^\tr \bfSigma^{-1} (\vlog(\bfx) - \bfmu) \Bigr\} \,, \quad \bfx \in \RL_+^d \,. \]
 
 \underline{Dirichlet distribution}: denoted $\mathrm{Dirichlet}(\bfalpha)$ where $\bfalpha=(\alpha_1,\dots,\alpha_d) \in \RL_+^d$, has pdf
 \[
